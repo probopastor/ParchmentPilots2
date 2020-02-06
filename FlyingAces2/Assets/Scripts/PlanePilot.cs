@@ -96,10 +96,10 @@ public class PlanePilot : MonoBehaviour
             transform.position += transform.forward * Time.deltaTime * speed;
             speed -= transform.forward.y * Time.deltaTime * 50.0f;
 
-            if (speed < 45.0f)
-            {
-                speed = 45.0f;
-            }
+            //if (speed < 45.0f)
+            //{
+            //    speed = 45.0f;
+            //}
             transform.Rotate(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"), 0.0f);
         }
     }
@@ -167,7 +167,7 @@ public class PlanePilot : MonoBehaviour
         {
             ContactPoint contact = collision.GetContact(0);
             newTee = contact.point;
-            newTee += new Vector3(0.0f, 60.0f, 0.0f);
+            newTee += new Vector3(0.0f, 10.0f, 0.0f);
             stroke += 1;
             //strokeText.text = "Stroke: " + stroke;
             speed = 90;
