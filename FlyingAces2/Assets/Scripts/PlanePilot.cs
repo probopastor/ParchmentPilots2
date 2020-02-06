@@ -148,6 +148,12 @@ public class PlanePilot : MonoBehaviour
             SetUpNewThrow(collision);
 
         }
+
+        if (collision.gameObject.tag == "finish")
+        {
+            finished = true;
+            //strokeText.text = "You finished with a stroke of " + stroke + "! Good Job! Press R to Restart or M to go back to the Main Menu!";
+        }
         //if (collision.gameObject.tag == "ground2")
         //{
         //    hitGround2 = true;
