@@ -149,9 +149,10 @@ public class PlanePilot : MonoBehaviour
 
         }
 
-        if (collision.gameObject.tag == "finish")
+        if (collision.gameObject.tag == "Finish")
         {
             finished = true;
+            SceneManager.LoadScene("GameScene");
             //strokeText.text = "You finished with a stroke of " + stroke + "! Good Job! Press R to Restart or M to go back to the Main Menu!";
         }
         //if (collision.gameObject.tag == "ground2")
