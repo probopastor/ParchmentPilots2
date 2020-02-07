@@ -981,7 +981,7 @@ MonoBehaviour:
   speed: 10
   inWindZone: 0
   windZone: {fileID: 0}
-  stroke: -203
+  stroke: 1
   strokeText: {fileID: 300558896}
   player: {fileID: 596998843}
   sceneName: 
@@ -1015,7 +1015,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!1 &1749109340
 GameObject:
   m_ObjectHideFlags: 0
