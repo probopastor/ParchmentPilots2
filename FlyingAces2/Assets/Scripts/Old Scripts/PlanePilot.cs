@@ -101,6 +101,8 @@ public class PlanePilot : MonoBehaviour
                 GetComponent<AimScript>().enabled = false;
                 rb.isKinematic = false;
                 rb.AddRelativeForce(launchSpeed);
+                stroke += 1;
+
             }
             thrown = true;
         }
@@ -192,7 +194,6 @@ public class PlanePilot : MonoBehaviour
             ContactPoint contact = collision.GetContact(0);
             newTee = contact.point;
             newTee += new Vector3(0.0f, 30.0f, 0.0f);
-            stroke += 1;
             strokeText.text = "Stroke: " + stroke;
             speed = 90;
             //strokeText.text = "Stroke: " + stroke;
