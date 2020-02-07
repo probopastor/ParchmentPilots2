@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine.SceneManagement;
 
 public class PlanePilot : MonoBehaviour
@@ -15,7 +16,7 @@ public class PlanePilot : MonoBehaviour
     Rigidbody rb;
 
     public int stroke = 1;
-    //public Text strokeText;
+    public TextMeshProUGUI strokeText;
     //public Text instructionsText;
     //public Text speedText;
     bool finished = false;
@@ -26,7 +27,7 @@ public class PlanePilot : MonoBehaviour
     public Scene currentScene;
     void Start()
     {
-        //strokeText.text = "Stroke: " + stroke;
+        strokeText.text = "Stroke: " + stroke;
         aimingCam.enabled = true;
         planeCam.enabled = false;
         //Debug.Log("plane pilot script added to: " + gameObject.name);
@@ -176,7 +177,7 @@ public class PlanePilot : MonoBehaviour
             newTee = contact.point;
             newTee += new Vector3(0.0f, 10.0f, 0.0f);
             stroke += 1;
-            //strokeText.text = "Stroke: " + stroke;
+            strokeText.text = "Stroke: " + stroke;
             speed = 90;
             thrown = false;
             aimingCam.enabled = true;
