@@ -15,6 +15,10 @@ public class PlanePilot : MonoBehaviour
     public static bool thrown = false;
     Rigidbody rb;
 
+    float liftCoefficent;
+    Vector3 launchSpeed = new Vector3(0, 300, 2000);
+    Vector3 liftForce;
+
     public int stroke = 1;
     public TextMeshProUGUI strokeText;
     //public Text instructionsText;
@@ -67,7 +71,7 @@ public class PlanePilot : MonoBehaviour
         //speedText.text = "Speed: " + speed;
 
         //CAMERA BEHAVIOR//
-        Vector3 moveCamTo = transform.position - transform.forward * 10.0f + Vector3.up * 5.0f;
+        Vector3 moveCamTo = transform.position - transform.forward * 5.0f + Vector3.up * 0.0f;
         float bias = 0.96f;
         planeCam.transform.position = planeCam.transform.position * bias + moveCamTo * (1.0f - bias);
         planeCam.transform.LookAt(transform.position + transform.forward * 30.0f);
@@ -77,6 +81,16 @@ public class PlanePilot : MonoBehaviour
         //{
         //    rb.AddForce(windZone.GetComponent<WindArea>().direction * windZone.GetComponent<WindArea>().strength);
         //}
+        if(transform.rotation.x > 0)
+        {
+            liftCoefficent = -1 * transform.rotation.x / 3.75f;
+        }
+        else
+        {
+            liftCoefficent = -1 * transform.rotation.x / 3.75f;
+        }
+        
+        liftForce = new Vector3(0, liftCoefficent * (Mathf.Pow(rb.velocity.z, 2)), -liftCoefficent * (Mathf.Pow(rb.velocity.z, 2) / 10));
 
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
@@ -86,7 +100,7 @@ public class PlanePilot : MonoBehaviour
                 planeCam.enabled = true;
                 GetComponent<AimScript>().enabled = false;
                 rb.isKinematic = false;
-
+                rb.AddRelativeForce(launchSpeed);
             }
             thrown = true;
         }
@@ -94,13 +108,15 @@ public class PlanePilot : MonoBehaviour
         if (thrown)
         {
             rb.useGravity = thrown;
-            transform.position += transform.forward * Time.deltaTime * speed;
-            speed -= transform.forward.y * Time.deltaTime * 50.0f;
+            rb.AddRelativeForce(liftForce);
+            //transform.position += transform.forward * Time.deltaTime * speed;
+            //speed -= transform.forward.y * Time.deltaTime * 50.0f;
 
             //if (speed < 45.0f)
             //{
             //    speed = 45.0f;
             //}
+            rb.AddRelativeForce(new Vector3(Input.GetAxis("Horizontal") * speed, 0, 0));
             transform.Rotate(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"), 0.0f);
         }
     }
@@ -175,10 +191,15 @@ public class PlanePilot : MonoBehaviour
         {
             ContactPoint contact = collision.GetContact(0);
             newTee = contact.point;
-            newTee += new Vector3(0.0f, 10.0f, 0.0f);
+            newTee += new Vector3(0.0f, 30.0f, 0.0f);
             stroke += 1;
+<<<<<<< HEAD:FlyingAces2/Assets/Scripts/Old Scripts/PlanePilot.cs
             strokeText.text = "Stroke: " + stroke;
             speed = 90;
+=======
+            //strokeText.text = "Stroke: " + stroke;
+            //speed = 90;
+>>>>>>> pr/2:FlyingAces2/Assets/Scripts/PlanePilot.cs
             thrown = false;
             aimingCam.enabled = true;
             planeCam.enabled = false;
@@ -189,9 +210,9 @@ public class PlanePilot : MonoBehaviour
 
             if (hitGround1)
             {
-                gameObject.transform.position = player.transform.position + new Vector3(-1.5f, -3.0f, -10.0f);
-                gameObject.transform.rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
-                player.transform.rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
+                gameObject.transform.position = player.transform.position + new Vector3(-1.5f, -3.0f, 10.0f);
+                gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+                player.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
             }
             //else if (hitGround2)
             //{
