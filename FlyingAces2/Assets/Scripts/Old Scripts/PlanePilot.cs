@@ -98,6 +98,7 @@ public class PlanePilot : MonoBehaviour
             {
                 aimingCam.enabled = false;
                 planeCam.enabled = true;
+                //GetComponent<Aiming>().enabled = false;
                 GetComponent<AimScript>().enabled = false;
                 rb.isKinematic = false;
                 rb.AddRelativeForce(launchSpeed);
@@ -201,7 +202,8 @@ public class PlanePilot : MonoBehaviour
             thrown = false;
             aimingCam.enabled = true;
             planeCam.enabled = false;
-            GetComponent<AimScript>().enabled = true;
+            //GetComponent<Aiming>().enabled = true;
+            GetComponent<AimScript>().enabled = false;
             gameObject.transform.position = newTee;
             player.transform.position = newTee;
             //gameObject.transform.parent = player.transform;
