@@ -193,13 +193,10 @@ public class PlanePilot : MonoBehaviour
             newTee = contact.point;
             newTee += new Vector3(0.0f, 30.0f, 0.0f);
             stroke += 1;
-<<<<<<< HEAD:FlyingAces2/Assets/Scripts/Old Scripts/PlanePilot.cs
             strokeText.text = "Stroke: " + stroke;
             speed = 90;
-=======
             //strokeText.text = "Stroke: " + stroke;
             //speed = 90;
->>>>>>> pr/2:FlyingAces2/Assets/Scripts/PlanePilot.cs
             thrown = false;
             aimingCam.enabled = true;
             planeCam.enabled = false;
