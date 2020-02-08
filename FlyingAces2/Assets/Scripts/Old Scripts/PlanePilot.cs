@@ -81,7 +81,7 @@ public class PlanePilot : MonoBehaviour
         //{
         //    rb.AddForce(windZone.GetComponent<WindArea>().direction * windZone.GetComponent<WindArea>().strength);
         //}
-        if(transform.rotation.x > 0)
+        if (transform.rotation.x > 0)
         {
             liftCoefficent = -1 * transform.rotation.x / 3.75f;
         }
@@ -128,13 +128,16 @@ public class PlanePilot : MonoBehaviour
     {
         if (other.tag == "WindArea")
         {
-            windZone = other.gameObject;
-            inWindZone = true;
+            Debug.Log("wooooooosh");
+            //inWindZone = true;
+            rb.AddForce(1, rb.velocity.y * 5f, 1);
+
         }
 
-        if (other.tag == "ring")
+        if (other.tag == "Speed Boost")
         {
-            speed += 10;
+            Debug.Log("ZOOOOOOOOOOM");
+            rb.AddForce(rb.velocity.x * 1.3f, 1, 1);
         }
 
         if (other.tag == "Finish")
