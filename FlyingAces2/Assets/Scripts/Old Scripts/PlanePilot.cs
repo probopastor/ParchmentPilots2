@@ -14,10 +14,14 @@ public class PlanePilot : MonoBehaviour
     public GameObject windZone;
     public static bool thrown = false;
     Rigidbody rb;
+    public float windZoneForce = 500f;
+    public float speedBoostForce = 500f;
 
     float liftCoefficent;
+    float forwardLiftCoefficent;
     Vector3 launchSpeed = new Vector3(0, 300, 2000);
     Vector3 liftForce;
+    Vector3 forwardLiftForce;
 
     public int stroke = 1;
     public TextMeshProUGUI strokeText;
@@ -102,20 +106,24 @@ public class PlanePilot : MonoBehaviour
         if (transform.rotation.x > 0)
         {
             liftCoefficent = -1 * transform.rotation.x / 3.75f;
+            forwardLiftCoefficent = -1 * transform.rotation.x / 5f;
         }
         else
         {
             liftCoefficent = -1 * transform.rotation.x / 3.75f;
+            forwardLiftCoefficent = -1 * transform.rotation.x / 3.75f;
         }
         
-        liftForce = new Vector3(0, liftCoefficent * (Mathf.Pow(rb.velocity.z, 2)), -liftCoefficent * (Mathf.Pow(rb.velocity.z, 2) / 10));
-
+        liftForce = new Vector3(0, liftCoefficent * (Mathf.Pow(rb.velocity.z, 2)), 0);
+        Debug.Log(liftForce.y);
+        forwardLiftForce = new Vector3(0, 0, -forwardLiftCoefficent * (Mathf.Pow(rb.velocity.z, 2) / 8));
         
 
         if (thrown)
         {
             rb.useGravity = thrown;
             rb.AddRelativeForce(liftForce);
+            rb.AddForce(forwardLiftForce);
             //transform.position += transform.forward * Time.deltaTime * speed;
             //speed -= transform.forward.y * Time.deltaTime * 50.0f;
 
@@ -124,6 +132,7 @@ public class PlanePilot : MonoBehaviour
             //    speed = 45.0f;
             //}
             rb.AddRelativeForce(new Vector3(Input.GetAxis("Horizontal") * speed, 0, 0));
+            
             transform.Rotate(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"), -Input.GetAxis("Horizontal"));
         }
     }
@@ -134,14 +143,15 @@ public class PlanePilot : MonoBehaviour
         {
             Debug.Log("wooooooosh");
             //inWindZone = true;
-            rb.AddForce(0, rb.velocity.y * 5f, 0);
-
+            rb.AddForce(0, windZoneForce, 0);
+            //rb.velocity.y * 5f
         }
 
         if (other.tag == "Speed Boost")
         {
             Debug.Log("ZOOOOOOOOOOM");
-            rb.AddForce(0, 0, rb.velocity.x * 1.3f);
+            rb.AddForce(0, 0, speedBoostForce);
+            //rb.velocity.x * 1.3f
         }
 
         if (other.tag == "Finish")
