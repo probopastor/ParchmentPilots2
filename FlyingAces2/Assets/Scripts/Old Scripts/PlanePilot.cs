@@ -137,7 +137,7 @@ public class PlanePilot : MonoBehaviour
         if (other.tag == "Speed Boost")
         {
             Debug.Log("ZOOOOOOOOOOM");
-            rb.AddForce(rb.velocity.x * 1.3f, 1, 1);
+            rb.AddForce(1, 1, rb.velocity.x * 1.3f);
         }
 
         if (other.tag == "Finish")
