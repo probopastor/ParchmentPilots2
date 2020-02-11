@@ -130,14 +130,14 @@ public class PlanePilot : MonoBehaviour
         {
             Debug.Log("wooooooosh");
             //inWindZone = true;
-            rb.AddForce(1, rb.velocity.y * 5f, 1);
+            rb.AddForce(0, rb.velocity.y * 5f, 0);
 
         }
 
         if (other.tag == "Speed Boost")
         {
             Debug.Log("ZOOOOOOOOOOM");
-            rb.AddForce(1, 1, rb.velocity.x * 1.3f);
+            rb.AddForce(0, 0, rb.velocity.x * 1.3f);
         }
 
         if (other.tag == "Finish")
