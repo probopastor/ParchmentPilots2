@@ -120,7 +120,7 @@ public class PlanePilot : MonoBehaviour
             //    speed = 45.0f;
             //}
             rb.AddRelativeForce(new Vector3(Input.GetAxis("Horizontal") * speed, 0, 0));
-            transform.Rotate(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"), 0.0f);
+            transform.Rotate(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"), -Input.GetAxis("Horizontal"));
         }
     }
 
@@ -199,8 +199,6 @@ public class PlanePilot : MonoBehaviour
             newTee = contact.point;
             newTee += new Vector3(0.0f, 30.0f, 0.0f);
             strokeText.text = "Stroke: " + stroke;
-            speed = 90;
-            //strokeText.text = "Stroke: " + stroke;
             //speed = 90;
             thrown = false;
             aimingCam.enabled = true;
