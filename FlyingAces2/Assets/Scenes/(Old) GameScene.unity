@@ -1168,6 +1168,8 @@ MonoBehaviour:
   speed: 10
   inWindZone: 0
   windZone: {fileID: 0}
+  windZoneForce: 500
+  speedBoostForce: 500
   stroke: 1
   strokeText: {fileID: 300558896}
   player: {fileID: 596998843}
