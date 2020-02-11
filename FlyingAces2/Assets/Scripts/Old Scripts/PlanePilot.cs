@@ -43,6 +43,24 @@ public class PlanePilot : MonoBehaviour
     }
 
     // Update is called once per frame
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            if (!thrown)
+            {
+                aimingCam.enabled = false;
+                planeCam.enabled = true;
+                //GetComponent<Aiming>().enabled = false;
+                GetComponent<AimScript>().enabled = false;
+                rb.isKinematic = false;
+                rb.AddRelativeForce(launchSpeed);
+                stroke += 1;
+
+            }
+            thrown = true;
+        }
+    }
     void FixedUpdate()
     {
         //if (Input.GetKey(KeyCode.R))
@@ -92,21 +110,7 @@ public class PlanePilot : MonoBehaviour
         
         liftForce = new Vector3(0, liftCoefficent * (Mathf.Pow(rb.velocity.z, 2)), -liftCoefficent * (Mathf.Pow(rb.velocity.z, 2) / 10));
 
-        if (Input.GetKeyUp(KeyCode.Mouse0))
-        {
-            if (!thrown)
-            {
-                aimingCam.enabled = false;
-                planeCam.enabled = true;
-                //GetComponent<Aiming>().enabled = false;
-                GetComponent<AimScript>().enabled = false;
-                rb.isKinematic = false;
-                rb.AddRelativeForce(launchSpeed);
-                stroke += 1;
-
-            }
-            thrown = true;
-        }
+        
 
         if (thrown)
         {
