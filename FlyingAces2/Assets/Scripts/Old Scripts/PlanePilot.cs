@@ -53,16 +53,19 @@ public class PlanePilot : MonoBehaviour
         {
             if (!thrown)
             {
+                thrown = true;
+
                 aimingCam.enabled = false;
                 planeCam.enabled = true;
+
                 //GetComponent<Aiming>().enabled = false;
+
                 GetComponent<AimScript>().enabled = false;
                 rb.isKinematic = false;
                 rb.AddRelativeForce(launchSpeed);
                 stroke += 1;
 
             }
-            thrown = true;
         }
     }
     void FixedUpdate()

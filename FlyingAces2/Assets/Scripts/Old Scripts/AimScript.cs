@@ -36,7 +36,7 @@ public class AimScript : MonoBehaviour
 
     void AimLogic()
     {
-        
+        /*
         float arrowX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime; 
         float arrowY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime; 
 
@@ -46,18 +46,20 @@ public class AimScript : MonoBehaviour
         transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
 
         cam.transform.Rotate(Vector3.up * arrowX);
+        */
+
+
         
-
-
-        /*
         float leftrightvalue = Input.GetAxisRaw("Mouse X");
         float updownvalue = Input.GetAxisRaw("Mouse Y");
 
         Vector3 rotationX = new Vector3(-updownvalue, 0, 0);
         Vector3 rotationY = new Vector3(0, leftrightvalue, 0);
 
-        rb.MoveRotation(rb.rotation * Quaternion.Euler(rotationY));
+        //rb.MoveRotation(rb.rotation * Quaternion.Euler(rotationY));
+
+        rb.transform.Rotate(rotationX / 3);
         cam.transform.Rotate(rotationX / 3);
-        */
+        
     }
 }
