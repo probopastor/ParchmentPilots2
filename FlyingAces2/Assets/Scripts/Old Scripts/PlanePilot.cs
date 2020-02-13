@@ -7,7 +7,11 @@ using UnityEngine.SceneManagement;
 
 public class PlanePilot : MonoBehaviour
 {
-    public Camera aimingCam;
+
+    public Vector3 thrownCamPos;
+    private Vector3 camStartPos;
+
+    //public Camera aimingCam;
     public Camera planeCam;
     public float speed = 90.0f;
     public bool inWindZone = false;
@@ -36,9 +40,10 @@ public class PlanePilot : MonoBehaviour
     void Start()
     {
         strokeText.text = "Stroke: " + stroke;
-        aimingCam.enabled = true;
-        planeCam.enabled = false;
+        //aimingCam.enabled = true;
+        //planeCam.enabled = false;
         //Debug.Log("plane pilot script added to: " + gameObject.name);
+        camStartPos = planeCam.transform.localPosition;
         rb = GetComponent<Rigidbody>();
         thrown = false;
         Scene currentScene = SceneManager.GetActiveScene();
@@ -55,8 +60,9 @@ public class PlanePilot : MonoBehaviour
             {
                 thrown = true;
 
-                aimingCam.enabled = false;
-                planeCam.enabled = true;
+                planeCam.transform.localPosition = thrownCamPos;
+                //aimingCam.enabled = false;
+                //planeCam.enabled = true;
 
                 //GetComponent<Aiming>().enabled = false;
 
@@ -96,10 +102,10 @@ public class PlanePilot : MonoBehaviour
         //speedText.text = "Speed: " + speed;
 
         //CAMERA BEHAVIOR//
-        Vector3 moveCamTo = transform.position - transform.forward * 5.0f + Vector3.up * 0.0f;
-        float bias = 0.96f;
-        planeCam.transform.position = planeCam.transform.position * bias + moveCamTo * (1.0f - bias);
-        planeCam.transform.LookAt(transform.position + transform.forward * 30.0f);
+        //Vector3 moveCamTo = transform.position - transform.forward * 5.0f + Vector3.up * 0.0f;
+        //float bias = 0.96f;
+        //planeCam.transform.position = planeCam.transform.position * bias + moveCamTo * (1.0f - bias);
+        //planeCam.transform.LookAt(transform.position + transform.forward * 30.0f);
         ///////////////////
 
         //if (inWindZone)
@@ -118,7 +124,6 @@ public class PlanePilot : MonoBehaviour
         }
         
         liftForce = new Vector3(0, liftCoefficent * (Mathf.Pow(rb.velocity.z, 2)), 0);
-        Debug.Log(liftForce.y);
         forwardLiftForce = new Vector3(0, 0, -forwardLiftCoefficent * (Mathf.Pow(rb.velocity.z, 2) / 8));
         
 
@@ -215,11 +220,12 @@ public class PlanePilot : MonoBehaviour
             ContactPoint contact = collision.GetContact(0);
             newTee = contact.point;
             newTee += new Vector3(0.0f, 30.0f, 0.0f);
+            planeCam.transform.localPosition = camStartPos;
             strokeText.text = "Stroke: " + stroke;
             //speed = 90;
             thrown = false;
-            aimingCam.enabled = true;
-            planeCam.enabled = false;
+            //aimingCam.enabled = true;
+            //planeCam.enabled = false;
             //GetComponent<Aiming>().enabled = true;
             GetComponent<AimScript>().enabled = false;
             gameObject.transform.position = newTee;
