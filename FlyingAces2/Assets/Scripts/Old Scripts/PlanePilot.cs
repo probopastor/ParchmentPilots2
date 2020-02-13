@@ -219,7 +219,7 @@ public class PlanePilot : MonoBehaviour
         {
             ContactPoint contact = collision.GetContact(0);
             newTee = contact.point;
-            newTee += new Vector3(0.0f, 30.0f, 0.0f);
+            newTee += new Vector3(0.0f, 15.0f, 0.0f);
             planeCam.transform.localPosition = camStartPos;
             strokeText.text = "Stroke: " + stroke;
             //speed = 90;
@@ -234,9 +234,9 @@ public class PlanePilot : MonoBehaviour
 
             if (hitGround1)
             {
-                gameObject.transform.position = player.transform.position + new Vector3(-1.5f, -3.0f, 10.0f);
-                gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
-                player.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+                //gameObject.transform.position = player.transform.position + new Vector3(-1.5f, -3.0f, 10.0f);
+                //gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+                player.transform.rotation = new Quaternion(player.transform.rotation.x, player.transform.rotation.y, 0.0f, player.transform.rotation.w);
             }
             //else if (hitGround2)
             //{
@@ -257,6 +257,26 @@ public class PlanePilot : MonoBehaviour
             //Debug.Log(newTee);
         }
 
+    }
+    
+    private IEnumerator FadeCameraTowardsPosition(Vector3 currentPos, Vector3 newPos)
+    {
+        if(currentPos.x < newPos.x)
+        {
+
+        }
+
+        if(currentPos.y < newPos.y)
+        {
+
+        }
+
+        if(currentPos.z < newPos.z)
+        {
+
+        }
+
+        yield return new WaitForSeconds(0.01f);
     }
 
 }
