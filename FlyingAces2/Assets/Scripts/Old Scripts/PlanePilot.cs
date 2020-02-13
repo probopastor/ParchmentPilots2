@@ -37,8 +37,12 @@ public class PlanePilot : MonoBehaviour
     Vector3 strokePosition = new Vector3(0f, 0f, 0f);
     public string sceneName;
     public Scene currentScene;
+    public string nextSceneName;
+
+    private Quaternion startRot;
     void Start()
     {
+        startRot = gameObject.transform.rotation;
         strokeText.text = "Stroke: " + stroke;
         //aimingCam.enabled = true;
         //planeCam.enabled = false;
@@ -197,7 +201,7 @@ public class PlanePilot : MonoBehaviour
         if (collision.gameObject.tag == "Finish")
         {
             finished = true;
-            SceneManager.LoadScene("(Old) GameScene");
+            SceneManager.LoadScene(nextSceneName);
             //strokeText.text = "You finished with a stroke of " + stroke + "! Good Job! Press R to Restart or M to go back to the Main Menu!";
         }
         //if (collision.gameObject.tag == "ground2")
@@ -219,7 +223,7 @@ public class PlanePilot : MonoBehaviour
         {
             ContactPoint contact = collision.GetContact(0);
             newTee = contact.point;
-            newTee += new Vector3(0.0f, 15.0f, 0.0f);
+            newTee.y += 2f;
             planeCam.transform.localPosition = camStartPos;
             strokeText.text = "Stroke: " + stroke;
             //speed = 90;
@@ -236,7 +240,8 @@ public class PlanePilot : MonoBehaviour
             {
                 //gameObject.transform.position = player.transform.position + new Vector3(-1.5f, -3.0f, 10.0f);
                 //gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
-                player.transform.rotation = new Quaternion(player.transform.rotation.x, player.transform.rotation.y, 0.0f, player.transform.rotation.w);
+                //player.transform.rotation = new Quaternion(0.5f, player.transform.rotation.y, 0.0f, player.transform.rotation.w);
+                gameObject.transform.rotation = startRot;
             }
             //else if (hitGround2)
             //{

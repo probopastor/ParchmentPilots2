@@ -2938,6 +2938,11 @@ PrefabInstance:
       propertyPath: thrownCamPos.z
       value: -2.15
       objectReference: {fileID: 0}
+    - target: {fileID: 9032144721940762492, guid: c50b791f86307c54e81abce3a29b58f9,
+        type: 3}
+      propertyPath: nextSceneName
+      value: (Old) GameScene
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c50b791f86307c54e81abce3a29b58f9, type: 3}
 --- !u!1001 &581359734
