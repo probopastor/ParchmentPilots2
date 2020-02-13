@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class PlanePilot : MonoBehaviour
 {
+    public float yBoundary = -10f;
 
     public Vector3 thrownCamPos;
     private Vector3 camStartPos;
@@ -50,7 +51,7 @@ public class PlanePilot : MonoBehaviour
         camStartPos = planeCam.transform.localPosition;
         rb = GetComponent<Rigidbody>();
         thrown = false;
-        Scene currentScene = SceneManager.GetActiveScene();
+        currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
         //print(sceneName);
     }
@@ -58,6 +59,11 @@ public class PlanePilot : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if(gameObject.transform.position.y < yBoundary)
+        {
+            SceneManager.LoadScene(currentScene.buildIndex);
+        }
+
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             if (!thrown)
