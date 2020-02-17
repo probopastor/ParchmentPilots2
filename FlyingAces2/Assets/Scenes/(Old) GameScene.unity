@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 260041920}
   - component: {fileID: 260041919}
   - component: {fileID: 260041923}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Quad
   m_TagString: ground
   m_Icon: {fileID: 0}
@@ -211,7 +211,7 @@ Transform:
   m_GameObject: {fileID: 260041918}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: -1.72, z: 0}
-  m_LocalScale: {x: 99, y: 999, z: 99}
+  m_LocalScale: {x: 200, y: 999, z: 200}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -609,6 +609,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &606662573 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9032144721940762487, guid: c50b791f86307c54e81abce3a29b58f9,
+    type: 3}
+  m_PrefabInstance: {fileID: 9032144723156382052}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &723656338
 GameObject:
   m_ObjectHideFlags: 0
@@ -627,7 +633,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &723656339
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -806,7 +812,7 @@ GameObject:
   - component: {fileID: 1032382961}
   - component: {fileID: 1032382960}
   - component: {fileID: 1032382959}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (2)
   m_TagString: Finish
   m_Icon: {fileID: 0}
@@ -911,7 +917,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &1144033207
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -998,7 +1004,7 @@ GameObject:
   - component: {fileID: 1749109343}
   - component: {fileID: 1749109342}
   - component: {fileID: 1749109341}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (1)
   m_TagString: Finish
   m_Icon: {fileID: 0}
@@ -1169,6 +1175,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 206432947, guid: c50b791f86307c54e81abce3a29b58f9, type: 3}
+      propertyPath: strokeText
+      value: 
+      objectReference: {fileID: 300558896}
+    - target: {fileID: 206432947, guid: c50b791f86307c54e81abce3a29b58f9, type: 3}
+      propertyPath: affectedRayCastLayer.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 206432947, guid: c50b791f86307c54e81abce3a29b58f9, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 606662573}
+    - target: {fileID: 206432947, guid: c50b791f86307c54e81abce3a29b58f9, type: 3}
+      propertyPath: planeCam
+      value: 
+      objectReference: {fileID: 1120211364}
+    - target: {fileID: 206432947, guid: c50b791f86307c54e81abce3a29b58f9, type: 3}
+      propertyPath: nextSceneName
+      value: New Game Scene
+      objectReference: {fileID: 0}
     - target: {fileID: 9032144721940762483, guid: c50b791f86307c54e81abce3a29b58f9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1231,6 +1257,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9032144721940762492, guid: c50b791f86307c54e81abce3a29b58f9,
         type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9032144721940762492, guid: c50b791f86307c54e81abce3a29b58f9,
+        type: 3}
       propertyPath: strokeText
       value: 
       objectReference: {fileID: 300558896}
@@ -1238,21 +1269,17 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 596998843}
+      objectReference: {fileID: 606662573}
     - target: {fileID: 9032144721940762492, guid: c50b791f86307c54e81abce3a29b58f9,
         type: 3}
-      propertyPath: nextScene.m_Handle
+      propertyPath: planeCam
+      value: 
+      objectReference: {fileID: 1120211364}
+    - target: {fileID: 9032144721940762493, guid: c50b791f86307c54e81abce3a29b58f9,
+        type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 9032144721940762492, guid: c50b791f86307c54e81abce3a29b58f9,
-        type: 3}
-      propertyPath: nextSceneName
-      value: New Game Scene
-      objectReference: {fileID: 0}
-    - target: {fileID: 9032144721940762492, guid: c50b791f86307c54e81abce3a29b58f9,
-        type: 3}
-      propertyPath: yBoundary
-      value: -10
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9032144721940762492, guid: c50b791f86307c54e81abce3a29b58f9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c50b791f86307c54e81abce3a29b58f9, type: 3}

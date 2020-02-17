@@ -122,37 +122,42 @@ public class PlanePilot : MonoBehaviour
         //{
         //    rb.AddForce(windZone.GetComponent<WindArea>().direction * windZone.GetComponent<WindArea>().strength);
         //}
-        if (transform.rotation.x > 0)
-        {
-            liftCoefficent = -1 * transform.rotation.x / 3.75f;
-            forwardLiftCoefficent = -1 * transform.rotation.x / 5f;
-        }
-        else
-        {
-            liftCoefficent = -1 * transform.rotation.x / 3.75f;
-            forwardLiftCoefficent = -1 * transform.rotation.x / 3.75f;
-        }
+        //if (transform.rotation.x > 0)
+        //{
+        //    liftCoefficent = -1 * transform.rotation.x / 3.75f;
+        //    forwardLiftCoefficent = -1 * transform.rotation.x / 5f;
+        //}
+        //else
+        //{
+        //    liftCoefficent = -1 * transform.rotation.x / 3.75f;
+        //    forwardLiftCoefficent = -1 * transform.rotation.x / 3.75f;
+        //}
         
-        liftForce = new Vector3(0, liftCoefficent * (Mathf.Pow(rb.velocity.z, 2)), 0);
-        forwardLiftForce = new Vector3(0, 0, -forwardLiftCoefficent * (Mathf.Pow(rb.velocity.z, 2) / 8));
+        //liftForce = new Vector3(0, liftCoefficent * (Mathf.Pow(rb.velocity.z, 2)), 0);
+        //forwardLiftForce = new Vector3(0, 0, -forwardLiftCoefficent * (Mathf.Pow(rb.velocity.z, 2) / 8));
         
 
-        if (thrown)
-        {
-            rb.useGravity = thrown;
-            rb.AddRelativeForce(liftForce);
-            rb.AddForce(forwardLiftForce);
-            //transform.position += transform.forward * Time.deltaTime * speed;
-            //speed -= transform.forward.y * Time.deltaTime * 50.0f;
+        //if (thrown)
+        //{
+        //    //rb.useGravity = thrown;
+        //    //rb.velocity -= Vector3.up * Time.deltaTime;
+        //    //Vector3 vertVel = rb.velocity - Vector3.ProjectOnPlane(transform.up, rb.velocity);
+        //    //var fall = vertVel.magnitude;
+        //    //rb.velocity -= vertVel * Time.deltaTime;
+        //    //rb.velocity += vertVel.magnitude * transform.forward * Time.deltaTime;
+        //    ////rb.AddRelativeForce(liftForce);
+        //    //rb.AddForce(forwardLiftForce);
+        //    //transform.position += transform.forward * Time.deltaTime * speed;
+        //    //speed -= transform.forward.y * Time.deltaTime * 50.0f;
 
-            //if (speed < 45.0f)
-            //{
-            //    speed = 45.0f;
-            //}
-            rb.AddRelativeForce(new Vector3(Input.GetAxis("Horizontal") * speed, 0, 0));
+        //    //if (speed < 45.0f)
+        //    //{
+        //    //    speed = 45.0f;
+        //    //}
+        //    //rb.AddRelativeForce(new Vector3(Input.GetAxis("Horizontal") * speed, 0, 0));
             
-            transform.Rotate(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"), -Input.GetAxis("Horizontal"));
-        }
+        //    transform.Rotate(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"), -Input.GetAxis("Horizontal"));
+        //}
     }
 
     private void OnTriggerEnter(Collider other)
@@ -289,5 +294,4 @@ public class PlanePilot : MonoBehaviour
 
         yield return new WaitForSeconds(0.01f);
     }
-
 }
