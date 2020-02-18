@@ -70,6 +70,7 @@ public class TestFlight : MonoBehaviour
         {
             RaycastHit rayHit;
 
+            /*
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, Mathf.Infinity, affectedRayCastLayer))
             {
                 Rigidbody.velocity += (Rigidbody.velocity - Vector3.Exclude(transform.forward, Rigidbody.velocity)) * Time.deltaTime / 1.25f;
@@ -78,9 +79,35 @@ public class TestFlight : MonoBehaviour
             else
             {
                 Rigidbody.velocity -= Vector3.up * Time.deltaTime * 4.75f;
+            }*/
+
+
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, Mathf.Infinity, affectedRayCastLayer))
+            {
+
+
+                Rigidbody.velocity += (Rigidbody.velocity - Vector3.Exclude(transform.forward, Rigidbody.velocity)) * Time.deltaTime / 1.25f;
+                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * rayHit.distance, Color.yellow);
+
+                RaycastHit downHit;
+
+                Physics.Raycast(transform.position, Vector3.down, out downHit, Mathf.Infinity, affectedRayCastLayer);
+
+                if(downHit.collider != null)
+                {
+                    Debug.DrawRay(transform.position, Vector3.down * downHit.distance, Color.red);
+
+                    Vector3 vector1 = rayHit.point - transform.position;
+                    Vector3 vector2 = downHit.point - transform.position;
+
+
+
+                    float angle = Mathf.Acos(Vector3.Dot(vector1.normalized, vector2.normalized));
+                    print(angle * Mathf.Rad2Deg);
+                }
             }
         }
-
+        //print(transform.forward);
     }
 
     private void FixedUpdate()
