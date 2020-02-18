@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlaneController : MonoBehaviour
 {
@@ -12,14 +13,14 @@ public class PlaneController : MonoBehaviour
     private float yForce = 0f;
 
     private Rigidbody rb;
-
+    public float yBoundary = -10f;
     private bool isThrown;
-
+    public Scene currentScene;
     // Start is called before the first frame update
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
-
+        currentScene = SceneManager.GetActiveScene();
         isThrown = false;
         yForce = gravity;
     }
@@ -27,7 +28,11 @@ public class PlaneController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!isThrown)
+        if (gameObject.transform.position.y < yBoundary)
+        {
+            SceneManager.LoadScene(currentScene.buildIndex);
+        }
+        if (!isThrown)
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {

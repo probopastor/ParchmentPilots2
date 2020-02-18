@@ -74,7 +74,6 @@ public class TestFlight : MonoBehaviour
             {
                 Rigidbody.velocity += (Rigidbody.velocity - Vector3.Exclude(transform.forward, Rigidbody.velocity)) * Time.deltaTime / 1.25f;
                 Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * rayHit.distance, Color.yellow);
-                Debug.Log("Did Hit");
             }
             else
             {
@@ -157,11 +156,11 @@ public class TestFlight : MonoBehaviour
         {
             ContactPoint contact = collision.GetContact(0);
             newTee = contact.point;
-            newTee.y += 2f;
+            newTee.y += 5f;
             planeCam.transform.localPosition = camStartPos;
             strokeText.text = "Stroke: " + stroke;
             isThrown = false;
-            GetComponent<AimScript>().enabled = false;
+            GetComponent<AimScript>().enabled = true;
             gameObject.transform.position = newTee;
             player.transform.position = newTee;
             if (hitGround)

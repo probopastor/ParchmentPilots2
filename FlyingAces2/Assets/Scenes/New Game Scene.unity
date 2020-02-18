@@ -2228,7 +2228,7 @@ GameObject:
   - component: {fileID: 401425936}
   - component: {fileID: 401425935}
   - component: {fileID: 401425934}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground Floor
   m_TagString: ground
   m_Icon: {fileID: 0}
@@ -2850,6 +2850,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 206432947, guid: c50b791f86307c54e81abce3a29b58f9, type: 3}
+      propertyPath: strokeText
+      value: 
+      objectReference: {fileID: 482953492}
+    - target: {fileID: 206432947, guid: c50b791f86307c54e81abce3a29b58f9, type: 3}
+      propertyPath: nextSceneName
+      value: (Old) GameScene
+      objectReference: {fileID: 0}
     - target: {fileID: 1120211365, guid: c50b791f86307c54e81abce3a29b58f9, type: 3}
       propertyPath: m_LocalPosition.z
       value: -3
@@ -6007,7 +6015,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-4036
+  m_Name: pb_Mesh20406
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

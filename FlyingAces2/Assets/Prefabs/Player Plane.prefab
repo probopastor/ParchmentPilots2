@@ -86,7 +86,6 @@ GameObject:
   - component: {fileID: 9032144721940762482}
   - component: {fileID: 9032144721940762481}
   - component: {fileID: 9032144721940762493}
-  - component: {fileID: 9032144721940762492}
   - component: {fileID: 9032144721940762494}
   - component: {fileID: 9032144721940762495}
   - component: {fileID: 206432947}
@@ -166,40 +165,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9032144721940762487}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e1f3b15a82587e4d96d67655e96a92d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1120211364}
   mouseSensitivity: 100
---- !u!114 &9032144721940762492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9032144721940762487}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4398a7164aef866408325f87c5b7313b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  yBoundary: -10
-  thrownCamPos: {x: 0, y: 0.62, z: -2.15}
-  planeCam: {fileID: 1120211364}
-  speed: 10
-  inWindZone: 0
-  windZone: {fileID: 0}
-  windZoneForce: 500
-  speedBoostForce: 500
-  stroke: 1
-  strokeText: {fileID: 0}
-  player: {fileID: 0}
-  sceneName: 
-  currentScene:
-    m_Handle: 0
-  nextSceneName: New Game Scene
 --- !u!54 &9032144721940762494
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -242,3 +214,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 311986c858faaad4ba8a6e9ced7ebd35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stroke: 1
+  strokeText: {fileID: 0}
+  affectedRayCastLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  thrustForce: 1
+  gravity: -1
+  sceneName: 
+  currentScene:
+    m_Handle: 0
+  nextSceneName: New Game Scene
+  player: {fileID: 9032144721940762487}
+  planeCam: {fileID: 1120211364}
+  thrownCamPos: {x: 0, y: 0, z: 0}
