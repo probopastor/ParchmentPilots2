@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Aiming : MonoBehaviour
 {
     Rigidbody rb;
+    TestFlight tf;
 
     [Tooltip("How quickly the camera reacts to mouse movement")]
     public float mouseSensitivity = 100f;
@@ -15,6 +16,7 @@ public class Aiming : MonoBehaviour
     {
         //Cursor.lockState = CursorLockMode.Locked;
         rb = GetComponent<Rigidbody>();
+        tf = FindObjectOfType<TestFlight>();
     }
 
     // Update is called once per frame
@@ -25,9 +27,9 @@ public class Aiming : MonoBehaviour
 
     void AimLogic()
     {
-        // Input value for vertical mouse movement
+        // Input value for vertically rotating the plane
         float leftrightvalue = Input.GetAxisRaw("Horizontal");
-        // Input value for horizontal mouse movement
+        // Input value for horizontally rotating the plane
         float updownvalue = Input.GetAxisRaw("Vertical");
 
         // The Vector3 for rotating the player vertically
@@ -35,8 +37,8 @@ public class Aiming : MonoBehaviour
         // The Vector3 for rotating the player horizontally
         Vector3 rotationY = new Vector3(0, leftrightvalue, 0);
 
-        rb.transform.Rotate(rotationX / 3);
-        rb.transform.Rotate(rotationY / 3);
+        rb.transform.Rotate(rotationX / 3, Space.Self);
+        rb.transform.Rotate(rotationY / 3, Space.Self);
 
         if(rb.transform.rotation.z != 0)
         {

@@ -200,20 +200,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 311986c858faaad4ba8a6e9ced7ebd35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  planeCam: {fileID: 1120211364}
+  player: {fileID: 9032144721940762487}
   stroke: 1
   strokeText: {fileID: 0}
   affectedRayCastLayer:
     serializedVersion: 2
     m_Bits: 256
-  thrustForce: 0.1
-  gravity: -0.1
-  sceneName: 
   currentScene:
     m_Handle: 0
   nextSceneName: New Game Scene
-  player: {fileID: 9032144721940762487}
-  planeCam: {fileID: 1120211364}
+  thrustForce: 1000
+  gravity: -0.1
   thrownCamPos: {x: 0, y: 0, z: 0}
+  startRot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &943478503977392595
 MonoBehaviour:
   m_ObjectHideFlags: 0

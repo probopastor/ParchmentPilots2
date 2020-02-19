@@ -6,29 +6,54 @@ using UnityEngine.SceneManagement;
 
 public class TestFlight : MonoBehaviour
 {
-    bool finished = false;
+    #region variables
+    [Tooltip("The camera object in the scene")]
+    public Camera planeCam;
+
+    [Tooltip("The plane object in the scene")]
+    public GameObject player;
+
+    [Tooltip("Number of strokes taken for the current level")]
     public int stroke = 1;
+
+    [Tooltip("The text object that displays the stroke the player is on")]
     public TextMeshProUGUI strokeText;
+
+    [Tooltip("The layer for the Raycasts to help with physics - Keep to ground only")]
     public LayerMask affectedRayCastLayer;
-    float fall = 0f;
-    public float thrustForce = 1f;
+
+    [Tooltip("The scene the player is currently in")]
+    public Scene currentScene;
+
+    [Tooltip("The scene for the next level")]
+    public string nextSceneName;
+
+    [Tooltip("The force multiplyer for throwing")]
+    public float thrustForce = 1000f;
+
+    [Tooltip("Adjusts how much gravity affects the plane")]
     public float gravity = -1f;
+
+    [Tooltip("The position the camera should be after the plane has been thrown")]
+    public Vector3 thrownCamPos;
+
+    public Quaternion startRot = new Quaternion();
+
     private float xForce = 0f;
     private float yForce = 0f;
-    bool isThrown;
-    private Rigidbody Rigidbody;
-    Vector3 launchSpeed = new Vector3(0, 0, 1000);
-    private Quaternion startRot = new Quaternion();
-    public string sceneName;
-    public Scene currentScene;
-    public string nextSceneName;
-    bool hitGround = false;
-    public GameObject player;
-    Vector3 strokePosition = new Vector3(0f, 0f, 0f);
-    Vector3 newTee = new Vector3();
-    public Camera planeCam;
-    public Vector3 thrownCamPos;
+    private float fall = 0f;
+
+    private bool isThrown;
+    private bool finished = false;
+    private bool hitGround = false;
+
+    private Rigidbody Rigidbody;  
+
+    private Vector3 launchSpeed = new Vector3(0, 0, 1000);
+    private Vector3 strokePosition = new Vector3(0f, 0f, 0f);
+    private Vector3 newTee = new Vector3();
     private Vector3 camStartPos;
+    #endregion
 
     // Start is called before the first frame update
     void Start()
@@ -52,7 +77,7 @@ public class TestFlight : MonoBehaviour
 
                 GetComponent<Aiming>().enabled = false;
                 Rigidbody.isKinematic = false;
-                Rigidbody.AddRelativeForce(launchSpeed);
+                Rigidbody.AddRelativeForce(Vector3.forward * thrustForce);
                 stroke += 1;
 
             }
@@ -78,6 +103,11 @@ public class TestFlight : MonoBehaviour
                     float angle = Mathf.Acos(Vector3.Dot(vector1.normalized, vector2.normalized));
                     //print(angle * Mathf.Rad2Deg);
                     Rigidbody.velocity += (Rigidbody.velocity - Vector3.Exclude(transform.forward, Rigidbody.velocity)) * Time.deltaTime * (20 / (angle * Mathf.Rad2Deg));
+
+                    if(vector2.magnitude < 1f && (angle * Mathf.Rad2Deg > 80 || angle * Mathf.Rad2Deg < 100))
+                    {
+                        Rigidbody.velocity += new Vector3(0, Rigidbody.velocity.x * (angle * Mathf.Rad2Deg / 100), 0);
+                    }
                 }
             }
         }
