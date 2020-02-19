@@ -13,7 +13,7 @@ public class Aiming : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
         rb = GetComponent<Rigidbody>();
     }
 
@@ -26,9 +26,9 @@ public class Aiming : MonoBehaviour
     void AimLogic()
     {
         // Input value for vertical mouse movement
-        float leftrightvalue = Input.GetAxisRaw("Mouse X");
+        float leftrightvalue = Input.GetAxisRaw("Horizontal");
         // Input value for horizontal mouse movement
-        float updownvalue = Input.GetAxisRaw("Mouse Y");
+        float updownvalue = Input.GetAxisRaw("Vertical");
 
         // The Vector3 for rotating the player vertically
         Vector3 rotationX = new Vector3(-updownvalue, 0, 0);
@@ -36,6 +36,11 @@ public class Aiming : MonoBehaviour
         Vector3 rotationY = new Vector3(0, leftrightvalue, 0);
 
         rb.transform.Rotate(rotationX / 3);
-        //rb.transform.Rotate(rotationY / 3);
+        rb.transform.Rotate(rotationY / 3);
+
+        if(rb.transform.rotation.z != 0)
+        {
+            transform.rotation = new Quaternion(transform.rotation.x, transform.rotation.y, 0, transform.rotation.w);
+        }
     }
 }

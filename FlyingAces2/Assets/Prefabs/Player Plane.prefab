@@ -85,10 +85,10 @@ GameObject:
   - component: {fileID: 9032144721940762483}
   - component: {fileID: 9032144721940762482}
   - component: {fileID: 9032144721940762481}
-  - component: {fileID: 9032144721940762493}
   - component: {fileID: 9032144721940762494}
   - component: {fileID: 9032144721940762495}
   - component: {fileID: 206432947}
+  - component: {fileID: 943478503977392595}
   m_Layer: 0
   m_Name: Player Plane
   m_TagString: Player
@@ -158,20 +158,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &9032144721940762493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9032144721940762487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e1f3b15a82587e4d96d67655e96a92d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 1120211364}
-  mouseSensitivity: 100
 --- !u!54 &9032144721940762494
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -219,8 +205,8 @@ MonoBehaviour:
   affectedRayCastLayer:
     serializedVersion: 2
     m_Bits: 256
-  thrustForce: 1
-  gravity: -1
+  thrustForce: 0.1
+  gravity: -0.1
   sceneName: 
   currentScene:
     m_Handle: 0
@@ -228,3 +214,16 @@ MonoBehaviour:
   player: {fileID: 9032144721940762487}
   planeCam: {fileID: 1120211364}
   thrownCamPos: {x: 0, y: 0, z: 0}
+--- !u!114 &943478503977392595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9032144721940762487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6af95cef0ac1df44a20d941e5ed1b1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseSensitivity: 100

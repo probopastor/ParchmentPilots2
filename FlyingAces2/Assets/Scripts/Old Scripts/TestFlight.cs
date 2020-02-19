@@ -18,7 +18,7 @@ public class TestFlight : MonoBehaviour
     bool isThrown;
     private Rigidbody Rigidbody;
     Vector3 launchSpeed = new Vector3(0, 0, 1000);
-    private Quaternion startRot;
+    private Quaternion startRot = new Quaternion();
     public string sceneName;
     public Scene currentScene;
     public string nextSceneName;
@@ -44,22 +44,13 @@ public class TestFlight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Period))
-        {
-            Time.timeScale *= 2;
-        }
-        if(Input.GetKeyDown(KeyCode.Comma))
-        {
-            Time.timeScale /= 2;
-        }
-
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             if (!isThrown)
             {
                 isThrown = true;
 
-                GetComponent<AimScript>().enabled = false;
+                GetComponent<Aiming>().enabled = false;
                 Rigidbody.isKinematic = false;
                 Rigidbody.AddRelativeForce(launchSpeed);
                 stroke += 1;
@@ -70,23 +61,8 @@ public class TestFlight : MonoBehaviour
         {
             RaycastHit rayHit;
 
-            /*
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, Mathf.Infinity, affectedRayCastLayer))
-            {
-                Rigidbody.velocity += (Rigidbody.velocity - Vector3.Exclude(transform.forward, Rigidbody.velocity)) * Time.deltaTime / 1.25f;
-                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * rayHit.distance, Color.yellow);
-            }
-            else
-            {
-                Rigidbody.velocity -= Vector3.up * Time.deltaTime * 4.75f;
-            }*/
-
-
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, Mathf.Infinity, affectedRayCastLayer))
-            {
-
-
-                Rigidbody.velocity += (Rigidbody.velocity - Vector3.Exclude(transform.forward, Rigidbody.velocity)) * Time.deltaTime / 1.25f;
+            { 
                 Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * rayHit.distance, Color.yellow);
 
                 RaycastHit downHit;
@@ -99,15 +75,12 @@ public class TestFlight : MonoBehaviour
 
                     Vector3 vector1 = rayHit.point - transform.position;
                     Vector3 vector2 = downHit.point - transform.position;
-
-
-
                     float angle = Mathf.Acos(Vector3.Dot(vector1.normalized, vector2.normalized));
-                    print(angle * Mathf.Rad2Deg);
+                    //print(angle * Mathf.Rad2Deg);
+                    Rigidbody.velocity += (Rigidbody.velocity - Vector3.Exclude(transform.forward, Rigidbody.velocity)) * Time.deltaTime * (20 / (angle * Mathf.Rad2Deg));
                 }
             }
         }
-        //print(transform.forward);
     }
 
     private void FixedUpdate()
@@ -119,9 +92,9 @@ public class TestFlight : MonoBehaviour
 
             float yaw = Input.GetAxis("Yaw") / 8;
 
-            roll /= Time.timeScale;
-            tilt /= Time.timeScale;
-            yaw /= Time.timeScale;
+            //roll /= Time.timeScale;
+            //tilt /= Time.timeScale;
+            //yaw /= Time.timeScale;
 
             float tip = (transform.right + Vector3.up).magnitude - 1.414214f;
             yaw -= tip;
@@ -143,13 +116,6 @@ public class TestFlight : MonoBehaviour
             {
                 transform.Rotate(Vector3.up, yaw * Time.deltaTime * 60, Space.World);
             }
-
-
-            if (Input.GetKey(KeyCode.Space))
-            {
-                Rigidbody.AddForce(transform.forward * Time.deltaTime * 1000);
-            }
-
 
 #pragma warning disable CS0618 // Type or member is obsolete
             Vector3 vertVel = Rigidbody.velocity - Vector3.Exclude(transform.up, Rigidbody.velocity);
@@ -187,14 +153,13 @@ public class TestFlight : MonoBehaviour
             planeCam.transform.localPosition = camStartPos;
             strokeText.text = "Stroke: " + stroke;
             isThrown = false;
-            GetComponent<AimScript>().enabled = true;
+            GetComponent<Aiming>().enabled = true;
             gameObject.transform.position = newTee;
             player.transform.position = newTee;
             if (hitGround)
             {
-                gameObject.transform.rotation = startRot;
+                gameObject.transform.rotation = startRot;;
             }
-
 
             hitGround = false;
 
