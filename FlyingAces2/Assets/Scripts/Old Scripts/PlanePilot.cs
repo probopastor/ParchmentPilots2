@@ -77,7 +77,7 @@ public class PlanePilot : MonoBehaviour
                 //GetComponent<Aiming>().enabled = false;
 
                 GetComponent<AimScript>().enabled = false;
-                rb.isKinematic = false;
+                //rb.isKinematic = false;
                 rb.AddRelativeForce(launchSpeed);
                 stroke += 1;
 
@@ -269,7 +269,7 @@ public class PlanePilot : MonoBehaviour
 
             hitGround1 = hitGround2 = hitGround3 = false;
 
-            rb.isKinematic = true;
+            //rb.isKinematic = true;
             //Debug.Log(newTee);
         }
 

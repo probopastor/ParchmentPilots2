@@ -77,6 +77,7 @@ public class TestFlight : MonoBehaviour
 
                 GetComponent<Aiming>().enabled = false;
                 Rigidbody.isKinematic = false;
+                Rigidbody.useGravity = true;
                 Rigidbody.AddRelativeForce(Vector3.forward * thrustForce);
                 stroke += 1;
 
@@ -102,11 +103,14 @@ public class TestFlight : MonoBehaviour
                     Vector3 vector2 = downHit.point - transform.position;
                     float angle = Mathf.Acos(Vector3.Dot(vector1.normalized, vector2.normalized));
                     //print(angle * Mathf.Rad2Deg);
-                    Rigidbody.velocity += (Rigidbody.velocity - Vector3.Exclude(transform.forward, Rigidbody.velocity)) * Time.deltaTime * (20 / (angle * Mathf.Rad2Deg));
+
+                    //var negativeForward = (Rigidbody.velocity - Vector3.Exclude(transform.forward, Rigidbody.velocity));
+
+                    //Rigidbody.velocity += negativeForward * Time.deltaTime * (20 / (angle * Mathf.Rad2Deg));
 
                     if(vector2.magnitude < 1f && (angle * Mathf.Rad2Deg > 80 || angle * Mathf.Rad2Deg < 100))
                     {
-                        Rigidbody.velocity += new Vector3(0, Rigidbody.velocity.x * (angle * Mathf.Rad2Deg / 100), 0);
+                       // Rigidbody.velocity += new Vector3(0, Rigidbody.velocity.x * (angle * Mathf.Rad2Deg / 100), 0);
                     }
                 }
             }
@@ -129,6 +133,10 @@ public class TestFlight : MonoBehaviour
             float tip = (transform.right + Vector3.up).magnitude - 1.414214f;
             yaw -= tip;
 
+            
+
+            Vector3 changes = new Vector3();
+
             if ((transform.forward + Rigidbody.velocity.normalized).magnitude < 1.4f)
             {
                 tilt += 0.3f;
@@ -136,16 +144,23 @@ public class TestFlight : MonoBehaviour
 
             if (tilt != 0)
             {
-                transform.Rotate(transform.right, tilt * Time.deltaTime * 40, Space.World);
+                changes += transform.right * tilt * Time.deltaTime * 40;
+                //transform.Rotate(transform.right, tilt * Time.deltaTime * 40, Space.World);
             }
             if (roll != 0)
             {
-                transform.Rotate(transform.forward, roll * Time.deltaTime * -40, Space.World);
+                changes += transform.forward * roll * Time.deltaTime * -40;
+                //transform.Rotate(transform.forward, roll * Time.deltaTime * -40, Space.World);
             }
             if (yaw != 0)
             {
-                transform.Rotate(Vector3.up, yaw * Time.deltaTime * 60, Space.World);
+                changes += transform.up * yaw * Time.deltaTime * 60;
+                //transform.Rotate(Vector3.up, yaw * Time.deltaTime * 60, Space.World);
             }
+
+            Quaternion newRotation = Quaternion.Euler(Rigidbody.rotation.eulerAngles + changes);
+
+            Rigidbody.MoveRotation(newRotation);
 
 #pragma warning disable CS0618 // Type or member is obsolete
             Vector3 vertVel = Rigidbody.velocity - Vector3.Exclude(transform.up, Rigidbody.velocity);
@@ -153,6 +168,11 @@ public class TestFlight : MonoBehaviour
             fall = vertVel.magnitude;
             Rigidbody.velocity -= vertVel * Time.deltaTime;
             Rigidbody.velocity += vertVel.magnitude * transform.forward * Time.deltaTime / 10;
+
+
+            var forwardVel = Rigidbody.velocity;
+            forwardVel.y = 0;
+            print(Rigidbody.velocity + "Up Down " + Rigidbody.velocity.y + "forward " + forwardVel.magnitude );
         }
         
     }
