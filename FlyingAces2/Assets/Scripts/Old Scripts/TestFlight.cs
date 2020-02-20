@@ -110,7 +110,7 @@ public class TestFlight : MonoBehaviour
 
                     if(vector2.magnitude < 1f && (angle * Mathf.Rad2Deg > 80 || angle * Mathf.Rad2Deg < 100))
                     {
-                       // Rigidbody.velocity += new Vector3(0, Rigidbody.velocity.x * (angle * Mathf.Rad2Deg / 100), 0);
+                       Rigidbody.velocity += new Vector3(0, Rigidbody.velocity.x * (angle * Mathf.Rad2Deg / 100), 0);
                     }
                 }
             }
