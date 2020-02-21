@@ -207,7 +207,10 @@ public class TestFlight : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        
+        if (collision.gameObject.tag == "ground")
+        {
+            
+        }
 
         if (collision.gameObject.tag == "Finish")
         {
@@ -223,6 +226,7 @@ public class TestFlight : MonoBehaviour
         if (collision.gameObject.tag == "ground" && Rigidbody.velocity.z < 0.25f)
         {
             hitGround = true;
+            anim.SetBool("Sliding", false);
             SetUpNewThrow(collision);
 
         }
