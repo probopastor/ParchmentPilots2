@@ -207,12 +207,7 @@ public class TestFlight : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "ground")
-        {
-            hitGround = true;
-            SetUpNewThrow(collision);
-
-        }
+        
 
         if (collision.gameObject.tag == "Finish")
         {
@@ -222,6 +217,17 @@ public class TestFlight : MonoBehaviour
         }
         
     }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.tag == "ground" && Rigidbody.velocity.z < 0.25f)
+        {
+            hitGround = true;
+            SetUpNewThrow(collision);
+
+        }
+    }
+
     void SetUpNewThrow(Collision collision)
     {
         if (!finished)
