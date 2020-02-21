@@ -50,6 +50,12 @@ public class TestFlight : MonoBehaviour
     private Rigidbody Rigidbody;
     private Animator anim;
 
+    private Aiming aim;
+    private ThrowingChargeBarController chargeBarController;
+
+    private bool aiming = true;
+    private bool throwing = false;
+
     private Vector3 launchSpeed = new Vector3(0, 0, 1000);
     private Vector3 strokePosition = new Vector3(0f, 0f, 0f);
     private Vector3 newTee = new Vector3();
@@ -61,28 +67,48 @@ public class TestFlight : MonoBehaviour
     {
         Rigidbody = gameObject.GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+        aim = GetComponent<Aiming>();
+        chargeBarController = GetComponent<ThrowingChargeBarController>();
         yForce = gravity;
         isThrown = false;
         startRot = gameObject.transform.rotation;
         camStartPos = planeCam.transform.localPosition;
         strokeText.text = "Stroke: " + stroke;
+        chargeBarController.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Return) && aiming)
+        {
+            ChargeBar();
+        }
+
+        if(Input.GetKeyDown(KeyCode.Backspace) && throwing)
+        {
+            throwing = false;
+            aiming = true;
+            aim.enabled = true;
+            chargeBarController.enabled = false;
+            chargeBarController.chargeBar.gameObject.SetActive(false);
+        }
+
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             if (!isThrown)
             {
-                isThrown = true;
-                anim.SetBool("isThrown", isThrown);
-                GetComponent<Aiming>().enabled = false;
-                Rigidbody.isKinematic = false;
-                Rigidbody.useGravity = true;
-                Rigidbody.AddRelativeForce(Vector3.forward * thrustForce);
-                stroke += 1;
-
+                if(!aiming && throwing)
+                {
+                    isThrown = true;
+                    anim.SetBool("isThrown", isThrown);
+                    chargeBarController.chargeBar.gameObject.SetActive(false);
+                    chargeBarController.enabled = false;
+                    Rigidbody.isKinematic = false;
+                    Rigidbody.useGravity = true;
+                    Rigidbody.AddRelativeForce(Vector3.forward * thrustForce * chargeBarController.chargeBar.value);
+                    stroke += 1;
+                }
             }
         }
         else if (isThrown)
@@ -206,7 +232,7 @@ public class TestFlight : MonoBehaviour
             strokeText.text = "Stroke: " + stroke;
             isThrown = false;
             anim.SetBool("isThrown", isThrown);
-            GetComponent<Aiming>().enabled = true;
+            aim.enabled = true;
             gameObject.transform.position = newTee;
             player.transform.position = newTee;
             if (hitGround)
@@ -218,6 +244,14 @@ public class TestFlight : MonoBehaviour
 
             Rigidbody.isKinematic = true;
         }
+    }
 
+    private void ChargeBar()
+    {
+        throwing = true;
+        aiming = false;
+        aim.enabled = false;
+        chargeBarController.enabled = true;
+        chargeBarController.chargeBar.gameObject.SetActive(true);
     }
 }
