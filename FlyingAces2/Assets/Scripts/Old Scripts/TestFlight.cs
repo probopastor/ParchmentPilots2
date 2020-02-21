@@ -201,7 +201,7 @@ public class TestFlight : MonoBehaviour
 
             var forwardVel = Rigidbody.velocity;
             forwardVel.y = 0;
-            print(Rigidbody.velocity + "Up Down " + Rigidbody.velocity.y + "forward " + forwardVel.magnitude );
+            //print(Rigidbody.velocity + "Up Down " + Rigidbody.velocity.y + "forward " + forwardVel.magnitude );
         }
         
     }
