@@ -47,7 +47,8 @@ public class TestFlight : MonoBehaviour
     private bool finished = false;
     private bool hitGround = false;
 
-    private Rigidbody Rigidbody;  
+    private Rigidbody Rigidbody;
+    private Animator anim;
 
     private Vector3 launchSpeed = new Vector3(0, 0, 1000);
     private Vector3 strokePosition = new Vector3(0f, 0f, 0f);
@@ -59,6 +60,7 @@ public class TestFlight : MonoBehaviour
     void Start()
     {
         Rigidbody = gameObject.GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
         yForce = gravity;
         isThrown = false;
         startRot = gameObject.transform.rotation;
@@ -74,7 +76,7 @@ public class TestFlight : MonoBehaviour
             if (!isThrown)
             {
                 isThrown = true;
-
+                anim.SetBool("isThrown", isThrown);
                 GetComponent<Aiming>().enabled = false;
                 Rigidbody.isKinematic = false;
                 Rigidbody.useGravity = true;
@@ -203,6 +205,7 @@ public class TestFlight : MonoBehaviour
             planeCam.transform.localPosition = camStartPos;
             strokeText.text = "Stroke: " + stroke;
             isThrown = false;
+            anim.SetBool("isThrown", isThrown);
             GetComponent<Aiming>().enabled = true;
             gameObject.transform.position = newTee;
             player.transform.position = newTee;
