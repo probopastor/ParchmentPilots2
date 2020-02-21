@@ -80,21 +80,7 @@ public class TestFlight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Return) && aiming)
-        {
-            ChargeBar();
-        }
-
-        if(Input.GetKeyDown(KeyCode.Backspace) && throwing)
-        {
-            throwing = false;
-            aiming = true;
-            aim.enabled = true;
-            chargeBarController.enabled = false;
-            chargeBarController.chargeBar.gameObject.SetActive(false);
-        }
-
-        if (Input.GetKeyUp(KeyCode.Mouse0))
+        if (Input.GetKeyUp(KeyCode.Return) )
         {
             if (!isThrown)
             {
@@ -143,6 +129,19 @@ public class TestFlight : MonoBehaviour
                     }
                 }
             }
+        }
+        if (Input.GetKeyUp(KeyCode.Return) && aiming)
+        {
+            ChargeBar();
+        }
+
+        if (Input.GetKeyUp(KeyCode.Backspace) && throwing)
+        {
+            throwing = false;
+            aiming = true;
+            aim.enabled = true;
+            chargeBarController.enabled = false;
+            chargeBarController.chargeBar.gameObject.SetActive(false);
         }
     }
 
