@@ -100,6 +100,7 @@ public class TestFlight : MonoBehaviour
             {
                 if(!aiming && throwing)
                 {
+                    throwing = false;
                     isThrown = true;
                     anim.SetBool("isThrown", isThrown);
                     chargeBarController.chargeBar.gameObject.SetActive(false);
@@ -231,6 +232,7 @@ public class TestFlight : MonoBehaviour
             planeCam.transform.localPosition = camStartPos;
             strokeText.text = "Stroke: " + stroke;
             isThrown = false;
+            aiming = true;
             anim.SetBool("isThrown", isThrown);
             aim.enabled = true;
             gameObject.transform.position = newTee;
