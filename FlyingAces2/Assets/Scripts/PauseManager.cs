@@ -10,12 +10,15 @@ public class PauseManager : MonoBehaviour
 
     public string mainMenuSceneName;
 
+    public TestFlight thisFlight;
+
     private bool isPaused;
     
-
     // Start is called before the first frame update
     void Start()
     {
+        thisFlight = FindObjectOfType<TestFlight>();
+
         isPaused = false;
         pausePanel.SetActive(false);
         howToPlayPanel.SetActive(false);
@@ -24,7 +27,7 @@ public class PauseManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.Escape) && !thisFlight.throwing)
         {
             PauseGame();
         }
@@ -32,7 +35,9 @@ public class PauseManager : MonoBehaviour
 
     public void PauseGame()
     {
-        if(!isPaused)
+        thisFlight.throwing = false;
+        
+        if (!isPaused)
         {
             isPaused = true;
             pausePanel.SetActive(true);
@@ -40,7 +45,7 @@ public class PauseManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.Confined;
             Time.timeScale = 0;
         }
-        else if(isPaused)
+        else if (isPaused)
         {
             isPaused = false;
             pausePanel.SetActive(false);
@@ -52,7 +57,6 @@ public class PauseManager : MonoBehaviour
 
     public void RestartGame()
     {
-        //Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1;
         Scene thisScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(thisScene.name);

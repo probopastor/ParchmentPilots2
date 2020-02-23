@@ -7,15 +7,29 @@ public class ThrowingChargeBarController : MonoBehaviour
 {
     public Slider chargeBar;
 
-    // Start is called before the first frame update
-    void Start()
+    private bool isEnabled;
+
+    public float sliderIncrementValue = 0.1f;
+    private float sliderValue = 0;
+
+    private void OnEnable()
     {
-        
+        sliderValue = 0;
+        StartCoroutine("UpdateSlider");
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-        chargeBar.value = Mathf.PingPong(Time.time * 30, 100);
+        StopAllCoroutines();
     }
+
+    private IEnumerator UpdateSlider()
+    {
+        sliderValue += sliderIncrementValue;
+        chargeBar.value = Mathf.PingPong(sliderValue * 3, 100);
+        yield return new WaitForSecondsRealtime(0.001f);
+        StartCoroutine("UpdateSlider");
+    }
+
 }
+

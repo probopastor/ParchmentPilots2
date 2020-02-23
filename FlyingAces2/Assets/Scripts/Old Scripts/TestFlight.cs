@@ -67,7 +67,7 @@ public class TestFlight : MonoBehaviour
     private ThrowingChargeBarController chargeBarController;
 
     private bool aiming = true;
-    private bool throwing = false;
+    public bool throwing = false;
 
     private Vector3 launchSpeed = new Vector3(0, 0, 1000);
     private Vector3 strokePosition = new Vector3(0f, 0f, 0f);
@@ -140,10 +140,10 @@ public class TestFlight : MonoBehaviour
         }
         if (Input.GetKeyUp(KeyCode.Return) && aiming)
         {
-            ChargeBar();
+           ChargeBar();
         }
 
-        if (Input.GetKeyUp(KeyCode.Backspace) && throwing)
+        if ((Input.GetKeyUp(KeyCode.Escape) || Input.GetKeyUp(KeyCode.Backspace)) && throwing)
         {
             throwing = false;
             aiming = true;
