@@ -118,7 +118,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8980741504718377190}
-  m_LocalRotation: {x: 0.04981294, y: -0.000000017316964, z: 8.2786383e-10, w: 0.99875855}
+  m_LocalRotation: {x: 0.049812958, y: 0.000000017320547, z: -8.9967733e-10, w: 0.99875855}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -231,8 +231,8 @@ MonoBehaviour:
     Dutch: 0
     LensShift: {x: 0, y: 0}
   m_Transitions:
-    m_BlendHint: 0
-    m_InheritPosition: 0
+    m_BlendHint: 1
+    m_InheritPosition: 1
     m_OnCameraLive:
       m_PersistentCalls:
         m_Calls: []
@@ -327,7 +327,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8980741505670111517}
-  m_LocalRotation: {x: 0.031637795, y: 1.6586755e-13, z: -5.2406135e-12, w: 0.99949944}
+  m_LocalRotation: {x: 0.0316378, y: 0.0000000037235919, z: -1.2310061e-10, w: 0.99949944}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -402,8 +402,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8980741505851151934}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.242043, y: 85.13928, z: -51.147804}
+  m_LocalRotation: {x: 0.011011618, y: -5.595909e-19, z: 5.0814377e-17, w: 0.9999394}
+  m_LocalPosition: {x: -6.242043, y: 85.44, z: -54.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8980741506644406806}
@@ -438,8 +438,8 @@ MonoBehaviour:
     Dutch: 0
     LensShift: {x: 0, y: 0}
   m_Transitions:
-    m_BlendHint: 0
-    m_InheritPosition: 0
+    m_BlendHint: 1
+    m_InheritPosition: 1
     m_OnCameraLive:
       m_PersistentCalls:
         m_Calls: []
@@ -702,7 +702,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8980741506095247420}
-  m_LocalRotation: {x: 0.14253852, y: 0.000000014749009, z: -0.0000000021239894, w: 0.98978925}
+  m_LocalRotation: {x: 0.14253853, y: -1.7582189e-15, z: 2.531993e-16, w: 0.98978925}
   m_LocalPosition: {x: -6.242043, y: 86.13928, z: -44.547806}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -738,8 +738,8 @@ MonoBehaviour:
     Dutch: 0
     LensShift: {x: 0, y: 0}
   m_Transitions:
-    m_BlendHint: 0
-    m_InheritPosition: 0
+    m_BlendHint: 1
+    m_InheritPosition: 1
     m_OnCameraLive:
       m_PersistentCalls:
         m_Calls: []

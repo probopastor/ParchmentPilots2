@@ -104,7 +104,7 @@ public class TestFlight : MonoBehaviour
                     anim.SetBool("isThrown", isThrown);
                     chargeBarController.chargeBar.gameObject.SetActive(false);
                     chargeBarController.enabled = false;
-                    //Rigidbody.isKinematic = false;
+                    Rigidbody.isKinematic = false;
                     Rigidbody.useGravity = true;
                     Rigidbody.AddRelativeForce(Vector3.forward * thrustForce * chargeBarController.chargeBar.value);
                     stroke += 1;
@@ -236,7 +236,7 @@ public class TestFlight : MonoBehaviour
             Rigidbody.useGravity = false;
             ContactPoint contact = collision.GetContact(0);
             newTee = contact.point;
-            newTee.y += 5f;
+            newTee.y += 15f;
             planeCam.transform.localPosition = camStartPos;
             strokeText.text = "Stroke: " + stroke;
             isThrown = false;
@@ -252,7 +252,7 @@ public class TestFlight : MonoBehaviour
 
             hitGround = false;
 
-            //Rigidbody.isKinematic = true;
+            Rigidbody.isKinematic = true;
         }
     }
 
