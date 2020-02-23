@@ -52,6 +52,13 @@ public class TestFlight : MonoBehaviour
 
     public Quaternion startRot = new Quaternion();
 
+    public GameObject centerOfMassReference;
+    public Vector3 forceAtPos = new Vector3(0, 1, 0);
+
+    public int forceAppliedTimer = 10;
+    private int currentForceAppliedTimer = 0;
+    private bool forceAppliedThisFrame;
+
     private float xForce = 0f;
     private float yForce = 0f;
     private float fall = 0f;
@@ -88,16 +95,19 @@ public class TestFlight : MonoBehaviour
         camStartPos = planeCam.transform.localPosition;
         strokeText.text = "Stroke: " + stroke;
         chargeBarController.enabled = false;
+        forceAppliedThisFrame = false;
+
+        currentForceAppliedTimer = forceAppliedTimer;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Return) )
+        if (Input.GetKeyUp(KeyCode.Return))
         {
             if (!isThrown)
             {
-                if(!aiming && throwing)
+                if (!aiming && throwing)
                 {
                     throwing = false;
                     isThrown = true;
@@ -106,7 +116,9 @@ public class TestFlight : MonoBehaviour
                     chargeBarController.enabled = false;
                     Rigidbody.isKinematic = false;
                     Rigidbody.useGravity = true;
+
                     Rigidbody.AddRelativeForce(Vector3.forward * thrustForce * chargeBarController.chargeBar.value);
+
                     stroke += 1;
                 }
             }
@@ -136,13 +148,36 @@ public class TestFlight : MonoBehaviour
                     if ((angle * Mathf.Rad2Deg) >= 1)
                     {
                         Rigidbody.velocity += negativeForward * Time.deltaTime * (angleAcceleration / (angle * Mathf.Rad2Deg));
-                    }                   
+                    }
+                }
+            }
+            else
+            {
+                //if (!forceAppliedThisFrame)
+                //{
+                //    forceAppliedThisFrame = true;
+                //    Rigidbody.AddForceAtPosition(forceAtPos, centerOfMassReference.transform.position);
+                //}
+                //else if (forceAppliedThisFrame)
+                //{
+                //    forceAppliedThisFrame = false;
+                //}
+
+                if(currentForceAppliedTimer <= 0)
+                {
+                    forceAppliedThisFrame = true;
+                    Rigidbody.AddForceAtPosition(forceAtPos, centerOfMassReference.transform.position);
+                    currentForceAppliedTimer = forceAppliedTimer;
+                }
+                else if(currentForceAppliedTimer > 0)
+                {
+                    currentForceAppliedTimer--;
                 }
             }
         }
         if (Input.GetKeyUp(KeyCode.Return) && aiming)
         {
-           ChargeBar();
+            ChargeBar();
         }
 
         if ((Input.GetKeyUp(KeyCode.Escape) || Input.GetKeyUp(KeyCode.Backspace)) && throwing)
@@ -201,9 +236,9 @@ public class TestFlight : MonoBehaviour
 
             var forwardVel = Rigidbody.velocity;
             forwardVel.y = 0;
-            print(Rigidbody.velocity + "Up Down " + Rigidbody.velocity.y + "forward " + forwardVel.magnitude );
+            print(Rigidbody.velocity + "Up Down " + Rigidbody.velocity.y + "forward " + forwardVel.magnitude);
         }
-        
+
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -216,7 +251,7 @@ public class TestFlight : MonoBehaviour
         {
             finished = true;
             SceneManager.LoadScene(nextSceneName);
-          
+
         }
     }
 
@@ -236,6 +271,7 @@ public class TestFlight : MonoBehaviour
         if (!finished)
         {
             Rigidbody.useGravity = false;
+
             ContactPoint contact = collision.GetContact(0);
             newTee = contact.point;
             newTee.y += 15f;
@@ -249,7 +285,7 @@ public class TestFlight : MonoBehaviour
             player.transform.position = newTee;
             if (hitGround)
             {
-                gameObject.transform.rotation = startRot;;
+                gameObject.transform.rotation = startRot; ;
             }
 
             hitGround = false;
