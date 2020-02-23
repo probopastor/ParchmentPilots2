@@ -37,6 +37,19 @@ public class TestFlight : MonoBehaviour
     [Tooltip("The position the camera should be after the plane has been thrown")]
     public Vector3 thrownCamPos;
 
+    [Header("Variables specific to plane type")]
+    [Tooltip("The downward acceleration modifier for the planes depending on the angle of the plane")]
+    public float angleAcceleration = 5f;
+
+    [Tooltip("The rotational speed multiplier on the X axis")]
+    public float tiltResponsivity = 40f;
+
+    [Tooltip("The rotational speed multiplier on the Y axis")]
+    public float rollResponsivity = -40f;
+
+    [Tooltip("The rotational speed multiplier on the Z axis")]
+    public float yawResponsivity = 60f;
+
     public Quaternion startRot = new Quaternion();
 
     private float xForce = 0f;
@@ -103,31 +116,25 @@ public class TestFlight : MonoBehaviour
             RaycastHit rayHit;
 
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, Mathf.Infinity, affectedRayCastLayer))
-            { 
+            {
                 Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * rayHit.distance, Color.yellow);
 
                 RaycastHit downHit;
 
                 Physics.Raycast(transform.position, Vector3.down, out downHit, Mathf.Infinity, affectedRayCastLayer);
 
-                if(downHit.collider != null)
+                if (downHit.collider != null)
                 {
                     Debug.DrawRay(transform.position, Vector3.down * downHit.distance, Color.red);
 
                     Vector3 vector1 = rayHit.point - transform.position;
                     Vector3 vector2 = downHit.point - transform.position;
                     float angle = Mathf.Acos(Vector3.Dot(vector1.normalized, vector2.normalized));
-                    //print(angle * Mathf.Rad2Deg);
+                    print(angle * Mathf.Rad2Deg);
 
-                    //var negativeForward = (Rigidbody.velocity - Vector3.Exclude(transform.forward, Rigidbody.velocity));
+                    var negativeForward = (Rigidbody.velocity - Vector3.Exclude(transform.forward, Rigidbody.velocity));
 
-                    //Rigidbody.velocity += negativeForward * Time.deltaTime * (20 / (angle * Mathf.Rad2Deg));
-
-                    if(vector2.magnitude < 1f && (angle * Mathf.Rad2Deg > 80 || angle * Mathf.Rad2Deg < 100))
-                    {
-                       //Rigidbody.velocity += new Vector3(0, Rigidbody.velocity.x * (angle * Mathf.Rad2Deg / 100), 0);
-                    }
-
+                    Rigidbody.velocity += negativeForward * Time.deltaTime * (angleAcceleration / (angle * Mathf.Rad2Deg));
                 }
             }
         }
@@ -155,14 +162,8 @@ public class TestFlight : MonoBehaviour
 
             float yaw = Input.GetAxis("Yaw") / 8;
 
-            //roll /= Time.timeScale;
-            //tilt /= Time.timeScale;
-            //yaw /= Time.timeScale;
-
             float tip = (transform.right + Vector3.up).magnitude - 1.414214f;
             yaw -= tip;
-
-            
 
             Vector3 changes = new Vector3();
 
@@ -173,18 +174,15 @@ public class TestFlight : MonoBehaviour
 
             if (tilt != 0)
             {
-                changes += transform.right * tilt * Time.deltaTime * 40;
-                //transform.Rotate(transform.right, tilt * Time.deltaTime * 40, Space.World);
+                changes += transform.right * tilt * Time.deltaTime * tiltResponsivity;
             }
             if (roll != 0)
             {
-                changes += transform.forward * roll * Time.deltaTime * -40;
-                //transform.Rotate(transform.forward, roll * Time.deltaTime * -40, Space.World);
+                changes += transform.forward * roll * Time.deltaTime * rollResponsivity;
             }
             if (yaw != 0)
             {
-                changes += transform.up * yaw * Time.deltaTime * 60;
-                //transform.Rotate(Vector3.up, yaw * Time.deltaTime * 60, Space.World);
+                changes += transform.up * yaw * Time.deltaTime * yawResponsivity;
             }
 
             Quaternion newRotation = Quaternion.Euler(Rigidbody.rotation.eulerAngles + changes);
@@ -209,7 +207,7 @@ public class TestFlight : MonoBehaviour
     {
         if (collision.gameObject.tag == "ground")
         {
-            
+            anim.SetBool("Sliding", true);
         }
 
         if (collision.gameObject.tag == "Finish")
@@ -218,7 +216,6 @@ public class TestFlight : MonoBehaviour
             SceneManager.LoadScene(nextSceneName);
           
         }
-        
     }
 
     private void OnCollisionStay(Collision collision)
