@@ -52,9 +52,13 @@ public class TestFlight : MonoBehaviour
 
     public Quaternion startRot = new Quaternion();
 
+    [Tooltip("The planes center of mass at which torq should be applied")]
     public GameObject centerOfMassReference;
+
+    [Tooltip("The strength of the force applied to the nose of the plane")]
     public Vector3 forceAtPos = new Vector3(0, 1, 0);
 
+    [Tooltip("The time between each force applied to the nose of the plane. A smaller value makes upward tilt more difficult")]
     public int forceAppliedTimer = 10;
     private int currentForceAppliedTimer = 0;
     private bool forceAppliedThisFrame;
