@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1899402531}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.024999976, y: -0.075149536, z: 1.1849976}
+  m_LocalPosition: {x: 0, y: 0, z: 1.1849976}
   m_LocalScale: {x: 0.625, y: 0.625, z: 0.25}
   m_Children: []
   m_Father: {fileID: 9032144721940762483}
@@ -241,7 +241,7 @@ MonoBehaviour:
   startRot: {x: 0, y: 0, z: 0, w: 0}
   centerOfMassReference: {fileID: 1899402531}
   forceAtPos: {x: 0, y: -0.01, z: 0}
-  forceAppliedTimer: 10
+  forceAppliedTimer: 6
   throwing: 0
 --- !u!114 &943478503977392595
 MonoBehaviour:
