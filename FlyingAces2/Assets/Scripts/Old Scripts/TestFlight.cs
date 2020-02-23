@@ -133,8 +133,10 @@ public class TestFlight : MonoBehaviour
                     print(angle * Mathf.Rad2Deg);
 
                     var negativeForward = (Rigidbody.velocity - Vector3.Exclude(transform.forward, Rigidbody.velocity));
-
-                    Rigidbody.velocity += negativeForward * Time.deltaTime * (angleAcceleration / (angle * Mathf.Rad2Deg));
+                    if ((angle * Mathf.Rad2Deg) >= 1)
+                    {
+                        Rigidbody.velocity += negativeForward * Time.deltaTime * (angleAcceleration / (angle * Mathf.Rad2Deg));
+                    }                   
                 }
             }
         }
