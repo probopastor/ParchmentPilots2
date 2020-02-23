@@ -7,11 +7,11 @@ using UnityEngine.SceneManagement;
 public class TestFlight : MonoBehaviour
 {
     #region variables
-    [Tooltip("The camera object in the scene")]
-    public Camera planeCam;
+    //[Tooltip("The camera object in the scene")]
+    //public Camera planeCam;
 
-    [Tooltip("The plane object in the scene")]
-    public GameObject player;
+    //[Tooltip("The plane object in the scene")]
+    //public GameObject player;
 
     [Tooltip("Number of strokes taken for the current level")]
     public int stroke = 1;
@@ -72,7 +72,7 @@ public class TestFlight : MonoBehaviour
     private Vector3 launchSpeed = new Vector3(0, 0, 1000);
     private Vector3 strokePosition = new Vector3(0f, 0f, 0f);
     private Vector3 newTee = new Vector3();
-    private Vector3 camStartPos;
+    //private Vector3 camStartPos;
     #endregion
 
     // Start is called before the first frame update
@@ -85,7 +85,7 @@ public class TestFlight : MonoBehaviour
         yForce = gravity;
         isThrown = false;
         startRot = gameObject.transform.rotation;
-        camStartPos = planeCam.transform.localPosition;
+        //camStartPos = planeCam.transform.localPosition;
         strokeText.text = "Stroke: " + stroke;
         chargeBarController.enabled = false;
     }
@@ -239,20 +239,21 @@ public class TestFlight : MonoBehaviour
             ContactPoint contact = collision.GetContact(0);
             newTee = contact.point;
             newTee.y += 15f;
-            planeCam.transform.localPosition = camStartPos;
+            //planeCam.transform.localPosition = camStartPos;
             strokeText.text = "Stroke: " + stroke;
             isThrown = false;
             aiming = true;
             anim.SetBool("isThrown", isThrown);
             aim.enabled = true;
             gameObject.transform.position = newTee;
-            player.transform.position = newTee;
+            //player.transform.position = newTee;
+
             if (hitGround)
             {
-                gameObject.transform.rotation = startRot;;
+                gameObject.transform.rotation = startRot;
+                hitGround = false;
             }
 
-            hitGround = false;
 
             Rigidbody.isKinematic = true;
         }
