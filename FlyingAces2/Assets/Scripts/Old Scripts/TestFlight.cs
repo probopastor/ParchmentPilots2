@@ -37,6 +37,17 @@ public class TestFlight : MonoBehaviour
     [Tooltip("The position the camera should be after the plane has been thrown")]
     public Vector3 thrownCamPos;
 
+    public Quaternion startRot = new Quaternion();
+
+    [Tooltip("The planes center of mass at which torq should be applied")]
+    public GameObject centerOfMassReference;
+
+    [Tooltip("The strength of the force applied to the nose of the plane")]
+    public Vector3 forceAtPos = new Vector3(0, 1, 0);
+
+    [Tooltip("The time between each force applied to the nose of the plane. A smaller value makes upward tilt more difficult")]
+    public int forceAppliedTimer = 10;
+
     [Header("Variables specific to plane type")]
     [Tooltip("The downward acceleration modifier for the planes depending on the angle of the plane")]
     public float angleAcceleration = 5f;
@@ -50,16 +61,8 @@ public class TestFlight : MonoBehaviour
     [Tooltip("The rotational speed multiplier on the Z axis")]
     public float yawResponsivity = 60f;
 
-    public Quaternion startRot = new Quaternion();
+    public float yForceAfterBounce = 100f;
 
-    [Tooltip("The planes center of mass at which torq should be applied")]
-    public GameObject centerOfMassReference;
-
-    [Tooltip("The strength of the force applied to the nose of the plane")]
-    public Vector3 forceAtPos = new Vector3(0, 1, 0);
-
-    [Tooltip("The time between each force applied to the nose of the plane. A smaller value makes upward tilt more difficult")]
-    public int forceAppliedTimer = 10;
     private int currentForceAppliedTimer = 0;
     private bool forceAppliedThisFrame;
 
@@ -248,6 +251,7 @@ public class TestFlight : MonoBehaviour
     {
         if (collision.gameObject.tag == "ground")
         {
+            //Rigidbody.drag = 5f;
             anim.SetBool("Sliding", true);
         }
 
@@ -256,6 +260,16 @@ public class TestFlight : MonoBehaviour
             finished = true;
             SceneManager.LoadScene(nextSceneName);
 
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "ground")
+        {
+            Rigidbody.AddForce(Vector3.down * yForceAfterBounce);
+            anim.SetBool("Sliding", false);
+            anim.SetBool("isThrown", isThrown);
         }
     }
 
@@ -289,7 +303,7 @@ public class TestFlight : MonoBehaviour
             player.transform.position = newTee;
             if (hitGround)
             {
-                gameObject.transform.rotation = startRot; ;
+                gameObject.transform.rotation = startRot;
             }
 
             hitGround = false;
