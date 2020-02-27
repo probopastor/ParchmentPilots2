@@ -149,7 +149,6 @@ public class TestFlight : MonoBehaviour
             }
         }
 
-
         if (Input.GetKeyUp(KeyCode.Return) && aiming)
         {
             ChargeBar();
@@ -166,6 +165,14 @@ public class TestFlight : MonoBehaviour
     }
 
     private void FixedUpdate()
+    {
+        MovePlane();    
+    }
+
+    /// <summary>
+    /// Allows the player to move the plane once it is thrown.
+    /// </summary>
+    private void MovePlane()
     {
         if (isThrown)
         {
@@ -208,12 +215,9 @@ public class TestFlight : MonoBehaviour
             Rigidbody.velocity -= vertVel * Time.deltaTime;
             Rigidbody.velocity += vertVel.magnitude * transform.forward * Time.deltaTime / 10;
 
-
             var forwardVel = Rigidbody.velocity;
             forwardVel.y = 0;
-            //print(Rigidbody.velocity + "Up Down " + Rigidbody.velocity.y + "forward " + forwardVel.magnitude);
         }
-
     }
 
     /// <summary>
@@ -310,7 +314,7 @@ public class TestFlight : MonoBehaviour
             {
                 Debug.Log("Set up new throw HITGROUND called ");
 
-                Quaternion rotation = Quaternion.Euler(0, 30, 0);
+                Quaternion rotation = Quaternion.Euler(0, 0, 0);
 
                 gameObject.transform.rotation = rotation;
 
@@ -323,6 +327,9 @@ public class TestFlight : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Sets the charge bar to active when the plane is being thrown.
+    /// </summary>
     private void ChargeBar()
     {
         throwing = true;

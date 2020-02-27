@@ -22,7 +22,7 @@ public class Aiming : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        AimLogic();
+        //AimLogic();
     }
 
     void AimLogic()
