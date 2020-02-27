@@ -300,7 +300,6 @@ public class TestFlight : MonoBehaviour
             hitGround = true;
             anim.SetBool("Sliding", false);
             SetUpNewThrow(collision);
-
         }
     }
 
@@ -324,13 +323,7 @@ public class TestFlight : MonoBehaviour
 
             if (hitGround)
             {
-                Debug.Log("Set up new throw HITGROUND called ");
-
-                Quaternion rotation = Quaternion.Euler(0, 0, 0);
-
-                gameObject.transform.rotation = rotation;
-
-                Debug.Log("Start rotation " + rotation);
+                RotateTowardsFinish();
             }
 
             hitGround = false;
@@ -355,19 +348,6 @@ public class TestFlight : MonoBehaviour
     {
         if(aiming)
         {
-            //// Input value for vertically rotating the plane
-            //float leftrightvalue = Input.GetAxisRaw("Horizontal");
-
-            //// Input value for horizontally rotating the plane
-            //float updownvalue = Input.GetAxisRaw("Vertical");
-
-            // The Vector3 for rotating the player vertically
-            //Vector3 rotationX = new Vector3(-updownvalue, 0, 0);
-
-            //// The Vector3 for rotating the player horizontally
-            //Vector3 rotationY = new Vector3(0, leftrightvalue, 0);
-
-
             float xRotationValue = Input.GetAxis("Horizontal");
             float yRotationValue = Input.GetAxis("Vertical");
 
@@ -385,20 +365,21 @@ public class TestFlight : MonoBehaviour
 
             Quaternion newRotation = Quaternion.Euler(Rigidbody.rotation.eulerAngles + rotationChanges);
             Rigidbody.MoveRotation(newRotation);
-
-
-            //Rigidbody.transform.Rotate(rotationX / 3, Space.Self);
-            //Rigidbody.transform.Rotate(rotationY / 3, Space.Self);
-
-            //if (Rigidbody.transform.rotation.z != 0)
-            //{
-            //    //transform.rotation = new Quaternion(transform.rotation.x, transform.rotation.y, 0, transform.rotation.w);
-            //}
-        }
-        else
-        {
-
         }
         
+    }
+
+    /// <summary>
+    /// Rotates the plane towards the Game Object tagged as "Finish".
+    /// </summary>
+    private void RotateTowardsFinish()
+    {
+        GameObject finishObj = GameObject.FindWithTag("Finish");
+
+        Vector3 finishDirection = finishObj.transform.position - gameObject.transform.position;
+
+        Quaternion rotation = Quaternion.LookRotation(new Vector3(finishDirection.x, 0, finishDirection.z));
+
+        transform.rotation = rotation;
     }
 }
