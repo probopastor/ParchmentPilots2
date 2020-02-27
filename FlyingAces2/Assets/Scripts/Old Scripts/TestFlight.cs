@@ -10,8 +10,11 @@ public class TestFlight : MonoBehaviour
     [Tooltip("The camera object in the scene")]
     public Camera planeCam;
 
-    [Tooltip("The plane object in the scene")]
-    public GameObject player;
+    [Tooltip("The possible planes the player may choose")]
+    public GameObject[] planeObjects;
+
+    [Tooltip("The UI panel for choosing planes")]
+    public GameObject planeSelectPanel;
 
     [Tooltip("The height at which the plane is thrown on the first throw of the level")]
     public float startThrowHeight = 200f;
@@ -88,6 +91,7 @@ public class TestFlight : MonoBehaviour
 
     private bool aiming = true;
     public bool throwing = false;
+    private bool planeSelect = false;
 
     private Vector3 launchSpeed = new Vector3(0, 0, 1000);
     private Vector3 strokePosition = new Vector3(0f, 0f, 0f);
@@ -99,6 +103,8 @@ public class TestFlight : MonoBehaviour
     void Start()
     {
         Rigidbody = gameObject.GetComponent<Rigidbody>();
+        planeSelect = false;
+        planeSelectPanel.SetActive(false);
         gameObject.transform.position = new Vector3(gameObject.transform.position.x, startThrowHeight, gameObject.transform.position.z);
         RotateTowardsFinish();
         anim = GetComponent<Animator>();
@@ -116,25 +122,40 @@ public class TestFlight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Return))
+        if (Input.GetKeyUp(KeyCode.Return) && !isThrown)
         {
-            if (!isThrown)
+            if (!aiming && throwing && !planeSelect)
             {
-                if (!aiming && throwing)
-                {
-                    throwing = false;
-                    isThrown = true;
-                    anim.SetBool("isThrown", isThrown);
-                    chargeBarController.chargeBar.gameObject.SetActive(false);
-                    chargeBarController.enabled = false;
-                    Rigidbody.isKinematic = false;
-                    Rigidbody.useGravity = true;
+                throwing = false;
+                isThrown = true;
+                anim.SetBool("isThrown", isThrown);
+                chargeBarController.chargeBar.gameObject.SetActive(false);
+                chargeBarController.enabled = false;
+                Rigidbody.isKinematic = false;
+                Rigidbody.useGravity = true;
 
-                    aiming = false;
-                    Rigidbody.AddRelativeForce(Vector3.forward * thrustForce * chargeBarController.chargeBar.value);
+                aiming = false;
+                Rigidbody.AddRelativeForce(Vector3.forward * thrustForce * chargeBarController.chargeBar.value);
 
-                    stroke += 1;
-                }
+                stroke += 1;
+            }
+        }
+        else if(!isThrown && aiming)
+        {
+            if(Input.GetKeyDown(KeyCode.Tab))
+            {
+                planeSelectPanel.SetActive(true);
+                planeSelect = true;
+                aiming = false;
+            }
+        }
+        else if(!isThrown && !aiming && planeSelect)
+        {
+            if(Input.GetKeyDown(KeyCode.Tab))
+            {
+                planeSelectPanel.SetActive(false);
+                aiming = true;
+                planeSelect = false;
             }
         }
         else if (isThrown)
@@ -166,8 +187,8 @@ public class TestFlight : MonoBehaviour
             chargeBarController.chargeBar.gameObject.SetActive(false);
         }
 
-            AimLogic();
-        
+        AimLogic();
+
     }
 
     private void FixedUpdate()
@@ -224,6 +245,11 @@ public class TestFlight : MonoBehaviour
             var forwardVel = Rigidbody.velocity;
             forwardVel.y = 0;
         }
+    }
+
+    private void SelectPlane()
+    {
+        
     }
 
     /// <summary>
@@ -310,9 +336,7 @@ public class TestFlight : MonoBehaviour
             isThrown = false;
             aiming = true;
             anim.SetBool("isThrown", isThrown);
-            //aim.enabled = true;
             gameObject.transform.position = newTee;
-            player.transform.position = newTee;
 
             if (hitGround)
             {
@@ -352,7 +376,6 @@ public class TestFlight : MonoBehaviour
             if (yRotationValue != 0)
             {
                 rotationChanges += new Vector3((yRotationValue * Time.deltaTime * yAimResponsitivity), 0, 0);
-
             }
 
             Quaternion newRotation = Quaternion.Euler(Rigidbody.rotation.eulerAngles + rotationChanges);
