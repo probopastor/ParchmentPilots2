@@ -27,7 +27,7 @@ public class ThrowingChargeBarController : MonoBehaviour
     {
         sliderValue += sliderIncrementValue;
         chargeBar.value = Mathf.PingPong(sliderValue * 3, 100);
-        yield return new WaitForSeconds(0.001f);
+        yield return new WaitForSecondsRealtime(0.001f);
         StartCoroutine("UpdateSlider");
     }
 

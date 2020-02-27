@@ -76,6 +76,8 @@ public class TestFlight : MonoBehaviour
     private int currentForceAppliedTimer = 0;
     private bool forceAppliedThisFrame;
 
+    private GameObject thisPlane;
+
     private float xForce = 0f;
     private float yForce = 0f;
     private float fall = 0f;
@@ -103,6 +105,8 @@ public class TestFlight : MonoBehaviour
     void Start()
     {
         Rigidbody = gameObject.GetComponent<Rigidbody>();
+        //thisPlane = planeObjects[0];
+
         planeSelect = false;
         planeSelectPanel.SetActive(false);
         gameObject.transform.position = new Vector3(gameObject.transform.position.x, startThrowHeight, gameObject.transform.position.z);
@@ -196,6 +200,12 @@ public class TestFlight : MonoBehaviour
         MovePlane();    
     }
 
+    public void SelectPlane()
+    {
+
+        //planeObjects[i]
+    }
+
     /// <summary>
     /// Allows the player to move the plane once it is thrown.
     /// </summary>
@@ -245,11 +255,6 @@ public class TestFlight : MonoBehaviour
             var forwardVel = Rigidbody.velocity;
             forwardVel.y = 0;
         }
-    }
-
-    private void SelectPlane()
-    {
-        
     }
 
     /// <summary>
@@ -330,7 +335,7 @@ public class TestFlight : MonoBehaviour
 
             ContactPoint contact = collision.GetContact(0);
             newTee = contact.point;
-            newTee.y += throwHeight;
+            newTee.y = throwHeight;
             planeCam.transform.localPosition = camStartPos;
             strokeText.text = "Stroke: " + stroke;
             isThrown = false;
