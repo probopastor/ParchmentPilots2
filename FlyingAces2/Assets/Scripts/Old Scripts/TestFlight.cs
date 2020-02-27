@@ -56,8 +56,6 @@ public class TestFlight : MonoBehaviour
     [Tooltip("The rotational speed multiplier on the Z axis when aim is rotating while aiming")]
     public float yAimResponsitivity = 40f;
 
-    public Quaternion startRot;
-
     [Tooltip("The planes center of mass at which torq should be applied")]
     public GameObject centerOfMassReference;
 
@@ -80,7 +78,6 @@ public class TestFlight : MonoBehaviour
     private Rigidbody Rigidbody;
     private Animator anim;
 
-    //private Aiming aim;
     private ThrowingChargeBarController chargeBarController;
 
     private bool aiming = true;
@@ -92,19 +89,12 @@ public class TestFlight : MonoBehaviour
     private Vector3 camStartPos;
     #endregion
 
-
-    private void Awake()
-    {
-        startRot = gameObject.transform.rotation;
-        Debug.Log("Start rotation " + startRot);
-    }
-
     // Start is called before the first frame update
     void Start()
     {
         Rigidbody = gameObject.GetComponent<Rigidbody>();
+        RotateTowardsFinish();
         anim = GetComponent<Animator>();
-        //aim = GetComponent<Aiming>();
         chargeBarController = GetComponent<ThrowingChargeBarController>();
         yForce = gravity;
         isThrown = false;
@@ -119,8 +109,6 @@ public class TestFlight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("aiming: " + aiming);
-
         if (Input.GetKeyUp(KeyCode.Return))
         {
             if (!isThrown)
@@ -167,7 +155,6 @@ public class TestFlight : MonoBehaviour
         {
             throwing = false;
             aiming = true;
-            //aim.enabled = true;
             chargeBarController.enabled = false;
             chargeBarController.chargeBar.gameObject.SetActive(false);
         }
@@ -289,7 +276,6 @@ public class TestFlight : MonoBehaviour
         {
             finished = true;
             SceneManager.LoadScene(nextSceneName);
-
         }
     }
 
@@ -339,7 +325,6 @@ public class TestFlight : MonoBehaviour
     {
         throwing = true;
         aiming = false;
-        //aim.enabled = false;
         chargeBarController.enabled = true;
         chargeBarController.chargeBar.gameObject.SetActive(true);
     }
