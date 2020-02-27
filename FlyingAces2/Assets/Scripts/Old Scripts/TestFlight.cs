@@ -13,6 +13,12 @@ public class TestFlight : MonoBehaviour
     [Tooltip("The plane object in the scene")]
     public GameObject player;
 
+    [Tooltip("The height at which the plane is thrown on the first throw of the level")]
+    public float startThrowHeight = 200f;
+
+    [Tooltip("The height at which the plane is thrown at the start of a new throw")]
+    public float throwHeight = 15f;
+
     [Tooltip("Number of strokes taken for the current level")]
     public int stroke = 1;
 
@@ -93,6 +99,7 @@ public class TestFlight : MonoBehaviour
     void Start()
     {
         Rigidbody = gameObject.GetComponent<Rigidbody>();
+        gameObject.transform.position = new Vector3(gameObject.transform.position.x, startThrowHeight, gameObject.transform.position.z);
         RotateTowardsFinish();
         anim = GetComponent<Animator>();
         chargeBarController = GetComponent<ThrowingChargeBarController>();
@@ -297,7 +304,7 @@ public class TestFlight : MonoBehaviour
 
             ContactPoint contact = collision.GetContact(0);
             newTee = contact.point;
-            newTee.y += 15f;
+            newTee.y += throwHeight;
             planeCam.transform.localPosition = camStartPos;
             strokeText.text = "Stroke: " + stroke;
             isThrown = false;
