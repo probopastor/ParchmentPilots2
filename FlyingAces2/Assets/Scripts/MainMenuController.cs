@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
@@ -21,13 +22,18 @@ public class MainMenuController : MonoBehaviour
         
     }
 
+    public void StartLevel(string level)
+    {
+        SceneManager.LoadScene(level);
+    }
+
     public void OpenMainMenu()
     {
         foreach(GameObject button in mainMenu)
         {
             button.SetActive(true);
         }
-
+        //eventSystem.currentSelectedGameObject();
     }
 
     public void OpenLevelSelect()
