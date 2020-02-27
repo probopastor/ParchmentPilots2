@@ -50,6 +50,12 @@ public class TestFlight : MonoBehaviour
     [Tooltip("The rotational speed multiplier on the Z axis")]
     public float yawResponsivity = 60f;
 
+    [Tooltip("The rotational speed multiplier on the X axis when aim is rotating while aiming")]
+    public float xAimResponsitivity = 40f;
+
+    [Tooltip("The rotational speed multiplier on the Z axis when aim is rotating while aiming")]
+    public float yAimResponsitivity = 40f;
+
     public Quaternion startRot;
 
     [Tooltip("The planes center of mass at which torq should be applied")]
@@ -74,7 +80,7 @@ public class TestFlight : MonoBehaviour
     private Rigidbody Rigidbody;
     private Animator anim;
 
-    private Aiming aim;
+    //private Aiming aim;
     private ThrowingChargeBarController chargeBarController;
 
     private bool aiming = true;
@@ -98,7 +104,7 @@ public class TestFlight : MonoBehaviour
     {
         Rigidbody = gameObject.GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
-        aim = GetComponent<Aiming>();
+        //aim = GetComponent<Aiming>();
         chargeBarController = GetComponent<ThrowingChargeBarController>();
         yForce = gravity;
         isThrown = false;
@@ -113,6 +119,8 @@ public class TestFlight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("aiming: " + aiming);
+
         if (Input.GetKeyUp(KeyCode.Return))
         {
             if (!isThrown)
@@ -127,6 +135,7 @@ public class TestFlight : MonoBehaviour
                     Rigidbody.isKinematic = false;
                     Rigidbody.useGravity = true;
 
+                    aiming = false;
                     Rigidbody.AddRelativeForce(Vector3.forward * thrustForce * chargeBarController.chargeBar.value);
 
                     stroke += 1;
@@ -158,10 +167,13 @@ public class TestFlight : MonoBehaviour
         {
             throwing = false;
             aiming = true;
-            aim.enabled = true;
+            //aim.enabled = true;
             chargeBarController.enabled = false;
             chargeBarController.chargeBar.gameObject.SetActive(false);
         }
+
+            AimLogic();
+        
     }
 
     private void FixedUpdate()
@@ -306,7 +318,7 @@ public class TestFlight : MonoBehaviour
             isThrown = false;
             aiming = true;
             anim.SetBool("isThrown", isThrown);
-            aim.enabled = true;
+            //aim.enabled = true;
             gameObject.transform.position = newTee;
             player.transform.position = newTee;
 
@@ -334,8 +346,59 @@ public class TestFlight : MonoBehaviour
     {
         throwing = true;
         aiming = false;
-        aim.enabled = false;
+        //aim.enabled = false;
         chargeBarController.enabled = true;
         chargeBarController.chargeBar.gameObject.SetActive(true);
+    }
+
+    void AimLogic()
+    {
+        if(aiming)
+        {
+            //// Input value for vertically rotating the plane
+            //float leftrightvalue = Input.GetAxisRaw("Horizontal");
+
+            //// Input value for horizontally rotating the plane
+            //float updownvalue = Input.GetAxisRaw("Vertical");
+
+            // The Vector3 for rotating the player vertically
+            //Vector3 rotationX = new Vector3(-updownvalue, 0, 0);
+
+            //// The Vector3 for rotating the player horizontally
+            //Vector3 rotationY = new Vector3(0, leftrightvalue, 0);
+
+
+            float xRotationValue = Input.GetAxis("Horizontal");
+            float yRotationValue = Input.GetAxis("Vertical");
+
+            Vector3 rotationChanges = new Vector3();
+
+            if (xRotationValue != 0)
+            {
+                rotationChanges += new Vector3(0 , (xRotationValue * Time.deltaTime * xAimResponsitivity), 0);
+            }
+            if (yRotationValue != 0)
+            {
+                rotationChanges += new Vector3((yRotationValue * Time.deltaTime * yAimResponsitivity), 0, 0);
+
+            }
+
+            Quaternion newRotation = Quaternion.Euler(Rigidbody.rotation.eulerAngles + rotationChanges);
+            Rigidbody.MoveRotation(newRotation);
+
+
+            //Rigidbody.transform.Rotate(rotationX / 3, Space.Self);
+            //Rigidbody.transform.Rotate(rotationY / 3, Space.Self);
+
+            //if (Rigidbody.transform.rotation.z != 0)
+            //{
+            //    //transform.rotation = new Quaternion(transform.rotation.x, transform.rotation.y, 0, transform.rotation.w);
+            //}
+        }
+        else
+        {
+
+        }
+        
     }
 }

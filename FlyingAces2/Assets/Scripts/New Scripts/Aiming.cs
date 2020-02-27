@@ -8,14 +8,15 @@ public class Aiming : MonoBehaviour
     Rigidbody rb;
     TestFlight tf;
 
-    [Tooltip("How quickly the camera reacts to mouse movement")]
-    public float mouseSensitivity = 100f;
+    //[Tooltip("How quickly the camera reacts to mouse movement")]
+    //public float mouseSensitivity = 100f;
 
     // Start is called before the first frame update
     void Start()
     {
         //Cursor.lockState = CursorLockMode.Locked;
         rb = GetComponent<Rigidbody>();
+
         tf = FindObjectOfType<TestFlight>();
     }
 
