@@ -50,7 +50,7 @@ public class TestFlight : MonoBehaviour
     [Tooltip("The rotational speed multiplier on the Z axis")]
     public float yawResponsivity = 60f;
 
-    public Quaternion startRot = new Quaternion();
+    public Quaternion startRot;
 
     [Tooltip("The planes center of mass at which torq should be applied")]
     public GameObject centerOfMassReference;
@@ -86,6 +86,13 @@ public class TestFlight : MonoBehaviour
     private Vector3 camStartPos;
     #endregion
 
+
+    private void Awake()
+    {
+        startRot = gameObject.transform.rotation;
+        Debug.Log("Start rotation " + startRot);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -95,7 +102,6 @@ public class TestFlight : MonoBehaviour
         chargeBarController = GetComponent<ThrowingChargeBarController>();
         yForce = gravity;
         isThrown = false;
-        startRot = gameObject.transform.rotation;
         camStartPos = planeCam.transform.localPosition;
         strokeText.text = "Stroke: " + stroke;
         chargeBarController.enabled = false;
@@ -131,54 +137,19 @@ public class TestFlight : MonoBehaviour
         {
             RaycastHit rayHit;
 
+            //The small the plane's angle towards the ground, the faster the plane will accelerate downwards. First raycast points from nose of plane.
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, Mathf.Infinity, affectedRayCastLayer))
             {
-                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * rayHit.distance, Color.yellow);
-
-                RaycastHit downHit;
-
-                Physics.Raycast(transform.position, Vector3.down, out downHit, Mathf.Infinity, affectedRayCastLayer);
-
-                if (downHit.collider != null)
-                {
-                    Debug.DrawRay(transform.position, Vector3.down * downHit.distance, Color.red);
-
-                    Vector3 vector1 = rayHit.point - transform.position;
-                    Vector3 vector2 = downHit.point - transform.position;
-                    float angle = Mathf.Acos(Vector3.Dot(vector1.normalized, vector2.normalized));
-                    print(angle * Mathf.Rad2Deg);
-
-                    var negativeForward = (Rigidbody.velocity - Vector3.Exclude(transform.forward, Rigidbody.velocity));
-                    if ((angle * Mathf.Rad2Deg) >= 1)
-                    {
-                        Rigidbody.velocity += negativeForward * Time.deltaTime * (angleAcceleration / (angle * Mathf.Rad2Deg));
-                    }
-                }
+                AngleAcceleration(rayHit);
             }
             else
             {
-                //if (!forceAppliedThisFrame)
-                //{
-                //    forceAppliedThisFrame = true;
-                //    Rigidbody.AddForceAtPosition(forceAtPos, centerOfMassReference.transform.position);
-                //}
-                //else if (forceAppliedThisFrame)
-                //{
-                //    forceAppliedThisFrame = false;
-                //}
-
-                if(currentForceAppliedTimer <= 0)
-                {
-                    forceAppliedThisFrame = true;
-                    Rigidbody.AddForceAtPosition(forceAtPos, centerOfMassReference.transform.position);
-                    currentForceAppliedTimer = forceAppliedTimer;
-                }
-                else if(currentForceAppliedTimer > 0)
-                {
-                    currentForceAppliedTimer--;
-                }
+                //Determines if force should be applied at the center of mass of the plane this frame when the plane does not face the ground
+                ForceAtCenterOfMass();               
             }
         }
+
+
         if (Input.GetKeyUp(KeyCode.Return) && aiming)
         {
             ChargeBar();
@@ -240,10 +211,57 @@ public class TestFlight : MonoBehaviour
 
             var forwardVel = Rigidbody.velocity;
             forwardVel.y = 0;
-            print(Rigidbody.velocity + "Up Down " + Rigidbody.velocity.y + "forward " + forwardVel.magnitude);
+            //print(Rigidbody.velocity + "Up Down " + Rigidbody.velocity.y + "forward " + forwardVel.magnitude);
         }
 
     }
+
+    /// <summary>
+    /// Determines the angle between the plane and the ground when plane flies towards the ground.
+    /// The smaller this angle, the faster the plane will accelerate towards the ground.
+    /// </summary>
+    /// <param name="rayHit"></param>
+    private void AngleAcceleration(RaycastHit rayHit)
+    {
+        RaycastHit downHit;
+
+        //Raycast points down from the plane to get the angle towards the ground.
+        Physics.Raycast(transform.position, Vector3.down, out downHit, Mathf.Infinity, affectedRayCastLayer);
+
+        //The angle between the forward and down raycasts are calculated to determine the angle of the plane's flight.
+        if (downHit.collider != null)
+        {
+            Vector3 vector1 = rayHit.point - transform.position;
+            Vector3 vector2 = downHit.point - transform.position;
+            float angle = Mathf.Acos(Vector3.Dot(vector1.normalized, vector2.normalized));
+            var negativeForward = (Rigidbody.velocity - Vector3.Exclude(transform.forward, Rigidbody.velocity));
+
+            //Velocity is added to the plane the sharper its angle towards the ground.
+            if ((angle * Mathf.Rad2Deg) >= 1)
+            {
+                Rigidbody.velocity += negativeForward * Time.deltaTime * (angleAcceleration / (angle * Mathf.Rad2Deg));
+            }
+        }
+    }
+
+    /// <summary>
+    /// Applies a force at the plane's center of mass on frames where currentForceappliedTimer is less than 1.
+    /// As a result, the plane will slowly tilt towards the ground. 
+    /// </summary>
+    private void ForceAtCenterOfMass()
+    {
+        if (currentForceAppliedTimer <= 0)
+        {
+            forceAppliedThisFrame = true;
+            Rigidbody.AddForceAtPosition(forceAtPos, centerOfMassReference.transform.position);
+            currentForceAppliedTimer = forceAppliedTimer;
+        }
+        else if (currentForceAppliedTimer > 0)
+        {
+            currentForceAppliedTimer--;
+        }
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "ground")
@@ -287,9 +305,16 @@ public class TestFlight : MonoBehaviour
             aim.enabled = true;
             gameObject.transform.position = newTee;
             player.transform.position = newTee;
+
             if (hitGround)
             {
-                gameObject.transform.rotation = startRot; ;
+                Debug.Log("Set up new throw HITGROUND called ");
+
+                Quaternion rotation = Quaternion.Euler(0, 30, 0);
+
+                gameObject.transform.rotation = rotation;
+
+                Debug.Log("Start rotation " + rotation);
             }
 
             hitGround = false;
