@@ -304,7 +304,7 @@ public class TestFlight : MonoBehaviour
 
             ContactPoint contact = collision.GetContact(0);
             newTee = contact.point;
-            newTee.y += throwHeight;
+            newTee.y = throwHeight;
             planeCam.transform.localPosition = camStartPos;
             strokeText.text = "Stroke: " + stroke;
             isThrown = false;
