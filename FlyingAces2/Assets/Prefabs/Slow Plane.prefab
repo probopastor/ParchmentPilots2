@@ -116,7 +116,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &9032144721940762483
 Transform:
   m_ObjectHideFlags: 0
@@ -222,7 +222,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planeCam: {fileID: 0}
-  player: {fileID: 9032144721940762487}
+  planeObjects: []
+  planeSelectPanel: {fileID: 0}
+  startThrowHeight: 200
+  throwHeight: 15
   stroke: 1
   strokeText: {fileID: 0}
   affectedRayCastLayer:
@@ -238,7 +241,8 @@ MonoBehaviour:
   tiltResponsivity: 80
   rollResponsivity: -80
   yawResponsivity: 60
-  startRot: {x: 0, y: 0, z: 0, w: 0}
+  xAimResponsitivity: 40
+  yAimResponsitivity: 40
   centerOfMassReference: {fileID: 1899402531}
   forceAtPos: {x: 0, y: -0.01, z: 0}
   forceAppliedTimer: 5
@@ -255,7 +259,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6af95cef0ac1df44a20d941e5ed1b1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 100
 --- !u!95 &915417653
 Animator:
   serializedVersion: 3

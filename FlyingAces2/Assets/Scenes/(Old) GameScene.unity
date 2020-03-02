@@ -2469,6 +2469,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 206432947, guid: d2d2f9bbdcb86f04fbfc0245391b96db, type: 3}
+      propertyPath: planeObjects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 206432947, guid: d2d2f9bbdcb86f04fbfc0245391b96db, type: 3}
       propertyPath: planeCam
       value: 
       objectReference: {fileID: 1149096427}
@@ -2484,6 +2488,21 @@ PrefabInstance:
       propertyPath: planeSelectPanel
       value: 
       objectReference: {fileID: 306563897}
+    - target: {fileID: 206432947, guid: d2d2f9bbdcb86f04fbfc0245391b96db, type: 3}
+      propertyPath: planeObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 9032144721940762487, guid: d2d2f9bbdcb86f04fbfc0245391b96db,
+        type: 3}
+    - target: {fileID: 206432947, guid: d2d2f9bbdcb86f04fbfc0245391b96db, type: 3}
+      propertyPath: planeObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 9032144721940762487, guid: c50b791f86307c54e81abce3a29b58f9,
+        type: 3}
+    - target: {fileID: 206432947, guid: d2d2f9bbdcb86f04fbfc0245391b96db, type: 3}
+      propertyPath: planeObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 9032144721940762487, guid: 55cf5be3ee31f684caffa9891ffb850a,
+        type: 3}
     - target: {fileID: 1134115735913675915, guid: d2d2f9bbdcb86f04fbfc0245391b96db,
         type: 3}
       propertyPath: chargeBar
@@ -4682,7 +4701,7 @@ PrefabInstance:
     - target: {fileID: 8980741505670111587, guid: 8821f09e175200c4faf2e9c6c9e024c8,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.008321706
+      value: -0.008321703
       objectReference: {fileID: 0}
     - target: {fileID: 8980741505670111587, guid: 8821f09e175200c4faf2e9c6c9e024c8,
         type: 3}
@@ -4917,12 +4936,12 @@ PrefabInstance:
     - target: {fileID: 8980741506304879486, guid: 8821f09e175200c4faf2e9c6c9e024c8,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.03069661
+      value: 0.030696612
       objectReference: {fileID: 0}
     - target: {fileID: 8980741506304879486, guid: 8821f09e175200c4faf2e9c6c9e024c8,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0074455254
+      value: -0.007445542
       objectReference: {fileID: 0}
     - target: {fileID: 8980741506304879486, guid: 8821f09e175200c4faf2e9c6c9e024c8,
         type: 3}
