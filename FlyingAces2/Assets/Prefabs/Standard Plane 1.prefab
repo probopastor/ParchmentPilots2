@@ -136,7 +136,12 @@ MonoBehaviour:
   startThrowHeight: 200
   throwHeight: 15
   stroke: 1
+  par: 0
+  hole: 0
   strokeText: {fileID: 0}
+  parText: {fileID: 0}
+  holeText: {fileID: 0}
+  scoreText: {fileID: 0}
   affectedRayCastLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -160,8 +165,8 @@ MonoBehaviour:
   forceAppliedTimer: 6
   SoundEffectSource: {fileID: 0}
   LongSoundEffectSource: {fileID: 0}
-  confettiSound: {fileID: 0}
-  windSound: {fileID: 0}
+  confettiSound: {fileID: 8300000, guid: 31156ae3b7649d84b9417cb287c36bc8, type: 3}
+  windSound: {fileID: 8300000, guid: 9ac9e617cf8218946bf8e674a7d28c90, type: 3}
   windPitchMax: 4
   windPitchMin: 0.1
   throwing: 0
