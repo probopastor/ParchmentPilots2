@@ -25,8 +25,23 @@ public class TestFlight : MonoBehaviour
     [Tooltip("Number of strokes taken for the current level")]
     public int stroke = 1;
 
+    [Tooltip("Number of strokes to score a par")]
+    public int par = 0;
+
+    [Tooltip("The hole the player is currently on")]
+    public int hole = 0;
+
     [Tooltip("The text object that displays the stroke the player is on")]
     public TextMeshProUGUI strokeText;
+
+    [Tooltip("The text object that displays the par for the course")]
+    public TextMeshProUGUI parText;
+
+    [Tooltip("The text object that displays the hole the player is on")]
+    public TextMeshProUGUI holeText;
+
+    [Tooltip("The text that displays what score the player got on the hole")]
+    public TextMeshProUGUI scoreText;
 
     [Tooltip("The layer for the Raycasts to help with physics - Keep to ground only")]
     public LayerMask affectedRayCastLayer;
@@ -157,8 +172,11 @@ public class TestFlight : MonoBehaviour
         isThrown = false;
         camStartPos = planeCam.transform.localPosition;
         strokeText.text = "Stroke: " + stroke;
+        parText.text = "Par: " + par;
+        holeText.text = "Hole: " + hole;
         chargeBarController.enabled = false;
         forceAppliedThisFrame = false;
+        scoreText.enabled = false;
 
         currentForceAppliedTimer = forceAppliedTimer;
 
@@ -507,9 +525,51 @@ public class TestFlight : MonoBehaviour
         if (collision.gameObject.tag == "Finish")
         {
             finished = true;
+<<<<<<< HEAD
             LongSoundEffectSource.Stop();
             StartCoroutine("WinHandler");
             
+=======
+            scoreText.enabled = true;
+            if (stroke == par)
+            {
+                scoreText.text = "You got a par!";
+            }
+            if (stroke == par--)
+            {
+                scoreText.text = "You got a birdie! Nice!";
+            }
+            if (stroke == par - 2)
+            {
+                scoreText.text = "You got an eagle! Good job!";
+            }
+            if (stroke == 1)
+            {
+                scoreText.text = "Hole in one! Smooth flying!";
+            }
+            if (stroke == par - 3)
+            {
+                scoreText.text = "You got an albatross! Amazing!";
+            }
+            if(stroke == par++)
+            {
+                scoreText.text = "You got a bogey. So close...";
+            }
+            if (stroke == par + 2)
+            {
+                scoreText.text = "Double bogey. Better luck next time.";
+            }
+            if (stroke == par + 3)
+            {
+                scoreText.text = "Triple bogey. Next hole will be better.";
+            }
+            if (stroke > par + 4)
+            {
+                scoreText.text = "Let's not talk about that hole...";
+            }
+            //hole++;
+            SceneManager.LoadScene(nextSceneName);
+>>>>>>> Level-1-1
         }
     }
 
