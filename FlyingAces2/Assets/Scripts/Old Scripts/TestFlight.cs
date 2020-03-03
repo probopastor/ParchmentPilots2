@@ -76,6 +76,14 @@ public class TestFlight : MonoBehaviour
     private int currentForceAppliedTimer = 0;
     private bool forceAppliedThisFrame;
 
+    public AudioSource SoundEffectSource;
+    public AudioSource LongSoundEffectSource;
+
+    public AudioClip confettiSound;
+    public AudioClip windSound;
+
+    private bool playOnce;
+
     private GameObject thisPlane;
 
     private float xForce = 0f;
@@ -105,6 +113,8 @@ public class TestFlight : MonoBehaviour
     void Start()
     {
         Rigidbody = gameObject.GetComponent<Rigidbody>();
+
+        playOnce = false;
         //thisPlane = planeObjects[0];
 
         planeSelect = false;
@@ -121,6 +131,8 @@ public class TestFlight : MonoBehaviour
         forceAppliedThisFrame = false;
 
         currentForceAppliedTimer = forceAppliedTimer;
+
+        
     }
 
     // Update is called once per frame
@@ -165,6 +177,12 @@ public class TestFlight : MonoBehaviour
         else if (isThrown)
         {
             RaycastHit rayHit;
+            if(!playOnce)
+            {
+                LongSoundEffectSource.clip = windSound;
+                LongSoundEffectSource.Play();
+                playOnce = true;
+            }
 
             //The small the plane's angle towards the ground, the faster the plane will accelerate downwards. First raycast points from nose of plane.
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, Mathf.Infinity, affectedRayCastLayer))
@@ -307,14 +325,25 @@ public class TestFlight : MonoBehaviour
     {
         if (collision.gameObject.tag == "ground")
         {
+            LongSoundEffectSource.Stop();
             anim.SetBool("Sliding", true);
         }
 
         if (collision.gameObject.tag == "Finish")
         {
             finished = true;
-            SceneManager.LoadScene(nextSceneName);
+            LongSoundEffectSource.Stop();
+            StartCoroutine("WinHandler");
+            
         }
+    }
+
+    private IEnumerator WinHandler()
+    {
+        SoundEffectSource.clip = confettiSound;
+        SoundEffectSource.Play();
+        yield return new WaitForSeconds(0.25f);
+        SceneManager.LoadScene(nextSceneName);
     }
 
     private void OnCollisionStay(Collision collision)
@@ -323,6 +352,7 @@ public class TestFlight : MonoBehaviour
         {
             hitGround = true;
             anim.SetBool("Sliding", false);
+            playOnce = false;
             SetUpNewThrow(collision);
         }
     }
