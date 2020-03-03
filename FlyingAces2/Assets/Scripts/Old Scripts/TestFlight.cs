@@ -145,6 +145,17 @@ public class TestFlight : MonoBehaviour
 
     private PauseManager pauseManager;
 
+    public float windEmmissionRate = 10f;
+
+    public ParticleSystem leftSystem;
+    public ParticleSystem rightSystem;
+
+    private ParticleSystem.MainModule leftMain;
+    private ParticleSystem.MainModule rightMain;
+
+    ParticleSystem.EmissionModule emissionModuleLeft;
+    ParticleSystem.EmissionModule emissionModuleRight;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -180,7 +191,16 @@ public class TestFlight : MonoBehaviour
 
         currentForceAppliedTimer = forceAppliedTimer;
 
-        
+        //leftSystem = GetComponent<ParticleSystem>();
+        //rightSystem = GetComponent<ParticleSystem>();
+        leftMain = leftSystem.main;
+        rightMain = rightSystem.main;
+
+        emissionModuleLeft = leftSystem.emission;
+        emissionModuleRight = rightSystem.emission;
+
+        emissionModuleLeft.rateOverDistance = 0f;
+        emissionModuleRight.rateOverDistance = 0f;
     }
 
     // Update is called once per frame
@@ -224,6 +244,9 @@ public class TestFlight : MonoBehaviour
         }
         else if (isThrown)
         {
+            emissionModuleLeft.rateOverDistance = windEmmissionRate;
+            emissionModuleRight.rateOverDistance = windEmmissionRate;
+
             RaycastHit rayHit;
             if(!playOnce)
             {
@@ -517,6 +540,13 @@ public class TestFlight : MonoBehaviour
         {
             increaseWindPitchRate = hitGroundWindPitchRate;
             inSlideMode = true;
+
+            emissionModuleLeft.rateOverDistance = 0f;
+            emissionModuleRight.rateOverDistance = 0f;
+
+            leftSystem.Pause();
+            rightSystem.Pause();
+
             //decreasePitch = false;
             //increasePitch = false;
             anim.SetBool("Sliding", true);
@@ -597,6 +627,9 @@ public class TestFlight : MonoBehaviour
         if (!finished)
         {
             Rigidbody.useGravity = false;
+
+            leftSystem.Play();
+            rightSystem.Play();
 
             ContactPoint contact = collision.GetContact(0);
             newTee = contact.point;
