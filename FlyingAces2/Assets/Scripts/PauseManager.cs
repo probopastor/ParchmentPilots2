@@ -15,7 +15,7 @@ public class PauseManager : MonoBehaviour
 
     public TestFlight thisFlight;
 
-    private bool isPaused;
+    public bool isPaused;
     
     // Start is called before the first frame update
     void Start()

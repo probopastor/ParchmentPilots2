@@ -31,6 +31,8 @@ public class TestFlight : MonoBehaviour
     [Tooltip("The layer for the Raycasts to help with physics - Keep to ground only")]
     public LayerMask affectedRayCastLayer;
 
+    public LayerMask skyLayer;
+
     [Tooltip("The scene the player is currently in")]
     public Scene currentScene;
 
@@ -82,6 +84,19 @@ public class TestFlight : MonoBehaviour
     public AudioClip confettiSound;
     public AudioClip windSound;
 
+    public float windPitchMax = 4f;
+    public float windPitchMin = 0.1f;
+
+    private bool inSlideMode;
+
+    //bool decreasePitch;
+    //bool increasePitch;
+    //public float windPitchMax = 1f;
+    //public float windPitchMin = 1f;
+    //public float defaultWindPitch = 0f;
+    //public float windPitchIncrementDown = 0.1f;
+    //public float windPitchIncrementUp = 0.1f;
+
     private bool playOnce;
 
     private GameObject thisPlane;
@@ -109,12 +124,27 @@ public class TestFlight : MonoBehaviour
     private Vector3 camStartPos;
     #endregion
 
+    public float increaseWindPitchRate = 10.0f;
+    public float startWindPitchRate = 20f;
+    public float hitGroundWindPitchRate = 100f;
+
+    private PauseManager pauseManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        //decreasePitch = false;
+        //increasePitch = false;
+
+        //LongSoundEffectSource.pitch = defaultWindPitch;
+        pauseManager = GameObject.FindObjectOfType<PauseManager>();
+
         Rigidbody = gameObject.GetComponent<Rigidbody>();
 
+        increaseWindPitchRate = startWindPitchRate;
+
         playOnce = false;
+        inSlideMode = false;
         //thisPlane = planeObjects[0];
 
         planeSelect = false;
@@ -181,6 +211,7 @@ public class TestFlight : MonoBehaviour
             {
                 LongSoundEffectSource.clip = windSound;
                 LongSoundEffectSource.Play();
+                //StartCoroutine("IncreaseAirPitch");
                 playOnce = true;
             }
 
@@ -188,12 +219,40 @@ public class TestFlight : MonoBehaviour
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, Mathf.Infinity, affectedRayCastLayer))
             {
                 AngleAcceleration(rayHit);
+                //decreasePitch = false;
+                //increasePitch = true;
+            }
+            else if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, Mathf.Infinity, skyLayer))
+            {
+                //Determines if force should be applied at the center of mass of the plane this frame when the plane does not face the ground
+                ForceAtCenterOfMass();
+
+                //decreasePitch = true;
+                //increasePitch = false;
             }
             else
             {
-                //Determines if force should be applied at the center of mass of the plane this frame when the plane does not face the ground
-                ForceAtCenterOfMass();               
+                ForceAtCenterOfMass();
+                //decreasePitch = false;
+                //increasePitch = false;
             }
+        }
+
+        if((isThrown || inSlideMode) && !pauseManager.isPaused)
+        {
+            if(inSlideMode)
+            {
+                increaseWindPitchRate = 100f;
+            }
+
+            var velSound = Rigidbody.velocity.magnitude / increaseWindPitchRate;
+
+            LongSoundEffectSource.pitch = Mathf.Clamp(velSound, windPitchMin, windPitchMax);
+        }
+        else if(pauseManager.isPaused)
+        {
+            LongSoundEffectSource.Stop();
+            playOnce = false;
         }
 
         if (Input.GetKeyUp(KeyCode.Return) && aiming)
@@ -303,6 +362,119 @@ public class TestFlight : MonoBehaviour
         }
     }
 
+    
+    //private IEnumerator IncreaseAirPitch()
+    //{
+    //    Debug.Log("Increased 1: " + LongSoundEffectSource.pitch);
+
+    //    if(increasePitch && !decreasePitch)
+    //    {
+    //        Debug.Log("Increased 2: ");
+
+    //        if (LongSoundEffectSource.pitch > windPitchMax)
+    //        {
+    //            LongSoundEffectSource.pitch = windPitchMax;
+
+    //            Debug.Log("Increased 3: " + LongSoundEffectSource.pitch);
+    //        }
+    //        else
+    //        {                
+    //            LongSoundEffectSource.pitch += windPitchIncrementDown;
+
+    //            Debug.Log("Increased 4: " + LongSoundEffectSource.pitch);
+    //        }
+
+    //        yield return new WaitForSeconds(0.1f);
+    //        StartCoroutine("IncreaseAirPitch");
+    //    }
+    //    else if(decreasePitch && !increasePitch)
+    //    {
+    //        yield return new WaitForSeconds(0.1f);
+    //        StartCoroutine("DecreaseAirPitch");
+    //    }
+    //    else if((decreasePitch && increasePitch) || (!decreasePitch && !increasePitch))
+    //    {
+    //        yield return new WaitForSeconds(0.1f);
+    //        StartCoroutine("StabalizeAirPitch");
+    //    }
+    //    else
+    //    {
+    //        yield return new WaitForSeconds(0.01f);
+    //        StartCoroutine("IncreaseAirPitch");
+    //    }
+    //}
+
+    //private IEnumerator StabalizeAirPitch()
+    //{
+    //    Debug.Log("Stabalize 1: " + LongSoundEffectSource.pitch);
+
+    //    if ((!decreasePitch && !increasePitch) || (decreasePitch && increasePitch))
+    //    {
+    //        if ((LongSoundEffectSource.pitch > defaultWindPitch) && (LongSoundEffectSource.pitch >= (defaultWindPitch - 0.3f)) && (LongSoundEffectSource.pitch <= (defaultWindPitch + 0.3f)))
+    //        {
+    //            Debug.Log("Stabalize 2: " + LongSoundEffectSource.pitch);
+
+    //            LongSoundEffectSource.pitch -= windPitchIncrementDown;
+    //            yield return new WaitForSeconds(0.1f);
+    //            StartCoroutine("StabalizeAirPitch");
+    //        }
+    //        else if((LongSoundEffectSource.pitch < defaultWindPitch) && (LongSoundEffectSource.pitch >= (defaultWindPitch - 0.3f)) && (LongSoundEffectSource.pitch <= (defaultWindPitch + 0.3f)))
+    //        {
+    //            Debug.Log("Stabalize 3: " + LongSoundEffectSource.pitch);
+    //            LongSoundEffectSource.pitch += windPitchIncrementUp;
+    //            yield return new WaitForSeconds(0.1f);
+    //            StartCoroutine("StabalizeAirPitch");
+    //        }
+
+    //        yield return new WaitForSeconds(0.01f);
+    //        StartCoroutine("StabalizeAirPitch");
+    //    }
+    //    else if(increasePitch && !decreasePitch)
+    //    {
+    //        yield return new WaitForSeconds(0.01f);
+    //        StartCoroutine("IncreaseAirPitch");
+    //    }
+    //    else if(!increasePitch && decreasePitch)
+    //    {
+    //        yield return new WaitForSeconds(0.01f);
+    //        StartCoroutine("DecreaseAirPitch");
+    //    }
+    //}
+
+    //private IEnumerator DecreaseAirPitch()
+    //{
+    //    if (decreasePitch)
+    //    {
+    //        if (LongSoundEffectSource.pitch < windPitchMin)
+    //        {
+    //            LongSoundEffectSource.pitch = windPitchMin;
+    //        }
+    //        else
+    //        {
+    //            LongSoundEffectSource.pitch -= windPitchIncrementUp;
+
+    //        }
+
+    //        yield return new WaitForSeconds(0.1f);
+    //        StartCoroutine("DecreaseAirPitch");
+    //    }
+    //    else if (!decreasePitch && increasePitch)
+    //    {
+    //        yield return new WaitForSeconds(0.1f);
+    //        StartCoroutine("IncreaseAirPitch");
+    //    }
+    //    else if ((decreasePitch && increasePitch) || (!decreasePitch && !increasePitch))
+    //    {
+    //        yield return new WaitForSeconds(0.1f);
+    //        StartCoroutine("StabalizeAirPitch");
+    //    }
+    //    else
+    //    {
+    //        yield return new WaitForSeconds(0.01f);
+    //        StartCoroutine("DecreaseAirPitch");
+    //    }
+    //}
+
     /// <summary>
     /// Applies a force at the plane's center of mass on frames where currentForceappliedTimer is less than 1.
     /// As a result, the plane will slowly tilt towards the ground. 
@@ -325,7 +497,10 @@ public class TestFlight : MonoBehaviour
     {
         if (collision.gameObject.tag == "ground")
         {
-            LongSoundEffectSource.Stop();
+            increaseWindPitchRate = hitGroundWindPitchRate;
+            inSlideMode = true;
+            //decreasePitch = false;
+            //increasePitch = false;
             anim.SetBool("Sliding", true);
         }
 
@@ -351,6 +526,9 @@ public class TestFlight : MonoBehaviour
         if (collision.gameObject.tag == "ground" && Rigidbody.velocity.z < 0.1f)
         {
             hitGround = true;
+            inSlideMode = false;
+            increaseWindPitchRate = startWindPitchRate;
+            LongSoundEffectSource.Stop();
             anim.SetBool("Sliding", false);
             playOnce = false;
             SetUpNewThrow(collision);
