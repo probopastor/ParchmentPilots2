@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour
 {
+    public AudioSource MusicSource;
+    public AudioClip gameMusic; 
+
     public GameObject pausePanel;
     public GameObject howToPlayPanel;
 
@@ -18,6 +21,9 @@ public class PauseManager : MonoBehaviour
     void Start()
     {
         thisFlight = FindObjectOfType<TestFlight>();
+
+        MusicSource.clip = gameMusic;
+        MusicSource.Play();
 
         isPaused = false;
         pausePanel.SetActive(false);
