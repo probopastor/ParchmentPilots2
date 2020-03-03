@@ -172,7 +172,7 @@ public class TestFlight : MonoBehaviour
         isThrown = false;
         camStartPos = planeCam.transform.localPosition;
         strokeText.text = "Stroke: " + stroke;
-        //parText.text = "Par: " + par;
+        parText.text = "Par: " + par;
         holeText.text = "Hole: " + hole;
         chargeBarController.enabled = false;
         forceAppliedThisFrame = false;
