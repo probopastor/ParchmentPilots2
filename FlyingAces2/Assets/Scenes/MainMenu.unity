@@ -730,7 +730,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: (Old) Gamescene
+          m_StringArgument: Level 1-1
           m_BoolArgument: 0
         m_CallState: 1
 --- !u!114 &246099891
@@ -2736,14 +2736,14 @@ RectTransform:
   m_GameObject: {fileID: 1920810524}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 190}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 942025452}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -44.23, y: -8.2}
+  m_AnchoredPosition: {x: -44.23, y: 22.4}
   m_SizeDelta: {x: 150, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1920810526
@@ -2783,7 +2783,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 24e57080ae95e4d4f868fba6b3edb7ca, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bdd1a65f5a4091f48857dfc68a2677c9, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
