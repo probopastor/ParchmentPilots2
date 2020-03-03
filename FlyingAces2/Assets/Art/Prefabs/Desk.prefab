@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5649895344918267562}
   - component: {fileID: 4862131708583408404}
   - component: {fileID: 2627751637134497838}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 1833610622984432609}
   - component: {fileID: 8153582722506570899}
   - component: {fileID: 3855675756640204136}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 7821384819793137906}
   - component: {fileID: 7226032984283521553}
   - component: {fileID: 6047311369597146630}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ GameObject:
   - component: {fileID: 5626594356304497641}
   - component: {fileID: 3847790467738236259}
   - component: {fileID: 6291700409361727307}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -381,7 +381,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8678033784451704458}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Desk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -421,7 +421,7 @@ GameObject:
   - component: {fileID: 574503122430907735}
   - component: {fileID: 5632746461672031061}
   - component: {fileID: 8141844916607010979}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -514,7 +514,7 @@ GameObject:
   - component: {fileID: 8215877439372157743}
   - component: {fileID: 7182325529952743916}
   - component: {fileID: 3922566398880998544}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube.002
   m_TagString: ground
   m_Icon: {fileID: 0}
@@ -607,7 +607,7 @@ GameObject:
   - component: {fileID: 1333547882588451946}
   - component: {fileID: 3736378535889740190}
   - component: {fileID: 4413774656372255922}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
