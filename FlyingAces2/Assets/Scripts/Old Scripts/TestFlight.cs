@@ -172,7 +172,7 @@ public class TestFlight : MonoBehaviour
         isThrown = false;
         camStartPos = planeCam.transform.localPosition;
         strokeText.text = "Stroke: " + stroke;
-        parText.text = "Par: " + par;
+        //parText.text = "Par: " + par;
         holeText.text = "Hole: " + hole;
         chargeBarController.enabled = false;
         forceAppliedThisFrame = false;
@@ -525,11 +525,9 @@ public class TestFlight : MonoBehaviour
         if (collision.gameObject.tag == "Finish")
         {
             finished = true;
-<<<<<<< HEAD
             LongSoundEffectSource.Stop();
             StartCoroutine("WinHandler");
-            
-=======
+
             scoreText.enabled = true;
             if (stroke == par)
             {
@@ -569,7 +567,6 @@ public class TestFlight : MonoBehaviour
             }
             //hole++;
             SceneManager.LoadScene(nextSceneName);
->>>>>>> Level-1-1
         }
     }
 
