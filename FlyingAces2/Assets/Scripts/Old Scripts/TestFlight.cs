@@ -137,7 +137,6 @@ public class TestFlight : MonoBehaviour
     private Vector3 strokePosition = new Vector3(0f, 0f, 0f);
     private Vector3 newTee = new Vector3();
     private Vector3 camStartPos;
-    #endregion
 
     public float increaseWindPitchRate = 10.0f;
     public float startWindPitchRate = 20f;
@@ -147,7 +146,10 @@ public class TestFlight : MonoBehaviour
 
     public float windEmmissionRate = 10f;
 
+    [Tooltip("The left wing's air particles.")]
     public ParticleSystem leftSystem;
+
+    [Tooltip("The right wing's air particles.")]
     public ParticleSystem rightSystem;
 
     private ParticleSystem.MainModule leftMain;
@@ -155,6 +157,38 @@ public class TestFlight : MonoBehaviour
 
     ParticleSystem.EmissionModule emissionModuleLeft;
     ParticleSystem.EmissionModule emissionModuleRight;
+
+    [Tooltip("The rate at which the wing particle's color and albedo change with velocity")]
+    public float increaseParticleColorSwitchRate = 10.0f;
+
+    [Tooltip("Default wing aircurrent particle color")]
+    public Color particleColor;
+
+    [Tooltip("Wing aircurrent particle color at the min velocity")]
+    public Color particleColorMinSpeed;
+
+    [Tooltip("Wing aircurrent particle color at the max velocity")]
+    public Color particleColorMaxSpeed;
+
+    [Tooltip("The rate at which the wing particle's lifespan change with velocity")]
+    public float increaseParticleLifeTimeRate = 10.0f;
+
+    [Tooltip("Wing aircurrent particle lifetime at the min velocity")]
+    public float minLifetime = 0.1f;
+
+    [Tooltip("Wing aircurrent particle lifetime at the max velocity")]
+    public float maxLifetime = 0.5f;
+
+    [Tooltip("The rate at which the wing particle's size change with velocity")]
+    public float increaseParticleSizeRate = 10.0f;
+
+    [Tooltip("Wing aircurrent particle size at the min velocity")]
+    public float minSize = 0f;
+
+    [Tooltip("Wing aircurrent particle size at the max velocity")]
+    public float maxSize = 1f;
+
+    #endregion
 
     // Start is called before the first frame update
     void Start()
@@ -290,7 +324,7 @@ public class TestFlight : MonoBehaviour
 
             LongSoundEffectSource.pitch = Mathf.Clamp(velSound, windPitchMin, windPitchMax);
 
-            Debug.Log("test");
+            WindParticleHandler();
         }
         else if(pauseManager.isPaused)
         {
@@ -324,6 +358,27 @@ public class TestFlight : MonoBehaviour
     {
 
         //planeObjects[i]
+    }
+
+    private void WindParticleHandler()
+    {
+        var particleColorChange = Rigidbody.velocity.magnitude / increaseParticleColorSwitchRate;
+        leftMain.startColor = new Color((Mathf.Clamp(particleColorChange, particleColorMinSpeed.r, particleColorMaxSpeed.r)), 
+            (Mathf.Clamp(particleColorChange, particleColorMinSpeed.g, particleColorMaxSpeed.g)), 
+            (Mathf.Clamp(particleColorChange, particleColorMinSpeed.b, particleColorMaxSpeed.b)), 
+            (Mathf.Clamp(particleColorChange, particleColorMinSpeed.a, particleColorMaxSpeed.a)));
+        rightMain.startColor = new Color((Mathf.Clamp(particleColorChange, particleColorMinSpeed.r, particleColorMaxSpeed.r)), 
+            (Mathf.Clamp(particleColorChange, particleColorMinSpeed.g, particleColorMaxSpeed.g)), 
+            (Mathf.Clamp(particleColorChange, particleColorMinSpeed.b, particleColorMaxSpeed.b)), 
+            (Mathf.Clamp(particleColorChange, particleColorMinSpeed.a, particleColorMaxSpeed.a)));
+
+        var particleLifetimeChange = Rigidbody.velocity.magnitude / increaseParticleLifeTimeRate;
+        leftMain.startLifetime = Mathf.Clamp(particleLifetimeChange, minLifetime, maxLifetime);
+        rightMain.startLifetime = Mathf.Clamp(particleLifetimeChange, minLifetime, maxLifetime);
+
+        var particleSizeChange = Rigidbody.velocity.magnitude / increaseParticleSizeRate;
+        leftMain.startSize = Mathf.Clamp(particleSizeChange, minSize, maxSize);
+        rightMain.startSize = Mathf.Clamp(particleSizeChange, minSize, maxSize);
     }
 
     /// <summary>
