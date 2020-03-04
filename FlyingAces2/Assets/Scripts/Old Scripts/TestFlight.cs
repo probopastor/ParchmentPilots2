@@ -620,40 +620,40 @@ public class TestFlight : MonoBehaviour
             {
                 scoreText.text = "You got a par!";
             }
-            if (stroke == par--)
+            else if (stroke == par--)
             {
                 scoreText.text = "You got a birdie! Nice!";
             }
-            if (stroke == par - 2)
+            else if (stroke == par - 2)
             {
                 scoreText.text = "You got an eagle! Good job!";
             }
-            if (stroke == 1)
+            else if (stroke == 1)
             {
                 scoreText.text = "Hole in one! Smooth flying!";
             }
-            if (stroke == par - 3)
+            else if (stroke == par - 3)
             {
                 scoreText.text = "You got an albatross! Amazing!";
             }
-            if(stroke == par++)
+            else if(stroke == par++)
             {
                 scoreText.text = "You got a bogey. So close...";
             }
-            if (stroke == par + 2)
+            else if (stroke == par + 2)
             {
                 scoreText.text = "Double bogey. Better luck next time.";
             }
-            if (stroke == par + 3)
+            else if (stroke == par + 3)
             {
                 scoreText.text = "Triple bogey. Next hole will be better.";
             }
-            if (stroke > par + 4)
+            else if (stroke > par + 4)
             {
                 scoreText.text = "Let's not talk about that hole...";
             }
             //hole++;
-            SceneManager.LoadScene(nextSceneName);
+            //SceneManager.LoadScene(nextSceneName);
         }
     }
 
@@ -661,7 +661,7 @@ public class TestFlight : MonoBehaviour
     {
         SoundEffectSource.clip = confettiSound;
         SoundEffectSource.Play();
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(2f);
         SceneManager.LoadScene(nextSceneName);
     }
 
