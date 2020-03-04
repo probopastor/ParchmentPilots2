@@ -289,6 +289,8 @@ public class TestFlight : MonoBehaviour
             var velSound = Rigidbody.velocity.magnitude / increaseWindPitchRate;
 
             LongSoundEffectSource.pitch = Mathf.Clamp(velSound, windPitchMin, windPitchMax);
+
+            Debug.Log("test");
         }
         else if(pauseManager.isPaused)
         {
