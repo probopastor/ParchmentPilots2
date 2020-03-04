@@ -15,12 +15,19 @@ public class ThrowingChargeBarController : MonoBehaviour
     private void OnEnable()
     {
         sliderValue = 0;
-        StartCoroutine("UpdateSlider");
+        //StartCoroutine("UpdateSlider");
     }
 
     private void OnDisable()
     {
-        StopAllCoroutines();
+        //StopAllCoroutines();
+    }
+
+    private void FixedUpdate()
+    {
+        sliderValue += sliderIncrementValue;
+        chargeBar.value = Mathf.PingPong(sliderValue * 3, 100);
+        //StartCoroutine("UpdateSlider");
     }
 
     private IEnumerator UpdateSlider()
