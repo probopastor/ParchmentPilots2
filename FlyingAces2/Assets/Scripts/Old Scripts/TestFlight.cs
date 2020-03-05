@@ -101,6 +101,8 @@ public class TestFlight : MonoBehaviour
 
     private bool inSlideMode;
 
+    private SelectPlane selectPlaneTransform;
+
     //bool decreasePitch;
     //bool increasePitch;
     //public float windPitchMax = 1f;
@@ -194,6 +196,8 @@ public class TestFlight : MonoBehaviour
         //increasePitch = false;
 
         //LongSoundEffectSource.pitch = defaultWindPitch;
+        selectPlaneTransform = GameObject.FindObjectOfType<SelectPlane>();
+
         pauseManager = GameObject.FindObjectOfType<PauseManager>();
 
         Rigidbody = gameObject.GetComponent<Rigidbody>();
@@ -702,6 +706,8 @@ public class TestFlight : MonoBehaviour
             hitGround = false;
 
             Rigidbody.isKinematic = true;
+
+            selectPlaneTransform.currentPlaneTransform = gameObject.transform;
         }
     }
 

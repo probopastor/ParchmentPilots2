@@ -5,19 +5,13 @@ using Cinemachine;
 
 public class SelectPlane : MonoBehaviour
 {
-    //CinemachineVirtualCameraBase
-
-    //public CinemachineVirtualCamera freeLook;
-
-    //public CinemachineStateDrivenCamera CinemachineStateDrivenCamera;
-    //private CinemachineVirtualCameraBase[] vcb;
-
     public CinemachineFreeLook freeLook;
     public CinemachineVirtualCamera flightCam;
     public CinemachineVirtualCamera landCam;
 
-
     public GameObject[] planes;
+
+    public Transform currentPlaneTransform;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +33,10 @@ public class SelectPlane : MonoBehaviour
             if (i == planeIndex)
             {
                 planes[i].SetActive(true);
+
+                planes[i].transform.position = currentPlaneTransform.position;
+                planes[i].transform.rotation = currentPlaneTransform.rotation;
+
                 freeLook.Follow = planes[i].transform.GetChild(0).transform;
                 freeLook.LookAt = planes[i].transform.GetChild(0).transform;
 
@@ -57,18 +55,4 @@ public class SelectPlane : MonoBehaviour
             }
         }
     }
-
-    //public void SelectStandardPlane()
-    //{
-    //    EnablePlanes(0);
-    //}
-
-    //public void SelectSlowPlane()
-    //{
-    //    EnablePlanes(1);
-    //}
-    //public void SelectFastPlane()
-    //{
-    //    EnablePlanes(2);
-    //}
 }
