@@ -230,6 +230,7 @@ MonoBehaviour:
   stroke: 1
   par: 3
   hole: 1
+  windZoneForce: 250
   strokeText: {fileID: 0}
   parText: {fileID: 0}
   holeText: {fileID: 0}

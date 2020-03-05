@@ -28,6 +28,9 @@ public class TestFlight : MonoBehaviour
     [Tooltip("The hole the player is currently on")]
     public int hole = 0;
 
+    [Tooltip("The force that the wind zones put on the plane")]
+    public float windZoneForce;
+
     [Tooltip("The text object that displays the stroke the player is on")]
     public TextMeshProUGUI strokeText;
 
@@ -656,6 +659,14 @@ public class TestFlight : MonoBehaviour
             }
             //hole++;
             //SceneManager.LoadScene(nextSceneName);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "WindArea")
+        {
+            Rigidbody.AddForce(0, 0, windZoneForce);
         }
     }
 
