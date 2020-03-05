@@ -259,6 +259,8 @@ public class TestFlight : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.Tab))
             {
                 planeSelectPanel.SetActive(true);
+                Cursor.visible = true;
+
                 planeSelect = true;
                 aiming = false;
             }
@@ -268,6 +270,7 @@ public class TestFlight : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.Tab))
             {
                 planeSelectPanel.SetActive(false);
+                Cursor.visible = false;
                 aiming = true;
                 planeSelect = false;
             }

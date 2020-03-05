@@ -129,6 +129,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1899402535}
+  - {fileID: 5538728568547133716}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -222,12 +223,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planeCam: {fileID: 0}
-  player: {fileID: 9032144721940762487}
+  planeSelectPanel: {fileID: 0}
+  startThrowHeight: 200
+  throwHeight: 15
   stroke: 1
+  par: 0
+  hole: 0
   strokeText: {fileID: 0}
+  parText: {fileID: 0}
+  holeText: {fileID: 0}
+  scoreText: {fileID: 0}
   affectedRayCastLayer:
     serializedVersion: 2
     m_Bits: 256
+  skyLayer:
+    serializedVersion: 2
+    m_Bits: 0
   currentScene:
     m_Handle: 0
   nextSceneName: New Game Scene
@@ -238,11 +249,34 @@ MonoBehaviour:
   tiltResponsivity: 30
   rollResponsivity: -30
   yawResponsivity: 60
-  startRot: {x: 0, y: 0, z: 0, w: 0}
+  xAimResponsitivity: 40
+  yAimResponsitivity: 40
   centerOfMassReference: {fileID: 1899402531}
   forceAtPos: {x: 0, y: -0.01, z: 0}
   forceAppliedTimer: 6
+  SoundEffectSource: {fileID: 0}
+  LongSoundEffectSource: {fileID: 0}
+  confettiSound: {fileID: 0}
+  windSound: {fileID: 0}
+  windPitchMax: 4
+  windPitchMin: 0.1
   throwing: 0
+  increaseWindPitchRate: 10
+  startWindPitchRate: 20
+  hitGroundWindPitchRate: 100
+  windEmmissionRate: 10
+  leftSystem: {fileID: 0}
+  rightSystem: {fileID: 0}
+  increaseParticleColorSwitchRate: 10
+  particleColor: {r: 0, g: 0, b: 0, a: 0}
+  particleColorMinSpeed: {r: 0, g: 0, b: 0, a: 0}
+  particleColorMaxSpeed: {r: 0, g: 0, b: 0, a: 0}
+  increaseParticleLifeTimeRate: 10
+  minLifetime: 0.1
+  maxLifetime: 0.5
+  increaseParticleSizeRate: 10
+  minSize: 0
+  maxSize: 1
 --- !u!114 &943478503977392595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,7 +289,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6af95cef0ac1df44a20d941e5ed1b1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 100
 --- !u!95 &915417653
 Animator:
   serializedVersion: 3
@@ -289,3 +322,78 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chargeBar: {fileID: 0}
   sliderIncrementValue: 0.1
+--- !u!1001 &5607522506863128700
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 9032144721940762483}
+    m_Modifications:
+    - target: {fileID: 75549965897365864, guid: 4e3a030968459524295addbd4e629f23,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.971272
+      objectReference: {fileID: 0}
+    - target: {fileID: 75549965897365864, guid: 4e3a030968459524295addbd4e629f23,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6.757004
+      objectReference: {fileID: 0}
+    - target: {fileID: 75549965897365864, guid: 4e3a030968459524295addbd4e629f23,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 13.326082
+      objectReference: {fileID: 0}
+    - target: {fileID: 75549965897365864, guid: 4e3a030968459524295addbd4e629f23,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 75549965897365864, guid: 4e3a030968459524295addbd4e629f23,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 75549965897365864, guid: 4e3a030968459524295addbd4e629f23,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 75549965897365864, guid: 4e3a030968459524295addbd4e629f23,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 75549965897365864, guid: 4e3a030968459524295addbd4e629f23,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 75549965897365864, guid: 4e3a030968459524295addbd4e629f23,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 75549965897365864, guid: 4e3a030968459524295addbd4e629f23,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 75549965897365864, guid: 4e3a030968459524295addbd4e629f23,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967596774651115076, guid: 4e3a030968459524295addbd4e629f23,
+        type: 3}
+      propertyPath: m_Name
+      value: PlaneTrails
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4e3a030968459524295addbd4e629f23, type: 3}
+--- !u!4 &5538728568547133716 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 75549965897365864, guid: 4e3a030968459524295addbd4e629f23,
+    type: 3}
+  m_PrefabInstance: {fileID: 5607522506863128700}
+  m_PrefabAsset: {fileID: 0}
