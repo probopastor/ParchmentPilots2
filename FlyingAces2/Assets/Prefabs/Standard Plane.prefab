@@ -132,11 +132,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   planeCam: {fileID: 0}
   planeSelectPanel: {fileID: 0}
-  startThrowHeight: 200
-  throwHeight: 15
+  startThrowHeight: 88
+  throwHeight: 88
   stroke: 1
-  par: 0
-  hole: 0
+  par: 3
+  hole: 1
   strokeText: {fileID: 0}
   parText: {fileID: 0}
   holeText: {fileID: 0}
@@ -149,9 +149,9 @@ MonoBehaviour:
     m_Bits: 0
   currentScene:
     m_Handle: 0
-  nextSceneName: New Game Scene
+  nextSceneName: level 1-2
   thrustForce: 20
-  gravity: -0.1
+  gravity: -0.05
   thrownCamPos: {x: 0, y: 0, z: 0}
   angleAcceleration: 5
   tiltResponsivity: 40
@@ -160,7 +160,7 @@ MonoBehaviour:
   xAimResponsitivity: 40
   yAimResponsitivity: 40
   centerOfMassReference: {fileID: 7016437116365211860}
-  forceAtPos: {x: 0, y: -0.01, z: 0}
+  forceAtPos: {x: 0, y: -0.06, z: 0}
   forceAppliedTimer: 6
   SoundEffectSource: {fileID: 0}
   LongSoundEffectSource: {fileID: 0}
@@ -173,16 +173,16 @@ MonoBehaviour:
   startWindPitchRate: 20
   hitGroundWindPitchRate: 100
   windEmmissionRate: 10
-  leftSystem: {fileID: 0}
-  rightSystem: {fileID: 0}
-  increaseParticleColorSwitchRate: 10
-  particleColor: {r: 0, g: 0, b: 0, a: 0}
-  particleColorMinSpeed: {r: 0, g: 0, b: 0, a: 0}
-  particleColorMaxSpeed: {r: 0, g: 0, b: 0, a: 0}
-  increaseParticleLifeTimeRate: 10
-  minLifetime: 0.1
-  maxLifetime: 0.5
-  increaseParticleSizeRate: 10
+  leftSystem: {fileID: 3968366868629459447}
+  rightSystem: {fileID: 233245847252603389}
+  increaseParticleColorSwitchRate: 1
+  particleColor: {r: 0.7216981, g: 0.97168416, b: 1, a: 0.078431375}
+  particleColorMinSpeed: {r: 0.7254902, g: 0.972549, b: 1, a: 0.003921569}
+  particleColorMaxSpeed: {r: 0.7254902, g: 0.972549, b: 1, a: 0.29411766}
+  increaseParticleLifeTimeRate: 1
+  minLifetime: 0
+  maxLifetime: 0.3
+  increaseParticleSizeRate: 1
   minSize: 0
   maxSize: 1
 --- !u!114 &7802641191717831716
@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chargeBar: {fileID: 0}
-  sliderIncrementValue: 0.1
+  sliderIncrementValue: 0.4
 --- !u!1 &7016437116365211860
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,6 +395,18 @@ PrefabInstance:
 --- !u!4 &5890668217449239613 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 75549965897365864, guid: 4e3a030968459524295addbd4e629f23,
+    type: 3}
+  m_PrefabInstance: {fileID: 5815189196895432021}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &3968366868629459447 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7467473304319868066, guid: 4e3a030968459524295addbd4e629f23,
+    type: 3}
+  m_PrefabInstance: {fileID: 5815189196895432021}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &233245847252603389 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6021053350470466728, guid: 4e3a030968459524295addbd4e629f23,
     type: 3}
   m_PrefabInstance: {fileID: 5815189196895432021}
   m_PrefabAsset: {fileID: 0}
