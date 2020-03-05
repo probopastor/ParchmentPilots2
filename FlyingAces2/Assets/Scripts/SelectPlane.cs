@@ -1,15 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class SelectPlane : MonoBehaviour
 {
+    //CinemachineVirtualCameraBase
+
+    //public CinemachineVirtualCamera freeLook;
+
+    //public CinemachineStateDrivenCamera CinemachineStateDrivenCamera;
+    //private CinemachineVirtualCameraBase[] vcb;
+
+    public CinemachineFreeLook freeLook;
+    public CinemachineVirtualCamera flightCam;
+    public CinemachineVirtualCamera landCam;
+
+
     public GameObject[] planes;
 
     // Start is called before the first frame update
     void Start()
     {
         EnablePlanes(0);
+        //vcb = CinemachineStateDrivenCamera.ChildCameras;
     }
 
     // Update is called once per frame
@@ -25,6 +39,15 @@ public class SelectPlane : MonoBehaviour
             if (i == planeIndex)
             {
                 planes[i].SetActive(true);
+                freeLook.Follow = planes[i].transform.GetChild(0).transform;
+                freeLook.LookAt = planes[i].transform.GetChild(0).transform;
+
+                flightCam.Follow = planes[i].transform;
+                flightCam.LookAt = planes[i].transform;
+
+                landCam.Follow = planes[i].transform;
+                landCam.LookAt = planes[i].transform;
+
                 Debug.Log("Enabled plane: " + planes[i]);
             }
             else
