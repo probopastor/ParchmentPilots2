@@ -182,7 +182,7 @@ MonoBehaviour:
   particleColorMaxSpeed: {r: 0.7254902, g: 0.972549, b: 1, a: 0.29411766}
   increaseParticleLifeTimeRate: 1
   minLifetime: 0
-  maxLifetime: 0.3
+  maxLifetime: 0
   increaseParticleSizeRate: 1
   minSize: 0
   maxSize: 1
