@@ -10,9 +10,6 @@ public class TestFlight : MonoBehaviour
     [Tooltip("The camera object in the scene")]
     public Camera planeCam;
 
-    [Tooltip("The possible planes the player may choose")]
-    public GameObject[] planeObjects;
-
     [Tooltip("The UI panel for choosing planes")]
     public GameObject planeSelectPanel;
 
@@ -205,7 +202,6 @@ public class TestFlight : MonoBehaviour
 
         playOnce = false;
         inSlideMode = false;
-        //thisPlane = planeObjects[0];
 
         planeSelect = false;
         planeSelectPanel.SetActive(false);
@@ -354,12 +350,9 @@ public class TestFlight : MonoBehaviour
         MovePlane();    
     }
 
-    public void SelectPlane()
-    {
-
-        //planeObjects[i]
-    }
-
+    /// <summary>
+    /// Alters wind particle appearance in color, size, and lifetime based on plane velocity.
+    /// </summary>
     private void WindParticleHandler()
     {
         var particleColorChange = Rigidbody.velocity.magnitude / increaseParticleColorSwitchRate;
