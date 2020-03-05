@@ -612,15 +612,17 @@ public class TestFlight : MonoBehaviour
         if (collision.gameObject.tag == "Finish")
         {
             finished = true;
+            stroke--;
+            strokeText.text = "Stroke: " + stroke;
             LongSoundEffectSource.Stop();
             StartCoroutine("WinHandler");
 
             scoreText.enabled = true;
-            if (stroke == par)
+            if (stroke == 1)
             {
-                scoreText.text = "You got a par!";
+                scoreText.text = "Hole in one! Smooth flying!";
             }
-            else if (stroke == par--)
+            else if (stroke == par - 1)
             {
                 scoreText.text = "You got a birdie! Nice!";
             }
@@ -628,15 +630,15 @@ public class TestFlight : MonoBehaviour
             {
                 scoreText.text = "You got an eagle! Good job!";
             }
-            else if (stroke == 1)
+            else if (stroke == par)
             {
-                scoreText.text = "Hole in one! Smooth flying!";
+                scoreText.text = "You got a par!";
             }
             else if (stroke == par - 3)
             {
                 scoreText.text = "You got an albatross! Amazing!";
             }
-            else if(stroke == par++)
+            else if(stroke == par + 1)
             {
                 scoreText.text = "You got a bogey. So close...";
             }
