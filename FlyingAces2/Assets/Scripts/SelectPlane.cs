@@ -17,13 +17,6 @@ public class SelectPlane : MonoBehaviour
     void Start()
     {
         EnablePlanes(0);
-        //vcb = CinemachineStateDrivenCamera.ChildCameras;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void EnablePlanes(int planeIndex)
@@ -45,13 +38,10 @@ public class SelectPlane : MonoBehaviour
 
                 landCam.Follow = planes[i].transform;
                 landCam.LookAt = planes[i].transform;
-
-                Debug.Log("Enabled plane: " + planes[i]);
             }
             else
             {
                 planes[i].SetActive(false);
-                Debug.Log("Disabled plane: " + planes[i]);
             }
         }
     }
