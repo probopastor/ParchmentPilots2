@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
-using TMPro;
 
-public class MainMenuController : MonoBehaviour
+public class HowToPlayController : MonoBehaviour
 {
     EventSystem eventSystem;
+    public GameObject previousButton;
+    public GameObject nextButton;
 
     // Start is called before the first frame update
     void Start()
@@ -15,40 +17,21 @@ public class MainMenuController : MonoBehaviour
         eventSystem = EventSystem.current;
     }
 
-    public void StartLevel(string level)
+    public void GoBackToMainMenu(string scene)
     {
-        SceneManager.LoadScene(level);
+        SceneManager.LoadScene(scene);
     }
 
-    public void OpenLevelSelect()
+    public void OpenNextPage(string scene)
     {
-
+        SceneManager.LoadScene(scene);
     }
 
-    public void OpenCredits()
+    public void OpenPreviousPage(string scene)
     {
-
+        SceneManager.LoadScene(scene);
     }
 
-    public void OpenOptions()
-    {
-
-    }
-
-    public void OpenHowToPlay(string level)
-    {
-        SceneManager.LoadScene(level);
-    }
-
-    public void QuitGame()
-    {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-      Application.Quit();
-#endif
-    }
-   
     public void UderlineText(TextMeshProUGUI tmp)
     {
         tmp.fontStyle = FontStyles.Underline;
