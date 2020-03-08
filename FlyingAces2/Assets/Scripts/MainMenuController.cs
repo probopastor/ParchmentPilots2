@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MainMenuController : MonoBehaviour
 {
@@ -75,5 +76,15 @@ public class MainMenuController : MonoBehaviour
 #else
       Application.Quit();
 #endif
+    }
+   
+    public void UderlineText(TextMeshProUGUI tmp)
+    {
+        tmp.fontStyle = FontStyles.Underline;
+    }
+
+    public void UnunderlineText(TextMeshProUGUI tmp)
+    {
+        tmp.fontStyle = FontStyles.Normal;
     }
 }
