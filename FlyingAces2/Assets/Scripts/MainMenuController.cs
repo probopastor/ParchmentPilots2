@@ -30,43 +30,27 @@ public class MainMenuController : MonoBehaviour
 
     public void OpenMainMenu()
     {
-        foreach(GameObject button in mainMenu)
-        {
-            button.SetActive(true);
-        }
-        //eventSystem.currentSelectedGameObject();
+
     }
 
     public void OpenLevelSelect()
     {
-        foreach (GameObject button in mainMenu)
-        {
-            button.SetActive(false);
-        }
+
     }
 
     public void OpenCredits()
     {
-        foreach (GameObject button in mainMenu)
-        {
-            button.SetActive(false);
-        }
+
     }
 
     public void OpenOptions()
     {
-        foreach (GameObject button in mainMenu)
-        {
-            button.SetActive(false);
-        }
+
     }
 
     public void OpenHowToPlay()
     {
-        foreach (GameObject button in mainMenu)
-        {
-            button.SetActive(false);
-        }
+
     }
 
     public void QuitGame()
