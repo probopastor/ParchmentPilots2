@@ -612,7 +612,7 @@ public class TestFlight : MonoBehaviour
             anim.SetBool("Sliding", true);
         }
 
-        if (collision.gameObject.tag == "Finish")
+        if (collision.gameObject.tag == "Finish" && !finished)
         {
             finished = true;
             stroke--;
