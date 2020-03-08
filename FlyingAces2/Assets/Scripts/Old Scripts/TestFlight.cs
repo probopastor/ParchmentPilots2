@@ -614,7 +614,7 @@ public class TestFlight : MonoBehaviour
 
         if (collision.gameObject.tag == "Finish" && !finished)
         {
-            finished = true;
+            
             stroke--;
             strokeText.text = "Stroke: " + stroke;
             LongSoundEffectSource.Stop();
@@ -659,6 +659,7 @@ public class TestFlight : MonoBehaviour
             }
             //hole++;
             //SceneManager.LoadScene(nextSceneName);
+            finished = true;
         }
     }
 
@@ -672,10 +673,13 @@ public class TestFlight : MonoBehaviour
 
     private IEnumerator WinHandler()
     {
-        SoundEffectSource.clip = confettiSound;
-        SoundEffectSource.Play();
-        yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene(nextSceneName);
+        if (!finished)
+        {
+            SoundEffectSource.clip = confettiSound;
+            SoundEffectSource.Play();
+            yield return new WaitForSeconds(2f);
+            SceneManager.LoadScene(nextSceneName);
+        }
     }
 
     private void OnCollisionStay(Collision collision)
