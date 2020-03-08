@@ -401,22 +401,22 @@ public class TestFlight : MonoBehaviour
 
             Vector3 changes = new Vector3();
 
-            if ((transform.forward + Rigidbody.velocity.normalized).magnitude < 1.4f)
+            if ((transform.worldToLocalMatrix.MultiplyVector(transform.forward) + Rigidbody.velocity.normalized).magnitude < 1.4f)
             {
                 tilt += 0.3f;
             }
 
             if (tilt != 0)
             {
-                changes += transform.right * tilt * Time.deltaTime * tiltResponsivity;
+                changes += transform.worldToLocalMatrix.MultiplyVector(transform.right) * tilt * Time.deltaTime * tiltResponsivity;
             }
             if (roll != 0)
             {
-                changes += transform.forward * roll * Time.deltaTime * rollResponsivity;
+                changes += transform.worldToLocalMatrix.MultiplyVector(transform.forward) * roll * Time.deltaTime * rollResponsivity;
             }
             if (yaw != 0)
             {
-                changes += transform.up * yaw * Time.deltaTime * yawResponsivity;
+                changes += transform.worldToLocalMatrix.MultiplyVector(transform.up) * yaw * Time.deltaTime * yawResponsivity;
             }
 
             Quaternion newRotation = Quaternion.Euler(Rigidbody.rotation.eulerAngles + changes);
@@ -428,7 +428,7 @@ public class TestFlight : MonoBehaviour
 #pragma warning restore CS0618 // Type or member is obsolete
             fall = vertVel.magnitude;
             Rigidbody.velocity -= vertVel * Time.deltaTime;
-            Rigidbody.velocity += vertVel.magnitude * transform.forward * Time.deltaTime / 10;
+            Rigidbody.velocity += vertVel.magnitude * transform.worldToLocalMatrix.MultiplyVector(transform.forward) * Time.deltaTime / 10;
 
             var forwardVel = Rigidbody.velocity;
             forwardVel.y = 0;
