@@ -391,13 +391,11 @@ public class TestFlight : MonoBehaviour
             chargeBarController.enabled = false;
             chargeBarController.chargeBar.gameObject.SetActive(false);
         }
-
-        AimLogic();
-
     }
 
     private void FixedUpdate()
     {
+        AimLogic();
         MovePlane();    
     }
 
