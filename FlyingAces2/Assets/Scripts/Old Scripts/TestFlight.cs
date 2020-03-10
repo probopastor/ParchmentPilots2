@@ -247,6 +247,12 @@ public class TestFlight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!isThrown)
+        {
+            leftSystem.Stop();
+            rightSystem.Stop();
+        }
+
         if (Input.GetKeyUp(KeyCode.Return) && !isThrown)
         {
             if (!aiming && throwing && !planeSelect)
@@ -297,6 +303,9 @@ public class TestFlight : MonoBehaviour
                 LongSoundEffectSource.clip = windSound;
                 LongSoundEffectSource.Play();
                 //StartCoroutine("IncreaseAirPitch");
+                leftSystem.Play();
+                rightSystem.Play();
+
                 playOnce = true;
             }
 
@@ -679,6 +688,27 @@ public class TestFlight : MonoBehaviour
             //hole++;
             //SceneManager.LoadScene(nextSceneName);
             finished = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "ground")
+        {
+            SoundEffectSource.Stop();
+
+            increaseWindPitchRate = startWindPitchRate;
+            inSlideMode = false;
+
+            emissionModuleLeft.rateOverDistance = windEmmissionRate;
+            emissionModuleRight.rateOverDistance = windEmmissionRate;
+
+            leftSystem.Play();
+            rightSystem.Play();
+
+            //decreasePitch = false;
+            //increasePitch = false;
+            anim.SetBool("Sliding", false);
         }
     }
 
