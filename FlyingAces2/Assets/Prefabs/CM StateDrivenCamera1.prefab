@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 8980741505851151933}
   - component: {fileID: 8980741505851151875}
   m_Layer: 0
-  m_Name: CM vcam2
+  m_Name: CM Land Cam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -119,7 +119,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8980741505851151934}
-  m_LocalRotation: {x: 0.011011618, y: -5.595909e-19, z: 5.0814377e-17, w: 0.9999394}
+  m_LocalRotation: {x: 0.0014755719, y: 0.9970181, z: -0.07459092, w: 0.019725477}
   m_LocalPosition: {x: -6.242043, y: 85.44, z: -54.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -234,12 +234,10 @@ MonoBehaviour:
   m_AnimatedTarget: {fileID: 0}
   m_LayerIndex: 0
   m_ShowDebugText: 0
-  m_ChildCameras: []
+  m_ChildCameras:
+  - {fileID: 8980741506095247363}
+  - {fileID: 8980741505851151933}
   m_Instructions:
-  - m_FullHash: -1304015446
-    m_VirtualCamera: {fileID: 0}
-    m_ActivateAfter: 0
-    m_MinDuration: 0
   - m_FullHash: 391490455
     m_VirtualCamera: {fileID: 8980741506095247363}
     m_ActivateAfter: 0
@@ -259,8 +257,6 @@ MonoBehaviour:
       m_RotationOrder: 4
   m_CustomBlends: {fileID: 0}
   m_ParentHash:
-  - m_Hash: -1304015446
-    m_ParentHash: 756556552
   - m_Hash: 391490455
     m_ParentHash: 756556552
   - m_Hash: -887802299
@@ -275,8 +271,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8980741506095247362}
   - component: {fileID: 8980741506095247363}
+  - component: {fileID: 1113724683}
   m_Layer: 0
-  m_Name: CM vcam1
+  m_Name: CM Flight Cam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -289,8 +286,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8980741506095247420}
-  m_LocalRotation: {x: 0.14253853, y: -1.7582189e-15, z: 2.531993e-16, w: 0.98978925}
-  m_LocalPosition: {x: -6.242043, y: 86.13928, z: -44.547806}
+  m_LocalRotation: {x: 0.14253762, y: -5.2927955e-15, z: 3.1709305e-15, w: 0.9897894}
+  m_LocalPosition: {x: 23.277958, y: -25.860718, z: -803.9478}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8980741504705479173}
@@ -332,6 +329,36 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 8980741504705479173}
+--- !u!114 &1113724683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8980741506095247420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e501d18bb52cf8c40b1853ca4904654f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CollideAgainst:
+    serializedVersion: 2
+    m_Bits: 257
+  m_IgnoreTag: 
+  m_TransparentLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_MinimumDistanceFromTarget: 0.1
+  m_AvoidObstacles: 1
+  m_DistanceLimit: 0
+  m_MinimumOcclusionTime: 0
+  m_CameraRadius: 0.1
+  m_Strategy: 1
+  m_MaximumEffort: 4
+  m_SmoothingTime: 0
+  m_Damping: 0
+  m_DampingWhenOccluded: 0
+  m_OptimalTargetDistance: 0
 --- !u!1 &8980741506644406807
 GameObject:
   m_ObjectHideFlags: 0
