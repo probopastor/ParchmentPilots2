@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class PauseManager : MonoBehaviour
 {
@@ -21,11 +22,16 @@ public class PauseManager : MonoBehaviour
     public TestFlight thisFlight;
 
     public bool isPaused;
+
+    public GameObject resumeButton;
+
+    private EventSystem eventSystem;
     
     // Start is called before the first frame update
     void Start()
     {
         thisFlight = FindObjectOfType<TestFlight>();
+        eventSystem = EventSystem.current;
 
         MusicSource.clip = gameMusic;
         MusicSource.Play();
@@ -54,7 +60,8 @@ public class PauseManager : MonoBehaviour
             isPaused = true;
             pausePanel.SetActive(true);
             howToPlayPanel.SetActive(false);
-            Cursor.lockState = CursorLockMode.None;
+            eventSystem.SetSelectedGameObject(resumeButton);
+            //Cursor.lockState = CursorLockMode.None;
             Time.timeScale = 0;
         }
         else if (isPaused)
@@ -62,7 +69,7 @@ public class PauseManager : MonoBehaviour
             isPaused = false;
             pausePanel.SetActive(false);
             howToPlayPanel.SetActive(false);
-            Cursor.lockState = CursorLockMode.Confined;
+            //Cursor.lockState = CursorLockMode.Confined;
             Time.timeScale = 1;
         }
     }
