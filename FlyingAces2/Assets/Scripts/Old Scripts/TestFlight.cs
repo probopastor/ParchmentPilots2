@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class TestFlight : MonoBehaviour
 {
@@ -90,6 +91,9 @@ public class TestFlight : MonoBehaviour
 
     [Tooltip("The time between each force applied to the nose of the plane. A smaller value makes upward tilt more difficult")]
     public int forceAppliedTimer = 10;
+
+    public GameObject firstPlaneSelectButton;
+
     private int currentForceAppliedTimer = 0;
     private bool forceAppliedThisFrame;
 
@@ -156,6 +160,7 @@ public class TestFlight : MonoBehaviour
     public float hitGroundWindPitchRate = 100f;
 
     private PauseManager pauseManager;
+    private EventSystem eventSystem;
 
     public float windEmmissionRate = 10f;
 
@@ -215,6 +220,8 @@ public class TestFlight : MonoBehaviour
         pauseManager = GameObject.FindObjectOfType<PauseManager>();
 
         Rigidbody = gameObject.GetComponent<Rigidbody>();
+
+        eventSystem = EventSystem.current;
 
         increaseWindPitchRate = startWindPitchRate;
         soundEffectSourceVolume = SoundEffectSource.volume;
@@ -450,7 +457,8 @@ public class TestFlight : MonoBehaviour
         if (aiming && !planeSelect)
         {
             planeSelectPanel.SetActive(true);
-            Cursor.visible = true;
+            eventSystem.SetSelectedGameObject(firstPlaneSelectButton);
+            //Cursor.visible = true;
 
             planeSelect = true;
             aiming = false;
@@ -458,7 +466,7 @@ public class TestFlight : MonoBehaviour
         else if (!aiming && planeSelect)
         {
             planeSelectPanel.SetActive(false);
-            Cursor.visible = false;
+            //Cursor.visible = false;
 
             aiming = true;
             planeSelect = false;
