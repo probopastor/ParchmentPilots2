@@ -466,6 +466,7 @@ public class TestFlight : MonoBehaviour
         else if (!aiming && planeSelect)
         {
             planeSelectPanel.SetActive(false);
+            eventSystem.SetSelectedGameObject(null);
             //Cursor.visible = false;
 
             aiming = true;

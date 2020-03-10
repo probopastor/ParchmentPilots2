@@ -72,6 +72,7 @@ public class PauseManager : MonoBehaviour
             isPaused = false;
             pausePanel.SetActive(false);
             howToPlayPanel.SetActive(false);
+            eventSystem.SetSelectedGameObject(null);
             //Cursor.lockState = CursorLockMode.Confined;
             Time.timeScale = 1;
         }
