@@ -1217,7 +1217,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MusicSource: {fileID: 924240258}
+  SinglePitchSoundEffectSource: {fileID: 0}
   gameMusic: {fileID: 8300000, guid: eb49d70aa0e87bf468ec438f260d63b3, type: 3}
+  openPauseMenuSound: {fileID: 0}
+  buttonHoverSound: {fileID: 0}
+  buttonPressSound: {fileID: 0}
   pausePanel: {fileID: 1303232790}
   howToPlayPanel: {fileID: 1487911811}
   mainMenuSceneName: MainMenu
@@ -1418,7 +1422,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa5384f7aeab69240bc726df5054d735, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  freeLook: {fileID: 689716739}
   flightCam: {fileID: 689716738}
   landCam: {fileID: 689716737}
   planes:
@@ -8347,6 +8350,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 308997857}
     m_Modifications:
+    - target: {fileID: 6052824926579296946, guid: ce16740509801604e9bce0f58c227e6b,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6052824928301490565, guid: ce16740509801604e9bce0f58c227e6b,
         type: 3}
       propertyPath: m_Name
@@ -9076,7 +9084,7 @@ PrefabInstance:
     - target: {fileID: 8980741505851151932, guid: 8821f09e175200c4faf2e9c6c9e024c8,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.00018923663
+      value: 0.00018923661
       objectReference: {fileID: 0}
     - target: {fileID: 8980741505851151932, guid: 8821f09e175200c4faf2e9c6c9e024c8,
         type: 3}
@@ -9292,18 +9300,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &689716739 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8980741504848645010, guid: 8821f09e175200c4faf2e9c6c9e024c8,
-    type: 3}
-  m_PrefabInstance: {fileID: 689716736}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 319d2fe34a804e245819465c9505ea59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &696425288
@@ -15771,9 +15767,9 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.1
-  far clip plane: 5000
-  field of view: 40
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -15798,8 +15794,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2060643117}
-  m_LocalRotation: {x: 0.00789455, y: 0.014448759, z: -0.00011408191, w: 0.99986446}
-  m_LocalPosition: {x: 1.7786608, y: 30.4, z: -806.6568}
+  m_LocalRotation: {x: 0.14253762, y: -3.5164384e-15, z: 5.0639537e-16, w: 0.9897894}
+  m_LocalPosition: {x: 2, y: 31, z: -802.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
