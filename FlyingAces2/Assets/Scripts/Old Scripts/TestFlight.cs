@@ -240,9 +240,9 @@ public class TestFlight : MonoBehaviour
         yForce = gravity;
         isThrown = false;
         camStartPos = planeCam.transform.localPosition;
-        strokeText.text = "Stroke: " + stroke;
-        parText.text = "Par: " + par;
-        holeText.text = "Hole: " + hole;
+        strokeText.text = stroke.ToString();
+        parText.text = par.ToString();
+        holeText.text = hole.ToString();
         chargeBarController.enabled = false;
         forceAppliedThisFrame = false;
         scoreText.enabled = false;
@@ -717,7 +717,7 @@ public class TestFlight : MonoBehaviour
         {
             
             stroke--;
-            strokeText.text = "Stroke: " + stroke;
+            strokeText.text = stroke.ToString();
             LongSoundEffectSource.Stop();
             StartCoroutine("WinHandler");
 
@@ -844,7 +844,7 @@ public class TestFlight : MonoBehaviour
             newTee = contact.point;
             newTee.y = throwHeight;
             planeCam.transform.localPosition = camStartPos;
-            strokeText.text = "Stroke: " + stroke;
+            strokeText.text = stroke.ToString();
             isThrown = false;
             aiming = true;
             anim.SetBool("isThrown", isThrown);
