@@ -396,6 +396,8 @@ public class TestFlight : MonoBehaviour
             chargeBarController.enabled = false;
             chargeBarController.chargeBar.gameObject.SetActive(false);
         }
+
+        OutOfBoundsCheck();
     }
 
     private void FixedUpdate()
@@ -889,5 +891,18 @@ public class TestFlight : MonoBehaviour
         Quaternion rotation = Quaternion.LookRotation(new Vector3(finishDirection.x, 0, finishDirection.z));
 
         transform.rotation = rotation;
+    }
+
+    /// <summary>
+    /// If player manages to get out of bounds of the map,
+    /// reload the current level.
+    /// </summary>
+    private void OutOfBoundsCheck()
+    {
+        if(gameObject.transform.position.y <= 10.1f)
+        {
+            Scene thisScene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(thisScene.name);
+        }
     }
 }
