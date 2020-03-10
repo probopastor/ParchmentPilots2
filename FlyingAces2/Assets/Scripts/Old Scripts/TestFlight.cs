@@ -256,10 +256,15 @@ public class TestFlight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!isThrown)
+        if (!isThrown)
         {
             leftSystem.Stop();
             rightSystem.Stop();
+
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                PlaneSelect();
+            }
         }
 
         if (Input.GetKeyUp(KeyCode.Return) && !isThrown)
@@ -280,27 +285,27 @@ public class TestFlight : MonoBehaviour
                 stroke += 1;
             }
         }
-        else if(!isThrown && aiming)
-        {
-            if(Input.GetKeyDown(KeyCode.Tab))
-            {
-                planeSelectPanel.SetActive(true);
-                Cursor.visible = true;
+        //else if(!isThrown && aiming)
+        //{
+        //    if(Input.GetKeyDown(KeyCode.Tab))
+        //    {
+        //        planeSelectPanel.SetActive(true);
+        //        Cursor.visible = true;
 
-                planeSelect = true;
-                aiming = false;
-            }
-        }
-        else if(!isThrown && !aiming && planeSelect)
-        {
-            if(Input.GetKeyDown(KeyCode.Tab))
-            {
-                planeSelectPanel.SetActive(false);
-                Cursor.visible = false;
-                aiming = true;
-                planeSelect = false;
-            }
-        }
+        //        planeSelect = true;
+        //        aiming = false;
+        //    }
+        //}
+        //else if(!isThrown && !aiming && planeSelect)
+        //{
+        //    if(Input.GetKeyDown(KeyCode.Tab))
+        //    {
+        //        planeSelectPanel.SetActive(false);
+        //        Cursor.visible = false;
+        //        aiming = true;
+        //        planeSelect = false;
+        //    }
+        //}
         else if (isThrown)
         {
             emissionModuleLeft.rateOverDistance = windEmmissionRate;
@@ -393,6 +398,38 @@ public class TestFlight : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Enables or disables plane selection panel.
+    /// </summary>
+    /// <param name="closeSelectionPanel"></param>
+    public void PlaneSelect()
+    {
+        if (aiming && !planeSelect)
+        {
+            planeSelectPanel.SetActive(true);
+            Cursor.visible = true;
+
+            planeSelect = true;
+            aiming = false;
+        }
+        else if (!aiming && planeSelect)
+        {
+            planeSelectPanel.SetActive(false);
+            Cursor.visible = false;
+
+            aiming = true;
+            planeSelect = false;
+        }
+    }
+
+    public void DisablePlaneSelect()
+    {
+        planeSelectPanel.SetActive(false);
+        Cursor.visible = false;
+
+        aiming = true;
+        planeSelect = false;
+    }
     private void FixedUpdate()
     {
         AimLogic();

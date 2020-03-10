@@ -38,6 +38,9 @@ public class SelectPlane : MonoBehaviour
 
                 landCam.Follow = planes[i].transform;
                 landCam.LookAt = planes[i].transform;
+                
+                planes[i].GetComponent<TestFlight>().DisablePlaneSelect();
+                
             }
             else
             {
