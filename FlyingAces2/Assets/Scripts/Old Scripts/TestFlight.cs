@@ -105,6 +105,7 @@ public class TestFlight : MonoBehaviour
     public AudioClip windSound;
     public AudioClip crumbleSound;
     public AudioClip hitSound;
+    public AudioClip planeSelectSound;
 
     public float windPitchMax = 4f;
     public float windPitchMin = 0.1f;
@@ -443,6 +444,9 @@ public class TestFlight : MonoBehaviour
     /// <param name="closeSelectionPanel"></param>
     public void PlaneSelect()
     {
+        SinglePitchSoundEffectSource.clip = planeSelectSound;
+        SinglePitchSoundEffectSource.Play();
+
         if (aiming && !planeSelect)
         {
             planeSelectPanel.SetActive(true);
