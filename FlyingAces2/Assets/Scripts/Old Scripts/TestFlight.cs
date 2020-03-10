@@ -98,6 +98,7 @@ public class TestFlight : MonoBehaviour
 
     public AudioClip confettiSound;
     public AudioClip windSound;
+    public AudioClip crumbleSound;
 
     public float windPitchMax = 4f;
     public float windPitchMin = 0.1f;
@@ -115,6 +116,7 @@ public class TestFlight : MonoBehaviour
     //public float windPitchIncrementUp = 0.1f;
 
     private bool playOnce;
+    private bool playCrumbleOnce;
 
     private GameObject thisPlane;
 
@@ -141,6 +143,7 @@ public class TestFlight : MonoBehaviour
     private Vector3 camStartPos;
 
     public float increaseWindPitchRate = 10.0f;
+    public float increaseCrumblePitchRate = 10.0f;
     public float startWindPitchRate = 20f;
     public float hitGroundWindPitchRate = 100f;
 
@@ -208,6 +211,7 @@ public class TestFlight : MonoBehaviour
         increaseWindPitchRate = startWindPitchRate;
 
         playOnce = false;
+        playCrumbleOnce = false;
         inSlideMode = false;
 
         planeSelect = false;
@@ -321,12 +325,20 @@ public class TestFlight : MonoBehaviour
 
         if((isThrown || inSlideMode) && !pauseManager.isPaused)
         {
-            if(inSlideMode)
+            if(inSlideMode && !playCrumbleOnce)
             {
                 increaseWindPitchRate = 100f;
+                SoundEffectSource.clip = crumbleSound;
+                SoundEffectSource.Play();
+                SoundEffectSource.loop = true;
+                playCrumbleOnce = true;
             }
 
             var velSound = Rigidbody.velocity.magnitude / increaseWindPitchRate;
+            LongSoundEffectSource.pitch = Mathf.Clamp(velSound, windPitchMin, windPitchMax);
+
+            var crumbleSoundVelocity = Rigidbody.velocity.magnitude / increaseCrumblePitchRate;
+            SoundEffectSource.pitch = Mathf.Clamp(crumbleSoundVelocity, windPitchMin, windPitchMax);
 
             LongSoundEffectSource.pitch = Mathf.Clamp(velSound, windPitchMin, windPitchMax);
 
@@ -335,7 +347,14 @@ public class TestFlight : MonoBehaviour
         else if(pauseManager.isPaused)
         {
             LongSoundEffectSource.Stop();
+            SoundEffectSource.loop = false;
             playOnce = false;
+            playCrumbleOnce = false;
+        }
+        else if (!isThrown || !inSlideMode)
+        {
+            SoundEffectSource.loop = false;
+            SoundEffectSource.Stop();
         }
 
         if (Input.GetKeyUp(KeyCode.Return) && aiming)
@@ -692,6 +711,7 @@ public class TestFlight : MonoBehaviour
             LongSoundEffectSource.Stop();
             anim.SetBool("Sliding", false);
             playOnce = false;
+            playCrumbleOnce = false;
             SetUpNewThrow(collision);
         }
     }
