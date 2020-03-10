@@ -104,6 +104,7 @@ public class TestFlight : MonoBehaviour
     public AudioClip winHorn;
     public AudioClip windSound;
     public AudioClip crumbleSound;
+    public AudioClip hitSound;
 
     public float windPitchMax = 4f;
     public float windPitchMin = 0.1f;
@@ -636,6 +637,9 @@ public class TestFlight : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        SinglePitchSoundEffectSource.clip = hitSound;
+        SinglePitchSoundEffectSource.Play();
+
         if (collision.gameObject.tag == "ground")
         {
             increaseWindPitchRate = hitGroundWindPitchRate;
