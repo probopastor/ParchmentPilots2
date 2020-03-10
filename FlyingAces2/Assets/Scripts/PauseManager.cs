@@ -6,7 +6,12 @@ using UnityEngine.SceneManagement;
 public class PauseManager : MonoBehaviour
 {
     public AudioSource MusicSource;
-    public AudioClip gameMusic; 
+    public AudioSource SinglePitchSoundEffectSource;
+
+    public AudioClip gameMusic;
+    public AudioClip openPauseMenuSound;
+    public AudioClip buttonHoverSound;
+    public AudioClip buttonPressSound;
 
     public GameObject pausePanel;
     public GameObject howToPlayPanel;
@@ -42,13 +47,14 @@ public class PauseManager : MonoBehaviour
     public void PauseGame()
     {
         thisFlight.throwing = false;
-        
+        OpenCloseMenuSound();
+
         if (!isPaused)
         {
             isPaused = true;
             pausePanel.SetActive(true);
             howToPlayPanel.SetActive(false);
-            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.lockState = CursorLockMode.None;
             Time.timeScale = 0;
         }
         else if (isPaused)
@@ -56,7 +62,7 @@ public class PauseManager : MonoBehaviour
             isPaused = false;
             pausePanel.SetActive(false);
             howToPlayPanel.SetActive(false);
-            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.lockState = CursorLockMode.Confined;
             Time.timeScale = 1;
         }
     }
@@ -72,5 +78,23 @@ public class PauseManager : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(mainMenuSceneName);
+    }
+
+    public void OpenCloseMenuSound()
+    {
+        SinglePitchSoundEffectSource.clip = openPauseMenuSound;
+        SinglePitchSoundEffectSource.Play();
+    }
+
+    public void ButtonHoverSound()
+    {
+        SinglePitchSoundEffectSource.clip = buttonHoverSound;
+        SinglePitchSoundEffectSource.Play();
+    }
+
+    public void ButtonClick()
+    {
+        SinglePitchSoundEffectSource.clip = buttonPressSound;
+        SinglePitchSoundEffectSource.Play();
     }
 }
