@@ -93,10 +93,13 @@ public class TestFlight : MonoBehaviour
     private int currentForceAppliedTimer = 0;
     private bool forceAppliedThisFrame;
 
+    public AudioSource MusicSource;
     public AudioSource SoundEffectSource;
     public AudioSource LongSoundEffectSource;
+    public AudioSource SinglePitchSoundEffectSource;
 
-    public AudioClip confettiSound;
+    public AudioClip winFanfare;
+    public AudioClip winHorn;
     public AudioClip windSound;
     public AudioClip crumbleSound;
 
@@ -117,6 +120,7 @@ public class TestFlight : MonoBehaviour
 
     private bool playOnce;
     private bool playCrumbleOnce;
+    private bool playWinSoundOnce;
 
     private GameObject thisPlane;
 
@@ -213,6 +217,7 @@ public class TestFlight : MonoBehaviour
         playOnce = false;
         playCrumbleOnce = false;
         inSlideMode = false;
+        playWinSoundOnce = false;
 
         planeSelect = false;
         planeSelectPanel.SetActive(false);
@@ -724,10 +729,22 @@ public class TestFlight : MonoBehaviour
     {
         if (!finished)
         {
-            SoundEffectSource.clip = confettiSound;
-            SoundEffectSource.Play();
-            yield return new WaitForSeconds(2f);
-            SceneManager.LoadScene(nextSceneName);
+            if(!playWinSoundOnce)
+            {
+                MusicSource.clip = winFanfare;
+                MusicSource.Play();
+                yield return new WaitForSeconds(5f);
+                MusicSource.Stop();
+
+                SinglePitchSoundEffectSource.clip = winHorn;
+                SinglePitchSoundEffectSource.Play();
+
+                yield return new WaitForSeconds(2f);
+
+                SceneManager.LoadScene(nextSceneName);
+                playWinSoundOnce = true;
+            }
+          
         }
     }
 
