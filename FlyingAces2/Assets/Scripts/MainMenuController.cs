@@ -7,12 +7,20 @@ using TMPro;
 
 public class MainMenuController : MonoBehaviour
 {
+    public AudioSource MusicSource;
+    public AudioSource UISoundEffectSource;
+    public AudioClip mainMenuMusic;
+    public AudioClip buttonPressSound;
+    public AudioClip buttonHoverSound;
+
     EventSystem eventSystem;
 
     // Start is called before the first frame update
     void Start()
     {
         eventSystem = EventSystem.current;
+        MusicSource.clip = mainMenuMusic;
+        MusicSource.Play();
     }
 
     public void StartLevel(string level)
@@ -57,5 +65,17 @@ public class MainMenuController : MonoBehaviour
     public void UnunderlineText(TextMeshProUGUI tmp)
     {
         tmp.fontStyle = FontStyles.Normal;
+    }
+
+    public void ButtonHoverSound()
+    {
+        UISoundEffectSource.clip = buttonHoverSound;
+        UISoundEffectSource.Play();
+    }
+
+    public void ButtonClick()
+    {
+        UISoundEffectSource.clip = buttonPressSound;
+        UISoundEffectSource.Play();
     }
 }
