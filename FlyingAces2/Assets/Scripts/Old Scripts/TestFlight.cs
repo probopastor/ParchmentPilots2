@@ -261,16 +261,9 @@ public class TestFlight : MonoBehaviour
             leftSystem.Stop();
             rightSystem.Stop();
 
-            if(!pauseManager.isPaused)
+            if (Input.GetKeyDown(KeyCode.Tab))
             {
-                if (Input.GetKeyDown(KeyCode.Tab))
-                {
-                    PlaneSelect();
-                }
-            }
-            else if(pauseManager.isPaused)
-            {
-                DisablePlaneSelect();
+                PlaneSelect();
             }
         }
 
