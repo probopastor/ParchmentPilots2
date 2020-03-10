@@ -98,6 +98,8 @@ public class TestFlight : MonoBehaviour
     public AudioSource LongSoundEffectSource;
     public AudioSource SinglePitchSoundEffectSource;
 
+    private float soundEffectSourceVolume = 1f;
+
     public AudioClip winFanfare;
     public AudioClip winHorn;
     public AudioClip windSound;
@@ -213,6 +215,7 @@ public class TestFlight : MonoBehaviour
         Rigidbody = gameObject.GetComponent<Rigidbody>();
 
         increaseWindPitchRate = startWindPitchRate;
+        soundEffectSourceVolume = SoundEffectSource.volume;
 
         playOnce = false;
         playCrumbleOnce = false;
@@ -352,7 +355,7 @@ public class TestFlight : MonoBehaviour
             LongSoundEffectSource.pitch = Mathf.Clamp(velSound, windPitchMin, windPitchMax);
 
             var crumbleSoundVelocity = Rigidbody.velocity.magnitude / increaseCrumblePitchRate;
-            SoundEffectSource.pitch = Mathf.Clamp(crumbleSoundVelocity, windPitchMin, windPitchMax);
+            SoundEffectSource.volume = Mathf.Clamp(crumbleSoundVelocity, windPitchMin, windPitchMax);
 
             LongSoundEffectSource.pitch = Mathf.Clamp(velSound, windPitchMin, windPitchMax);
 
@@ -362,11 +365,15 @@ public class TestFlight : MonoBehaviour
         {
             LongSoundEffectSource.Stop();
             SoundEffectSource.loop = false;
+
+            SoundEffectSource.volume = soundEffectSourceVolume;
+
             playOnce = false;
             playCrumbleOnce = false;
         }
-        else if (!isThrown || !inSlideMode)
+        else if (!isThrown && !inSlideMode)
         {
+            SoundEffectSource.volume = soundEffectSourceVolume;
             SoundEffectSource.loop = false;
             SoundEffectSource.Stop();
         }
