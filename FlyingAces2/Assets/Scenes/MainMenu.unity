@@ -132,6 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 47873265}
   - component: {fileID: 47873266}
+  - component: {fileID: 47873267}
   m_Layer: 0
   m_Name: Play
   m_TagString: MainMenu
@@ -175,6 +176,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &47873267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47873264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f4f55c8f0b27d4b8e97b163e03c198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIAudioSource: {fileID: 1464644641}
+  UISoundEffect: {fileID: 8300000, guid: 8e28aeea0888da74ba0c468bcaa632ba, type: 3}
 --- !u!1 &61441237
 GameObject:
   m_ObjectHideFlags: 0
@@ -879,6 +894,7 @@ GameObject:
   m_Component:
   - component: {fileID: 379433404}
   - component: {fileID: 379433405}
+  - component: {fileID: 379433406}
   m_Layer: 0
   m_Name: How to Play
   m_TagString: MainMenu
@@ -922,6 +938,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &379433406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379433403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f4f55c8f0b27d4b8e97b163e03c198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIAudioSource: {fileID: 1464644641}
+  UISoundEffect: {fileID: 8300000, guid: 8e28aeea0888da74ba0c468bcaa632ba, type: 3}
 --- !u!1001 &384794921
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2997,6 +3027,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1848760392}
   - component: {fileID: 1848760393}
+  - component: {fileID: 1848760394}
   m_Layer: 0
   m_Name: 'Quit '
   m_TagString: MainMenu
@@ -3041,6 +3072,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1848760394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848760391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f4f55c8f0b27d4b8e97b163e03c198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIAudioSource: {fileID: 1464644641}
+  UISoundEffect: {fileID: 8300000, guid: 8e28aeea0888da74ba0c468bcaa632ba, type: 3}
 --- !u!1 &1902582338
 GameObject:
   m_ObjectHideFlags: 0
@@ -3180,6 +3225,7 @@ GameObject:
   - component: {fileID: 1920810528}
   - component: {fileID: 1920810527}
   - component: {fileID: 1920810526}
+  - component: {fileID: 1920810529}
   m_Layer: 5
   m_Name: Image
   m_TagString: MainMenu
@@ -3261,6 +3307,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1920810524}
   m_CullTransparentMesh: 0
+--- !u!114 &1920810529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920810524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f4f55c8f0b27d4b8e97b163e03c198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIAudioSource: {fileID: 1464644641}
+  UISoundEffect: {fileID: 8300000, guid: 8e28aeea0888da74ba0c468bcaa632ba, type: 3}
 --- !u!1 &1974674927
 GameObject:
   m_ObjectHideFlags: 0
