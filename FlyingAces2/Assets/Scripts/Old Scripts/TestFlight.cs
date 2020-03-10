@@ -761,7 +761,7 @@ public class TestFlight : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.tag == "ground" && Rigidbody.velocity.z < 0.1f)
+        if (collision.gameObject.tag == "ground" && (Rigidbody.velocity.x < 0.1f && Rigidbody.velocity.y < 0.1f && Rigidbody.velocity.z < 0.1f))
         {
             hitGround = true;
             inSlideMode = false;
