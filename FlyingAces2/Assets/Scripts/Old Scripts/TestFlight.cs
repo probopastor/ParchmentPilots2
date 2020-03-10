@@ -398,6 +398,36 @@ public class TestFlight : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        AimLogic();
+        MovePlane();    
+    }
+
+    /// <summary>
+    /// Alters wind particle appearance in color, size, and lifetime based on plane velocity.
+    /// </summary>
+    private void WindParticleHandler()
+    {
+        var particleColorChange = Rigidbody.velocity.magnitude / increaseParticleColorSwitchRate;
+        leftMain.startColor = new Color((Mathf.Clamp(particleColorChange, particleColorMinSpeed.r, particleColorMaxSpeed.r)), 
+            (Mathf.Clamp(particleColorChange, particleColorMinSpeed.g, particleColorMaxSpeed.g)), 
+            (Mathf.Clamp(particleColorChange, particleColorMinSpeed.b, particleColorMaxSpeed.b)), 
+            (Mathf.Clamp(particleColorChange, particleColorMinSpeed.a, particleColorMaxSpeed.a)));
+        rightMain.startColor = new Color((Mathf.Clamp(particleColorChange, particleColorMinSpeed.r, particleColorMaxSpeed.r)), 
+            (Mathf.Clamp(particleColorChange, particleColorMinSpeed.g, particleColorMaxSpeed.g)), 
+            (Mathf.Clamp(particleColorChange, particleColorMinSpeed.b, particleColorMaxSpeed.b)), 
+            (Mathf.Clamp(particleColorChange, particleColorMinSpeed.a, particleColorMaxSpeed.a)));
+
+        var particleLifetimeChange = Rigidbody.velocity.magnitude / increaseParticleLifeTimeRate;
+        leftMain.startLifetime = Mathf.Clamp(particleLifetimeChange, minLifetime, maxLifetime);
+        rightMain.startLifetime = Mathf.Clamp(particleLifetimeChange, minLifetime, maxLifetime);
+
+        var particleSizeChange = Rigidbody.velocity.magnitude / increaseParticleSizeRate;
+        leftMain.startSize = Mathf.Clamp(particleSizeChange, minSize, maxSize);
+        rightMain.startSize = Mathf.Clamp(particleSizeChange, minSize, maxSize);
+    }
+
     /// <summary>
     /// Enables or disables plane selection panel.
     /// </summary>
@@ -429,35 +459,6 @@ public class TestFlight : MonoBehaviour
 
         aiming = true;
         planeSelect = false;
-    }
-    private void FixedUpdate()
-    {
-        AimLogic();
-        MovePlane();    
-    }
-
-    /// <summary>
-    /// Alters wind particle appearance in color, size, and lifetime based on plane velocity.
-    /// </summary>
-    private void WindParticleHandler()
-    {
-        var particleColorChange = Rigidbody.velocity.magnitude / increaseParticleColorSwitchRate;
-        leftMain.startColor = new Color((Mathf.Clamp(particleColorChange, particleColorMinSpeed.r, particleColorMaxSpeed.r)), 
-            (Mathf.Clamp(particleColorChange, particleColorMinSpeed.g, particleColorMaxSpeed.g)), 
-            (Mathf.Clamp(particleColorChange, particleColorMinSpeed.b, particleColorMaxSpeed.b)), 
-            (Mathf.Clamp(particleColorChange, particleColorMinSpeed.a, particleColorMaxSpeed.a)));
-        rightMain.startColor = new Color((Mathf.Clamp(particleColorChange, particleColorMinSpeed.r, particleColorMaxSpeed.r)), 
-            (Mathf.Clamp(particleColorChange, particleColorMinSpeed.g, particleColorMaxSpeed.g)), 
-            (Mathf.Clamp(particleColorChange, particleColorMinSpeed.b, particleColorMaxSpeed.b)), 
-            (Mathf.Clamp(particleColorChange, particleColorMinSpeed.a, particleColorMaxSpeed.a)));
-
-        var particleLifetimeChange = Rigidbody.velocity.magnitude / increaseParticleLifeTimeRate;
-        leftMain.startLifetime = Mathf.Clamp(particleLifetimeChange, minLifetime, maxLifetime);
-        rightMain.startLifetime = Mathf.Clamp(particleLifetimeChange, minLifetime, maxLifetime);
-
-        var particleSizeChange = Rigidbody.velocity.magnitude / increaseParticleSizeRate;
-        leftMain.startSize = Mathf.Clamp(particleSizeChange, minSize, maxSize);
-        rightMain.startSize = Mathf.Clamp(particleSizeChange, minSize, maxSize);
     }
 
     /// <summary>
