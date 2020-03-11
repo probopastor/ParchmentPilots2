@@ -209,8 +209,6 @@ public class TestFlight : MonoBehaviour
     [Tooltip("Wing aircurrent particle size at the max velocity")]
     public float maxSize = 1f;
 
-    private int hasThrownOnce = 0;
-
     #endregion
 
     void OnEnable()
@@ -225,7 +223,6 @@ public class TestFlight : MonoBehaviour
         //increasePitch = false;
 
         //LongSoundEffectSource.pitch = defaultWindPitch;
-        hasThrownOnce = 0;
 
         selectPlaneTransform = GameObject.FindObjectOfType<SelectPlane>();
 
@@ -276,6 +273,9 @@ public class TestFlight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        TutorialHandler();
+        Debug.Log("isThrown? : " + isThrown);
+
         if (!isThrown)
         {
             leftSystem.Stop();
@@ -299,7 +299,6 @@ public class TestFlight : MonoBehaviour
             //Debug.Log(pauseManager.isPaused);
             if (!aiming && throwing && !planeSelect && !pauseManager.isPaused)
             {
-                pauseManager.tutorialChargingObject.SetActive(false);
                 throwing = false;
                 isThrown = true;
                 anim.SetBool("isThrown", isThrown);
@@ -310,8 +309,6 @@ public class TestFlight : MonoBehaviour
 
                 aiming = false;
                 Rigidbody.AddRelativeForce(Vector3.forward * thrustForce * chargeBarController.chargeBar.value);
-
-                stroke += 1;
             }
         }
         //else if(!isThrown && aiming)
@@ -432,7 +429,7 @@ public class TestFlight : MonoBehaviour
             //    pauseManager.tutorialChargingObject.SetActive(false);
             //}
 
-            TutorialHandler();
+            //TutorialHandler();
         }
 
         OutOfBoundsCheck();
@@ -512,7 +509,7 @@ public class TestFlight : MonoBehaviour
 
         //}
 
-        TutorialHandler();
+        //TutorialHandler();
     }
 
     /// <summary>
@@ -854,7 +851,6 @@ public class TestFlight : MonoBehaviour
     {
         if (collision.gameObject.tag == "ground" && (Rigidbody.velocity.x < 0.1f && Rigidbody.velocity.y < 0.1f && Rigidbody.velocity.z < 0.1f))
         {
-            hasThrownOnce++;
             hitGround = true;
             inSlideMode = false;
             increaseWindPitchRate = startWindPitchRate;
@@ -871,6 +867,8 @@ public class TestFlight : MonoBehaviour
         if (!finished)
         {
             //pauseManager.tutorialFlyingObject.SetActive(false);
+            stroke++;
+
             Rigidbody.useGravity = false;
 
             leftSystem.Play();
@@ -904,7 +902,7 @@ public class TestFlight : MonoBehaviour
     /// </summary>
     private void ChargeBar()
     {
-        TutorialHandler();
+        //TutorialHandler();
 
         throwing = true;
         aiming = false;
@@ -967,26 +965,23 @@ public class TestFlight : MonoBehaviour
     {
         if (stroke == 1)
         {
+            Debug.Log("Stroke = 1 ");
+
             pauseManager.tutorialChargingObject.SetActive(true);
             pauseManager.tutorialAimObject.SetActive(true);
             pauseManager.tutorialThrowingObject.SetActive(true);
             pauseManager.tutorialChoosingObject.SetActive(true);
 
-            //if (aiming)
-            //{
-            //    pauseManager.tutorialFlyingObject.SetActive(true);
-            //}
-            //else if(!aiming)
-            //{
-            //    pauseManager.tutorialFlyingObject.SetActive(false);
-            //}
-
-            if(hasThrownOnce == 0)
+            if (isThrown)
             {
+                Debug.Log("Stroke = 1 and isThrown ");
+
                 pauseManager.tutorialFlyingObject.SetActive(true);
             }
-            else
+            else if (!isThrown)
             {
+                Debug.Log("Stroke = 1 and !isThrown ");
+
                 pauseManager.tutorialFlyingObject.SetActive(false);
             }
         }
@@ -998,6 +993,16 @@ public class TestFlight : MonoBehaviour
             pauseManager.tutorialChoosingObject.SetActive(false);
             pauseManager.tutorialFlyingObject.SetActive(false);
         }
+
+        if (pauseManager.isPaused || planeSelect)
+        {
+            pauseManager.tutorialChargingObject.SetActive(false);
+            pauseManager.tutorialAimObject.SetActive(false);
+            pauseManager.tutorialThrowingObject.SetActive(false);
+            pauseManager.tutorialChoosingObject.SetActive(false);
+            pauseManager.tutorialFlyingObject.SetActive(false);
+        }
+
     }
 
 }

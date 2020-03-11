@@ -63,22 +63,22 @@ public class PauseManager : MonoBehaviour
 
 
         //turns off tutorial things
-        if(Input.GetKeyDown(KeyCode.Return))
-        {
-            tutorialThrowingObject.SetActive(false);
-            tutorialAimObject.SetActive(false);
-            tutorialChoosingObject.SetActive(false);
-            //print("happen");
-            if (thisFlight.stroke == 1 && thisFlight.throwing)
-            {
-                tutorialFlyingObject.SetActive(true);
-            }
-        }
+        //if(Input.GetKeyDown(KeyCode.Return))
+        //{
+        //    tutorialThrowingObject.SetActive(false);
+        //    tutorialAimObject.SetActive(false);
+        //    tutorialChoosingObject.SetActive(false);
+        //    //print("happen");
+        //    //if (thisFlight.stroke == 1 && thisFlight.throwing)
+        //    //{
+        //    //    tutorialFlyingObject.SetActive(true);
+        //    //}
+        //}
 
-        if(Input.GetKeyDown(KeyCode.Tab))
-        {
-            tutorialChoosingObject.SetActive(false);
-        }
+        //if(Input.GetKeyDown(KeyCode.Tab))
+        //{
+        //    tutorialChoosingObject.SetActive(false);
+        //}
     }
 
     public void PauseGame()
