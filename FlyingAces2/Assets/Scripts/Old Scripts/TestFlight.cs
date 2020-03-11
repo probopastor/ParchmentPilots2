@@ -170,6 +170,9 @@ public class TestFlight : MonoBehaviour
     [Tooltip("The right wing's air particles.")]
     public ParticleSystem rightSystem;
 
+    [Tooltip("The victory particles")]
+    public ParticleSystem winSystem;
+
     private ParticleSystem.MainModule leftMain;
     private ParticleSystem.MainModule rightMain;
 
@@ -806,6 +809,7 @@ public class TestFlight : MonoBehaviour
                 yield return new WaitForSeconds(5f);
                 MusicSource.Stop();
 
+                winSystem.Play();
                 SinglePitchSoundEffectSource.clip = winHorn;
                 SinglePitchSoundEffectSource.Play();
 
