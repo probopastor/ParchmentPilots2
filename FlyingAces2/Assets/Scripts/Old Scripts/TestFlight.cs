@@ -20,8 +20,7 @@ public class TestFlight : MonoBehaviour
     [Tooltip("The height at which the plane is thrown at the start of a new throw")]
     public float throwHeight = 15f;
 
-    [Tooltip("Number of strokes taken for the current level")]
-    public int stroke = 1;
+    private int stroke = 0;
 
     [Tooltip("Number of strokes to score a par")]
     public int par = 0;
@@ -224,6 +223,8 @@ public class TestFlight : MonoBehaviour
 
         //LongSoundEffectSource.pitch = defaultWindPitch;
 
+        stroke = 1;
+
         selectPlaneTransform = GameObject.FindObjectOfType<SelectPlane>();
 
         pauseManager = GameObject.FindObjectOfType<PauseManager>();
@@ -273,6 +274,7 @@ public class TestFlight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("Stroke " + stroke);
         TutorialHandler();
         Debug.Log("isThrown? : " + isThrown);
 
@@ -745,46 +747,46 @@ public class TestFlight : MonoBehaviour
 
         if (collision.gameObject.tag == "Finish" && !finished)
         {
-            
-            stroke--;
+            int scoreStroke = stroke - 1;
+
             strokeText.text = stroke.ToString();
             LongSoundEffectSource.Stop();
             StartCoroutine("WinHandler");
 
             scoreText.enabled = true;
-            if (stroke == 1)
+            if (scoreStroke == 1)
             {
                 scoreText.text = "Hole in one! Smooth flying!";
             }
-            else if (stroke == par - 1)
+            else if (scoreStroke == par - 1)
             {
                 scoreText.text = "You got a birdie! Nice!";
             }
-            else if (stroke == par - 2)
+            else if (scoreStroke == par - 2)
             {
                 scoreText.text = "You got an eagle! Good job!";
             }
-            else if (stroke == par)
+            else if (scoreStroke == par)
             {
                 scoreText.text = "You got a par!";
             }
-            else if (stroke == par - 3)
+            else if (scoreStroke == par - 3)
             {
                 scoreText.text = "You got an albatross! Amazing!";
             }
-            else if(stroke == par + 1)
+            else if(scoreStroke == par + 1)
             {
                 scoreText.text = "You got a bogey. So close...";
             }
-            else if (stroke == par + 2)
+            else if (scoreStroke == par + 2)
             {
                 scoreText.text = "Double bogey. Better luck next time.";
             }
-            else if (stroke == par + 3)
+            else if (scoreStroke == par + 3)
             {
                 scoreText.text = "Triple bogey. Next hole will be better.";
             }
-            else if (stroke > par + 4)
+            else if (scoreStroke > par + 4)
             {
                 scoreText.text = "Let's not talk about that hole...";
             }
@@ -963,10 +965,16 @@ public class TestFlight : MonoBehaviour
 
     private void TutorialHandler()
     {
-        if (stroke == 1)
+        //if (stroke == 0)
+        //{
+        //    pauseManager.tutorialChargingObject.SetActive(true);
+        //    pauseManager.tutorialAimObject.SetActive(true);
+        //    pauseManager.tutorialThrowingObject.SetActive(true);
+        //    pauseManager.tutorialChoosingObject.SetActive(true);
+        //    pauseManager.tutorialFlyingObject.SetActive(false);
+        //}
+        if(stroke == 1)
         {
-            Debug.Log("Stroke = 1 ");
-
             pauseManager.tutorialChargingObject.SetActive(true);
             pauseManager.tutorialAimObject.SetActive(true);
             pauseManager.tutorialThrowingObject.SetActive(true);
@@ -974,18 +982,19 @@ public class TestFlight : MonoBehaviour
 
             if (isThrown)
             {
-                Debug.Log("Stroke = 1 and isThrown ");
-
                 pauseManager.tutorialFlyingObject.SetActive(true);
+
+                pauseManager.tutorialChargingObject.SetActive(false);
+                pauseManager.tutorialAimObject.SetActive(false);
+                pauseManager.tutorialThrowingObject.SetActive(false);
+                pauseManager.tutorialChoosingObject.SetActive(false);
             }
             else if (!isThrown)
             {
-                Debug.Log("Stroke = 1 and !isThrown ");
-
                 pauseManager.tutorialFlyingObject.SetActive(false);
             }
         }
-        else if(stroke == 2)
+        else if(stroke > 1)
         {
             pauseManager.tutorialChargingObject.SetActive(false);
             pauseManager.tutorialAimObject.SetActive(false);
