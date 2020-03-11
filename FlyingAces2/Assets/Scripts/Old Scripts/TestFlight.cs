@@ -753,7 +753,7 @@ public class TestFlight : MonoBehaviour
 
         if (collision.gameObject.tag == "Finish" && !finished)
         {
-            int scoreStroke = scoreManager.stroke - 1;
+            int scoreStroke = scoreManager.stroke;
 
             strokeText.text = scoreManager.stroke.ToString();
             LongSoundEffectSource.Stop();
@@ -985,10 +985,19 @@ public class TestFlight : MonoBehaviour
         //}
         if(scoreManager.stroke == 1)
         {
-            pauseManager.tutorialChargingObject.SetActive(true);
+            pauseManager.tutorialChargingObject.SetActive(false);
             pauseManager.tutorialAimObject.SetActive(true);
             pauseManager.tutorialThrowingObject.SetActive(true);
             pauseManager.tutorialChoosingObject.SetActive(true);
+
+            if(throwing)
+            {
+                pauseManager.tutorialChargingObject.SetActive(true);
+
+                pauseManager.tutorialAimObject.SetActive(false);
+                pauseManager.tutorialThrowingObject.SetActive(false);
+                pauseManager.tutorialChoosingObject.SetActive(false);
+            }
 
             if (isThrown)
             {
