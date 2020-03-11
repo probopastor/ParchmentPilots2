@@ -32,6 +32,9 @@ public class PauseManager : MonoBehaviour
     public GameObject tutorialAimObject;
     public GameObject tutorialThrowingObject;
     public GameObject tutorialChoosingObject;
+    public GameObject tutorialChargingObject;
+    public GameObject tutorialFlyingObject;
+
     
     // Start is called before the first frame update
     void Start()
@@ -65,7 +68,11 @@ public class PauseManager : MonoBehaviour
             tutorialThrowingObject.SetActive(false);
             tutorialAimObject.SetActive(false);
             tutorialChoosingObject.SetActive(false);
-            print("happen");
+            //print("happen");
+            if (thisFlight.stroke == 1 && thisFlight.throwing)
+            {
+                tutorialFlyingObject.SetActive(true);
+            }
         }
 
         if(Input.GetKeyDown(KeyCode.Tab))
