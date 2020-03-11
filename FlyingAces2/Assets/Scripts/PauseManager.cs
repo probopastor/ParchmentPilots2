@@ -108,6 +108,11 @@ public class PauseManager : MonoBehaviour
         }
     }
 
+    public void SelectBackButton(GameObject button)
+    {
+        eventSystem.SetSelectedGameObject(button);
+    }
+
     public void RestartGame()
     {
         Time.timeScale = 1;
