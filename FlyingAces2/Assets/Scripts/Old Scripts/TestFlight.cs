@@ -20,8 +20,6 @@ public class TestFlight : MonoBehaviour
     [Tooltip("The height at which the plane is thrown at the start of a new throw")]
     public float throwHeight = 15f;
 
-    private int stroke = 0;
-
     [Tooltip("Number of strokes to score a par")]
     public int par = 0;
 
@@ -208,11 +206,14 @@ public class TestFlight : MonoBehaviour
     [Tooltip("Wing aircurrent particle size at the max velocity")]
     public float maxSize = 1f;
 
+    private ScoreManager scoreManager;
+
     #endregion
 
     void OnEnable()
     {
         pauseManager = GameObject.FindObjectOfType<PauseManager>();
+        scoreManager = GameObject.FindObjectOfType<ScoreManager>();
     }
 
     // Start is called before the first frame update
@@ -223,11 +224,11 @@ public class TestFlight : MonoBehaviour
 
         //LongSoundEffectSource.pitch = defaultWindPitch;
 
-        stroke = 1;
-
         selectPlaneTransform = GameObject.FindObjectOfType<SelectPlane>();
 
         pauseManager = GameObject.FindObjectOfType<PauseManager>();
+
+        scoreManager = GameObject.FindObjectOfType<ScoreManager>();
 
         Rigidbody = gameObject.GetComponent<Rigidbody>();
 
@@ -250,7 +251,7 @@ public class TestFlight : MonoBehaviour
         yForce = gravity;
         isThrown = false;
         camStartPos = planeCam.transform.localPosition;
-        strokeText.text = stroke.ToString();
+        strokeText.text = scoreManager.stroke.ToString();
         parText.text = par.ToString();
         holeText.text = hole.ToString();
         chargeBarController.enabled = false;
@@ -274,9 +275,7 @@ public class TestFlight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Stroke " + stroke);
         TutorialHandler();
-        Debug.Log("isThrown? : " + isThrown);
 
         if (!isThrown)
         {
@@ -747,9 +746,9 @@ public class TestFlight : MonoBehaviour
 
         if (collision.gameObject.tag == "Finish" && !finished)
         {
-            int scoreStroke = stroke - 1;
+            int scoreStroke = scoreManager.stroke - 1;
 
-            strokeText.text = stroke.ToString();
+            strokeText.text = scoreManager.stroke.ToString();
             LongSoundEffectSource.Stop();
             StartCoroutine("WinHandler");
 
@@ -853,6 +852,8 @@ public class TestFlight : MonoBehaviour
     {
         if (collision.gameObject.tag == "ground" && (Rigidbody.velocity.x < 0.1f && Rigidbody.velocity.y < 0.1f && Rigidbody.velocity.z < 0.1f))
         {
+            scoreManager.stroke += 1;
+
             hitGround = true;
             inSlideMode = false;
             increaseWindPitchRate = startWindPitchRate;
@@ -869,8 +870,6 @@ public class TestFlight : MonoBehaviour
         if (!finished)
         {
             //pauseManager.tutorialFlyingObject.SetActive(false);
-            stroke++;
-
             Rigidbody.useGravity = false;
 
             leftSystem.Play();
@@ -880,7 +879,7 @@ public class TestFlight : MonoBehaviour
             newTee = contact.point;
             newTee.y = throwHeight;
             planeCam.transform.localPosition = camStartPos;
-            strokeText.text = stroke.ToString();
+            strokeText.text = scoreManager.stroke.ToString();
             isThrown = false;
             aiming = true;
             anim.SetBool("isThrown", isThrown);
@@ -973,7 +972,7 @@ public class TestFlight : MonoBehaviour
         //    pauseManager.tutorialChoosingObject.SetActive(true);
         //    pauseManager.tutorialFlyingObject.SetActive(false);
         //}
-        if(stroke == 1)
+        if(scoreManager.stroke == 1)
         {
             pauseManager.tutorialChargingObject.SetActive(true);
             pauseManager.tutorialAimObject.SetActive(true);
@@ -994,7 +993,7 @@ public class TestFlight : MonoBehaviour
                 pauseManager.tutorialFlyingObject.SetActive(false);
             }
         }
-        else if(stroke > 1)
+        else if(scoreManager.stroke > 1)
         {
             pauseManager.tutorialChargingObject.SetActive(false);
             pauseManager.tutorialAimObject.SetActive(false);
