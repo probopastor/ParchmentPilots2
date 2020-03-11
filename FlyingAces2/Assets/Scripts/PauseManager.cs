@@ -26,6 +26,12 @@ public class PauseManager : MonoBehaviour
     public GameObject resumeButton;
 
     private EventSystem eventSystem;
+
+
+    //tutorial things
+    public GameObject tutorialAimObject;
+    public GameObject tutorialThrowingObject;
+    public GameObject tutorialChoosingObject;
     
     // Start is called before the first frame update
     void Start()
@@ -50,6 +56,21 @@ public class PauseManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape) && !thisFlight.throwing)
         {
             PauseGame();
+        }
+
+
+        //turns off tutorial things
+        if(Input.GetKeyDown(KeyCode.Return))
+        {
+            tutorialThrowingObject.SetActive(false);
+            tutorialAimObject.SetActive(false);
+            tutorialChoosingObject.SetActive(false);
+            print("happen");
+        }
+
+        if(Input.GetKeyDown(KeyCode.Tab))
+        {
+            tutorialChoosingObject.SetActive(false);
         }
     }
 
