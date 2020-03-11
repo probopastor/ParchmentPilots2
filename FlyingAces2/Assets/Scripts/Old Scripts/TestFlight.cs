@@ -284,7 +284,8 @@ public class TestFlight : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.Return) && !isThrown)
         {
-            if (!aiming && throwing && !planeSelect)
+            Debug.Log(pauseManager.isPaused);
+            if (!aiming && throwing && !planeSelect && !pauseManager.isPaused)
             {
                 throwing = false;
                 isThrown = true;
