@@ -287,9 +287,10 @@ public class TestFlight : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.Return) && !isThrown)
         {
-            Debug.Log(pauseManager.isPaused);
+            //Debug.Log(pauseManager.isPaused);
             if (!aiming && throwing && !planeSelect && !pauseManager.isPaused)
             {
+                pauseManager.tutorialChargingObject.SetActive(false);
                 throwing = false;
                 isThrown = true;
                 anim.SetBool("isThrown", isThrown);
@@ -841,6 +842,7 @@ public class TestFlight : MonoBehaviour
     {
         if (!finished)
         {
+            pauseManager.tutorialFlyingObject.SetActive(false);
             Rigidbody.useGravity = false;
 
             leftSystem.Play();
@@ -874,6 +876,7 @@ public class TestFlight : MonoBehaviour
     /// </summary>
     private void ChargeBar()
     {
+        pauseManager.tutorialChargingObject.SetActive(true);
         throwing = true;
         aiming = false;
         chargeBarController.enabled = true;
