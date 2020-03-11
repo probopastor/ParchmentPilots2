@@ -209,7 +209,14 @@ public class TestFlight : MonoBehaviour
     [Tooltip("Wing aircurrent particle size at the max velocity")]
     public float maxSize = 1f;
 
+    private int hasThrownOnce = 0;
+
     #endregion
+
+    void OnEnable()
+    {
+        pauseManager = GameObject.FindObjectOfType<PauseManager>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -218,6 +225,8 @@ public class TestFlight : MonoBehaviour
         //increasePitch = false;
 
         //LongSoundEffectSource.pitch = defaultWindPitch;
+        hasThrownOnce = 0;
+
         selectPlaneTransform = GameObject.FindObjectOfType<SelectPlane>();
 
         pauseManager = GameObject.FindObjectOfType<PauseManager>();
@@ -415,13 +424,15 @@ public class TestFlight : MonoBehaviour
             aiming = true;
             chargeBarController.enabled = false;
             chargeBarController.chargeBar.gameObject.SetActive(false);
-            if (stroke == 1)
-            {
-                pauseManager.tutorialAimObject.SetActive(true);
-                pauseManager.tutorialThrowingObject.SetActive(true);
-                pauseManager.tutorialChoosingObject.SetActive(true);
-                pauseManager.tutorialChargingObject.SetActive(false);
-            }
+            //if (stroke == 1)
+            //{
+            //    pauseManager.tutorialAimObject.SetActive(true);
+            //    pauseManager.tutorialThrowingObject.SetActive(true);
+            //    pauseManager.tutorialChoosingObject.SetActive(true);
+            //    pauseManager.tutorialChargingObject.SetActive(false);
+            //}
+
+            TutorialHandler();
         }
 
         OutOfBoundsCheck();
@@ -493,10 +504,15 @@ public class TestFlight : MonoBehaviour
 
         aiming = true;
         planeSelect = false;
-        if (stroke == 1)
-        {
-            pauseManager.tutorialChoosingObject.SetActive(true);
-        }
+        //if (stroke == 1)
+        //{
+        //    //pauseManager = GameObject.FindObjectOfType<PauseManager>();
+        //    pauseManager.tutorialChoosingObject.SetActive(true);
+
+
+        //}
+
+        TutorialHandler();
     }
 
     /// <summary>
@@ -838,6 +854,7 @@ public class TestFlight : MonoBehaviour
     {
         if (collision.gameObject.tag == "ground" && (Rigidbody.velocity.x < 0.1f && Rigidbody.velocity.y < 0.1f && Rigidbody.velocity.z < 0.1f))
         {
+            hasThrownOnce++;
             hitGround = true;
             inSlideMode = false;
             increaseWindPitchRate = startWindPitchRate;
@@ -853,7 +870,7 @@ public class TestFlight : MonoBehaviour
     {
         if (!finished)
         {
-            pauseManager.tutorialFlyingObject.SetActive(false);
+            //pauseManager.tutorialFlyingObject.SetActive(false);
             Rigidbody.useGravity = false;
 
             leftSystem.Play();
@@ -887,10 +904,8 @@ public class TestFlight : MonoBehaviour
     /// </summary>
     private void ChargeBar()
     {
-        if (stroke == 1)
-        {
-            pauseManager.tutorialChargingObject.SetActive(true);
-        }
+        TutorialHandler();
+
         throwing = true;
         aiming = false;
         chargeBarController.enabled = true;
@@ -947,4 +962,42 @@ public class TestFlight : MonoBehaviour
             SceneManager.LoadScene(thisScene.name);
         }
     }
+
+    private void TutorialHandler()
+    {
+        if (stroke == 1)
+        {
+            pauseManager.tutorialChargingObject.SetActive(true);
+            pauseManager.tutorialAimObject.SetActive(true);
+            pauseManager.tutorialThrowingObject.SetActive(true);
+            pauseManager.tutorialChoosingObject.SetActive(true);
+
+            //if (aiming)
+            //{
+            //    pauseManager.tutorialFlyingObject.SetActive(true);
+            //}
+            //else if(!aiming)
+            //{
+            //    pauseManager.tutorialFlyingObject.SetActive(false);
+            //}
+
+            if(hasThrownOnce == 0)
+            {
+                pauseManager.tutorialFlyingObject.SetActive(true);
+            }
+            else
+            {
+                pauseManager.tutorialFlyingObject.SetActive(false);
+            }
+        }
+        else if(stroke == 2)
+        {
+            pauseManager.tutorialChargingObject.SetActive(false);
+            pauseManager.tutorialAimObject.SetActive(false);
+            pauseManager.tutorialThrowingObject.SetActive(false);
+            pauseManager.tutorialChoosingObject.SetActive(false);
+            pauseManager.tutorialFlyingObject.SetActive(false);
+        }
+    }
+
 }
