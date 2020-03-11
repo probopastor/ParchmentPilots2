@@ -206,6 +206,8 @@ public class TestFlight : MonoBehaviour
     [Tooltip("Wing aircurrent particle size at the max velocity")]
     public float maxSize = 1f;
 
+    private bool scoreAddedThisThrow;
+
     private ScoreManager scoreManager;
 
     #endregion
@@ -241,6 +243,8 @@ public class TestFlight : MonoBehaviour
         playCrumbleOnce = false;
         inSlideMode = false;
         playWinSoundOnce = false;
+
+        scoreAddedThisThrow = false;
 
         planeSelect = false;
         planeSelectPanel.SetActive(false);
@@ -309,6 +313,9 @@ public class TestFlight : MonoBehaviour
                 Rigidbody.useGravity = true;
 
                 aiming = false;
+
+                scoreAddedThisThrow = false;
+
                 Rigidbody.AddRelativeForce(Vector3.forward * thrustForce * chargeBarController.chargeBar.value);
             }
         }
@@ -852,7 +859,11 @@ public class TestFlight : MonoBehaviour
     {
         if (collision.gameObject.tag == "ground" && (Rigidbody.velocity.x < 0.1f && Rigidbody.velocity.y < 0.1f && Rigidbody.velocity.z < 0.1f))
         {
-            scoreManager.stroke += 1;
+            if(!scoreAddedThisThrow)
+            {
+                scoreManager.stroke += 1;
+                scoreAddedThisThrow = true;
+            }
 
             hitGround = true;
             inSlideMode = false;
