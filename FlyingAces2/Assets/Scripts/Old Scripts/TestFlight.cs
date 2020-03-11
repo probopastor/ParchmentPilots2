@@ -41,6 +41,9 @@ public class TestFlight : MonoBehaviour
     [Tooltip("The text that displays what score the player got on the hole")]
     public TextMeshProUGUI scoreText;
 
+    [Tooltip("The notecard the score text is displayed on")]
+    public GameObject scoreCard;
+
     [Tooltip("The layer for the Raycasts to help with physics - Keep to ground only")]
     public LayerMask affectedRayCastLayer;
 
@@ -260,7 +263,7 @@ public class TestFlight : MonoBehaviour
         holeText.text = hole.ToString();
         chargeBarController.enabled = false;
         forceAppliedThisFrame = false;
-        scoreText.enabled = false;
+        scoreCard.SetActive(false);
 
         currentForceAppliedTimer = forceAppliedTimer;
 
@@ -759,7 +762,8 @@ public class TestFlight : MonoBehaviour
             LongSoundEffectSource.Stop();
             StartCoroutine("WinHandler");
 
-            scoreText.enabled = true;
+            scoreCard.SetActive(true);
+
             if (scoreStroke == 1)
             {
                 scoreText.text = "Hole in one! Smooth flying!";
