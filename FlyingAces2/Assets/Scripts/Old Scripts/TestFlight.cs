@@ -415,6 +415,13 @@ public class TestFlight : MonoBehaviour
             aiming = true;
             chargeBarController.enabled = false;
             chargeBarController.chargeBar.gameObject.SetActive(false);
+            if (stroke == 1)
+            {
+                pauseManager.tutorialAimObject.SetActive(true);
+                pauseManager.tutorialThrowingObject.SetActive(true);
+                pauseManager.tutorialChoosingObject.SetActive(true);
+                pauseManager.tutorialChargingObject.SetActive(false);
+            }
         }
 
         OutOfBoundsCheck();
@@ -486,6 +493,10 @@ public class TestFlight : MonoBehaviour
 
         aiming = true;
         planeSelect = false;
+        if (stroke == 1)
+        {
+            pauseManager.tutorialChoosingObject.SetActive(true);
+        }
     }
 
     /// <summary>
@@ -876,7 +887,10 @@ public class TestFlight : MonoBehaviour
     /// </summary>
     private void ChargeBar()
     {
-        pauseManager.tutorialChargingObject.SetActive(true);
+        if (stroke == 1)
+        {
+            pauseManager.tutorialChargingObject.SetActive(true);
+        }
         throwing = true;
         aiming = false;
         chargeBarController.enabled = true;
