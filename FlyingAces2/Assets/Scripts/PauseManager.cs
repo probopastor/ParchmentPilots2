@@ -31,7 +31,6 @@ public class PauseManager : MonoBehaviour
     //tutorial things
     public GameObject tutorialAimObject;
     public GameObject tutorialThrowingObject;
-    public GameObject tutorialChoosingObject;
     public GameObject tutorialChargingObject;
     public GameObject tutorialFlyingObject;
 
@@ -60,25 +59,6 @@ public class PauseManager : MonoBehaviour
         {
             PauseGame();
         }
-
-
-        //turns off tutorial things
-        //if(Input.GetKeyDown(KeyCode.Return))
-        //{
-        //    tutorialThrowingObject.SetActive(false);
-        //    tutorialAimObject.SetActive(false);
-        //    tutorialChoosingObject.SetActive(false);
-        //    //print("happen");
-        //    //if (thisFlight.stroke == 1 && thisFlight.throwing)
-        //    //{
-        //    //    tutorialFlyingObject.SetActive(true);
-        //    //}
-        //}
-
-        //if(Input.GetKeyDown(KeyCode.Tab))
-        //{
-        //    tutorialChoosingObject.SetActive(false);
-        //}
     }
 
     public void PauseGame()
@@ -92,7 +72,6 @@ public class PauseManager : MonoBehaviour
             pausePanel.SetActive(true);
             howToPlayPanel.SetActive(false);
             eventSystem.SetSelectedGameObject(resumeButton);
-            //Cursor.lockState = CursorLockMode.None;
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
             Time.timeScale = 0;
@@ -103,7 +82,6 @@ public class PauseManager : MonoBehaviour
             pausePanel.SetActive(false);
             howToPlayPanel.SetActive(false);
             eventSystem.SetSelectedGameObject(null);
-            //Cursor.lockState = CursorLockMode.Confined;
             Time.timeScale = 1;
         }
     }

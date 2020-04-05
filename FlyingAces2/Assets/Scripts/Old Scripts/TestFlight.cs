@@ -736,7 +736,6 @@ public class TestFlight : MonoBehaviour
             pauseManager.tutorialChargingObject.SetActive(false);
             pauseManager.tutorialAimObject.SetActive(true);
             pauseManager.tutorialThrowingObject.SetActive(true);
-            pauseManager.tutorialChoosingObject.SetActive(true);
 
             if(throwing)
             {
@@ -744,7 +743,6 @@ public class TestFlight : MonoBehaviour
 
                 pauseManager.tutorialAimObject.SetActive(false);
                 pauseManager.tutorialThrowingObject.SetActive(false);
-                pauseManager.tutorialChoosingObject.SetActive(false);
             }
 
             if (isThrown)
@@ -754,7 +752,6 @@ public class TestFlight : MonoBehaviour
                 pauseManager.tutorialChargingObject.SetActive(false);
                 pauseManager.tutorialAimObject.SetActive(false);
                 pauseManager.tutorialThrowingObject.SetActive(false);
-                pauseManager.tutorialChoosingObject.SetActive(false);
             }
             else if (!isThrown)
             {
@@ -766,7 +763,6 @@ public class TestFlight : MonoBehaviour
             pauseManager.tutorialChargingObject.SetActive(false);
             pauseManager.tutorialAimObject.SetActive(false);
             pauseManager.tutorialThrowingObject.SetActive(false);
-            pauseManager.tutorialChoosingObject.SetActive(false);
             pauseManager.tutorialFlyingObject.SetActive(false);
         }
 
@@ -775,7 +771,6 @@ public class TestFlight : MonoBehaviour
             pauseManager.tutorialChargingObject.SetActive(false);
             pauseManager.tutorialAimObject.SetActive(false);
             pauseManager.tutorialThrowingObject.SetActive(false);
-            pauseManager.tutorialChoosingObject.SetActive(false);
             pauseManager.tutorialFlyingObject.SetActive(false);
         }
     }
