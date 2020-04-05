@@ -576,7 +576,7 @@ GameObject:
   - component: {fileID: 7477578376154574452}
   - component: {fileID: 3038272338788751900}
   - component: {fileID: 5455071974471604557}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: ground
   m_Icon: {fileID: 0}

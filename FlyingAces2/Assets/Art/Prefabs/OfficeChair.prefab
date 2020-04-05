@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4711603905374171621}
   - component: {fileID: 1376113970227159544}
   - component: {fileID: 4249906142982780249}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cylinder.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 5449084326646329287}
   - component: {fileID: 5084211816114772601}
   - component: {fileID: 3672611461503206713}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cube
   m_TagString: ground
   m_Icon: {fileID: 0}
@@ -199,9 +199,9 @@ GameObject:
   - component: {fileID: 2055109927386808972}
   - component: {fileID: 8417268368286914046}
   - component: {fileID: 6332187413264289008}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cube.004
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -292,7 +292,7 @@ GameObject:
   - component: {fileID: 91005597259731379}
   - component: {fileID: 3270661415935567465}
   - component: {fileID: 1252363693843300146}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cylinder.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -385,7 +385,7 @@ GameObject:
   - component: {fileID: 4305032491481799141}
   - component: {fileID: 204928281331697392}
   - component: {fileID: 4748903354089082088}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cylinder.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -478,7 +478,7 @@ GameObject:
   - component: {fileID: 8969033021888126971}
   - component: {fileID: 3412875225824660269}
   - component: {fileID: 8587940067956902640}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cylinder.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -571,9 +571,9 @@ GameObject:
   - component: {fileID: 5468163190198428292}
   - component: {fileID: 3499690233315744782}
   - component: {fileID: 7115207422831102501}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cube.003
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -661,7 +661,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9050525566470361063}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: OfficeChair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -705,9 +705,9 @@ GameObject:
   - component: {fileID: 5277384460347584516}
   - component: {fileID: 3079807240252536087}
   - component: {fileID: 4189613235748084041}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cube.005
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -798,9 +798,9 @@ GameObject:
   - component: {fileID: 8643487073572473410}
   - component: {fileID: 7375704004171847809}
   - component: {fileID: 4351259401806995603}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cube.002
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -891,7 +891,7 @@ GameObject:
   - component: {fileID: 1690760852203052295}
   - component: {fileID: 3903834493399697651}
   - component: {fileID: 2810204571711084271}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cube.001
   m_TagString: ground
   m_Icon: {fileID: 0}
@@ -984,7 +984,7 @@ GameObject:
   - component: {fileID: 5578077617386642824}
   - component: {fileID: 37996340718905824}
   - component: {fileID: 227763857907471452}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}

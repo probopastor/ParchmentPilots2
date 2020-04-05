@@ -345,8 +345,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7775579978148833937}
   m_Layer: 0
-  m_Name: IndexCard 1
-  m_TagString: Untagged
+  m_Name: IndexCard With Text Box
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
