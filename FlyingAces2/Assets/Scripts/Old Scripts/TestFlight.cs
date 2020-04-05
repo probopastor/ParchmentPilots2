@@ -11,9 +11,6 @@ public class TestFlight : MonoBehaviour
     [Tooltip("The camera object in the scene")]
     public Camera planeCam;
 
-    [Tooltip("The UI panel for choosing planes")]
-    public GameObject planeSelectPanel;
-
     [Tooltip("The height at which the plane is thrown on the first throw of the level")]
     public float startThrowHeight = 200f;
 
@@ -92,8 +89,6 @@ public class TestFlight : MonoBehaviour
     [Tooltip("The time between each force applied to the nose of the plane. A smaller value makes upward tilt more difficult")]
     public int forceAppliedTimer = 10;
 
-    public GameObject firstPlaneSelectButton;
-
     private int currentForceAppliedTimer = 0;
     private bool forceAppliedThisFrame;
 
@@ -116,8 +111,6 @@ public class TestFlight : MonoBehaviour
 
     private bool inSlideMode;
 
-    private SelectPlane selectPlaneTransform;
-
     private bool playOnce;
     private bool playCrumbleOnce;
     private bool playWinSoundOnce;
@@ -137,7 +130,6 @@ public class TestFlight : MonoBehaviour
 
     private bool aiming = true;
     public bool throwing = false;
-    private bool planeSelect = false;
 
     private Vector3 launchSpeed = new Vector3(0, 0, 1000);
     private Vector3 strokePosition = new Vector3(0f, 0f, 0f);
@@ -214,8 +206,6 @@ public class TestFlight : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        selectPlaneTransform = GameObject.FindObjectOfType<SelectPlane>();
-
         pauseManager = GameObject.FindObjectOfType<PauseManager>();
 
         scoreManager = GameObject.FindObjectOfType<ScoreManager>();
@@ -234,8 +224,6 @@ public class TestFlight : MonoBehaviour
 
         scoreAddedThisThrow = false;
 
-        planeSelect = false;
-        planeSelectPanel.SetActive(false);
         gameObject.transform.position = new Vector3(gameObject.transform.position.x, startThrowHeight, gameObject.transform.position.z);
         RotateTowardsFinish();
         anim = GetComponent<Animator>();
@@ -271,23 +259,11 @@ public class TestFlight : MonoBehaviour
         {
             leftSystem.Stop();
             rightSystem.Stop();
-
-            if(!pauseManager.isPaused)
-            {
-                if (Input.GetKeyDown(KeyCode.Tab))
-                {
-                    PlaneSelect();
-                }
-            }
-            else if(pauseManager.isPaused)
-            {
-                DisablePlaneSelect();
-            }
         }
 
         if (Input.GetKeyUp(KeyCode.Return) && !isThrown)
         {
-            if (!aiming && throwing && !planeSelect && !pauseManager.isPaused)
+            if (!aiming && throwing && !pauseManager.isPaused)
             {
                 throwing = false;
                 isThrown = true;
@@ -418,52 +394,6 @@ public class TestFlight : MonoBehaviour
         var particleSizeChange = Rigidbody.velocity.magnitude / increaseParticleSizeRate;
         leftMain.startSize = Mathf.Clamp(particleSizeChange, minSize, maxSize);
         rightMain.startSize = Mathf.Clamp(particleSizeChange, minSize, maxSize);
-    }
-
-    /// <summary>
-    /// Enables or disables plane selection panel.
-    /// </summary>
-    /// <param name="closeSelectionPanel"></param>
-    public void PlaneSelect()
-    {
-        SinglePitchSoundEffectSource.clip = planeSelectSound;
-        SinglePitchSoundEffectSource.Play();
-
-        if (aiming && !planeSelect)
-        {
-            planeSelectPanel.SetActive(true);
-            eventSystem.SetSelectedGameObject(firstPlaneSelectButton);
-            //Cursor.visible = true;
-
-            planeSelect = true;
-            aiming = false;
-        }
-        else if (!aiming && planeSelect)
-        {
-            planeSelectPanel.SetActive(false);
-            eventSystem.SetSelectedGameObject(null);
-
-            aiming = true;
-            planeSelect = false;
-        }
-    }
-
-    public void DisablePlaneSelect()
-    {
-        planeSelectPanel.SetActive(false);
-        Cursor.visible = false;
-
-        aiming = true;
-        planeSelect = false;
-        //if (stroke == 1)
-        //{
-        //    //pauseManager = GameObject.FindObjectOfType<PauseManager>();
-        //    pauseManager.tutorialChoosingObject.SetActive(true);
-
-
-        //}
-
-        //TutorialHandler();
     }
 
     /// <summary>
@@ -732,8 +662,6 @@ public class TestFlight : MonoBehaviour
             hitGround = false;
 
             Rigidbody.isKinematic = true;
-
-            selectPlaneTransform.currentPlaneTransform = gameObject.transform;
         }
     }
 
@@ -842,7 +770,7 @@ public class TestFlight : MonoBehaviour
             pauseManager.tutorialFlyingObject.SetActive(false);
         }
 
-        if (pauseManager.isPaused || planeSelect)
+        if (pauseManager.isPaused)
         {
             pauseManager.tutorialChargingObject.SetActive(false);
             pauseManager.tutorialAimObject.SetActive(false);
