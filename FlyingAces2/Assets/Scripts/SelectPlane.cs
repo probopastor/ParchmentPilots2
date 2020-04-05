@@ -5,7 +5,6 @@ using Cinemachine;
 
 public class SelectPlane : MonoBehaviour
 {
-    //public CinemachineFreeLook freeLook;
     public CinemachineVirtualCamera flightCam;
     public CinemachineVirtualCamera landCam;
 
@@ -29,9 +28,6 @@ public class SelectPlane : MonoBehaviour
 
                 planes[i].transform.position = currentPlaneTransform.position;
                 planes[i].transform.rotation = currentPlaneTransform.rotation;
-
-                //freeLook.Follow = planes[i].transform.GetChild(0).transform;
-                //freeLook.LookAt = planes[i].transform.GetChild(0).transform;
 
                 flightCam.Follow = planes[i].transform;
                 flightCam.LookAt = planes[i].transform;
