@@ -104,7 +104,6 @@ public class TestFlight : MonoBehaviour
     public AudioClip windSound;
     public AudioClip crumbleSound;
     public AudioClip hitSound;
-    public AudioClip planeSelectSound;
 
     public float windPitchMax = 4f;
     public float windPitchMin = 0.1f;
