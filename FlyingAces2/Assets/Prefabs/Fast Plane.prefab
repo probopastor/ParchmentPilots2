@@ -107,7 +107,6 @@ GameObject:
   - component: {fileID: 9032144721940762494}
   - component: {fileID: 9032144721940762495}
   - component: {fileID: 206432947}
-  - component: {fileID: 943478503977392595}
   - component: {fileID: 915417653}
   - component: {fileID: 1134115735913675915}
   m_Layer: 0
@@ -227,7 +226,6 @@ MonoBehaviour:
   planeSelectPanel: {fileID: 0}
   startThrowHeight: 88
   throwHeight: 88
-  stroke: 1
   par: 3
   hole: 1
   windZoneForce: 750
@@ -235,6 +233,7 @@ MonoBehaviour:
   parText: {fileID: 0}
   holeText: {fileID: 0}
   scoreText: {fileID: 0}
+  scoreCard: {fileID: 0}
   affectedRayCastLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -256,19 +255,28 @@ MonoBehaviour:
   centerOfMassReference: {fileID: 1899402531}
   forceAtPos: {x: 0, y: -0.06, z: 0}
   forceAppliedTimer: 6
+  firstPlaneSelectButton: {fileID: 0}
+  MusicSource: {fileID: 0}
   SoundEffectSource: {fileID: 0}
   LongSoundEffectSource: {fileID: 0}
-  confettiSound: {fileID: 8300000, guid: 31156ae3b7649d84b9417cb287c36bc8, type: 3}
+  SinglePitchSoundEffectSource: {fileID: 0}
+  winFanfare: {fileID: 0}
+  winHorn: {fileID: 0}
   windSound: {fileID: 8300000, guid: 9ac9e617cf8218946bf8e674a7d28c90, type: 3}
+  crumbleSound: {fileID: 0}
+  hitSound: {fileID: 0}
+  planeSelectSound: {fileID: 0}
   windPitchMax: 4
   windPitchMin: 0.1
   throwing: 0
   increaseWindPitchRate: 10
+  increaseCrumblePitchRate: 10
   startWindPitchRate: 20
   hitGroundWindPitchRate: 100
   windEmmissionRate: 10
   leftSystem: {fileID: 3057987463779126494}
   rightSystem: {fileID: 2188459274599009492}
+  winSystem: {fileID: 0}
   increaseParticleColorSwitchRate: 1
   particleColor: {r: 0.72156864, g: 0.972549, b: 1, a: 0.078431375}
   particleColorMinSpeed: {r: 0.7254902, g: 0.972549, b: 1, a: 0.003921569}
@@ -279,18 +287,6 @@ MonoBehaviour:
   increaseParticleSizeRate: 1
   minSize: 0
   maxSize: 1
---- !u!114 &943478503977392595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9032144721940762487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6af95cef0ac1df44a20d941e5ed1b1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &915417653
 Animator:
   serializedVersion: 3
