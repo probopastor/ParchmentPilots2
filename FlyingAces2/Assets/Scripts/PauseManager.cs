@@ -72,8 +72,8 @@ public class PauseManager : MonoBehaviour
             pausePanel.SetActive(true);
             howToPlayPanel.SetActive(false);
             eventSystem.SetSelectedGameObject(resumeButton);
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
             Time.timeScale = 0;
         }
         else if (isPaused)
@@ -82,6 +82,8 @@ public class PauseManager : MonoBehaviour
             pausePanel.SetActive(false);
             howToPlayPanel.SetActive(false);
             eventSystem.SetSelectedGameObject(null);
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
             Time.timeScale = 1;
         }
     }
