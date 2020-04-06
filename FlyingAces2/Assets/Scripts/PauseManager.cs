@@ -89,6 +89,7 @@ public class PauseManager : MonoBehaviour
         }
         else if (isPaused)
         {
+            keepButtonSelected = false;
             isPaused = false;
             pausePanel.SetActive(false);
             howToPlayPanel.SetActive(false);
