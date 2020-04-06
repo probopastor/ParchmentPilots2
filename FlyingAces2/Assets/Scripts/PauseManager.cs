@@ -65,10 +65,7 @@ public class PauseManager : MonoBehaviour
 
         if(keepButtonSelected && isPaused)
         {
-            if (!EventSystem.current.alreadySelecting)
-            {
-                EventSystem.current.SetSelectedGameObject(selectedButton);
-            }
+            SetButton();
         }
     }
 
@@ -104,7 +101,11 @@ public class PauseManager : MonoBehaviour
     {
         selectedButton = button;
         //eventSystem.SetSelectedGameObject(button);
+        SetButton();
+    }
 
+    private void SetButton()
+    {
         if (!EventSystem.current.alreadySelecting)
         {
             EventSystem.current.SetSelectedGameObject(selectedButton);

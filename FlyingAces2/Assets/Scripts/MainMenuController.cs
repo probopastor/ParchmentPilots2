@@ -13,14 +13,26 @@ public class MainMenuController : MonoBehaviour
     public AudioClip buttonPressSound;
     public AudioClip buttonHoverSound;
 
+    private GameObject selectedButton;
+
     EventSystem eventSystem;
+    private bool keepButtonSelected;
 
     // Start is called before the first frame update
     void Start()
     {
+        keepButtonSelected = false;
         eventSystem = EventSystem.current;
         MusicSource.clip = mainMenuMusic;
         MusicSource.Play();
+    }
+
+    private void Update()
+    {
+        if(keepButtonSelected)
+        {
+            SetButton();
+        }
     }
 
     public void StartLevel(string level)
@@ -77,5 +89,30 @@ public class MainMenuController : MonoBehaviour
     {
         UISoundEffectSource.clip = buttonPressSound;
         UISoundEffectSource.Play();
+    }
+
+    public void SelectBackButton(GameObject button)
+    {
+        selectedButton = button;
+        //eventSystem.SetSelectedGameObject(button);
+        SetButton();
+    }
+
+    private void SetButton()
+    {
+        if (!EventSystem.current.alreadySelecting)
+        {
+            EventSystem.current.SetSelectedGameObject(selectedButton);
+        }
+    }
+
+    public void OnMouseEnterUI()
+    {
+        keepButtonSelected = true;
+    }
+
+    public void OnMouseExitUI()
+    {
+        keepButtonSelected = false;
     }
 }
