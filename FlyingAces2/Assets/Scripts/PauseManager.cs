@@ -27,6 +27,8 @@ public class PauseManager : MonoBehaviour
 
     private EventSystem eventSystem;
 
+    private GameObject selectedButton;
+    private bool keepButtonSelected;
 
     //tutorial things
     public GameObject tutorialAimObject;
@@ -38,6 +40,7 @@ public class PauseManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        keepButtonSelected = false;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
@@ -58,6 +61,14 @@ public class PauseManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape) && !thisFlight.throwing)
         {
             PauseGame();
+        }
+
+        if(keepButtonSelected && isPaused)
+        {
+            if (!EventSystem.current.alreadySelecting)
+            {
+                EventSystem.current.SetSelectedGameObject(selectedButton);
+            }
         }
     }
 
@@ -90,7 +101,23 @@ public class PauseManager : MonoBehaviour
 
     public void SelectBackButton(GameObject button)
     {
-        eventSystem.SetSelectedGameObject(button);
+        selectedButton = button;
+        //eventSystem.SetSelectedGameObject(button);
+
+        if (!EventSystem.current.alreadySelecting)
+        {
+            EventSystem.current.SetSelectedGameObject(selectedButton);
+        }
+    }
+
+    public void OnMouseEnterUI()
+    {
+        keepButtonSelected = true;
+    }
+
+    public void OnMouseExitUI()
+    {
+        keepButtonSelected = false;
     }
 
     public void RestartGame()
