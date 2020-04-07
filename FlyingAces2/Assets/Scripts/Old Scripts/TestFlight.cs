@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using Cinemachine;
 
 public class TestFlight : MonoBehaviour
 {
@@ -275,7 +276,6 @@ public class TestFlight : MonoBehaviour
                 aiming = false;
 
                 scoreAddedThisThrow = false;
-
                 Rigidbody.AddRelativeForce(Vector3.forward * thrustForce * chargeBarController.chargeBar.value);
             }
         }
@@ -409,7 +409,14 @@ public class TestFlight : MonoBehaviour
 
             float tip = (transform.right + Vector3.up).magnitude - 1.414214f;
             yaw -= tip;
-
+            if (transform.rotation.eulerAngles.x > 85f && transform.rotation.eulerAngles.x < 95f && tilt > 0)
+            {
+                tilt = 0;
+            }
+            if (transform.rotation.eulerAngles.x < 275f && transform.rotation.eulerAngles.x > 260f && tilt < 0)
+            {
+                tilt = 0;
+            }
             Vector3 changes = new Vector3();
 
             if ((transform.worldToLocalMatrix.MultiplyVector(transform.forward) + Rigidbody.velocity.normalized).magnitude < 1.4f)
@@ -639,7 +646,6 @@ public class TestFlight : MonoBehaviour
         if (!finished)
         {
             Rigidbody.useGravity = false;
-
             leftSystem.Play();
             rightSystem.Play();
 
@@ -683,7 +689,14 @@ public class TestFlight : MonoBehaviour
         {
             float xRotationValue = Input.GetAxis("Horizontal");
             float yRotationValue = Input.GetAxis("Vertical");
-
+            if (transform.rotation.eulerAngles.x > 85f && transform.rotation.eulerAngles.x < 95f && yRotationValue > 0)
+            {
+                yRotationValue = 0;
+            }
+            if (transform.rotation.eulerAngles.x < 275f && transform.rotation.eulerAngles.x > 260f && yRotationValue < 0)
+            {
+                yRotationValue = 0;
+            }
             Vector3 rotationChanges = new Vector3();
 
             if (xRotationValue != 0)
