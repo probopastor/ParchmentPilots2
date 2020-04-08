@@ -88,6 +88,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7882150327789794800}
+  - component: {fileID: 4589720778066886327}
   m_Layer: 0
   m_Name: ClosedBox
   m_TagString: Untagged
@@ -104,9 +105,22 @@ Transform:
   m_GameObject: {fileID: 6573105012505135075}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 57.120533, y: 55.09503, z: -296.80862}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 9, y: 9, z: 9}
   m_Children:
   - {fileID: 469342189392629445}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4589720778066886327
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6573105012505135075}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.0535126, y: 1.391605, z: 2.0882332}
+  m_Center: {x: 0.0070177712, y: 0.6603004, z: -0.009380764}

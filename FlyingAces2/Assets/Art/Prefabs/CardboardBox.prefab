@@ -88,6 +88,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2602363274904090589}
+  - component: {fileID: 6382924810576080041}
   m_Layer: 0
   m_Name: CardboardBox
   m_TagString: Untagged
@@ -104,9 +105,22 @@ Transform:
   m_GameObject: {fileID: 1316786415798371790}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 55.779594, y: 56.111305, z: -298.309}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 9, y: 9, z: 9}
   m_Children:
   - {fileID: 5763770066417454312}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6382924810576080041
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316786415798371790}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.1487496, y: 1.5792037, z: 2.0811734}
+  m_Center: {x: 0.03378799, y: 0.7626163, z: -0.009648641}
