@@ -197,6 +197,8 @@ public class TestFlight : MonoBehaviour
 
     private ScoreManager scoreManager;
 
+    private bool canEnableChargeBar;
+
     #endregion
 
     void OnEnable()
@@ -250,12 +252,21 @@ public class TestFlight : MonoBehaviour
 
         emissionModuleLeft.rateOverDistance = 0f;
         emissionModuleRight.rateOverDistance = 0f;
+
+        canEnableChargeBar = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(isLevel1)
+        if(pauseManager.isPaused)
+        {
+            canEnableChargeBar = false;
+            StartCoroutine(DelayAfterGameUnpause());
+        }
+
+
+        if (isLevel1)
         {
             TutorialHandler();
         }
@@ -273,7 +284,7 @@ public class TestFlight : MonoBehaviour
             rightSystem.Stop();
         }
 
-        if (Input.GetKeyUp(KeyCode.Return) && !isThrown)
+        if (Input.GetKeyDown(KeyCode.Return) && !isThrown)
         {
             if (!aiming && throwing && !pauseManager.isPaused)
             {
@@ -361,7 +372,8 @@ public class TestFlight : MonoBehaviour
             SoundEffectSource.Stop();
         }
 
-        if (Input.GetKeyUp(KeyCode.Return) && aiming && !pauseManager.isPaused)
+
+        if (Input.GetKeyDown(KeyCode.Return) && aiming && !throwing && canEnableChargeBar && !pauseManager.isPaused)
         {
             ChargeBar();
         }
@@ -381,6 +393,17 @@ public class TestFlight : MonoBehaviour
     {
         AimLogic();
         MovePlane();    
+    }
+
+    /// <summary>
+    /// Sets canEnableChargeBar to true after fixed update so that when a player exits the pause
+    /// menu, the charge bar does not immediatly enable itself.
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator DelayAfterGameUnpause()
+    {
+        yield return new WaitForFixedUpdate();
+        canEnableChargeBar = true;
     }
 
     /// <summary>
