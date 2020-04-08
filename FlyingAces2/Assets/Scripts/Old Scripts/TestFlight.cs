@@ -361,7 +361,7 @@ public class TestFlight : MonoBehaviour
             SoundEffectSource.Stop();
         }
 
-        if (Input.GetKeyUp(KeyCode.Return) && aiming)
+        if (Input.GetKeyUp(KeyCode.Return) && aiming && !pauseManager.isPaused)
         {
             ChargeBar();
         }
