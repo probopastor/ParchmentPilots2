@@ -191,6 +191,8 @@ public class TestFlight : MonoBehaviour
     [Tooltip("Wing aircurrent particle size at the max velocity")]
     public float maxSize = 1f;
 
+    public bool isLevel1;
+
     private bool scoreAddedThisThrow;
 
     private ScoreManager scoreManager;
@@ -253,7 +255,17 @@ public class TestFlight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        TutorialHandler();
+        if(isLevel1)
+        {
+            TutorialHandler();
+        }
+        else if(!isLevel1)
+        {
+            pauseManager.tutorialChargingObject.SetActive(false);
+            pauseManager.tutorialAimObject.SetActive(false);
+            pauseManager.tutorialThrowingObject.SetActive(false);
+            pauseManager.tutorialFlyingObject.SetActive(false);
+        }
 
         if (!isThrown)
         {
