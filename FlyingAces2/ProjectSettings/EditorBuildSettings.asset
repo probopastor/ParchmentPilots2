@@ -17,13 +17,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HowToPlayChoose.unity
     guid: 645adeb8c995cd4409d5e6e24161dfbb
-  - enabled: 1
-    path: Assets/Scenes/Level 1-1.unity
-    guid: 6355495e95c42bc4b8d1b793fca8b4b3
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/level 1-2.unity
     guid: cb0f6597b929a9f4b8135d8e3021a7c7
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Level 1-1.unity
+    guid: 019c8707282000000a9c870728200000
   m_configObjects: {}
