@@ -135,6 +135,7 @@ public class TestFlight : MonoBehaviour
     private Vector3 strokePosition = new Vector3(0f, 0f, 0f);
     private Vector3 newTee = new Vector3();
     private Vector3 camStartPos;
+    private Vector3 windAngle;
 
     public float increaseWindPitchRate = 10.0f;
     public float increaseCrumblePitchRate = 10.0f;
@@ -636,11 +637,13 @@ public class TestFlight : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.tag == "WindArea")
         {
-            Rigidbody.AddForce(0, 0, windZoneForce);
+            windAngle = other.gameObject.transform.parent.transform.position - transform.position;
+            windAngle = windAngle.normalized;
+            Rigidbody.AddForce(-windAngle * windZoneForce);
         }
     }
 
