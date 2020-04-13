@@ -326,11 +326,11 @@ public class TestFlight : MonoBehaviour
             else if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, Mathf.Infinity, skyLayer))
             {
                 //Determines if force should be applied at the center of mass of the plane this frame when the plane does not face the ground
-                ForceAtCenterOfMass();
+                //ForceAtCenterOfMass();
             }
             else
             {
-                ForceAtCenterOfMass();
+                //ForceAtCenterOfMass();
             }
         }
 
@@ -444,6 +444,7 @@ public class TestFlight : MonoBehaviour
 
             float tip = (transform.right + Vector3.up).magnitude - 1.414214f;
             yaw -= tip;
+
             if (transform.rotation.eulerAngles.x > 85f && transform.rotation.eulerAngles.x < 95f && tilt > 0)
             {
                 tilt = 0;
@@ -453,6 +454,7 @@ public class TestFlight : MonoBehaviour
                 tilt = 0;
             }
             Vector3 changes = new Vector3();
+            Vector3 rollChanges = new Vector3();
 
             if ((transform.worldToLocalMatrix.MultiplyVector(transform.forward) + Rigidbody.velocity.normalized).magnitude < 1.4f)
             {
@@ -465,7 +467,8 @@ public class TestFlight : MonoBehaviour
             }
             if (roll != 0)
             {
-                changes += transform.worldToLocalMatrix.MultiplyVector(transform.forward) * roll * Time.deltaTime * rollResponsivity;
+                //changes += transform.worldToLocalMatrix.MultiplyVector(transform.forward) * roll * Time.deltaTime * rollResponsivity;
+                rollChanges += transform.worldToLocalMatrix.MultiplyVector(transform.forward) * roll * Time.deltaTime * rollResponsivity;
             }
             if (yaw != 0)
             {
@@ -475,6 +478,7 @@ public class TestFlight : MonoBehaviour
             Quaternion newRotation = Quaternion.Euler(Rigidbody.rotation.eulerAngles + changes);
 
             Rigidbody.MoveRotation(newRotation);
+            Rigidbody.AddRelativeTorque(rollChanges);
 
 #pragma warning disable CS0618 // Type or member is obsolete
             Vector3 vertVel = Rigidbody.velocity - Vector3.Exclude(transform.up, Rigidbody.velocity);
@@ -485,6 +489,15 @@ public class TestFlight : MonoBehaviour
 
             var forwardVel = Rigidbody.velocity;
             forwardVel.y = 0;
+
+            //if (Input.GetKey(KeyCode.A))
+            //{
+            //    Rigidbody.AddRelativeTorque(Vector3.down);
+            //}
+            //else if (Input.GetKey(KeyCode.D))
+            //{
+            //    Rigidbody.AddRelativeTorque(Vector3.up);
+            //}
         }
     }
 
