@@ -200,6 +200,10 @@ public class TestFlight : MonoBehaviour
 
     private bool canEnableChargeBar;
 
+    private bool moveForward;
+
+    private float thisAngle = 0;
+
     #endregion
 
     void OnEnable()
@@ -211,6 +215,7 @@ public class TestFlight : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        moveForward = false;
         pauseManager = GameObject.FindObjectOfType<PauseManager>();
 
         scoreManager = GameObject.FindObjectOfType<ScoreManager>();
@@ -301,6 +306,7 @@ public class TestFlight : MonoBehaviour
 
                 scoreAddedThisThrow = false;
                 Rigidbody.AddRelativeForce(Vector3.forward * thrustForce * chargeBarController.chargeBar.value);
+                moveForward = true;
             }
         }
         else if (isThrown)
@@ -319,20 +325,35 @@ public class TestFlight : MonoBehaviour
                 playOnce = true;
             }
 
-            //The small the plane's angle towards the ground, the faster the plane will accelerate downwards. First raycast points from nose of plane.
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, Mathf.Infinity, skyLayer))
+            {
+                AngleBetweenGround(rayHit);
+
+                if(thisAngle > 4 && thisAngle < 5f)
+                {
+                    moveForward = false;
+                }
+
+                Debug.Log(thisAngle);
+            }
+
+            //The smaller the plane's angle towards the ground, the faster the plane will accelerate downwards. First raycast points from nose of plane.
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, Mathf.Infinity, affectedRayCastLayer))
             {
                 AngleAcceleration(rayHit);
             }
-            else if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, Mathf.Infinity, skyLayer))
-            {
-                //Determines if force should be applied at the center of mass of the plane this frame when the plane does not face the ground
-                //ForceAtCenterOfMass();
-            }
-            else
-            {
-                //ForceAtCenterOfMass();
-            }
+
+            ForceAtCenterOfMass();
+
+            //else if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, Mathf.Infinity, skyLayer))
+            //{
+            //    //Determines if force should be applied at the center of mass of the plane this frame when the plane does not face the ground
+            //    //ForceAtCenterOfMass();
+            //}
+            //else
+            //{
+            //    ForceAtCenterOfMass();
+            //}
         }
 
         if((isThrown || inSlideMode) && !pauseManager.isPaused)
@@ -499,6 +520,22 @@ public class TestFlight : MonoBehaviour
             //{
             //    Rigidbody.AddRelativeTorque(Vector3.up);
             //}
+
+            if(moveForward)
+            {
+                //if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
+                //{
+                //}
+
+                Vector3 newForward = transform.forward * Rigidbody.velocity.magnitude;
+                //newForward.y = Rigidbody.velocity.y;
+                //if(newForward.y < -200f)
+                //{
+                //    newForward.y = -200f;
+                //}
+
+                Rigidbody.velocity = newForward;
+            }
         }
     }
 
@@ -530,17 +567,42 @@ public class TestFlight : MonoBehaviour
         }
     }
 
+    private void AngleBetweenGround(RaycastHit rayHit)
+    {
+        RaycastHit downHit;
+
+        //Raycast points down from the plane to get the angle towards the ground.
+        Physics.Raycast(transform.position, Vector3.up, out downHit, Mathf.Infinity, skyLayer);
+
+        if (downHit.collider != null)
+        {
+            Vector3 vector1 = rayHit.point - transform.position;
+            Vector3 vector2 = downHit.point - transform.position;
+            float angle = Mathf.Acos(Vector3.Dot(vector1.normalized, vector2.normalized));
+            thisAngle = angle * Mathf.Rad2Deg;
+
+            //if ((angle * Mathf.Rad2Deg) >= 1)
+            //{
+            //    thisAngle = angle;
+            //}
+        }
+    }
+
     /// <summary>
     /// Applies a force at the plane's center of mass on frames where currentForceappliedTimer is less than 1.
     /// As a result, the plane will slowly tilt towards the ground. 
     /// </summary>
     private void ForceAtCenterOfMass()
     {
+        forceAppliedThisFrame = true;
+        Rigidbody.AddForceAtPosition(forceAtPos, centerOfMassReference.transform.position);
+        currentForceAppliedTimer = forceAppliedTimer;
+
         if (currentForceAppliedTimer <= 0)
         {
-            forceAppliedThisFrame = true;
-            Rigidbody.AddForceAtPosition(forceAtPos, centerOfMassReference.transform.position);
-            currentForceAppliedTimer = forceAppliedTimer;
+            //forceAppliedThisFrame = true;
+            //Rigidbody.AddForceAtPosition(forceAtPos, centerOfMassReference.transform.position);
+            //currentForceAppliedTimer = forceAppliedTimer;
         }
         else if (currentForceAppliedTimer > 0)
         {
@@ -647,6 +709,15 @@ public class TestFlight : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "WindArea")
+        {
+            moveForward = false;
+        }
+    }
+
+
     private IEnumerator WinHandler()
     {
         if (!finished)
@@ -696,6 +767,7 @@ public class TestFlight : MonoBehaviour
     {
         if (!finished)
         {
+            moveForward = false;
             Rigidbody.useGravity = false;
             leftSystem.Play();
             rightSystem.Play();
