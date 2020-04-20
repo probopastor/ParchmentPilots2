@@ -50,9 +50,9 @@ public class MainMenuController : MonoBehaviour
 
     }
 
-    public void OpenOptions()
+    public void OpenOptions(string level)
     {
-
+        SceneManager.LoadScene(level);
     }
 
     public void OpenHowToPlay(string level)
