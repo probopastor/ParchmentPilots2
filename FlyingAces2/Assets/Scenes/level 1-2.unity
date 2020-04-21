@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1
+  m_AmbientIntensity: 1.5
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
@@ -35,16 +35,16 @@ RenderSettings:
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
-  m_ReflectionIntensity: 1
+  m_ReflectionIntensity: 0.25
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.22650129, g: 0.25446984, b: 0.2984727, a: 0.25}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 1
+  m_GIWorkflowMode: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -31342,7 +31342,7 @@ PrefabInstance:
     - target: {fileID: 8980741506095247362, guid: 8821f09e175200c4faf2e9c6c9e024c8,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -2.7918535e-14
+      value: -2.7918538e-14
       objectReference: {fileID: 0}
     - target: {fileID: 8980741506095247362, guid: 8821f09e175200c4faf2e9c6c9e024c8,
         type: 3}
@@ -71063,6 +71063,7 @@ GameObject:
   - component: {fileID: 2060643119}
   - component: {fileID: 2060643118}
   - component: {fileID: 2060643121}
+  - component: {fileID: 2060643122}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -71169,6 +71170,27 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2060643122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060643117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa05c6fae845665449537dda316ab3e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  landCam: {fileID: 552868579}
+  xFollow: 1
+  yFollow: 1
+  zFollow: 1
+  xFollowIncreaseMax: -70.2
+  yFollowIncreaseMax: 53.5
+  zFollowIncreaseMax: 5.3
+  followIncreaseSmoothness: 0.001
+  flag: {fileID: 7684915827527944408}
 --- !u!1001 &2061924035
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -72191,6 +72213,12 @@ PrefabInstance:
 --- !u!198 &7684915827527944407 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 9185660733821676589, guid: b0b2ffa3d8b7a014982fc5e0ba2edf50,
+    type: 3}
+  m_PrefabInstance: {fileID: 7684915827527944406}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7684915827527944408 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1839618385333176940, guid: b0b2ffa3d8b7a014982fc5e0ba2edf50,
     type: 3}
   m_PrefabInstance: {fileID: 7684915827527944406}
   m_PrefabAsset: {fileID: 0}
