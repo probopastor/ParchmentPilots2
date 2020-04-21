@@ -204,6 +204,9 @@ public class TestFlight : MonoBehaviour
 
     private float thisAngle = 0;
 
+    bool checkForPlaneDeceleration;
+    bool firstDecelerationCheck;
+
     #endregion
 
     void OnEnable()
@@ -265,7 +268,13 @@ public class TestFlight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(pauseManager.isPaused)
+        if (!checkForPlaneDeceleration && isThrown)
+        {
+            checkForPlaneDeceleration = true;
+            StartCoroutine(CheckForPlaneDeceleration());
+        }
+
+        if (pauseManager.isPaused)
         {
             canEnableChargeBar = false;
             StartCoroutine(DelayAfterGameUnpause());
@@ -414,7 +423,27 @@ public class TestFlight : MonoBehaviour
     private void FixedUpdate()
     {
         AimLogic();
-        MovePlane();    
+        MovePlane();  
+    }
+
+    private IEnumerator CheckForPlaneDeceleration()
+    {
+        Debug.Log("x Vel: " + Rigidbody.velocity.x + " | " + "z Vel: " + Rigidbody.velocity.z);
+
+
+        if(!firstDecelerationCheck)
+        {
+            firstDecelerationCheck = true;
+            yield return new WaitForSeconds(2);
+        }
+
+        if ((Rigidbody.velocity.x < 10f && Rigidbody.velocity.x > -10f) && (Rigidbody.velocity.z < 10f && Rigidbody.velocity.z > -10f) && Rigidbody.velocity.y < 1f)
+        {
+            moveForward = false;
+        }
+
+        checkForPlaneDeceleration = false;
+        yield return new WaitForEndOfFrame();
     }
 
     /// <summary>
@@ -717,6 +746,13 @@ public class TestFlight : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "WindArea")
+        {
+            moveForward = true;
+        }
+    }
 
     private IEnumerator WinHandler()
     {
@@ -770,6 +806,8 @@ public class TestFlight : MonoBehaviour
     {
         if (!finished)
         {
+            checkForPlaneDeceleration = false;
+            firstDecelerationCheck = false;
             moveForward = false;
             Rigidbody.useGravity = false;
             leftSystem.Play();
