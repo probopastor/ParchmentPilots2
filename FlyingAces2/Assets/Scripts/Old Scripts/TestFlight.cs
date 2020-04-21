@@ -352,7 +352,10 @@ public class TestFlight : MonoBehaviour
                 AngleAcceleration(rayHit);
             }
 
-            ForceAtCenterOfMass();
+            if(!pauseManager.isPaused)
+            {
+                ForceAtCenterOfMass();
+            }
 
             //else if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, Mathf.Infinity, skyLayer))
             //{
