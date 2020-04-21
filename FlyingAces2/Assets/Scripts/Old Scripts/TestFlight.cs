@@ -724,6 +724,9 @@ public class TestFlight : MonoBehaviour
         {
             if(!playWinSoundOnce)
             {
+                Rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
+                Rigidbody.constraints = RigidbodyConstraints.FreezePosition;
+
                 MusicSource.clip = winFanfare;
                 MusicSource.Play();
                 yield return new WaitForSeconds(5f);
@@ -908,5 +911,14 @@ public class TestFlight : MonoBehaviour
             pauseManager.tutorialThrowingObject.SetActive(false);
             pauseManager.tutorialFlyingObject.SetActive(false);
         }
+    }
+
+    /// <summary>
+    /// Returns true if level is finished, false if not.
+    /// </summary>
+    /// <returns></returns>
+    public bool GetFinished()
+    {
+        return finished;
     }
 }

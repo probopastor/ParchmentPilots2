@@ -31192,7 +31192,7 @@ PrefabInstance:
     - target: {fileID: 2913789677714072055, guid: 8821f09e175200c4faf2e9c6c9e024c8,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -2.7918535e-14
+      value: -2.7918538e-14
       objectReference: {fileID: 0}
     - target: {fileID: 2913789677714072055, guid: 8821f09e175200c4faf2e9c6c9e024c8,
         type: 3}
@@ -31342,7 +31342,7 @@ PrefabInstance:
     - target: {fileID: 8980741506095247362, guid: 8821f09e175200c4faf2e9c6c9e024c8,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -2.7918535e-14
+      value: -2.7918538e-14
       objectReference: {fileID: 0}
     - target: {fileID: 8980741506095247362, guid: 8821f09e175200c4faf2e9c6c9e024c8,
         type: 3}
@@ -71063,6 +71063,7 @@ GameObject:
   - component: {fileID: 2060643119}
   - component: {fileID: 2060643118}
   - component: {fileID: 2060643121}
+  - component: {fileID: 2060643122}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -71128,7 +71129,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2060643117}
-  m_LocalRotation: {x: 0.14253852, y: -2.7918535e-14, z: 1.9386661e-13, w: 0.9897893}
+  m_LocalRotation: {x: 0.14253852, y: -2.7918538e-14, z: 1.9386661e-13, w: 0.9897893}
   m_LocalPosition: {x: 57, y: 106, z: -123.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -71169,6 +71170,27 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2060643122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060643117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa05c6fae845665449537dda316ab3e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  landCam: {fileID: 552868579}
+  xFollow: 1
+  yFollow: 1
+  zFollow: 1
+  xFollowIncreaseMax: -70.2
+  yFollowIncreaseMax: 53.5
+  zFollowIncreaseMax: 5.3
+  followIncreaseSmoothness: 0.001
+  flag: {fileID: 7684915827527944408}
 --- !u!1001 &2061924035
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -72191,6 +72213,12 @@ PrefabInstance:
 --- !u!198 &7684915827527944407 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 9185660733821676589, guid: b0b2ffa3d8b7a014982fc5e0ba2edf50,
+    type: 3}
+  m_PrefabInstance: {fileID: 7684915827527944406}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7684915827527944408 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1839618385333176940, guid: b0b2ffa3d8b7a014982fc5e0ba2edf50,
     type: 3}
   m_PrefabInstance: {fileID: 7684915827527944406}
   m_PrefabAsset: {fileID: 0}

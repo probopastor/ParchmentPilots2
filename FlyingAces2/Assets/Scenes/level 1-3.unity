@@ -6219,7 +6219,7 @@ PrefabInstance:
     - target: {fileID: 2913789677714072055, guid: 8821f09e175200c4faf2e9c6c9e024c8,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000011041816
+      value: 0.0000000011041856
       objectReference: {fileID: 0}
     - target: {fileID: 2913789677714072055, guid: 8821f09e175200c4faf2e9c6c9e024c8,
         type: 3}
@@ -6364,7 +6364,7 @@ PrefabInstance:
     - target: {fileID: 8980741506095247362, guid: 8821f09e175200c4faf2e9c6c9e024c8,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000024092053
+      value: 0.0000000024092037
       objectReference: {fileID: 0}
     - target: {fileID: 8980741506095247362, guid: 8821f09e175200c4faf2e9c6c9e024c8,
         type: 3}
@@ -59349,6 +59349,12 @@ ParticleSystem:
     type: 3}
   m_PrefabInstance: {fileID: 1619279697}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1619279699 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1839618385333176940, guid: b0b2ffa3d8b7a014982fc5e0ba2edf50,
+    type: 3}
+  m_PrefabInstance: {fileID: 1619279697}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1627099598 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5359248708520498989, guid: 36131ca2603fb7545a988533b98d5c8c,
@@ -64627,6 +64633,7 @@ GameObject:
   - component: {fileID: 2060643119}
   - component: {fileID: 2060643118}
   - component: {fileID: 2060643121}
+  - component: {fileID: 2060643122}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -64692,7 +64699,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2060643117}
-  m_LocalRotation: {x: 0.14253764, y: 0.000000014676358, z: 0.0000000011041816, w: 0.9897894}
+  m_LocalRotation: {x: 0.14253764, y: -0.000000015182314, z: 0.0000000024092037, w: 0.9897894}
   m_LocalPosition: {x: -182, y: 89, z: -796.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -64733,6 +64740,27 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2060643122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060643117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa05c6fae845665449537dda316ab3e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  landCam: {fileID: 767460374}
+  xFollow: -1
+  yFollow: 1
+  zFollow: 1
+  xFollowIncreaseMax: 40.07
+  yFollowIncreaseMax: 53.5
+  zFollowIncreaseMax: 5.3
+  followIncreaseSmoothness: 0.01
+  flag: {fileID: 1619279699}
 --- !u!1001 &2078260225
 PrefabInstance:
   m_ObjectHideFlags: 0
