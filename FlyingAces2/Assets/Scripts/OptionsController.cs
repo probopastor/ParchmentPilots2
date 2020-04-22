@@ -70,7 +70,7 @@ public class OptionsController : MonoBehaviour
 
     private void SetAspectRatio(AspectRatio newAspectRatio)
     {
-        SetAspectRatio(newAspectRatio);
+        PlayerSettings.SetAspectRatio(newAspectRatio, true);
     }
 
     public void GetAspectRatio()
