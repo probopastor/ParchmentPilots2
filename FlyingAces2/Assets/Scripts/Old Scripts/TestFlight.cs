@@ -499,7 +499,7 @@ public class TestFlight : MonoBehaviour
             float tip = (transform.right + Vector3.up).magnitude - 1.414214f;
             yaw -= tip;
 
-            if (OptionsController.invertedControls)
+            if (OptionsController.instance.GetInvertedControlls())
             {
                 tilt = -Input.GetAxis("Vertical");
             }
@@ -865,7 +865,7 @@ public class TestFlight : MonoBehaviour
         {
             float xRotationValue = Input.GetAxis("Horizontal");
             float yRotationValue;
-            if (OptionsController.invertedControls)
+            if (OptionsController.instance.GetInvertedControlls())
             {
                 yRotationValue = -Input.GetAxis("Vertical");
             }
