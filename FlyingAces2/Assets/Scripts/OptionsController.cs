@@ -4,18 +4,15 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Audio;
 
 public class OptionsController : MonoBehaviour
 {
     public static OptionsController instance;
+    public AudioMixer audioMixer;
 
-    public TMP_Dropdown dropdown;
-
-    private bool invertedControls = false;
-    private float volume = 100;
-
-    public Slider volumeSlider;
-
+    public static bool invertedControls = false;
+    private float volume = 0;
     private AspectRatio aspectRatio;
 
     // Start is called before the first frame update
@@ -34,37 +31,33 @@ public class OptionsController : MonoBehaviour
 
     }
 
-    public void SwitchInvertedControls()
+    public void SwitchInvertedControls(bool isInverted)
     {
-        invertedControls = !invertedControls;
+        invertedControls = isInverted;
     }
 
-    public void ChangeVolumeLevel()
+    public void ChangeVolumeLevel(float vol)
     {
-        volume = volumeSlider.value;
+        audioMixer.SetFloat("volume", vol);
     }
 
-    public void EditAspectRatio()
+    public void SetResolution(int resolutionIndex)
     {
-        if(dropdown.value == 0)
+        if (resolutionIndex == 0)
         {
-            aspectRatio = AspectRatio.Aspect4by3;
-            SetAspectRatio(aspectRatio);
+            Screen.SetResolution(960, 720, true);
         }
-        else if(dropdown.value == 1)
+        else if(resolutionIndex == 1)
         {
-            aspectRatio = AspectRatio.Aspect5by4;
-            SetAspectRatio(aspectRatio);
+            Screen.SetResolution(1280, 1024, true);
         }
-        else if(dropdown.value == 2)
+        else if(resolutionIndex == 2)
         {
-            aspectRatio = AspectRatio.Aspect16by9;
-            SetAspectRatio(aspectRatio);
+            Screen.SetResolution(1920, 1080, true);
         }
-        else if(dropdown.value == 3)
+        else if(resolutionIndex == 3)
         {
-            aspectRatio = AspectRatio.Aspect16by10;
-            SetAspectRatio(aspectRatio);
+            Screen.SetResolution(1680, 1050, true);
         }
     }
 

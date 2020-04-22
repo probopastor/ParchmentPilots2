@@ -162,7 +162,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 70377674}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 82c1f0a87d4f4ff40b6e043431f2a4bb, type: 3}
   m_Name: 
@@ -1387,7 +1387,8 @@ AudioSource:
   m_GameObject: {fileID: 762919236}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 5588917ecc8d77947bc4b895394ecb64,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -1931,7 +1932,8 @@ AudioSource:
   m_GameObject: {fileID: 935974906}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 5588917ecc8d77947bc4b895394ecb64,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.424
@@ -2445,8 +2447,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1356349419}
-        m_MethodName: switchInvertedControls
-        m_Mode: 1
+        m_MethodName: SwitchInvertedControls
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2627,16 +2629,16 @@ MonoBehaviour:
   m_FillRect: {fileID: 2147124082}
   m_HandleRect: {fileID: 1609698504}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 100
+  m_MinValue: -40
+  m_MaxValue: 0
   m_WholeNumbers: 1
-  m_Value: 100
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1356349419}
         m_MethodName: ChangeVolumeLevel
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2957,8 +2959,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4301a6bf68ab42a40afc1edeea4dbdf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropdown: {fileID: 1411073856}
-  volumeSlider: {fileID: 1212462733}
+  audioMixer: {fileID: 24100000, guid: 5588917ecc8d77947bc4b895394ecb64, type: 2}
 --- !u!4 &1356349420
 Transform:
   m_ObjectHideFlags: 0
@@ -3075,8 +3076,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1356349419}
-        m_MethodName: EditAspectRatio
-        m_Mode: 1
+        m_MethodName: SetResolution
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
