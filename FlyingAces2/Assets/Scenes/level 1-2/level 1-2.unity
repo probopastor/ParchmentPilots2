@@ -3615,7 +3615,7 @@ PrefabInstance:
     - target: {fileID: 7016437114534098756, guid: 7543c71c792b6a6428742b34972fee95,
         type: 3}
       propertyPath: nextSceneName
-      value: MainMenu
+      value: level 1-3
       objectReference: {fileID: 0}
     - target: {fileID: 7016437114534098756, guid: 7543c71c792b6a6428742b34972fee95,
         type: 3}
@@ -31263,7 +31263,7 @@ PrefabInstance:
     - target: {fileID: 8980741506095247362, guid: 8821f09e175200c4faf2e9c6c9e024c8,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -2.7918535e-14
+      value: -2.7918538e-14
       objectReference: {fileID: 0}
     - target: {fileID: 8980741506095247362, guid: 8821f09e175200c4faf2e9c6c9e024c8,
         type: 3}
