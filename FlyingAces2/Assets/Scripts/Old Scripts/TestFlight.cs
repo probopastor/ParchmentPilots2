@@ -499,6 +499,15 @@ public class TestFlight : MonoBehaviour
             float tip = (transform.right + Vector3.up).magnitude - 1.414214f;
             yaw -= tip;
 
+            if (OptionsController.invertedControls)
+            {
+                tilt = -Input.GetAxis("Vertical");
+            }
+            else
+            {
+                tilt = Input.GetAxis("Vertical");
+            }
+
             if (transform.rotation.eulerAngles.x > 85f && transform.rotation.eulerAngles.x < 95f && tilt > 0)
             {
                 tilt = 0;
@@ -855,7 +864,16 @@ public class TestFlight : MonoBehaviour
         if(aiming)
         {
             float xRotationValue = Input.GetAxis("Horizontal");
-            float yRotationValue = Input.GetAxis("Vertical");
+            float yRotationValue;
+            if (OptionsController.invertedControls)
+            {
+                yRotationValue = -Input.GetAxis("Vertical");
+            }
+            else
+            {
+                yRotationValue = Input.GetAxis("Vertical");
+            }
+            
             if (transform.rotation.eulerAngles.x > 85f && transform.rotation.eulerAngles.x < 95f && yRotationValue > 0)
             {
                 yRotationValue = 0;
