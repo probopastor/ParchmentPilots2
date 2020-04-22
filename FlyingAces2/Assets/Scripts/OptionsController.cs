@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,11 +8,14 @@ public class OptionsController : MonoBehaviour
 {
     public static OptionsController instance;
 
+    public Dropdown dropdown;
+
     private bool invertedControls = false;
     private float volume = 100;
 
     public Slider volumeSlider;
-    private Vector2 thisResolution;
+
+    private AspectRatio aspectRatio;
 
     // Start is called before the first frame update
     void Start()
@@ -39,15 +43,38 @@ public class OptionsController : MonoBehaviour
         volume = volumeSlider.value;
     }
 
-    public void ChangeResolution(Vector2 resolution)
+    public void EditAspectRatio()
     {
-        thisResolution = resolution;
-        Screen.SetResolution((int)resolution.x, (int)resolution.y, true);
+        if(dropdown.value == 0)
+        {
+            aspectRatio = AspectRatio.Aspect4by3;
+            SetAspectRatio(aspectRatio);
+        }
+        else if(dropdown.value == 1)
+        {
+            aspectRatio = AspectRatio.Aspect5by4;
+            SetAspectRatio(aspectRatio);
+        }
+        else if(dropdown.value == 2)
+        {
+            aspectRatio = AspectRatio.Aspect16by9;
+            SetAspectRatio(aspectRatio);
+        }
+        else if(dropdown.value == 3)
+        {
+            aspectRatio = AspectRatio.Aspect16by10;
+            SetAspectRatio(aspectRatio);
+        }
     }
 
-    public Vector2 GetResolution()
+    private void SetAspectRatio(AspectRatio newAspectRatio)
     {
-        return thisResolution;
+        SetAspectRatio(newAspectRatio);
+    }
+
+    public void GetAspectRatio()
+    {
+        //TODO
     }
 
     public float GetVolume()

@@ -1189,8 +1189,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 193.83, y: -7.9}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 227.1, y: -7.9}
+  m_SizeDelta: {x: 266.6, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &695451067
 MonoBehaviour:
@@ -1210,7 +1210,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Resolution
+  m_text: Aspect Ratio
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 395957afee12d0248948426c511f3ab0, type: 2}
   m_sharedMaterial: {fileID: -388920110854035957, guid: 395957afee12d0248948426c511f3ab0,
@@ -1280,10 +1280,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 695451067}
-    characterCount: 10
+    characterCount: 12
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 1
+    spaceCount: 1
+    wordCount: 2
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -2260,7 +2260,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1920x1080
+  m_text: 16:9
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2329,10 +2329,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1075586062}
-    characterCount: 9
+    characterCount: 4
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 2
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -2635,7 +2635,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1356349419}
-        m_MethodName: changeVolumeLevel
+        m_MethodName: ChangeVolumeLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2957,6 +2957,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4301a6bf68ab42a40afc1edeea4dbdf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropdown: {fileID: 0}
   volumeSlider: {fileID: 1212462733}
 --- !u!4 &1356349420
 Transform:
@@ -3059,18 +3060,31 @@ MonoBehaviour:
   m_CaptionImage: {fileID: 0}
   m_ItemText: {fileID: 799485648}
   m_ItemImage: {fileID: 0}
-  m_Value: 0
+  m_Value: 2
   m_Options:
     m_Options:
-    - m_Text: 1920x1080
+    - m_Text: 4:3
       m_Image: {fileID: 0}
-    - m_Text: Option B
+    - m_Text: 5:4
       m_Image: {fileID: 0}
-    - m_Text: Option C
+    - m_Text: 16:9
+      m_Image: {fileID: 0}
+    - m_Text: 16:10
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1411073857
 MonoBehaviour:
   m_ObjectHideFlags: 0
