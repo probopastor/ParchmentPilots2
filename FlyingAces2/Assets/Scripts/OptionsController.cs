@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class OptionsController : MonoBehaviour
 {
     public static OptionsController instance;
 
-    public Dropdown dropdown;
+    public TMP_Dropdown dropdown;
 
     private bool invertedControls = false;
     private float volume = 100;
