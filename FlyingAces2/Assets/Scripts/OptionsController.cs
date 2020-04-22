@@ -13,7 +13,6 @@ public class OptionsController : MonoBehaviour
 
     public static bool invertedControls = false;
     private float volume = 0;
-    private AspectRatio aspectRatio;
 
     // Start is called before the first frame update
     void Start()
@@ -59,11 +58,6 @@ public class OptionsController : MonoBehaviour
         {
             Screen.SetResolution(1680, 1050, true);
         }
-    }
-
-    private void SetAspectRatio(AspectRatio newAspectRatio)
-    {
-        PlayerSettings.SetAspectRatio(newAspectRatio, true);
     }
 
     public void GetAspectRatio()
