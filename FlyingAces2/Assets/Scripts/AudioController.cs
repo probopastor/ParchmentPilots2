@@ -16,7 +16,7 @@ public class AudioController : MonoBehaviour
     {
         foreach (AudioSource audSou in audioSources)
         {
-            audSou.volume = OptionsController.volume / 100;
+            audSou.volume = OptionsController.instance.GetVolume() / 100;
         }
     }
 }
