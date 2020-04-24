@@ -611,13 +611,14 @@ GameObject:
   m_Component:
   - component: {fileID: 220012296}
   - component: {fileID: 220012297}
+  - component: {fileID: 220012298}
   m_Layer: 0
   m_Name: Credits
   m_TagString: MainMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &220012296
 Transform:
   m_ObjectHideFlags: 0
@@ -654,6 +655,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &220012298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220012295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f4f55c8f0b27d4b8e97b163e03c198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIAudioSource: {fileID: 1464644641}
+  UISoundEffect: {fileID: 8300000, guid: 8e28aeea0888da74ba0c468bcaa632ba, type: 3}
 --- !u!1 &246099888
 GameObject:
   m_ObjectHideFlags: 0
@@ -3071,6 +3086,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1845919665}
   - component: {fileID: 1845919666}
+  - component: {fileID: 1845919667}
   m_Layer: 0
   m_Name: Options Note
   m_TagString: MainMenu
@@ -3114,6 +3130,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1845919667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845919664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f4f55c8f0b27d4b8e97b163e03c198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIAudioSource: {fileID: 1464644641}
+  UISoundEffect: {fileID: 8300000, guid: 8e28aeea0888da74ba0c468bcaa632ba, type: 3}
 --- !u!1 &1848760391
 GameObject:
   m_ObjectHideFlags: 0
