@@ -352,11 +352,6 @@ public class TestFlight : MonoBehaviour
                 AngleAcceleration(rayHit);
             }
 
-            if(!pauseManager.isPaused)
-            {
-                ForceAtCenterOfMass();
-            }
-
             //else if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, Mathf.Infinity, skyLayer))
             //{
             //    //Determines if force should be applied at the center of mass of the plane this frame when the plane does not face the ground
@@ -427,6 +422,14 @@ public class TestFlight : MonoBehaviour
     {
         AimLogic();
         MovePlane();  
+
+        if(isThrown)
+        {
+            if (!pauseManager.isPaused)
+            {
+                ForceAtCenterOfMass();
+            }
+        }
     }
 
     private IEnumerator CheckForPlaneDeceleration()
