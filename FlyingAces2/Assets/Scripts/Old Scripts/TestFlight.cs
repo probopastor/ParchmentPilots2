@@ -207,6 +207,14 @@ public class TestFlight : MonoBehaviour
     bool checkForPlaneDeceleration;
     bool firstDecelerationCheck;
 
+    public float RadiusToCheckOnRethrow = 1f;
+    private Transform closestObject;
+
+    public LayerMask radiusCheckLayers;
+
+    public float xBuffer = 1f;
+    public float zBuffer = 1f;
+
     #endregion
 
     void OnEnable()
@@ -847,6 +855,65 @@ public class TestFlight : MonoBehaviour
 
             Rigidbody.isKinematic = true;
         }
+    }
+
+    /// <summary>
+    /// Returns the closest Transform to the plane from objects in radiusCheckLayer in a radius from the plane
+    /// </summary>
+    /// <returns></returns>
+    public Transform FindClosestObject()
+    {
+        Transform closestObject = null;
+        float closestDistance = Mathf.Infinity;
+        Collider[] hitColliders = Physics.OverlapSphere(gameObject.transform.position, RadiusToCheckOnRethrow, radiusCheckLayers);
+
+        foreach (Collider objectTransform in hitColliders)
+        {
+            Vector3 targetDist = gameObject.transform.position - objectTransform.transform.position;
+            float targetMagnitude = targetDist.sqrMagnitude;
+
+            if (targetMagnitude < closestDistance)
+            {
+                closestDistance = targetMagnitude;
+                closestObject = objectTransform.transform;
+            }
+        }
+
+        return closestObject;
+    }
+
+    /// <summary>
+    /// Returns a Vector3 with buffer data to determine how far the plane should be placed from a wall
+    /// </summary>
+    /// <param name="closestObj"></param>
+    /// <returns></returns>
+    public Vector3 DetermineRethrowPosBuffer(Transform closestObj)
+    {
+        Vector3 newThrowPos = new Vector3(0, 0, 0);
+        float xValue = 0;
+        float yValue = 0;
+        float zValue = 0;
+
+        if ((gameObject.transform.position.x - closestObj.position.x) > gameObject.transform.position.x)
+        {
+            xValue = xBuffer;
+        }
+        else if ((gameObject.transform.position.x - closestObj.position.x) < gameObject.transform.position.x)
+        {
+            xValue = -xBuffer;
+        }
+
+        if ((gameObject.transform.position.z - closestObj.position.z) > gameObject.transform.position.z)
+        {
+            zValue = zBuffer;
+        }
+        else if ((gameObject.transform.position.z - closestObj.position.z) < gameObject.transform.position.z)
+        {
+            zValue = -zBuffer;
+        }
+
+        newThrowPos = new Vector3(xValue, yValue, zValue);
+        return newThrowPos;
     }
 
     /// <summary>
