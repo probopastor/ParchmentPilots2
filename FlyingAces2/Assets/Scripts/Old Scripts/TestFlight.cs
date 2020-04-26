@@ -215,6 +215,8 @@ public class TestFlight : MonoBehaviour
     public float xBuffer = 1f;
     public float zBuffer = 1f;
 
+    private bool movePlaneToPos;
+
     #endregion
 
     void OnEnable()
@@ -226,6 +228,7 @@ public class TestFlight : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        movePlaneToPos = false;
         moveForward = false;
         pauseManager = GameObject.FindObjectOfType<PauseManager>();
 
@@ -424,6 +427,23 @@ public class TestFlight : MonoBehaviour
         }
 
         OutOfBoundsCheck();
+
+        if (movePlaneToPos)
+        {
+            Debug.Log("moving plane");
+            movePlaneToPos = false;
+
+            Transform obj = FindClosestObject();
+            if (obj != null)
+            {
+                Debug.Log("Closest Object: " + obj.name);
+
+                Vector3 bufferData = DetermineRethrowPosBuffer(obj);
+                Debug.Log("Buffer Data: " + bufferData);
+                gameObject.transform.position = new Vector3(gameObject.transform.position.x + bufferData.x, throwHeight, gameObject.transform.position.z + bufferData.z);
+                Debug.Log("Done moving");
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -442,7 +462,7 @@ public class TestFlight : MonoBehaviour
 
     private IEnumerator CheckForPlaneDeceleration()
     {
-        Debug.Log("x Vel: " + Rigidbody.velocity.x + " | " + "z Vel: " + Rigidbody.velocity.z);
+        //Debug.Log("x Vel: " + Rigidbody.velocity.x + " | " + "z Vel: " + Rigidbody.velocity.z);
 
 
         if(!firstDecelerationCheck)
@@ -849,6 +869,7 @@ public class TestFlight : MonoBehaviour
             if (hitGround)
             {
                 RotateTowardsFinish();
+                movePlaneToPos = true;
             }
 
             hitGround = false;
