@@ -441,6 +441,7 @@ public class TestFlight : MonoBehaviour
                 Vector3 bufferData = DetermineRethrowPosBuffer(obj);
                 Debug.Log("Buffer Data: " + bufferData);
                 gameObject.transform.position = new Vector3(gameObject.transform.position.x + bufferData.x, throwHeight, gameObject.transform.position.z + bufferData.z);
+                //planeCam.transform.localPosition = camStartPos;
                 Debug.Log("Done moving");
             }
         }
