@@ -6,6 +6,8 @@ using UnityEngine.EventSystems;
 
 public class PauseManager : MonoBehaviour
 {
+    public Animator transitionAnimator;
+
     public AudioSource MusicSource;
     public AudioSource SinglePitchSoundEffectSource;
 
@@ -126,13 +128,15 @@ public class PauseManager : MonoBehaviour
     {
         Time.timeScale = 1;
         Scene thisScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(thisScene.name);
+        StartCoroutine(LevelLoad(thisScene.name));
+        //SceneManager.LoadScene(thisScene.name);
     }
 
     public void QuitToMainMenu()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(mainMenuSceneName);
+        StartCoroutine(LevelLoad(mainMenuSceneName));
+        //SceneManager.LoadScene(mainMenuSceneName);
     }
 
     public void OpenCloseMenuSound()
@@ -151,5 +155,14 @@ public class PauseManager : MonoBehaviour
     {
         SinglePitchSoundEffectSource.clip = buttonPressSound;
         SinglePitchSoundEffectSource.Play();
+    }
+
+
+    IEnumerator LevelLoad(string level)
+    {
+        transitionAnimator.SetTrigger("Start");
+
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(level);
     }
 }

@@ -7233,7 +7233,7 @@ PrefabInstance:
     - target: {fileID: 2913789677714072055, guid: 8821f09e175200c4faf2e9c6c9e024c8,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000063327055
+      value: 0.0000000063327064
       objectReference: {fileID: 0}
     - target: {fileID: 2913789677714072055, guid: 8821f09e175200c4faf2e9c6c9e024c8,
         type: 3}
@@ -7383,7 +7383,7 @@ PrefabInstance:
     - target: {fileID: 8980741506095247362, guid: 8821f09e175200c4faf2e9c6c9e024c8,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000024087905
+      value: 0.0000000024087903
       objectReference: {fileID: 0}
     - target: {fileID: 8980741506095247362, guid: 8821f09e175200c4faf2e9c6c9e024c8,
         type: 3}
@@ -8457,6 +8457,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7f66b75f3868844c950398b3e737e71, type: 3}
+--- !u!95 &779940201 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4961423945399843899, guid: c7f66b75f3868844c950398b3e737e71,
+    type: 3}
+  m_PrefabInstance: {fileID: 779940200}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &790813902
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -64845,6 +64851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8e7a5bc329bfd14aafd787c0b53b648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transitionAnimator: {fileID: 779940201}
   MusicSource: {fileID: 1763895450}
   SinglePitchSoundEffectSource: {fileID: 1398276060}
   gameMusic: {fileID: 8300000, guid: eb49d70aa0e87bf468ec438f260d63b3, type: 3}
@@ -68260,7 +68267,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2060643117}
-  m_LocalRotation: {x: 0.14253761, y: -0.000000021616852, z: 0.0000000063327055, w: 0.9897894}
+  m_LocalRotation: {x: 0.14253761, y: -0.000000021616852, z: 0.0000000063327064, w: 0.9897894}
   m_LocalPosition: {x: -182, y: 89, z: -796.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
