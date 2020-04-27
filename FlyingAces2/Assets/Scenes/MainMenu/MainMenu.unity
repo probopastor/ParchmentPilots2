@@ -2319,15 +2319,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1974674927}
-        m_MethodName: 
-        m_Mode: 0
+      - m_Target: {fileID: 1974674928}
+        m_MethodName: StartLevel
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Credits Menu
           m_BoolArgument: 0
         m_CallState: 1
 --- !u!114 &1014415695
