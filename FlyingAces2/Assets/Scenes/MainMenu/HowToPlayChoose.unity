@@ -2948,7 +2948,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1362642661
 Transform:
   m_ObjectHideFlags: 0
@@ -5544,6 +5544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efccce36300203047aa1c91d24666cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transitionAnimator: {fileID: 0}
   MusicSource: {fileID: 1362642662}
   UISoundEffectSource: {fileID: 930633581}
   mainMenuMusic: {fileID: 8300000, guid: b66f539aa02e5704fbe6a16dcc232b54, type: 3}
