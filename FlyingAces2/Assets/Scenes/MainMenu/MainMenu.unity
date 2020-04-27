@@ -601,6 +601,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!95 &186268275 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4961423945399843899, guid: c7f66b75f3868844c950398b3e737e71,
+    type: 3}
+  m_PrefabInstance: {fileID: 2971674830974027094}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &220012295
 GameObject:
   m_ObjectHideFlags: 0
@@ -2696,12 +2702,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1200339365}
   m_CullTransparentMesh: 0
---- !u!95 &1331895040 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 8651592286210140562, guid: c7f66b75f3868844c950398b3e737e71,
-    type: 3}
-  m_PrefabInstance: {fileID: 2971674830974027094}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1464644640
 GameObject:
   m_ObjectHideFlags: 0
@@ -3484,7 +3484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efccce36300203047aa1c91d24666cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionAnimator: {fileID: 1331895040}
+  transitionAnimator: {fileID: 186268275}
   MusicSource: {fileID: 1902582339}
   UISoundEffectSource: {fileID: 1464644641}
   mainMenuMusic: {fileID: 8300000, guid: a3abfa4327d61db468e2ff03d878bb34, type: 3}
