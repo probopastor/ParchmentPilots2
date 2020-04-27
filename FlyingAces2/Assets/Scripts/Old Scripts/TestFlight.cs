@@ -263,7 +263,7 @@ public class TestFlight : MonoBehaviour
         scoreCard.SetActive(false);
 
         currentForceAppliedTimer = forceAppliedTimer;
-        
+
         leftMain = leftSystem.main;
         rightMain = rightSystem.main;
 
@@ -296,7 +296,7 @@ public class TestFlight : MonoBehaviour
         {
             TutorialHandler();
         }
-        else if(!isLevel1)
+        else if (!isLevel1)
         {
             pauseManager.tutorialChargingObject.SetActive(false);
             pauseManager.tutorialAimObject.SetActive(false);
@@ -335,7 +335,7 @@ public class TestFlight : MonoBehaviour
             emissionModuleRight.rateOverDistance = windEmmissionRate;
 
             RaycastHit rayHit;
-            if(!playOnce)
+            if (!playOnce)
             {
                 LongSoundEffectSource.clip = windSound;
                 LongSoundEffectSource.Play();
@@ -349,7 +349,7 @@ public class TestFlight : MonoBehaviour
             {
                 AngleBetweenGround(rayHit);
 
-                if(thisAngle > 4 && thisAngle < 5f)
+                if (thisAngle > 4 && thisAngle < 5f)
                 {
                     moveForward = false;
                 }
@@ -362,21 +362,11 @@ public class TestFlight : MonoBehaviour
             {
                 AngleAcceleration(rayHit);
             }
-
-            //else if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out rayHit, Mathf.Infinity, skyLayer))
-            //{
-            //    //Determines if force should be applied at the center of mass of the plane this frame when the plane does not face the ground
-            //    //ForceAtCenterOfMass();
-            //}
-            //else
-            //{
-            //    ForceAtCenterOfMass();
-            //}
         }
 
-        if((isThrown || inSlideMode) && !pauseManager.isPaused)
+        if ((isThrown || inSlideMode) && !pauseManager.isPaused)
         {
-            if(inSlideMode && !playCrumbleOnce)
+            if (inSlideMode && !playCrumbleOnce)
             {
                 increaseWindPitchRate = 100f;
                 SoundEffectSource.clip = crumbleSound;
@@ -395,7 +385,7 @@ public class TestFlight : MonoBehaviour
 
             WindParticleHandler();
         }
-        else if(pauseManager.isPaused)
+        else if (pauseManager.isPaused)
         {
             LongSoundEffectSource.Stop();
             SoundEffectSource.loop = false;
@@ -430,29 +420,61 @@ public class TestFlight : MonoBehaviour
 
         if (movePlaneToPos)
         {
-            Debug.Log("moving plane");
             movePlaneToPos = false;
 
-            Transform obj = FindClosestObject();
-            if (obj != null)
-            {
-                Debug.Log("Closest Object: " + obj.name);
+            float xMove = 0;
+            float zMove = 0;
 
-                Vector3 bufferData = DetermineRethrowPosBuffer(obj);
-                Debug.Log("Buffer Data: " + bufferData);
-                gameObject.transform.position = new Vector3(gameObject.transform.position.x + bufferData.x, throwHeight, gameObject.transform.position.z + bufferData.z);
-                //planeCam.transform.localPosition = camStartPos;
-                Debug.Log("Done moving");
+            float xCheckHit = 0;
+            float zCheckHit = 0;
+
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, Vector3.right, out hit, RadiusToCheckOnRethrow, radiusCheckLayers))
+            {
+                xMove = -xBuffer;
+                xCheckHit++;
             }
+
+            if (Physics.Raycast(transform.position, Vector3.left, out hit, RadiusToCheckOnRethrow, radiusCheckLayers))
+            {
+                xMove = xBuffer;
+                xCheckHit++;
+            }
+
+            if (Physics.Raycast(transform.position, Vector3.forward, out hit, RadiusToCheckOnRethrow, radiusCheckLayers))
+            {
+                zMove = -zBuffer;
+                zCheckHit++;
+            }
+
+            if (Physics.Raycast(transform.position, -Vector3.forward, out hit, RadiusToCheckOnRethrow, radiusCheckLayers))
+            {
+                zMove = zBuffer;
+                zCheckHit++;
+            }
+
+            if(xCheckHit > 1)
+            {
+                xMove = 0;
+            }
+
+            if(zCheckHit > 1)
+            {
+                zMove = 0;
+            }
+
+            Debug.Log("xMove: " + xMove + " zMove: " + zMove);
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x + xMove, throwHeight, gameObject.transform.position.z + zMove);
+            RotateTowardsFinish();
         }
     }
 
     private void FixedUpdate()
     {
         AimLogic();
-        MovePlane();  
+        MovePlane();
 
-        if(isThrown)
+        if (isThrown)
         {
             if (!pauseManager.isPaused)
             {
@@ -465,8 +487,7 @@ public class TestFlight : MonoBehaviour
     {
         //Debug.Log("x Vel: " + Rigidbody.velocity.x + " | " + "z Vel: " + Rigidbody.velocity.z);
 
-
-        if(!firstDecelerationCheck)
+        if (!firstDecelerationCheck)
         {
             firstDecelerationCheck = true;
             yield return new WaitForSeconds(2);
@@ -498,13 +519,13 @@ public class TestFlight : MonoBehaviour
     private void WindParticleHandler()
     {
         var particleColorChange = Rigidbody.velocity.magnitude / increaseParticleColorSwitchRate;
-        leftMain.startColor = new Color((Mathf.Clamp(particleColorChange, particleColorMinSpeed.r, particleColorMaxSpeed.r)), 
-            (Mathf.Clamp(particleColorChange, particleColorMinSpeed.g, particleColorMaxSpeed.g)), 
-            (Mathf.Clamp(particleColorChange, particleColorMinSpeed.b, particleColorMaxSpeed.b)), 
+        leftMain.startColor = new Color((Mathf.Clamp(particleColorChange, particleColorMinSpeed.r, particleColorMaxSpeed.r)),
+            (Mathf.Clamp(particleColorChange, particleColorMinSpeed.g, particleColorMaxSpeed.g)),
+            (Mathf.Clamp(particleColorChange, particleColorMinSpeed.b, particleColorMaxSpeed.b)),
             (Mathf.Clamp(particleColorChange, particleColorMinSpeed.a, particleColorMaxSpeed.a)));
-        rightMain.startColor = new Color((Mathf.Clamp(particleColorChange, particleColorMinSpeed.r, particleColorMaxSpeed.r)), 
-            (Mathf.Clamp(particleColorChange, particleColorMinSpeed.g, particleColorMaxSpeed.g)), 
-            (Mathf.Clamp(particleColorChange, particleColorMinSpeed.b, particleColorMaxSpeed.b)), 
+        rightMain.startColor = new Color((Mathf.Clamp(particleColorChange, particleColorMinSpeed.r, particleColorMaxSpeed.r)),
+            (Mathf.Clamp(particleColorChange, particleColorMinSpeed.g, particleColorMaxSpeed.g)),
+            (Mathf.Clamp(particleColorChange, particleColorMinSpeed.b, particleColorMaxSpeed.b)),
             (Mathf.Clamp(particleColorChange, particleColorMinSpeed.a, particleColorMaxSpeed.a)));
 
         var particleLifetimeChange = Rigidbody.velocity.magnitude / increaseParticleLifeTimeRate;
@@ -594,7 +615,7 @@ public class TestFlight : MonoBehaviour
             //    Rigidbody.AddRelativeTorque(Vector3.up);
             //}
 
-            if(moveForward)
+            if (moveForward)
             {
                 //if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
                 //{
@@ -732,7 +753,7 @@ public class TestFlight : MonoBehaviour
             {
                 scoreText.text = "You got an albatross! Amazing!";
             }
-            else if(scoreStroke == par + 1)
+            else if (scoreStroke == par + 1)
             {
                 scoreText.text = "You got a bogey. So close...";
             }
@@ -802,7 +823,7 @@ public class TestFlight : MonoBehaviour
     {
         if (!finished)
         {
-            if(!playWinSoundOnce)
+            if (!playWinSoundOnce)
             {
                 Rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
                 Rigidbody.constraints = RigidbodyConstraints.FreezePosition;
@@ -821,7 +842,7 @@ public class TestFlight : MonoBehaviour
                 SceneManager.LoadScene(nextSceneName);
                 playWinSoundOnce = true;
             }
-          
+
         }
     }
 
@@ -829,7 +850,7 @@ public class TestFlight : MonoBehaviour
     {
         if (collision.gameObject.tag == "ground" && (Rigidbody.velocity.x < 0.1f && Rigidbody.velocity.y < 0.1f && Rigidbody.velocity.z < 0.1f))
         {
-            if(!scoreAddedThisThrow)
+            if (!scoreAddedThisThrow)
             {
                 scoreManager.stroke += 1;
                 scoreAddedThisThrow = true;
@@ -869,7 +890,7 @@ public class TestFlight : MonoBehaviour
 
             if (hitGround)
             {
-                RotateTowardsFinish();
+                //RotateTowardsFinish();
                 movePlaneToPos = true;
             }
 
@@ -877,65 +898,6 @@ public class TestFlight : MonoBehaviour
 
             Rigidbody.isKinematic = true;
         }
-    }
-
-    /// <summary>
-    /// Returns the closest Transform to the plane from objects in radiusCheckLayer in a radius from the plane
-    /// </summary>
-    /// <returns></returns>
-    public Transform FindClosestObject()
-    {
-        Transform closestObject = null;
-        float closestDistance = Mathf.Infinity;
-        Collider[] hitColliders = Physics.OverlapSphere(gameObject.transform.position, RadiusToCheckOnRethrow, radiusCheckLayers);
-
-        foreach (Collider objectTransform in hitColliders)
-        {
-            Vector3 targetDist = gameObject.transform.position - objectTransform.transform.position;
-            float targetMagnitude = targetDist.sqrMagnitude;
-
-            if (targetMagnitude < closestDistance)
-            {
-                closestDistance = targetMagnitude;
-                closestObject = objectTransform.transform;
-            }
-        }
-
-        return closestObject;
-    }
-
-    /// <summary>
-    /// Returns a Vector3 with buffer data to determine how far the plane should be placed from a wall
-    /// </summary>
-    /// <param name="closestObj"></param>
-    /// <returns></returns>
-    public Vector3 DetermineRethrowPosBuffer(Transform closestObj)
-    {
-        Vector3 newThrowPos = new Vector3(0, 0, 0);
-        float xValue = 0;
-        float yValue = 0;
-        float zValue = 0;
-
-        if ((gameObject.transform.position.x - closestObj.position.x) > gameObject.transform.position.x)
-        {
-            xValue = xBuffer;
-        }
-        else if ((gameObject.transform.position.x - closestObj.position.x) < gameObject.transform.position.x)
-        {
-            xValue = -xBuffer;
-        }
-
-        if ((gameObject.transform.position.z - closestObj.position.z) > gameObject.transform.position.z)
-        {
-            zValue = zBuffer;
-        }
-        else if ((gameObject.transform.position.z - closestObj.position.z) < gameObject.transform.position.z)
-        {
-            zValue = -zBuffer;
-        }
-
-        newThrowPos = new Vector3(xValue, yValue, zValue);
-        return newThrowPos;
     }
 
     /// <summary>
@@ -953,7 +915,7 @@ public class TestFlight : MonoBehaviour
 
     void AimLogic()
     {
-        if(aiming)
+        if (aiming)
         {
             float xRotationValue = Input.GetAxis("Horizontal");
             float yRotationValue;
@@ -965,7 +927,7 @@ public class TestFlight : MonoBehaviour
             {
                 yRotationValue = Input.GetAxis("Vertical");
             }
-            
+
             if (transform.rotation.eulerAngles.x > 85f && transform.rotation.eulerAngles.x < 95f && yRotationValue > 0)
             {
                 yRotationValue = 0;
@@ -978,7 +940,7 @@ public class TestFlight : MonoBehaviour
 
             if (xRotationValue != 0)
             {
-                rotationChanges += new Vector3(0 , (xRotationValue * Time.deltaTime * xAimResponsitivity), 0);
+                rotationChanges += new Vector3(0, (xRotationValue * Time.deltaTime * xAimResponsitivity), 0);
             }
             if (yRotationValue != 0)
             {
@@ -988,7 +950,7 @@ public class TestFlight : MonoBehaviour
             Quaternion newRotation = Quaternion.Euler(Rigidbody.rotation.eulerAngles + rotationChanges);
             Rigidbody.MoveRotation(newRotation);
         }
-        
+
     }
 
     /// <summary>
@@ -1011,7 +973,7 @@ public class TestFlight : MonoBehaviour
     /// </summary>
     private void OutOfBoundsCheck()
     {
-        if(gameObject.transform.position.y <= -2)
+        if (gameObject.transform.position.y <= -2)
         {
             Scene thisScene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(thisScene.name);
@@ -1020,13 +982,13 @@ public class TestFlight : MonoBehaviour
 
     private void TutorialHandler()
     {
-        if(scoreManager.stroke == 1)
+        if (scoreManager.stroke == 1)
         {
             pauseManager.tutorialChargingObject.SetActive(false);
             pauseManager.tutorialAimObject.SetActive(true);
             pauseManager.tutorialThrowingObject.SetActive(true);
 
-            if(throwing)
+            if (throwing)
             {
                 pauseManager.tutorialChargingObject.SetActive(true);
 
@@ -1047,7 +1009,7 @@ public class TestFlight : MonoBehaviour
                 pauseManager.tutorialFlyingObject.SetActive(false);
             }
         }
-        else if(scoreManager.stroke > 1)
+        else if (scoreManager.stroke > 1)
         {
             pauseManager.tutorialChargingObject.SetActive(false);
             pauseManager.tutorialAimObject.SetActive(false);
