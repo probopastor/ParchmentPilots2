@@ -706,6 +706,8 @@ public class TestFlight : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        moveForward = false;
+
         SinglePitchSoundEffectSource.clip = hitSound;
         SinglePitchSoundEffectSource.Play();
 
@@ -881,10 +883,10 @@ public class TestFlight : MonoBehaviour
             ContactPoint contact = collision.GetContact(0);
             newTee = contact.point;
             newTee.y = throwHeight;
-            planeCam.transform.localPosition = camStartPos;
             strokeText.text = scoreManager.stroke.ToString();
             isThrown = false;
             aiming = true;
+            planeCam.transform.localPosition = camStartPos;
             anim.SetBool("isThrown", isThrown);
             gameObject.transform.position = newTee;
 
