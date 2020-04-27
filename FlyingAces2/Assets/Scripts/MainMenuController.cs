@@ -7,6 +7,8 @@ using TMPro;
 
 public class MainMenuController : MonoBehaviour
 {
+    public Animator transitionAnimator;
+
     public AudioSource MusicSource;
     public AudioSource UISoundEffectSource;
     public AudioClip mainMenuMusic;
@@ -37,9 +39,11 @@ public class MainMenuController : MonoBehaviour
 
     public void StartLevel(string level)
     {
-        SceneManager.LoadScene(level);
+        StartCoroutine(LevelLoad(level));
+        //SceneManager.LoadScene(level);
     }
 
+    #region Open Functions (LeveSelect/Credits/Options/HowToPlay)
     public void OpenLevelSelect()
     {
 
@@ -59,6 +63,8 @@ public class MainMenuController : MonoBehaviour
     {
         SceneManager.LoadScene(level);
     }
+
+    #endregion
 
     public void QuitGame()
     {
@@ -114,5 +120,14 @@ public class MainMenuController : MonoBehaviour
     public void OnMouseExitUI()
     {
         keepButtonSelected = false;
+    }
+
+
+    IEnumerator LevelLoad(string level)
+    {
+        transitionAnimator.SetTrigger("Start");
+
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(level);
     }
 }
