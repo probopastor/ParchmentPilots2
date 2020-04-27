@@ -7956,6 +7956,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7f66b75f3868844c950398b3e737e71, type: 3}
+--- !u!95 &268336066 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4961423945399843899, guid: c7f66b75f3868844c950398b3e737e71,
+    type: 3}
+  m_PrefabInstance: {fileID: 268336065}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &270349603
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8901,6 +8907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8e7a5bc329bfd14aafd787c0b53b648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transitionAnimator: {fileID: 268336066}
   MusicSource: {fileID: 1763895450}
   SinglePitchSoundEffectSource: {fileID: 1867179402}
   gameMusic: {fileID: 8300000, guid: eb49d70aa0e87bf468ec438f260d63b3, type: 3}
@@ -33161,7 +33168,7 @@ PrefabInstance:
     - target: {fileID: 8980741506095247362, guid: 8821f09e175200c4faf2e9c6c9e024c8,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -2.7918538e-14
+      value: -2.7918535e-14
       objectReference: {fileID: 0}
     - target: {fileID: 8980741506095247362, guid: 8821f09e175200c4faf2e9c6c9e024c8,
         type: 3}
