@@ -11,7 +11,7 @@ public class HowToPlayAudioSource : MonoBehaviour
     private bool keepAudioSource;
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         keepAudioSource = false;
 
@@ -20,20 +20,30 @@ public class HowToPlayAudioSource : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(this);
         }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
+    private void Update()
+    {
         string currentScene = SceneManager.GetActiveScene().name;
+
+        keepAudioSource = false;
 
         for (int i = 0; i < scenesToExistIn.Length; i++)
         {
-            if(currentScene == scenesToExistIn[i])
+            if (currentScene == scenesToExistIn[i])
             {
                 keepAudioSource = true;
             }
         }
 
-        if(!keepAudioSource)
+        if (!keepAudioSource)
         {
-            Destroy(this);
+            instance = null;
+            Destroy(gameObject);
         }
     }
 }

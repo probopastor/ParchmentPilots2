@@ -25,8 +25,17 @@ public class MainMenuController : MonoBehaviour
     {
         keepButtonSelected = false;
         eventSystem = EventSystem.current;
-        MusicSource.clip = mainMenuMusic;
-        MusicSource.Play();
+
+        if(MusicSource != null)
+        {
+            MusicSource.clip = mainMenuMusic;
+            MusicSource.Play();
+        }
+
+        if(MusicSource == null)
+        {
+            MusicSource = FindObjectOfType<HowToPlayAudioSource>().GetComponent<AudioSource>();
+        }
     }
 
     private void Update()
