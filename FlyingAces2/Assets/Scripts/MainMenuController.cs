@@ -137,6 +137,16 @@ public class MainMenuController : MonoBehaviour
         transitionAnimator.SetTrigger("Start");
 
         yield return new WaitForSeconds(1);
-        SceneManager.LoadScene(level);
+
+        AsyncOperation operation = SceneManager.LoadSceneAsync(level);
+
+        while(!operation.isDone)
+        {
+            float progress = Mathf.Clamp01(operation.progress / .9f);
+            yield return null;
+        }
+
+        //yield return new WaitForSeconds(1);
+        //SceneManager.LoadScene(level);
     }
 }
