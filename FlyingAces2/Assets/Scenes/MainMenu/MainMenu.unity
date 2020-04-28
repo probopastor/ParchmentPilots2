@@ -4317,6 +4317,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level Loader
       objectReference: {fileID: 0}
+    - target: {fileID: 979266691922156619, guid: c7f66b75f3868844c950398b3e737e71,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -2771
+      objectReference: {fileID: 0}
     - target: {fileID: 3890519743324466175, guid: c7f66b75f3868844c950398b3e737e71,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4371,6 +4376,27 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5047108876602598470, guid: c7f66b75f3868844c950398b3e737e71,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 03a035dbea590474d88ee98428759928,
+        type: 3}
+    - target: {fileID: 5047108876602598470, guid: c7f66b75f3868844c950398b3e737e71,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5047108876602598470, guid: c7f66b75f3868844c950398b3e737e71,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5047108876602598470, guid: c7f66b75f3868844c950398b3e737e71,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7f66b75f3868844c950398b3e737e71, type: 3}
