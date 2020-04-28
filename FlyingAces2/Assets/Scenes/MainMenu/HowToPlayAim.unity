@@ -1311,17 +1311,6 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 942025453}
-          m_MethodName: UnunderlineText
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 789247889}
-            m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
         - m_Target: {fileID: 1974674928}
           m_MethodName: OnMouseExitUI
           m_Mode: 1
@@ -3817,17 +3806,6 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1974674928}
-          m_MethodName: UnunderlineText
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 1461256876}
-            m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
         - m_Target: {fileID: 1974674928}
           m_MethodName: OnMouseExitUI
           m_Mode: 1
