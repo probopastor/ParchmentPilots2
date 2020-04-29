@@ -13,6 +13,7 @@ public class OptionsController : MonoBehaviour
 
     public static bool invertedControls = false;
     private float volume = 0;
+    private FieldOfViewScaler fovScale;
 
     // Start is called before the first frame update
     void Start()
@@ -22,12 +23,8 @@ public class OptionsController : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-
+        fovScale = FindObjectOfType<FieldOfViewScaler>();
     }
 
     public void SwitchInvertedControls(bool isInverted)
@@ -57,6 +54,11 @@ public class OptionsController : MonoBehaviour
         else if(resolutionIndex == 3)
         {
             Screen.SetResolution(1680, 1050, true);
+        }
+
+        if(fovScale != null)
+        {
+            fovScale.ChangeFieldOfView();
         }
     }
 
