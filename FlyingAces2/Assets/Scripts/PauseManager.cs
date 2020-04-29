@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class PauseManager : MonoBehaviour
 {
@@ -38,7 +39,9 @@ public class PauseManager : MonoBehaviour
     public GameObject tutorialChargingObject;
     public GameObject tutorialFlyingObject;
 
-    
+    public Color selectedButtonColor;
+    public Color unSelectedButtonColor;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -122,6 +125,16 @@ public class PauseManager : MonoBehaviour
     public void OnMouseExitUI()
     {
         keepButtonSelected = false;
+    }
+
+    public void ColorBackground(Image thisObject)
+    {
+        thisObject.color = selectedButtonColor;
+    }
+
+    public void UncolorBackground(Image thisObject)
+    {
+        thisObject.color = unSelectedButtonColor;
     }
 
     public void RestartGame()
