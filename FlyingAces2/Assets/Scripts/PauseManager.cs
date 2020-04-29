@@ -42,6 +42,8 @@ public class PauseManager : MonoBehaviour
     public Color selectedButtonColor;
     public Color unSelectedButtonColor;
 
+    public Image[] allButtons;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -82,6 +84,13 @@ public class PauseManager : MonoBehaviour
         if (!isPaused)
         {
             isPaused = true;
+
+            for(int i = 0; i < allButtons.Length; i++)
+            {
+                allButtons[i].color = unSelectedButtonColor;
+            }
+            allButtons[0].color = selectedButtonColor;
+
             pausePanel.SetActive(true);
             howToPlayPanel.SetActive(false);
             eventSystem.SetSelectedGameObject(resumeButton);
