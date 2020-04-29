@@ -58,9 +58,9 @@ public class MainMenuController : MonoBehaviour
 
     }
 
-    public void OpenCredits()
+    public void OpenCredits(string level)
     {
-
+        SceneManager.LoadScene(level);
     }
 
     public void OpenOptions(string level)

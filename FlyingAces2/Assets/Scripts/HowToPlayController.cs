@@ -11,6 +11,8 @@ public class HowToPlayController : MonoBehaviour
     public GameObject previousButton;
     public GameObject nextButton;
 
+    public Animator transitionAnimator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,17 +21,20 @@ public class HowToPlayController : MonoBehaviour
 
     public void GoBackToMainMenu(string scene)
     {
-        SceneManager.LoadScene(scene);
+        StartCoroutine(LevelLoad(scene));
+        //SceneManager.LoadScene(scene);
     }
 
     public void OpenNextPage(string scene)
     {
-        SceneManager.LoadScene(scene);
+        StartCoroutine(LevelLoad(scene));
+        //SceneManager.LoadScene(scene);
     }
 
     public void OpenPreviousPage(string scene)
     {
-        SceneManager.LoadScene(scene);
+        StartCoroutine(LevelLoad(scene));
+        //SceneManager.LoadScene(scene);
     }
 
     public void UderlineText(TextMeshProUGUI tmp)
@@ -40,5 +45,22 @@ public class HowToPlayController : MonoBehaviour
     public void UnunderlineText(TextMeshProUGUI tmp)
     {
         tmp.fontStyle = FontStyles.Normal;
+    }
+
+
+
+    IEnumerator LevelLoad(string level)
+    {
+        transitionAnimator.SetTrigger("Start");
+
+        yield return new WaitForSeconds(1);
+
+        AsyncOperation operation = SceneManager.LoadSceneAsync(level);
+
+        while (!operation.isDone)
+        {
+            float progress = Mathf.Clamp01(operation.progress / .9f);
+            yield return null;
+        }
     }
 }
