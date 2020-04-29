@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
@@ -19,6 +20,13 @@ public class MainMenuController : MonoBehaviour
 
     EventSystem eventSystem;
     private bool keepButtonSelected;
+
+    public Color selectedButtonColor;
+    public Color unSelectedButtonColor;
+
+    public GameObject[] buttons;
+    public Image[] buttonImages;
+    public TextMeshProUGUI backButtonTmp;
 
     // Start is called before the first frame update
     void Start()
@@ -94,6 +102,16 @@ public class MainMenuController : MonoBehaviour
         tmp.fontStyle = FontStyles.Normal;
     }
 
+    public void ColorBackground(Image thisObject)
+    {
+        thisObject.color = selectedButtonColor;
+    }
+
+    public void UncolorBackground(Image thisObject)
+    {
+        thisObject.color = unSelectedButtonColor;
+    }
+
     public void ButtonHoverSound()
     {
         UISoundEffectSource.clip = buttonHoverSound;
@@ -109,6 +127,39 @@ public class MainMenuController : MonoBehaviour
     public void SelectBackButton(GameObject button)
     {
         selectedButton = button;
+
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            if(buttons[i] == button)
+            {
+                if(buttonImages[i] != null)
+                {
+                    if(i == 3)
+                    {
+                        UderlineText(backButtonTmp);
+                    }
+                    else
+                    {
+                        buttonImages[i].color = selectedButtonColor;
+                    }
+                }
+            }
+            else if(buttons[i] != button)
+            {
+                if(buttonImages[i] != null)
+                {
+                    if(i == 3)
+                    {
+                        UnunderlineText(backButtonTmp);
+                    }
+                    else
+                    {
+                        buttonImages[i].color = unSelectedButtonColor;
+                    }
+                }
+            }
+        }
+
         //eventSystem.SetSelectedGameObject(button);
         SetButton();
     }
