@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class PauseManager : MonoBehaviour
 {
+    public Animator transitionAnimator;
+
     public AudioSource MusicSource;
     public AudioSource SinglePitchSoundEffectSource;
 
@@ -36,7 +39,11 @@ public class PauseManager : MonoBehaviour
     public GameObject tutorialChargingObject;
     public GameObject tutorialFlyingObject;
 
-    
+    public Color selectedButtonColor;
+    public Color unSelectedButtonColor;
+
+    public Image[] allButtons;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -77,6 +84,13 @@ public class PauseManager : MonoBehaviour
         if (!isPaused)
         {
             isPaused = true;
+
+            for(int i = 0; i < allButtons.Length; i++)
+            {
+                allButtons[i].color = unSelectedButtonColor;
+            }
+            allButtons[0].color = selectedButtonColor;
+
             pausePanel.SetActive(true);
             howToPlayPanel.SetActive(false);
             eventSystem.SetSelectedGameObject(resumeButton);
@@ -122,17 +136,29 @@ public class PauseManager : MonoBehaviour
         keepButtonSelected = false;
     }
 
+    public void ColorBackground(Image thisObject)
+    {
+        thisObject.color = selectedButtonColor;
+    }
+
+    public void UncolorBackground(Image thisObject)
+    {
+        thisObject.color = unSelectedButtonColor;
+    }
+
     public void RestartGame()
     {
         Time.timeScale = 1;
         Scene thisScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(thisScene.name);
+        StartCoroutine(LevelLoad(thisScene.name));
+        //SceneManager.LoadScene(thisScene.name);
     }
 
     public void QuitToMainMenu()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(mainMenuSceneName);
+        StartCoroutine(LevelLoad(mainMenuSceneName));
+        //SceneManager.LoadScene(mainMenuSceneName);
     }
 
     public void OpenCloseMenuSound()
@@ -151,5 +177,21 @@ public class PauseManager : MonoBehaviour
     {
         SinglePitchSoundEffectSource.clip = buttonPressSound;
         SinglePitchSoundEffectSource.Play();
+    }
+
+
+    IEnumerator LevelLoad(string level)
+    {
+        transitionAnimator.SetTrigger("Start");
+
+        yield return new WaitForSeconds(1);
+
+        AsyncOperation operation = SceneManager.LoadSceneAsync(level);
+
+        while (!operation.isDone)
+        {
+            float progress = Mathf.Clamp01(operation.progress / .9f);
+            yield return null;
+        }
     }
 }

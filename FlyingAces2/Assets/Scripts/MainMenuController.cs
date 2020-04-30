@@ -4,9 +4,12 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
+    public Animator transitionAnimator;
+
     public AudioSource MusicSource;
     public AudioSource UISoundEffectSource;
     public AudioClip mainMenuMusic;
@@ -18,13 +21,30 @@ public class MainMenuController : MonoBehaviour
     EventSystem eventSystem;
     private bool keepButtonSelected;
 
+    public Color selectedButtonColor;
+    public Color unSelectedButtonColor;
+
+    public GameObject[] buttons;
+    public Image[] buttonImages;
+    public TextMeshProUGUI backButtonTmp;
+
     // Start is called before the first frame update
     void Start()
     {
         keepButtonSelected = false;
         eventSystem = EventSystem.current;
-        MusicSource.clip = mainMenuMusic;
-        MusicSource.Play();
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        if (MusicSource != null)
+        {
+            MusicSource.clip = mainMenuMusic;
+            MusicSource.Play();
+        }
+
+        if(MusicSource == null)
+        {
+            MusicSource = FindObjectOfType<HowToPlayAudioSource>().GetComponent<AudioSource>();
+        }
     }
 
     private void Update()
@@ -37,17 +57,19 @@ public class MainMenuController : MonoBehaviour
 
     public void StartLevel(string level)
     {
-        SceneManager.LoadScene(level);
+        StartCoroutine(LevelLoad(level));
+        //SceneManager.LoadScene(level);
     }
 
+    #region Open Functions (LeveSelect/Credits/Options/HowToPlay)
     public void OpenLevelSelect()
     {
 
     }
 
-    public void OpenCredits()
+    public void OpenCredits(string level)
     {
-
+        SceneManager.LoadScene(level);
     }
 
     public void OpenOptions(string level)
@@ -59,6 +81,8 @@ public class MainMenuController : MonoBehaviour
     {
         SceneManager.LoadScene(level);
     }
+
+    #endregion
 
     public void QuitGame()
     {
@@ -79,6 +103,16 @@ public class MainMenuController : MonoBehaviour
         tmp.fontStyle = FontStyles.Normal;
     }
 
+    public void ColorBackground(Image thisObject)
+    {
+        thisObject.color = selectedButtonColor;
+    }
+
+    public void UncolorBackground(Image thisObject)
+    {
+        thisObject.color = unSelectedButtonColor;
+    }
+
     public void ButtonHoverSound()
     {
         UISoundEffectSource.clip = buttonHoverSound;
@@ -94,6 +128,42 @@ public class MainMenuController : MonoBehaviour
     public void SelectBackButton(GameObject button)
     {
         selectedButton = button;
+        if(buttons != null)
+        {
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                if (buttons[i] == button)
+                {
+                    if (buttonImages[i] != null)
+                    {
+                        if (i == 3)
+                        {
+                            UderlineText(backButtonTmp);
+                        }
+                        else
+                        {
+                            buttonImages[i].color = selectedButtonColor;
+                        }
+                    }
+                }
+                else if (buttons[i] != button)
+                {
+                    if (buttonImages[i] != null)
+                    {
+                        if (i == 3)
+                        {
+                            UnunderlineText(backButtonTmp);
+                        }
+                        else
+                        {
+                            buttonImages[i].color = unSelectedButtonColor;
+                        }
+                    }
+                }
+            }
+        }
+        
+
         //eventSystem.SetSelectedGameObject(button);
         SetButton();
     }
@@ -114,5 +184,24 @@ public class MainMenuController : MonoBehaviour
     public void OnMouseExitUI()
     {
         keepButtonSelected = false;
+    }
+
+
+    IEnumerator LevelLoad(string level)
+    {
+        transitionAnimator.SetTrigger("Start");
+
+        yield return new WaitForSeconds(1);
+
+        AsyncOperation operation = SceneManager.LoadSceneAsync(level);
+
+        while(!operation.isDone)
+        {
+            float progress = Mathf.Clamp01(operation.progress / .9f);
+            yield return null;
+        }
+
+        //yield return new WaitForSeconds(1);
+        //SceneManager.LoadScene(level);
     }
 }

@@ -203,9 +203,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 762919237}
-  - {fileID: 935974907}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &90646349
 GameObject:
@@ -234,7 +233,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 90646349}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Script: {fileID: 11500000, guid: 43bb98d9b97518946ba766791051c0b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_HorizontalAxis: Horizontal
@@ -478,7 +477,7 @@ Transform:
   m_GameObject: {fileID: 119187001}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -81.16, y: 51, z: 869}
-  m_LocalScale: {x: 200, y: 0, z: 110}
+  m_LocalScale: {x: 2000, y: 0, z: 1100}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -1287,17 +1286,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
         - m_Target: {fileID: 1974674928}
-          m_MethodName: OnMouseEnterUI
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1974674928}
           m_MethodName: ButtonHoverSound
           m_Mode: 1
           m_Arguments:
@@ -1312,17 +1300,6 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 942025453}
-          m_MethodName: UnunderlineText
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 789247889}
-            m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
         - m_Target: {fileID: 1974674928}
           m_MethodName: OnMouseExitUI
           m_Mode: 1
@@ -1846,6 +1823,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 661686439}
   m_CullTransparentMesh: 0
+--- !u!95 &709652354 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4961423945399843899, guid: c7f66b75f3868844c950398b3e737e71,
+    type: 3}
+  m_PrefabInstance: {fileID: 1190505119}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &716236506
 GameObject:
   m_ObjectHideFlags: 0
@@ -2106,7 +2089,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2770,6 +2753,7 @@ GameObject:
   m_Component:
   - component: {fileID: 935974907}
   - component: {fileID: 935974908}
+  - component: {fileID: 935974909}
   m_Layer: 0
   m_Name: Music Audio Source
   m_TagString: Untagged
@@ -2784,12 +2768,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 935974906}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 615.3296, y: 134.71251, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 70377675}
-  m_RootOrder: 1
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &935974908
 AudioSource:
@@ -2888,6 +2872,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &935974909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935974906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec25cd6c250b30044aeb90dd4f909d93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scenesToExistIn:
+  - HowToPlayAim
+  - HowToPlayChoose
+  - HowToPlayThrow
 --- !u!1 &937590546
 GameObject:
   m_ObjectHideFlags: 0
@@ -3083,6 +3083,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   previousButton: {fileID: 1879210843}
   nextButton: {fileID: 94761437}
+  transitionAnimator: {fileID: 709652354}
 --- !u!1001 &1045969082
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3234,6 +3235,75 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 39.8, y: 26.06}
   m_UseGraphicAlpha: 1
+--- !u!1001 &1190505119
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 299844303739662100, guid: c7f66b75f3868844c950398b3e737e71,
+        type: 3}
+      propertyPath: m_Name
+      value: Level Loader
+      objectReference: {fileID: 0}
+    - target: {fileID: 3890519743324466175, guid: c7f66b75f3868844c950398b3e737e71,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3890519743324466175, guid: c7f66b75f3868844c950398b3e737e71,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3890519743324466175, guid: c7f66b75f3868844c950398b3e737e71,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3890519743324466175, guid: c7f66b75f3868844c950398b3e737e71,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3890519743324466175, guid: c7f66b75f3868844c950398b3e737e71,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3890519743324466175, guid: c7f66b75f3868844c950398b3e737e71,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3890519743324466175, guid: c7f66b75f3868844c950398b3e737e71,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3890519743324466175, guid: c7f66b75f3868844c950398b3e737e71,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3890519743324466175, guid: c7f66b75f3868844c950398b3e737e71,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3890519743324466175, guid: c7f66b75f3868844c950398b3e737e71,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3890519743324466175, guid: c7f66b75f3868844c950398b3e737e71,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c7f66b75f3868844c950398b3e737e71, type: 3}
 --- !u!1 &1357257670
 GameObject:
   m_ObjectHideFlags: 0
@@ -3477,7 +3547,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3776,17 +3846,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
         - m_Target: {fileID: 1974674928}
-          m_MethodName: OnMouseEnterUI
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1974674928}
           m_MethodName: ButtonHoverSound
           m_Mode: 1
           m_Arguments:
@@ -3801,17 +3860,6 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1974674928}
-          m_MethodName: UnunderlineText
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 1461256876}
-            m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
         - m_Target: {fileID: 1974674928}
           m_MethodName: OnMouseExitUI
           m_Mode: 1
@@ -5308,11 +5356,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efccce36300203047aa1c91d24666cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transitionAnimator: {fileID: 0}
   MusicSource: {fileID: 935974908}
   UISoundEffectSource: {fileID: 762919238}
   mainMenuMusic: {fileID: 8300000, guid: b66f539aa02e5704fbe6a16dcc232b54, type: 3}
   buttonPressSound: {fileID: 8300000, guid: c0880d89dc78586448e0305ef69f0479, type: 3}
   buttonHoverSound: {fileID: 8300000, guid: 57419ca097de60d4e92554e5d5e28b16, type: 3}
+  selectedButtonColor: {r: 0, g: 0, b: 0, a: 0}
+  unSelectedButtonColor: {r: 0, g: 0, b: 0, a: 0}
+  buttons: []
+  buttonImages: []
+  backButtonTmp: {fileID: 0}
 --- !u!4 &1974674929
 Transform:
   m_ObjectHideFlags: 0
@@ -5500,6 +5554,7 @@ GameObject:
   - component: {fileID: 2103394169}
   - component: {fileID: 2103394168}
   - component: {fileID: 2103394167}
+  - component: {fileID: 2103394170}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5572,6 +5627,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2103394170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2103394166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 225346fc1cbe59b4e908fcfbcf3e093d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fieldOfView:
+  - 75
+  - 80
+  - 60
+  - 65
 --- !u!1001 &2130198534
 PrefabInstance:
   m_ObjectHideFlags: 0
