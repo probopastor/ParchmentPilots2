@@ -11,7 +11,8 @@ public class OptionsController : MonoBehaviour
     public static OptionsController instance;
     public AudioMixer audioMixer;
 
-    public static bool invertedControls = false;
+    public static bool invertedVerticalControls = false;
+    public static bool invertedHorizontalControls = false;
     private float volume = 0;
     private FieldOfViewScaler fovScale;
 
@@ -29,7 +30,7 @@ public class OptionsController : MonoBehaviour
 
     public void SwitchInvertedControls(bool isInverted)
     {
-        invertedControls = isInverted;
+        invertedVerticalControls = isInverted;
     }
 
     public void ChangeVolumeLevel(float vol)
@@ -74,6 +75,11 @@ public class OptionsController : MonoBehaviour
 
     public bool GetInvertedControlls()
     {
-        return invertedControls;
+        return invertedVerticalControls;
+    }
+
+    public bool GetInvertedControllsHorizontal()
+    {
+        return invertedHorizontalControls;
     }
 }

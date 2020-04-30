@@ -554,13 +554,22 @@ public class TestFlight : MonoBehaviour
             float tip = (transform.right + Vector3.up).magnitude - 1.414214f;
             yaw -= tip;
 
-            if (OptionsController.invertedControls)
+            if (OptionsController.invertedVerticalControls)
             {
                 tilt = -Input.GetAxis("Vertical");
             }
             else
             {
                 tilt = Input.GetAxis("Vertical");
+            }
+
+            if (OptionsController.invertedVerticalControls)
+            {
+                roll = -Input.GetAxis("Horizontal");
+            }
+            else
+            {
+                roll = Input.GetAxis("Horizontal");
             }
 
             if (transform.rotation.eulerAngles.x > 85f && transform.rotation.eulerAngles.x < 95f && tilt > 0)
@@ -922,9 +931,9 @@ public class TestFlight : MonoBehaviour
     {
         if (aiming)
         {
-            float xRotationValue = Input.GetAxis("Horizontal");
+            float xRotationValue;
             float yRotationValue;
-            if (OptionsController.invertedControls)
+            if (OptionsController.invertedVerticalControls)
             {
                 yRotationValue = -Input.GetAxis("Vertical");
             }
@@ -933,7 +942,16 @@ public class TestFlight : MonoBehaviour
                 yRotationValue = Input.GetAxis("Vertical");
             }
 
-            if (transform.rotation.eulerAngles.x > 85f && transform.rotation.eulerAngles.x < 95f && yRotationValue > 0)
+            if (OptionsController.invertedVerticalControls)
+            {
+                xRotationValue = -Input.GetAxis("Horizontal");
+            }
+            else
+            {
+                xRotationValue = Input.GetAxis("Horizontal");
+            }
+
+                if (transform.rotation.eulerAngles.x > 85f && transform.rotation.eulerAngles.x < 95f && yRotationValue > 0)
             {
                 yRotationValue = 0;
             }
