@@ -2695,7 +2695,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2851,7 +2851,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4022,6 +4022,11 @@ MonoBehaviour:
   mainMenuMusic: {fileID: 8300000, guid: b66f539aa02e5704fbe6a16dcc232b54, type: 3}
   buttonPressSound: {fileID: 8300000, guid: c0880d89dc78586448e0305ef69f0479, type: 3}
   buttonHoverSound: {fileID: 8300000, guid: 57419ca097de60d4e92554e5d5e28b16, type: 3}
+  selectedButtonColor: {r: 0, g: 0, b: 0, a: 0}
+  unSelectedButtonColor: {r: 0, g: 0, b: 0, a: 0}
+  buttons: []
+  buttonImages: []
+  backButtonTmp: {fileID: 0}
 --- !u!4 &1974674929
 Transform:
   m_ObjectHideFlags: 0

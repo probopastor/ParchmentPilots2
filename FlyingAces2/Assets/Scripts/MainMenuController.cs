@@ -33,8 +33,9 @@ public class MainMenuController : MonoBehaviour
     {
         keepButtonSelected = false;
         eventSystem = EventSystem.current;
-
-        if(MusicSource != null)
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        if (MusicSource != null)
         {
             MusicSource.clip = mainMenuMusic;
             MusicSource.Play();
@@ -127,38 +128,41 @@ public class MainMenuController : MonoBehaviour
     public void SelectBackButton(GameObject button)
     {
         selectedButton = button;
-
-        for (int i = 0; i < buttons.Length; i++)
+        if(buttons != null)
         {
-            if(buttons[i] == button)
+            for (int i = 0; i < buttons.Length; i++)
             {
-                if(buttonImages[i] != null)
+                if (buttons[i] == button)
                 {
-                    if(i == 3)
+                    if (buttonImages[i] != null)
                     {
-                        UderlineText(backButtonTmp);
-                    }
-                    else
-                    {
-                        buttonImages[i].color = selectedButtonColor;
+                        if (i == 3)
+                        {
+                            UderlineText(backButtonTmp);
+                        }
+                        else
+                        {
+                            buttonImages[i].color = selectedButtonColor;
+                        }
                     }
                 }
-            }
-            else if(buttons[i] != button)
-            {
-                if(buttonImages[i] != null)
+                else if (buttons[i] != button)
                 {
-                    if(i == 3)
+                    if (buttonImages[i] != null)
                     {
-                        UnunderlineText(backButtonTmp);
-                    }
-                    else
-                    {
-                        buttonImages[i].color = unSelectedButtonColor;
+                        if (i == 3)
+                        {
+                            UnunderlineText(backButtonTmp);
+                        }
+                        else
+                        {
+                            buttonImages[i].color = unSelectedButtonColor;
+                        }
                     }
                 }
             }
         }
+        
 
         //eventSystem.SetSelectedGameObject(button);
         SetButton();
