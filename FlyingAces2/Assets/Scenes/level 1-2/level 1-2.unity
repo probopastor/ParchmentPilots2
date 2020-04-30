@@ -4324,6 +4324,11 @@ PrefabInstance:
       propertyPath: RadiusToCheckOnRethrow
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 7016437114534098756, guid: 7543c71c792b6a6428742b34972fee95,
+        type: 3}
+      propertyPath: transitionAnimator
+      value: 
+      objectReference: {fileID: 268336066}
     - target: {fileID: 7990041190721823100, guid: 7543c71c792b6a6428742b34972fee95,
         type: 3}
       propertyPath: chargeBar
@@ -76157,7 +76162,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2060643117}
-  m_LocalRotation: {x: 0.14253852, y: -2.7918535e-14, z: 1.9386661e-13, w: 0.9897893}
+  m_LocalRotation: {x: 0.14253852, y: 0.0000000147482435, z: -0.000000002118673, w: 0.98978925}
   m_LocalPosition: {x: 57, y: 106, z: -123.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []

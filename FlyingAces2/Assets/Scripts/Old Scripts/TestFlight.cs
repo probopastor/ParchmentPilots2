@@ -217,6 +217,8 @@ public class TestFlight : MonoBehaviour
 
     private bool movePlaneToPos;
 
+    public Animator transitionAnimator;
+
     #endregion
 
     void OnEnable()
@@ -832,17 +834,18 @@ public class TestFlight : MonoBehaviour
 
                 MusicSource.clip = winFanfare;
                 MusicSource.Play();
-                yield return new WaitForSeconds(5f);
-                MusicSource.Stop();
+                yield return new WaitForSeconds(3f);
+                //MusicSource.Stop();
 
                 winSystem.Play();
                 SinglePitchSoundEffectSource.clip = winHorn;
                 SinglePitchSoundEffectSource.Play();
 
-                yield return new WaitForSeconds(2f);
-
-                SceneManager.LoadScene(nextSceneName);
+                yield return new WaitForSeconds(1f);
                 playWinSoundOnce = true;
+                StartCoroutine(LevelLoad(nextSceneName));
+                
+                
             }
 
         }
@@ -1035,5 +1038,27 @@ public class TestFlight : MonoBehaviour
     public bool GetFinished()
     {
         return finished;
+    }
+
+
+    /// <summary>
+    /// Loads the level asynchrously and plays the proper animation while doing so 
+    /// </summary>
+    IEnumerator LevelLoad(string level)
+    {
+        transitionAnimator.SetTrigger("Start");
+
+        yield return new WaitForSeconds(1);
+
+        AsyncOperation operation = SceneManager.LoadSceneAsync(level);
+
+        while (!operation.isDone)
+        {
+            float progress = Mathf.Clamp01(operation.progress / .9f);
+            yield return null;
+        }
+
+        //yield return new WaitForSeconds(1);
+        //SceneManager.LoadScene(level);
     }
 }
