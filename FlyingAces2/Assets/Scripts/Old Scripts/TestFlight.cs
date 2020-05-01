@@ -97,6 +97,7 @@ public class TestFlight : MonoBehaviour
     public AudioSource SoundEffectSource;
     public AudioSource LongSoundEffectSource;
     public AudioSource SinglePitchSoundEffectSource;
+    public AudioSource TrumpetSource;
 
     private float soundEffectSourceVolume = 1f;
 
@@ -843,12 +844,12 @@ public class TestFlight : MonoBehaviour
 
                 MusicSource.clip = winFanfare;
                 MusicSource.Play();
-                yield return new WaitForSeconds(3f);
-                //MusicSource.Stop();
+                yield return new WaitForSeconds(8f);
+                MusicSource.Stop();
 
                 winSystem.Play();
-                SinglePitchSoundEffectSource.clip = winHorn;
-                SinglePitchSoundEffectSource.Play();
+                TrumpetSource.clip = winHorn;
+                TrumpetSource.Play();
 
                 yield return new WaitForSeconds(1f);
                 playWinSoundOnce = true;
