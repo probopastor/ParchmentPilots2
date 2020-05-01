@@ -27,12 +27,14 @@ public class EndingZoom : MonoBehaviour
 
     public GameObject flag;
 
+    public bool doOnce = false;
+
     // Start is called before the first frame update
     void Start()
     {
         testFlight = FindObjectOfType<TestFlight>();
 
-        if(xFollowIncreaseMax < 0)
+        if (xFollowIncreaseMax < 0)
         {
             invertX = true;
         }
@@ -58,6 +60,7 @@ public class EndingZoom : MonoBehaviour
             landCam.LookAt = flag.transform;
 
             endingCoroutineRunning = true;
+            doOnce = false;
             StartCoroutine(EndingCoroutine());
         }
     }
@@ -68,6 +71,13 @@ public class EndingZoom : MonoBehaviour
     /// <returns></returns>
     private IEnumerator EndingCoroutine()
     {
+        if(!doOnce)
+        {
+            doOnce = true;
+            CinemachineCollider cameraCollider = landCam.GetComponent<CinemachineCollider>();
+            cameraCollider.enabled = false;
+        }
+
         var transposer = landCam.GetCinemachineComponent<CinemachineTransposer>();
 
         int correctnessCount = 0;
