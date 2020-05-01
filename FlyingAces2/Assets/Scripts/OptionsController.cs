@@ -33,6 +33,11 @@ public class OptionsController : MonoBehaviour
         invertedVerticalControls = isInverted;
     }
 
+    public void SwitchHorizontalInvertedControls(bool isInverted)
+    {
+        invertedHorizontalControls = isInverted;
+    }
+
     public void ChangeVolumeLevel(float vol)
     {
         audioMixer.SetFloat("volume", vol);
