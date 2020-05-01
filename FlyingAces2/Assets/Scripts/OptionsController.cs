@@ -15,6 +15,7 @@ public class OptionsController : MonoBehaviour
     public static bool invertedHorizontalControls = false;
     private float volume = 0;
     private FieldOfViewScaler fovScale;
+    private bool gameReset;
 
     // Start is called before the first frame update
     void Start()
@@ -87,4 +88,24 @@ public class OptionsController : MonoBehaviour
     {
         return invertedHorizontalControls;
     }
+
+    public void ResetToDefault()
+    {
+        SwitchInvertedControls(false);
+        SwitchHorizontalInvertedControls(false);
+        ChangeVolumeLevel(0);
+        SetResolution(2);
+        SetReset(true);
+    }
+
+    public void SetReset(bool reset)
+    {
+        gameReset = reset;
+    }
+
+    public bool GetReset()
+    {
+        return gameReset;
+    }
+
 }
