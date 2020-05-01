@@ -844,7 +844,7 @@ public class TestFlight : MonoBehaviour
 
                 MusicSource.clip = winFanfare;
                 MusicSource.Play();
-                yield return new WaitForSeconds(8f);
+                yield return new WaitForSeconds(6f);
                 MusicSource.Stop();
 
                 winSystem.Play();
@@ -854,10 +854,7 @@ public class TestFlight : MonoBehaviour
                 yield return new WaitForSeconds(1f);
                 playWinSoundOnce = true;
                 StartCoroutine(LevelLoad(nextSceneName));
-                
-                
             }
-
         }
     }
 
