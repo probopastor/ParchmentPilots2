@@ -1402,7 +1402,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Inverte Horizontal Controls
+  m_text: Invert Horizontal Controls
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 395957afee12d0248948426c511f3ab0, type: 2}
   m_sharedMaterial: {fileID: -388920110854035957, guid: 395957afee12d0248948426c511f3ab0,
@@ -1472,7 +1472,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: -266.34033, w: 0}
   m_textInfo:
     textComponent: {fileID: 712515470}
-    characterCount: 27
+    characterCount: 26
     spriteCount: 0
     spaceCount: 2
     wordCount: 3
@@ -5205,7 +5205,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Inverte Verticle Controls
+  m_text: Invert Verticle Controls
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 395957afee12d0248948426c511f3ab0, type: 2}
   m_sharedMaterial: {fileID: -388920110854035957, guid: 395957afee12d0248948426c511f3ab0,
@@ -5275,7 +5275,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: -252.53496, w: 0}
   m_textInfo:
     textComponent: {fileID: 2129064491}
-    characterCount: 25
+    characterCount: 24
     spriteCount: 0
     spaceCount: 2
     wordCount: 3
