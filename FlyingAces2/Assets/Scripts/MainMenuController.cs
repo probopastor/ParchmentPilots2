@@ -28,12 +28,9 @@ public class MainMenuController : MonoBehaviour
     public Image[] buttonImages;
     public TextMeshProUGUI backButtonTmp;
 
-    public bool enterCanBePressed;
-
     // Start is called before the first frame update
     void Start()
     {
-        enterCanBePressed = false;
         keepButtonSelected = false;
         eventSystem = EventSystem.current;
         Cursor.visible = true;
@@ -56,16 +53,6 @@ public class MainMenuController : MonoBehaviour
         {
             SetButton();
         }
-
-        if(Input.GetKeyDown(KeyCode.Return) && enterCanBePressed)
-        {
-            ButtonClick();
-        }
-    }
-
-    public void CanPlayManuelEnterSound(bool canPlay)
-    {
-        enterCanBePressed = canPlay;
     }
 
     public void StartLevel(string level)
