@@ -9913,7 +9913,7 @@ GameObject:
   - component: {fileID: 2556189735365131073}
   - component: {fileID: 4295174830599188239}
   - component: {fileID: 1645985572491388652}
-  - component: {fileID: 5496057250609498434}
+  - component: {fileID: 6114743234936197911}
   m_Layer: 0
   m_Name: Blade.003
   m_TagString: Untagged
@@ -9982,8 +9982,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &5496057250609498434
-MeshCollider:
+--- !u!65 &6114743234936197911
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -9992,10 +9992,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -6043746360930125114, guid: d91dc90528eef3b46b339d1ee7659dc2, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.0009745992, y: 0.006435156, z: 0.00009720253}
+  m_Center: {x: 0.0000325251, y: -0.000012655506, z: 3.6379788e-11}
 --- !u!1 &1494558062953236994
 GameObject:
   m_ObjectHideFlags: 0
@@ -15278,7 +15277,7 @@ GameObject:
   - component: {fileID: 6896082093020249817}
   - component: {fileID: 7543769075247598925}
   - component: {fileID: 8146668802766047586}
-  - component: {fileID: 8297623836608189630}
+  - component: {fileID: 812005772835355911}
   m_Layer: 0
   m_Name: Blade
   m_TagString: Untagged
@@ -15347,8 +15346,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &8297623836608189630
-MeshCollider:
+--- !u!65 &812005772835355911
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -15357,10 +15356,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 7401353886334607404, guid: d91dc90528eef3b46b339d1ee7659dc2, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.00097459916, y: 0.006435156, z: 0.00009720253}
+  m_Center: {x: -0.000033779757, y: -0.000012656318, z: 3.7252906e-11}
 --- !u!1 &3919892274888386914
 GameObject:
   m_ObjectHideFlags: 0
@@ -15372,7 +15370,7 @@ GameObject:
   - component: {fileID: 3395958288806645606}
   - component: {fileID: 5277832784170937133}
   - component: {fileID: 7964874259800368304}
-  - component: {fileID: 4607813274926649879}
+  - component: {fileID: 5758381718642150319}
   m_Layer: 0
   m_Name: Blade.002
   m_TagString: Untagged
@@ -15441,8 +15439,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4607813274926649879
-MeshCollider:
+--- !u!65 &5758381718642150319
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -15451,10 +15449,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 5433508609857211535, guid: d91dc90528eef3b46b339d1ee7659dc2, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.0009745992, y: 0.006435156, z: 0.00009720253}
+  m_Center: {x: 0.00003252417, y: -0.000012656441, z: 3.6379788e-11}
 --- !u!1 &5639342562631657774
 GameObject:
   m_ObjectHideFlags: 0
@@ -15698,7 +15695,7 @@ GameObject:
   - component: {fileID: 4988969987327368884}
   - component: {fileID: 6125582401760825157}
   - component: {fileID: 4097249575363390181}
-  - component: {fileID: 8670438186301500561}
+  - component: {fileID: 2429067130755109269}
   m_Layer: 0
   m_Name: Blade.001
   m_TagString: Untagged
@@ -15767,8 +15764,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &8670438186301500561
-MeshCollider:
+--- !u!65 &2429067130755109269
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -15777,7 +15774,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -690554794711785509, guid: d91dc90528eef3b46b339d1ee7659dc2, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.0009745992, y: 0.006435156, z: 0.00009720253}
+  m_Center: {x: 0.0000325251, y: -0.0000126545765, z: 3.6379788e-11}
