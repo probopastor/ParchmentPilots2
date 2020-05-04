@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4083198679988376591}
   - component: {fileID: 5356391398538606747}
   - component: {fileID: 1742808446952401030}
+  - component: {fileID: 333010779226147180}
   m_Layer: 0
   m_Name: Cylinder.001
   m_TagString: Untagged
@@ -79,6 +80,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &333010779226147180
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 348856832490382300}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7387706064836869012, guid: e31d137d2385f2e45a264ec0c0f9e775, type: 3}
 --- !u!1 &1046826810381918414
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,6 +105,7 @@ GameObject:
   - component: {fileID: 8780932577775090237}
   - component: {fileID: 6706051422247878405}
   - component: {fileID: 7595629412898040173}
+  - component: {fileID: 7060400163638688341}
   m_Layer: 0
   m_Name: Cone
   m_TagString: Untagged
@@ -158,6 +174,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &7060400163638688341
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046826810381918414}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3613567641014311022, guid: e31d137d2385f2e45a264ec0c0f9e775, type: 3}
 --- !u!1 &4680919538163397770
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,6 +197,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8551964453019371161}
+  - component: {fileID: 6832611672641894434}
   m_Layer: 0
   m_Name: pencil
   m_TagString: Untagged
@@ -191,6 +222,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &6832611672641894434
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4680919538163397770}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &6409777086898265988
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,6 +247,7 @@ GameObject:
   - component: {fileID: 8845821982912093529}
   - component: {fileID: 74353660924362443}
   - component: {fileID: 6699277788594689548}
+  - component: {fileID: 3405865252691746377}
   m_Layer: 0
   m_Name: Icosphere
   m_TagString: Untagged
@@ -270,3 +316,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &3405865252691746377
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6409777086898265988}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 289301614986012343, guid: e31d137d2385f2e45a264ec0c0f9e775, type: 3}
