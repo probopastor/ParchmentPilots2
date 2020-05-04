@@ -9822,7 +9822,7 @@ GameObject:
   - component: {fileID: 2491396025355891261}
   m_Layer: 0
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9916,7 +9916,7 @@ GameObject:
   - component: {fileID: 6114743234936197911}
   m_Layer: 0
   m_Name: Blade.003
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10009,7 +10009,7 @@ GameObject:
   - component: {fileID: 2215166104698297467}
   m_Layer: 0
   m_Name: Cube.001
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10103,7 +10103,7 @@ GameObject:
   - component: {fileID: 5371811263304858955}
   m_Layer: 0
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10239,7 +10239,7 @@ GameObject:
   - component: {fileID: 2785580086056856114}
   m_Layer: 0
   m_Name: Cube.003
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10333,7 +10333,7 @@ GameObject:
   - component: {fileID: 520343019443111383}
   m_Layer: 0
   m_Name: Cube.002
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15280,7 +15280,7 @@ GameObject:
   - component: {fileID: 812005772835355911}
   m_Layer: 0
   m_Name: Blade
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15373,7 +15373,7 @@ GameObject:
   - component: {fileID: 5758381718642150319}
   m_Layer: 0
   m_Name: Blade.002
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15466,7 +15466,7 @@ GameObject:
   - component: {fileID: 2001276352458248890}
   m_Layer: 0
   m_Name: Circle
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15560,7 +15560,7 @@ GameObject:
   - component: {fileID: 6084723342221316982}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15698,7 +15698,7 @@ GameObject:
   - component: {fileID: 2429067130755109269}
   m_Layer: 0
   m_Name: Blade.001
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
