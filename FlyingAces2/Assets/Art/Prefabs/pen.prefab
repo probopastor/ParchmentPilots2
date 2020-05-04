@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3326076278054854153}
+  - component: {fileID: 5407986238944717520}
   m_Layer: 0
   m_Name: pen
   m_TagString: Untagged
@@ -34,6 +35,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &5407986238944717520
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761964189242813466}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &2600693145444624206
 GameObject:
   m_ObjectHideFlags: 0
@@ -45,6 +60,7 @@ GameObject:
   - component: {fileID: 7448434236018647965}
   - component: {fileID: 5724179379635437183}
   - component: {fileID: 3223618625892982006}
+  - component: {fileID: 7599361431816709225}
   m_Layer: 0
   m_Name: Icosphere.001
   m_TagString: Untagged
@@ -113,6 +129,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &7599361431816709225
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2600693145444624206}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1579241630799410176, guid: 03a7ea1d911961e40be522afe39f7b5e, type: 3}
 --- !u!1 &3093574890806915497
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,6 +154,7 @@ GameObject:
   - component: {fileID: 2830711910085010005}
   - component: {fileID: 2121770269203162961}
   - component: {fileID: 3010470825827599652}
+  - component: {fileID: 6890341538259727972}
   m_Layer: 0
   m_Name: Cone.001
   m_TagString: Untagged
@@ -192,6 +223,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &6890341538259727972
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3093574890806915497}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6195245291975648998, guid: 03a7ea1d911961e40be522afe39f7b5e, type: 3}
 --- !u!1 &4378276973812468011
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,6 +248,7 @@ GameObject:
   - component: {fileID: 1749339936441135484}
   - component: {fileID: 4540435803467488402}
   - component: {fileID: 2334091741386175957}
+  - component: {fileID: 2532104062949500376}
   m_Layer: 0
   m_Name: Icosphere.002
   m_TagString: Untagged
@@ -271,6 +317,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &2532104062949500376
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4378276973812468011}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4444728127320036556, guid: 03a7ea1d911961e40be522afe39f7b5e, type: 3}
 --- !u!1 &7000413412542071956
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,6 +342,7 @@ GameObject:
   - component: {fileID: 533692994502853053}
   - component: {fileID: 3443316164279488021}
   - component: {fileID: 9001994313518553795}
+  - component: {fileID: 3004377509442950603}
   m_Layer: 0
   m_Name: Cylinder.002
   m_TagString: Untagged
@@ -350,3 +411,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &3004377509442950603
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7000413412542071956}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8691780276856062721, guid: 03a7ea1d911961e40be522afe39f7b5e, type: 3}
