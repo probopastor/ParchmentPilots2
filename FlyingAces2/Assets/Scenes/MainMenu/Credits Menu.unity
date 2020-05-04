@@ -1614,7 +1614,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1413913868}
   m_LocalRotation: {x: 0.7653356, y: -0.007346886, z: 0.0061778924, w: 0.6435599}
-  m_LocalPosition: {x: 0, y: 0, z: 2.12}
+  m_LocalPosition: {x: 0, y: 0, z: 2.11}
   m_LocalScale: {x: 0.014492754, y: 0.014492752, z: 0.014492752}
   m_Children: []
   m_Father: {fileID: 2065253984}
@@ -1643,7 +1643,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Courtney Fancil
+  m_text: 'Courtney Fancil - Design
 
     Grant Frey
 
@@ -1704,7 +1704,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 16
+  m_firstOverflowCharacterIndex: 25
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -1725,13 +1725,13 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -17.406723, y: 0, z: -97.46868, w: 0}
+  m_margin: {x: -62.75624, y: 0, z: -147.0973, w: 0}
   m_textInfo:
     textComponent: {fileID: 1413913870}
-    characterCount: 95
+    characterCount: 104
     spriteCount: 0
-    spaceCount: 14
-    wordCount: 14
+    spaceCount: 16
+    wordCount: 16
     linkCount: 0
     lineCount: 7
     pageCount: 1
