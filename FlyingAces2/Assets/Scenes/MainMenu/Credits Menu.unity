@@ -1643,16 +1643,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Courtney Fancil - Design
-
-    Grant Frey - Programming
-
-    Bobby Kohls
-    - Design
-
-    Jason Marks - Design
+  m_text: 'Grant Frey - Programming
 
     William Nomikos - Programming
+
+    Courtney
+    Fancil - Design
+
+    Bobby Kohls - Design
+
+    Jason Marks - Design
 
     Luke
     Piazza - Production
