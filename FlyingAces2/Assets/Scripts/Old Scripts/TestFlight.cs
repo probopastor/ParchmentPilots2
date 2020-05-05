@@ -1,4 +1,13 @@
-﻿using System.Collections;
+﻿/*
+* Author: William Nomikos, Grant Frey
+* TestFlight.cs
+* Handles plane throwing, plane re-throwing, moving the plane, plane gravity, 
+* audio source pitch increasing with velocity, particles changing with
+* velocity, score text, rotating the plane towards the flag on rethrow, 
+* the tutorial, and winning the level.
+*/
+
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
