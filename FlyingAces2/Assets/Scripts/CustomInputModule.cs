@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+* Author: William Nomikos
+* CustomInputModule.cs
+* Unity Input Module source code with code edited
+* to prevent mouse clicks from deselecting buttons
+* if the mouse doesn't click a button.
+*/
+
+using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 

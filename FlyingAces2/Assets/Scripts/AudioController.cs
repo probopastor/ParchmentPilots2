@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/*
+* Author: Grant Frey
+* AudioController.cs
+* [Obsolete] Handles the volume for all audio sources.
+*/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/*
+* Author: William Nomikos, Grant Frey
+* HowToPlayAudioSources.cs
+* Maintains a single audio source throughout the How To Play scenes.
+*/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;

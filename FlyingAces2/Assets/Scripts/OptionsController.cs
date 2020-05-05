@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿/*
+* Authors: Grant Frey, William Nomikos
+* OptionsController.cs
+* Handles the functionality options features, including turning on
+* inverted controls, changing volume, and changing aspect ratios.
+*/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;

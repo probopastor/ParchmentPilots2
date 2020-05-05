@@ -1,4 +1,12 @@
-﻿using System.Collections;
+﻿/*
+* Author: Grant Frey
+* OptionsUIStuff.cs
+* Sets the Options Controller scene buttons and sliders equal to 
+* options settings set by the player upon the player re-entering the 
+* Options Controller scene.
+*/
+
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;

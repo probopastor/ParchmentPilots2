@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/*
+* Author: William Nomikos, Grant Frey
+* SelectPlane.cs
+* [Obsolete] Allows the player to switch which plane they are using.
+*/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;

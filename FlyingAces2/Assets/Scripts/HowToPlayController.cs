@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿/*
+* Author: Grant Frey
+* HowToPlayController.cs
+* Handles switching between How To Play scenes and the button underlining 
+* in those scenes upon buttons being selected.
+*/
+
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;

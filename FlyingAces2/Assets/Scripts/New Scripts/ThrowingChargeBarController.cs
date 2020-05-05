@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿/*
+* Authors: Grant Frey, William Nomikos
+* ThrowingChargeBarController.cs
+* Handles the increasing and decreasing of the charge bar when
+* throwing the plane.
+*/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;

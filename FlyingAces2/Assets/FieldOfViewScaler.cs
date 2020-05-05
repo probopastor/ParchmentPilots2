@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/*
+* Author: William Nomikos, Grant Frey
+* FieldOfViewScaler.cs
+* Changes the camera's field of view depending on the set aspect ratio of the game.
+*/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

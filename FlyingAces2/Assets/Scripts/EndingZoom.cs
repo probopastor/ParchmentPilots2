@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿/*
+* Author: William Nomikos
+* EndingZoom.cs
+* Upon finishing the level, sets the camera to look at flag,
+* and zooms out camera to set point.
+*/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;

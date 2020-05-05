@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/*
+* Author: Bobby Kohls
+* MainMenuAnimationSound.cs
+* Plays animation sound effects when main menu animation occurs.
+*/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

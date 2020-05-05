@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/*
+* Author: Jason Marks
+* ScoreManager.cs
+* Stores the game score.
+*/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

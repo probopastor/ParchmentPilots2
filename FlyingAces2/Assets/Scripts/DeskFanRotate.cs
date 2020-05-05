@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/*
+* Author: Luke Piazza
+* DeskFanRotate.cs
+* Rotates the blades of the desk fan objects.
+*/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

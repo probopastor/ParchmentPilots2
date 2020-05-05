@@ -1,4 +1,12 @@
-﻿using System.Collections;
+﻿/*
+* Author: William Nomikos
+* PauseManager.cs
+* Handles pause functionality, including maintaining which buttons 
+* are selected, unpausing the game, restarting the game, and 
+* the in-game how to play screen.
+*/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;

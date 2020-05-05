@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿/*
+* Author: William Nomikos, Grant Frey
+* MainMenuController.cs
+* Handles main menu UI functionality, including keeping track of the 
+* selected buttons, button sound effects, and main menu scene transitions. 
+*/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
