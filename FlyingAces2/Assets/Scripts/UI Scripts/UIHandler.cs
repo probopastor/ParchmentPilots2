@@ -47,7 +47,7 @@ public class UIHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void FinishScore()
@@ -93,5 +93,10 @@ public class UIHandler : MonoBehaviour
         {
             scoreText.text = "Let's not talk about that hole...";
         }
+    }
+
+    public void UpdateScoreText()
+    {
+        strokeText.text = scoreManager.GetStroke().ToString();
     }
 }

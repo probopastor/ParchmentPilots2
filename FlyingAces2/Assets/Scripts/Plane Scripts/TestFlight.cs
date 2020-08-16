@@ -166,7 +166,7 @@ public class TestFlight : MonoBehaviour
     [Tooltip("Wing aircurrent particle size at the max velocity")]
     public float maxSize = 1f;
 
-    public bool isLevel1;
+    //public bool isLevel1;
 
     private bool scoreAddedThisThrow;
 
@@ -188,6 +188,8 @@ public class TestFlight : MonoBehaviour
     private PlaneThrow_Handler planeThrowHandler;
 
     private ScoreManager scoreManager;
+
+    private UIHandler uiHandler;
     #endregion
 
     void OnEnable()
@@ -200,6 +202,8 @@ public class TestFlight : MonoBehaviour
     void Start()
     {
         planeThrowHandler = GameObject.FindObjectOfType<PlaneThrow_Handler>();
+
+        uiHandler = GameObject.FindObjectOfType<UIHandler>();
 
         moveForward = false;
         pauseManager = GameObject.FindObjectOfType<PauseManager>();
@@ -263,17 +267,17 @@ public class TestFlight : MonoBehaviour
         }
 
 
-        if (isLevel1)
-        {
-            TutorialHandler();
-        }
-        else if (!isLevel1)
-        {
-            pauseManager.tutorialChargingObject.SetActive(false);
-            pauseManager.tutorialAimObject.SetActive(false);
-            pauseManager.tutorialThrowingObject.SetActive(false);
-            pauseManager.tutorialFlyingObject.SetActive(false);
-        }
+        //if (isLevel1)
+        //{
+        //    TutorialHandler();
+        //}
+        //else if (!isLevel1)
+        //{
+        //    pauseManager.tutorialChargingObject.SetActive(false);
+        //    pauseManager.tutorialAimObject.SetActive(false);
+        //    pauseManager.tutorialThrowingObject.SetActive(false);
+        //    pauseManager.tutorialFlyingObject.SetActive(false);
+        //}
 
         if (!isThrown)
         {
@@ -912,7 +916,7 @@ public class TestFlight : MonoBehaviour
 
             newTee.y = planeThrowHandler.GetStartThrowHeight();
 
-            strokeText.text = scoreManager.stroke.ToString();
+            uiHandler.UpdateScoreText();
             isThrown = false;
 
             planeThrowHandler.SetAimStatus(true);

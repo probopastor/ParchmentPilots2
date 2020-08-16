@@ -43,10 +43,10 @@ public class PauseManager : MonoBehaviour
     private bool keepButtonSelected;
 
     //tutorial things
-    public GameObject tutorialAimObject;
-    public GameObject tutorialThrowingObject;
-    public GameObject tutorialChargingObject;
-    public GameObject tutorialFlyingObject;
+    //public GameObject tutorialAimObject;
+    //public GameObject tutorialThrowingObject;
+    //public GameObject tutorialChargingObject;
+    //public GameObject tutorialFlyingObject;
 
     public Color selectedButtonColor;
     public Color unSelectedButtonColor;

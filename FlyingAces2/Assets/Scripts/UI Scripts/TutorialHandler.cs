@@ -4,61 +4,83 @@ using UnityEngine;
 
 public class TutorialHandler : MonoBehaviour
 {
+    private ScoreManager scoreManager;
+    private PlaneThrow_Handler planeThrowHandler;
+    private PauseManager pauseManager;
+    public bool isLevel1;
+
+    public GameObject tutorialAimObject;
+    public GameObject tutorialThrowingObject;
+    public GameObject tutorialChargingObject;
+    public GameObject tutorialFlyingObject;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        planeThrowHandler = GameObject.FindObjectOfType<PlaneThrow_Handler>();
+        scoreManager = GameObject.FindObjectOfType<ScoreManager>();
+        pauseManager = GameObject.FindObjectOfType<PauseManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (isLevel1)
+        {
+            TutorialMessages();
+        }
+        else if (!isLevel1)
+        {
+            tutorialChargingObject.SetActive(false);
+            tutorialAimObject.SetActive(false);
+            tutorialThrowingObject.SetActive(false);
+            tutorialFlyingObject.SetActive(false);
+        }
     }
 
-    private void TutorialHandler()
+    private void TutorialMessages()
     {
         if (scoreManager.GetStroke() == 1)
         {
-            pauseManager.tutorialChargingObject.SetActive(false);
-            pauseManager.tutorialAimObject.SetActive(true);
-            pauseManager.tutorialThrowingObject.SetActive(true);
+            tutorialChargingObject.SetActive(false);
+            tutorialAimObject.SetActive(true);
+            tutorialThrowingObject.SetActive(true);
 
             if (planeThrowHandler.GetThrowStatus())
             {
-                pauseManager.tutorialChargingObject.SetActive(true);
+                tutorialChargingObject.SetActive(true);
 
-                pauseManager.tutorialAimObject.SetActive(false);
-                pauseManager.tutorialThrowingObject.SetActive(false);
+                tutorialAimObject.SetActive(false);
+                tutorialThrowingObject.SetActive(false);
             }
 
-            if (isThrown)
+            if (planeThrowHandler.GetThrowStatus())
             {
-                pauseManager.tutorialFlyingObject.SetActive(true);
+                tutorialFlyingObject.SetActive(true);
 
-                pauseManager.tutorialChargingObject.SetActive(false);
-                pauseManager.tutorialAimObject.SetActive(false);
-                pauseManager.tutorialThrowingObject.SetActive(false);
+                tutorialChargingObject.SetActive(false);
+                tutorialAimObject.SetActive(false);
+                tutorialThrowingObject.SetActive(false);
             }
-            else if (!isThrown)
+            else if (!planeThrowHandler.GetThrowStatus())
             {
-                pauseManager.tutorialFlyingObject.SetActive(false);
+                tutorialFlyingObject.SetActive(false);
             }
         }
-        else if (scoreManager.stroke > 1)
+        else if (scoreManager.GetStroke() > 1)
         {
-            pauseManager.tutorialChargingObject.SetActive(false);
-            pauseManager.tutorialAimObject.SetActive(false);
-            pauseManager.tutorialThrowingObject.SetActive(false);
-            pauseManager.tutorialFlyingObject.SetActive(false);
+            tutorialChargingObject.SetActive(false);
+            tutorialAimObject.SetActive(false);
+            tutorialThrowingObject.SetActive(false);
+            tutorialFlyingObject.SetActive(false);
         }
 
         if (pauseManager.isPaused)
         {
-            pauseManager.tutorialChargingObject.SetActive(false);
-            pauseManager.tutorialAimObject.SetActive(false);
-            pauseManager.tutorialThrowingObject.SetActive(false);
-            pauseManager.tutorialFlyingObject.SetActive(false);
+            tutorialChargingObject.SetActive(false);
+            tutorialAimObject.SetActive(false);
+            tutorialThrowingObject.SetActive(false);
+            tutorialFlyingObject.SetActive(false);
         }
     }
 }
