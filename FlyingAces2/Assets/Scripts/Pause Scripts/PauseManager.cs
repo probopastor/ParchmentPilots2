@@ -31,6 +31,7 @@ public class PauseManager : MonoBehaviour
     public string mainMenuSceneName;
 
     public TestFlight thisFlight;
+    public PlaneThrow_Handler planeThrow;
 
     public bool isPaused;
 
@@ -60,6 +61,8 @@ public class PauseManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         thisFlight = FindObjectOfType<TestFlight>();
+        planeThrow = FindObjectOfType<PlaneThrow_Handler>();
+
         eventSystem = EventSystem.current;
 
         MusicSource.clip = gameMusic;
@@ -73,7 +76,7 @@ public class PauseManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) && !thisFlight.throwing)
+        if(Input.GetKeyDown(KeyCode.Escape) && !planeThrow.GetThrowStatus())
         {
             PauseGame();
         }
@@ -86,7 +89,9 @@ public class PauseManager : MonoBehaviour
 
     public void PauseGame()
     {
-        thisFlight.throwing = false;
+        //thisFlight.throwing = false;
+        planeThrow.SetThrowStatus(false);
+
         OpenCloseMenuSound();
 
         if (!isPaused)

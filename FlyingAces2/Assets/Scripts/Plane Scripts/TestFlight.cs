@@ -21,12 +21,6 @@ public class TestFlight : MonoBehaviour
     [Tooltip("The camera object in the scene")]
     public Camera planeCam;
 
-    [Tooltip("The height at which the plane is thrown on the first throw of the level")]
-    public float startThrowHeight = 200f;
-
-    [Tooltip("The height at which the plane is thrown at the start of a new throw")]
-    public float throwHeight = 15f;
-
     [Tooltip("Number of strokes to score a par")]
     public int par = 0;
 
@@ -84,12 +78,6 @@ public class TestFlight : MonoBehaviour
     [Tooltip("The rotational speed multiplier on the Z axis")]
     public float yawResponsivity = 60f;
 
-    [Tooltip("The rotational speed multiplier on the X axis when aim is rotating while aiming")]
-    public float xAimResponsitivity = 40f;
-
-    [Tooltip("The rotational speed multiplier on the Z axis when aim is rotating while aiming")]
-    public float yAimResponsitivity = 40f;
-
     [Tooltip("The planes center of mass at which torq should be applied")]
     public GameObject centerOfMassReference;
 
@@ -135,11 +123,6 @@ public class TestFlight : MonoBehaviour
 
     private Rigidbody Rigidbody;
     private Animator anim;
-
-    private ThrowingChargeBarController chargeBarController;
-
-    private bool aiming = true;
-    public bool throwing = false;
 
     private Vector3 launchSpeed = new Vector3(0, 0, 1000);
     private Vector3 strokePosition = new Vector3(0f, 0f, 0f);
@@ -217,17 +200,11 @@ public class TestFlight : MonoBehaviour
     bool checkForPlaneDeceleration;
     bool firstDecelerationCheck;
 
-    public float RadiusToCheckOnRethrow = 1f;
     private Transform closestObject;
 
-    public LayerMask radiusCheckLayers;
-
-    public float xBuffer = 1f;
-    public float zBuffer = 1f;
-
-    private bool movePlaneToPos;
-
     public Animator transitionAnimator;
+
+    private PlaneThrow_Handler planeThrowHandler; 
 
     #endregion
 
@@ -240,7 +217,9 @@ public class TestFlight : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        movePlaneToPos = false;
+        planeThrowHandler = GameObject.FindObjectOfType<PlaneThrow_Handler>();
+
+        //movePlaneToPos = false;
         moveForward = false;
         pauseManager = GameObject.FindObjectOfType<PauseManager>();
 
@@ -260,17 +239,16 @@ public class TestFlight : MonoBehaviour
 
         scoreAddedThisThrow = false;
 
-        gameObject.transform.position = new Vector3(gameObject.transform.position.x, startThrowHeight, gameObject.transform.position.z);
-        RotateTowardsFinish();
+        //Sets the starting plane position on game start
+        gameObject.transform.position = new Vector3(gameObject.transform.position.x, planeThrowHandler.GetStartThrowHeight(), gameObject.transform.position.z);
+
         anim = GetComponent<Animator>();
-        chargeBarController = GetComponent<ThrowingChargeBarController>();
         yForce = gravity;
         isThrown = false;
         camStartPos = planeCam.transform.localPosition;
         strokeText.text = scoreManager.stroke.ToString();
         parText.text = par.ToString();
         holeText.text = hole.ToString();
-        chargeBarController.enabled = false;
         forceAppliedThisFrame = false;
         scoreCard.SetActive(false);
 
@@ -324,20 +302,26 @@ public class TestFlight : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Return) && !isThrown)
         {
-            if (!aiming && throwing && !pauseManager.isPaused)
+            if (!planeThrowHandler.GetAimStatus() && planeThrowHandler.GetThrowStatus() && !pauseManager.isPaused)
             {
-                throwing = false;
+                //throwing = false;
+                planeThrowHandler.SetThrowStatus(false);
+
                 isThrown = true;
                 anim.SetBool("isThrown", isThrown);
-                chargeBarController.chargeBar.gameObject.SetActive(false);
-                chargeBarController.enabled = false;
+
+                planeThrowHandler.SetChargeBarActivity(false);
+
                 Rigidbody.isKinematic = false;
                 Rigidbody.useGravity = true;
 
-                aiming = false;
+                planeThrowHandler.SetAimStatus(false);
+                //aiming = false;
 
                 scoreAddedThisThrow = false;
-                Rigidbody.AddRelativeForce(Vector3.forward * thrustForce * chargeBarController.chargeBar.value);
+
+                Rigidbody.AddRelativeForce(Vector3.forward * thrustForce * planeThrowHandler.GetChargeBarValue());
+
                 moveForward = true;
             }
         }
@@ -415,75 +399,24 @@ public class TestFlight : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.Return) && aiming && !throwing && canEnableChargeBar && !pauseManager.isPaused)
+        if (Input.GetKeyDown(KeyCode.Return) && planeThrowHandler.GetAimStatus() && !planeThrowHandler.GetThrowStatus() && canEnableChargeBar && !pauseManager.isPaused)
         {
-            ChargeBar();
+            planeThrowHandler.ReactivateChargeBar();
         }
 
-        if ((Input.GetKeyUp(KeyCode.Escape) || Input.GetKeyUp(KeyCode.Backspace)) && throwing)
+        if ((Input.GetKeyUp(KeyCode.Escape) || Input.GetKeyUp(KeyCode.Backspace)) && planeThrowHandler.GetThrowStatus())
         {
-            throwing = false;
-            aiming = true;
-            chargeBarController.enabled = false;
-            chargeBarController.chargeBar.gameObject.SetActive(false);
+            planeThrowHandler.SetThrowStatus(false);
+            planeThrowHandler.SetAimStatus(true);
+            planeThrowHandler.SetChargeBarActivity(false);
         }
 
         OutOfBoundsCheck();
-
-        if (movePlaneToPos)
-        {
-            movePlaneToPos = false;
-
-            float xMove = 0;
-            float zMove = 0;
-
-            float xCheckHit = 0;
-            float zCheckHit = 0;
-
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, Vector3.right, out hit, RadiusToCheckOnRethrow, radiusCheckLayers))
-            {
-                xMove = -xBuffer;
-                xCheckHit++;
-            }
-
-            if (Physics.Raycast(transform.position, Vector3.left, out hit, RadiusToCheckOnRethrow, radiusCheckLayers))
-            {
-                xMove = xBuffer;
-                xCheckHit++;
-            }
-
-            if (Physics.Raycast(transform.position, Vector3.forward, out hit, RadiusToCheckOnRethrow, radiusCheckLayers))
-            {
-                zMove = -zBuffer;
-                zCheckHit++;
-            }
-
-            if (Physics.Raycast(transform.position, -Vector3.forward, out hit, RadiusToCheckOnRethrow, radiusCheckLayers))
-            {
-                zMove = zBuffer;
-                zCheckHit++;
-            }
-
-            if(xCheckHit > 1)
-            {
-                xMove = 0;
-            }
-
-            if(zCheckHit > 1)
-            {
-                zMove = 0;
-            }
-
-            Debug.Log("xMove: " + xMove + " zMove: " + zMove);
-            gameObject.transform.position = new Vector3(gameObject.transform.position.x + xMove, throwHeight, gameObject.transform.position.z + zMove);
-            RotateTowardsFinish();
-        }
     }
 
     private void FixedUpdate()
     {
-        AimLogic();
+        //AimLogic();
         MovePlane();
 
         if (isThrown)
@@ -497,8 +430,6 @@ public class TestFlight : MonoBehaviour
 
     private IEnumerator CheckForPlaneDeceleration()
     {
-        //Debug.Log("x Vel: " + Rigidbody.velocity.x + " | " + "z Vel: " + Rigidbody.velocity.z);
-
         if (!firstDecelerationCheck)
         {
             firstDecelerationCheck = true;
@@ -604,7 +535,6 @@ public class TestFlight : MonoBehaviour
             }
             if (roll != 0)
             {
-                //changes += transform.worldToLocalMatrix.MultiplyVector(transform.forward) * roll * Time.deltaTime * rollResponsivity;
                 rollChanges += transform.worldToLocalMatrix.MultiplyVector(transform.forward) * roll * Time.deltaTime * rollResponsivity;
             }
             if (yaw != 0)
@@ -627,28 +557,9 @@ public class TestFlight : MonoBehaviour
             var forwardVel = Rigidbody.velocity;
             forwardVel.y = 0;
 
-            //if (Input.GetKey(KeyCode.A))
-            //{
-            //    Rigidbody.AddRelativeTorque(Vector3.down);
-            //}
-            //else if (Input.GetKey(KeyCode.D))
-            //{
-            //    Rigidbody.AddRelativeTorque(Vector3.up);
-            //}
-
             if (moveForward)
             {
-                //if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
-                //{
-                //}
-
                 Vector3 newForward = transform.forward * Rigidbody.velocity.magnitude;
-                //newForward.y = Rigidbody.velocity.y;
-                //if(newForward.y < -200f)
-                //{
-                //    newForward.y = -200f;
-                //}
-
                 Rigidbody.velocity = newForward;
             }
         }
@@ -695,11 +606,6 @@ public class TestFlight : MonoBehaviour
             Vector3 vector2 = downHit.point - transform.position;
             float angle = Mathf.Acos(Vector3.Dot(vector1.normalized, vector2.normalized));
             thisAngle = angle * Mathf.Rad2Deg;
-
-            //if ((angle * Mathf.Rad2Deg) >= 1)
-            //{
-            //    thisAngle = angle;
-            //}
         }
     }
 
@@ -884,117 +790,10 @@ public class TestFlight : MonoBehaviour
             anim.SetBool("Sliding", false);
             playOnce = false;
             playCrumbleOnce = false;
-            SetUpNewThrow(collision);
+
+            planeThrowHandler.SetUpNewThrow(collision);
+            //SetUpNewThrow(collision);
         }
-    }
-
-    void SetUpNewThrow(Collision collision)
-    {
-        if (!finished)
-        {
-            checkForPlaneDeceleration = false;
-            firstDecelerationCheck = false;
-            moveForward = false;
-            Rigidbody.useGravity = false;
-            leftSystem.Play();
-            rightSystem.Play();
-
-            ContactPoint contact = collision.GetContact(0);
-            newTee = contact.point;
-            newTee.y = throwHeight;
-            strokeText.text = scoreManager.stroke.ToString();
-            isThrown = false;
-            aiming = true;
-            planeCam.transform.localPosition = camStartPos;
-            anim.SetBool("isThrown", isThrown);
-            gameObject.transform.position = newTee;
-
-            if (hitGround)
-            {
-                //RotateTowardsFinish();
-                movePlaneToPos = true;
-            }
-
-            hitGround = false;
-
-            Rigidbody.isKinematic = true;
-        }
-    }
-
-    /// <summary>
-    /// Sets the charge bar to active when the plane is being thrown.
-    /// </summary>
-    private void ChargeBar()
-    {
-        //TutorialHandler();
-
-        throwing = true;
-        aiming = false;
-        chargeBarController.enabled = true;
-        chargeBarController.chargeBar.gameObject.SetActive(true);
-    }
-
-    void AimLogic()
-    {
-        if (aiming)
-        {
-            float xRotationValue;
-            float yRotationValue;
-            if (OptionsController.invertedVerticalControls)
-            {
-                yRotationValue = -Input.GetAxis("Vertical");
-            }
-            else
-            {
-                yRotationValue = Input.GetAxis("Vertical");
-            }
-
-            if (OptionsController.invertedVerticalControls)
-            {
-                xRotationValue = -Input.GetAxis("Horizontal");
-            }
-            else
-            {
-                xRotationValue = Input.GetAxis("Horizontal");
-            }
-
-                if (transform.rotation.eulerAngles.x > 85f && transform.rotation.eulerAngles.x < 95f && yRotationValue > 0)
-            {
-                yRotationValue = 0;
-            }
-            if (transform.rotation.eulerAngles.x < 275f && transform.rotation.eulerAngles.x > 260f && yRotationValue < 0)
-            {
-                yRotationValue = 0;
-            }
-            Vector3 rotationChanges = new Vector3();
-
-            if (xRotationValue != 0)
-            {
-                rotationChanges += new Vector3(0, (xRotationValue * Time.deltaTime * xAimResponsitivity), 0);
-            }
-            if (yRotationValue != 0)
-            {
-                rotationChanges += new Vector3((yRotationValue * Time.deltaTime * yAimResponsitivity), 0, 0);
-            }
-
-            Quaternion newRotation = Quaternion.Euler(Rigidbody.rotation.eulerAngles + rotationChanges);
-            Rigidbody.MoveRotation(newRotation);
-        }
-
-    }
-
-    /// <summary>
-    /// Rotates the plane towards the Game Object tagged as "Finish".
-    /// </summary>
-    private void RotateTowardsFinish()
-    {
-        GameObject finishObj = GameObject.FindWithTag("Finish");
-
-        Vector3 finishDirection = finishObj.transform.position - gameObject.transform.position;
-
-        Quaternion rotation = Quaternion.LookRotation(new Vector3(finishDirection.x, 0, finishDirection.z));
-
-        transform.rotation = rotation;
     }
 
     /// <summary>
@@ -1018,7 +817,7 @@ public class TestFlight : MonoBehaviour
             pauseManager.tutorialAimObject.SetActive(true);
             pauseManager.tutorialThrowingObject.SetActive(true);
 
-            if (throwing)
+            if (planeThrowHandler.GetThrowStatus())
             {
                 pauseManager.tutorialChargingObject.SetActive(true);
 
@@ -1065,7 +864,6 @@ public class TestFlight : MonoBehaviour
         return finished;
     }
 
-
     /// <summary>
     /// Loads the level asynchrously and plays the proper animation while doing so 
     /// </summary>
@@ -1082,8 +880,73 @@ public class TestFlight : MonoBehaviour
             float progress = Mathf.Clamp01(operation.progress / .9f);
             yield return null;
         }
+    }
 
-        //yield return new WaitForSeconds(1);
-        //SceneManager.LoadScene(level);
+    public void SetPlaneDecelerationStatus(bool isDecelerating)
+    {
+        checkForPlaneDeceleration = isDecelerating;
+    }
+
+    public void SetFirstDecelerationCheck(bool isFirstDecelerated)
+    {
+        firstDecelerationCheck = isFirstDecelerated;
+    }
+
+    public void SetHitGroundStatus(bool planeHitGround)
+    {
+        hitGround = planeHitGround;
+    }
+
+    public bool GetHitGroundStatus()
+    {
+        return hitGround;
+    }
+
+    public Rigidbody GetPlaneBody()
+    {
+        return Rigidbody;
+    }
+
+    public void SetAimRotation(Vector3 changesInRotation)
+    {
+        Quaternion newRotation = Quaternion.Euler(Rigidbody.rotation.eulerAngles + changesInRotation);
+        Rigidbody.MoveRotation(newRotation);
+    }
+
+    public void TemporaryResetMethod(Collision collision)
+    {
+        if (!finished)
+        {
+            SetPlaneDecelerationStatus(false);
+            SetFirstDecelerationCheck(false);
+
+            moveForward = false;
+            Rigidbody.useGravity = false;
+            leftSystem.Play();
+            rightSystem.Play();
+
+            ContactPoint contact = collision.GetContact(0);
+            newTee = contact.point;
+
+            newTee.y = planeThrowHandler.GetStartThrowHeight();
+
+            strokeText.text = scoreManager.stroke.ToString();
+            isThrown = false;
+
+            planeThrowHandler.SetAimStatus(true);
+
+            planeCam.transform.localPosition = camStartPos;
+            anim.SetBool("isThrown", isThrown);
+            gameObject.transform.position = newTee;
+
+            if (GetHitGroundStatus())
+            {
+                planeThrowHandler.SetMovePlaneToPos(true);
+            }
+
+            SetHitGroundStatus(false);
+
+            Rigidbody.isKinematic = true;
+        }
     }
 }
