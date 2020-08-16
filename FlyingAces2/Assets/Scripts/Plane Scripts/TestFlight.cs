@@ -9,7 +9,6 @@
 
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
@@ -21,29 +20,11 @@ public class TestFlight : MonoBehaviour
     [Tooltip("The camera object in the scene")]
     public Camera planeCam;
 
-    [Tooltip("Number of strokes to score a par")]
-    public int par = 0;
-
-    [Tooltip("The hole the player is currently on")]
-    public int hole = 0;
-
     [Tooltip("The force that the wind zones put on the plane")]
     public float windZoneForce;
 
-    [Tooltip("The text object that displays the stroke the player is on")]
-    public TextMeshProUGUI strokeText;
-
-    [Tooltip("The text object that displays the par for the course")]
-    public TextMeshProUGUI parText;
-
-    [Tooltip("The text object that displays the hole the player is on")]
-    public TextMeshProUGUI holeText;
-
-    [Tooltip("The text that displays what score the player got on the hole")]
-    public TextMeshProUGUI scoreText;
-
-    [Tooltip("The notecard the score text is displayed on")]
-    public GameObject scoreCard;
+    //[Tooltip("The notecard the score text is displayed on")]
+    //public GameObject scoreCard;
 
     [Tooltip("The layer for the Raycasts to help with physics - Keep to ground only")]
     public LayerMask affectedRayCastLayer;
@@ -189,7 +170,7 @@ public class TestFlight : MonoBehaviour
 
     private bool scoreAddedThisThrow;
 
-    private ScoreManager scoreManager;
+    //private ScoreManager scoreManager;
 
     private bool canEnableChargeBar;
 
@@ -204,8 +185,9 @@ public class TestFlight : MonoBehaviour
 
     public Animator transitionAnimator;
 
-    private PlaneThrow_Handler planeThrowHandler; 
+    private PlaneThrow_Handler planeThrowHandler;
 
+    private ScoreManager scoreManager;
     #endregion
 
     void OnEnable()
@@ -219,7 +201,6 @@ public class TestFlight : MonoBehaviour
     {
         planeThrowHandler = GameObject.FindObjectOfType<PlaneThrow_Handler>();
 
-        //movePlaneToPos = false;
         moveForward = false;
         pauseManager = GameObject.FindObjectOfType<PauseManager>();
 
@@ -246,11 +227,11 @@ public class TestFlight : MonoBehaviour
         yForce = gravity;
         isThrown = false;
         camStartPos = planeCam.transform.localPosition;
-        strokeText.text = scoreManager.stroke.ToString();
-        parText.text = par.ToString();
-        holeText.text = hole.ToString();
+        //strokeText.text = scoreManager.stroke.ToString();
+        //parText.text = par.ToString();
+        //holeText.text = hole.ToString();
         forceAppliedThisFrame = false;
-        scoreCard.SetActive(false);
+        //scoreCard.SetActive(false);
 
         currentForceAppliedTimer = forceAppliedTimer;
 
@@ -654,50 +635,52 @@ public class TestFlight : MonoBehaviour
 
         if (collision.gameObject.tag == "Finish" && !finished)
         {
-            int scoreStroke = scoreManager.stroke;
+            //int scoreStroke = scoreManager.stroke;
 
-            strokeText.text = scoreManager.stroke.ToString();
+            //strokeText.text = scoreManager.stroke.ToString();
+            //LongSoundEffectSource.Stop();
+            //StartCoroutine("WinHandler");
+
+            //scoreCard.SetActive(true);
+
+            //if (scoreStroke == 1)
+            //{
+            //    scoreText.text = "Hole in one! Smooth flying!";
+            //}
+            //else if (scoreStroke == par - 1)
+            //{
+            //    scoreText.text = "You got a birdie! Nice!";
+            //}
+            //else if (scoreStroke == par - 2)
+            //{
+            //    scoreText.text = "You got an eagle! Good job!";
+            //}
+            //else if (scoreStroke == par)
+            //{
+            //    scoreText.text = "You got a par!";
+            //}
+            //else if (scoreStroke == par - 3)
+            //{
+            //    scoreText.text = "You got an albatross! Amazing!";
+            //}
+            //else if (scoreStroke == par + 1)
+            //{
+            //    scoreText.text = "You got a bogey. So close...";
+            //}
+            //else if (scoreStroke == par + 2)
+            //{
+            //    scoreText.text = "Double bogey. Better luck next time.";
+            //}
+            //else if (scoreStroke == par + 3)
+            //{
+            //    scoreText.text = "Triple bogey. Next hole will be better.";
+            //}
+            //else if (scoreStroke > par + 4)
+            //{
+            //    scoreText.text = "Let's not talk about that hole...";
+            //}
             LongSoundEffectSource.Stop();
             StartCoroutine("WinHandler");
-
-            scoreCard.SetActive(true);
-
-            if (scoreStroke == 1)
-            {
-                scoreText.text = "Hole in one! Smooth flying!";
-            }
-            else if (scoreStroke == par - 1)
-            {
-                scoreText.text = "You got a birdie! Nice!";
-            }
-            else if (scoreStroke == par - 2)
-            {
-                scoreText.text = "You got an eagle! Good job!";
-            }
-            else if (scoreStroke == par)
-            {
-                scoreText.text = "You got a par!";
-            }
-            else if (scoreStroke == par - 3)
-            {
-                scoreText.text = "You got an albatross! Amazing!";
-            }
-            else if (scoreStroke == par + 1)
-            {
-                scoreText.text = "You got a bogey. So close...";
-            }
-            else if (scoreStroke == par + 2)
-            {
-                scoreText.text = "Double bogey. Better luck next time.";
-            }
-            else if (scoreStroke == par + 3)
-            {
-                scoreText.text = "Triple bogey. Next hole will be better.";
-            }
-            else if (scoreStroke > par + 4)
-            {
-                scoreText.text = "Let's not talk about that hole...";
-            }
 
             finished = true;
         }
@@ -779,7 +762,7 @@ public class TestFlight : MonoBehaviour
         {
             if (!scoreAddedThisThrow)
             {
-                scoreManager.stroke += 1;
+                scoreManager.IncreaseScore(1);
                 scoreAddedThisThrow = true;
             }
 
@@ -792,7 +775,6 @@ public class TestFlight : MonoBehaviour
             playCrumbleOnce = false;
 
             planeThrowHandler.SetUpNewThrow(collision);
-            //SetUpNewThrow(collision);
         }
     }
 
@@ -809,51 +791,51 @@ public class TestFlight : MonoBehaviour
         }
     }
 
-    private void TutorialHandler()
-    {
-        if (scoreManager.stroke == 1)
-        {
-            pauseManager.tutorialChargingObject.SetActive(false);
-            pauseManager.tutorialAimObject.SetActive(true);
-            pauseManager.tutorialThrowingObject.SetActive(true);
+    //private void TutorialHandler()
+    //{
+    //    if (scoreManager.GetStroke() == 1)
+    //    {
+    //        pauseManager.tutorialChargingObject.SetActive(false);
+    //        pauseManager.tutorialAimObject.SetActive(true);
+    //        pauseManager.tutorialThrowingObject.SetActive(true);
 
-            if (planeThrowHandler.GetThrowStatus())
-            {
-                pauseManager.tutorialChargingObject.SetActive(true);
+    //        if (planeThrowHandler.GetThrowStatus())
+    //        {
+    //            pauseManager.tutorialChargingObject.SetActive(true);
 
-                pauseManager.tutorialAimObject.SetActive(false);
-                pauseManager.tutorialThrowingObject.SetActive(false);
-            }
+    //            pauseManager.tutorialAimObject.SetActive(false);
+    //            pauseManager.tutorialThrowingObject.SetActive(false);
+    //        }
 
-            if (isThrown)
-            {
-                pauseManager.tutorialFlyingObject.SetActive(true);
+    //        if (isThrown)
+    //        {
+    //            pauseManager.tutorialFlyingObject.SetActive(true);
 
-                pauseManager.tutorialChargingObject.SetActive(false);
-                pauseManager.tutorialAimObject.SetActive(false);
-                pauseManager.tutorialThrowingObject.SetActive(false);
-            }
-            else if (!isThrown)
-            {
-                pauseManager.tutorialFlyingObject.SetActive(false);
-            }
-        }
-        else if (scoreManager.stroke > 1)
-        {
-            pauseManager.tutorialChargingObject.SetActive(false);
-            pauseManager.tutorialAimObject.SetActive(false);
-            pauseManager.tutorialThrowingObject.SetActive(false);
-            pauseManager.tutorialFlyingObject.SetActive(false);
-        }
+    //            pauseManager.tutorialChargingObject.SetActive(false);
+    //            pauseManager.tutorialAimObject.SetActive(false);
+    //            pauseManager.tutorialThrowingObject.SetActive(false);
+    //        }
+    //        else if (!isThrown)
+    //        {
+    //            pauseManager.tutorialFlyingObject.SetActive(false);
+    //        }
+    //    }
+    //    else if (scoreManager.stroke > 1)
+    //    {
+    //        pauseManager.tutorialChargingObject.SetActive(false);
+    //        pauseManager.tutorialAimObject.SetActive(false);
+    //        pauseManager.tutorialThrowingObject.SetActive(false);
+    //        pauseManager.tutorialFlyingObject.SetActive(false);
+    //    }
 
-        if (pauseManager.isPaused)
-        {
-            pauseManager.tutorialChargingObject.SetActive(false);
-            pauseManager.tutorialAimObject.SetActive(false);
-            pauseManager.tutorialThrowingObject.SetActive(false);
-            pauseManager.tutorialFlyingObject.SetActive(false);
-        }
-    }
+    //    if (pauseManager.isPaused)
+    //    {
+    //        pauseManager.tutorialChargingObject.SetActive(false);
+    //        pauseManager.tutorialAimObject.SetActive(false);
+    //        pauseManager.tutorialThrowingObject.SetActive(false);
+    //        pauseManager.tutorialFlyingObject.SetActive(false);
+    //    }
+    //}
 
     /// <summary>
     /// Returns true if level is finished, false if not.
