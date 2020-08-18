@@ -23,9 +23,6 @@ public class TestFlight : MonoBehaviour
     [Tooltip("The force that the wind zones put on the plane")]
     public float windZoneForce;
 
-    //[Tooltip("The notecard the score text is displayed on")]
-    //public GameObject scoreCard;
-
     [Tooltip("The layer for the Raycasts to help with physics - Keep to ground only")]
     public LayerMask affectedRayCastLayer;
 
@@ -119,58 +116,54 @@ public class TestFlight : MonoBehaviour
     private PauseManager pauseManager;
     private EventSystem eventSystem;
 
-    public float windEmmissionRate = 10f;
+    //public float windEmmissionRate = 10f;
 
-    [Tooltip("The left wing's air particles.")]
-    public ParticleSystem leftSystem;
+    //[Tooltip("The left wing's air particles.")]
+    //public ParticleSystem leftSystem;
 
-    [Tooltip("The right wing's air particles.")]
-    public ParticleSystem rightSystem;
+    //[Tooltip("The right wing's air particles.")]
+    //public ParticleSystem rightSystem;
 
     [Tooltip("The victory particles")]
     public ParticleSystem winSystem;
 
-    private ParticleSystem.MainModule leftMain;
-    private ParticleSystem.MainModule rightMain;
+    //private ParticleSystem.MainModule leftMain;
+    //private ParticleSystem.MainModule rightMain;
 
-    ParticleSystem.EmissionModule emissionModuleLeft;
-    ParticleSystem.EmissionModule emissionModuleRight;
+    //ParticleSystem.EmissionModule emissionModuleLeft;
+    //ParticleSystem.EmissionModule emissionModuleRight;
 
-    [Tooltip("The rate at which the wing particle's color and albedo change with velocity")]
-    public float increaseParticleColorSwitchRate = 10.0f;
+    //[Tooltip("The rate at which the wing particle's color and albedo change with velocity")]
+    //public float increaseParticleColorSwitchRate = 10.0f;
 
-    [Tooltip("Default wing aircurrent particle color")]
-    public Color particleColor;
+    //[Tooltip("Default wing aircurrent particle color")]
+    //public Color particleColor;
 
-    [Tooltip("Wing aircurrent particle color at the min velocity")]
-    public Color particleColorMinSpeed;
+    //[Tooltip("Wing aircurrent particle color at the min velocity")]
+    //public Color particleColorMinSpeed;
 
-    [Tooltip("Wing aircurrent particle color at the max velocity")]
-    public Color particleColorMaxSpeed;
+    //[Tooltip("Wing aircurrent particle color at the max velocity")]
+    //public Color particleColorMaxSpeed;
 
-    [Tooltip("The rate at which the wing particle's lifespan change with velocity")]
-    public float increaseParticleLifeTimeRate = 10.0f;
+    //[Tooltip("The rate at which the wing particle's lifespan change with velocity")]
+    //public float increaseParticleLifeTimeRate = 10.0f;
 
-    [Tooltip("Wing aircurrent particle lifetime at the min velocity")]
-    public float minLifetime = 0.1f;
+    //[Tooltip("Wing aircurrent particle lifetime at the min velocity")]
+    //public float minLifetime = 0.1f;
 
-    [Tooltip("Wing aircurrent particle lifetime at the max velocity")]
-    public float maxLifetime = 0.5f;
+    //[Tooltip("Wing aircurrent particle lifetime at the max velocity")]
+    //public float maxLifetime = 0.5f;
 
-    [Tooltip("The rate at which the wing particle's size change with velocity")]
-    public float increaseParticleSizeRate = 10.0f;
+    //[Tooltip("The rate at which the wing particle's size change with velocity")]
+    //public float increaseParticleSizeRate = 10.0f;
 
-    [Tooltip("Wing aircurrent particle size at the min velocity")]
-    public float minSize = 0f;
+    //[Tooltip("Wing aircurrent particle size at the min velocity")]
+    //public float minSize = 0f;
 
-    [Tooltip("Wing aircurrent particle size at the max velocity")]
-    public float maxSize = 1f;
-
-    //public bool isLevel1;
+    //[Tooltip("Wing aircurrent particle size at the max velocity")]
+    //public float maxSize = 1f;
 
     private bool scoreAddedThisThrow;
-
-    //private ScoreManager scoreManager;
 
     private bool canEnableChargeBar;
 
@@ -190,6 +183,8 @@ public class TestFlight : MonoBehaviour
     private ScoreManager scoreManager;
 
     private UIHandler uiHandler;
+
+    private PlaneParticleHandler planeParticleHandler;
     #endregion
 
     void OnEnable()
@@ -202,6 +197,8 @@ public class TestFlight : MonoBehaviour
     void Start()
     {
         planeThrowHandler = GameObject.FindObjectOfType<PlaneThrow_Handler>();
+
+        planeParticleHandler = GameObject.FindObjectOfType<PlaneParticleHandler>();
 
         uiHandler = GameObject.FindObjectOfType<UIHandler>();
 
@@ -231,22 +228,18 @@ public class TestFlight : MonoBehaviour
         yForce = gravity;
         isThrown = false;
         camStartPos = planeCam.transform.localPosition;
-        //strokeText.text = scoreManager.stroke.ToString();
-        //parText.text = par.ToString();
-        //holeText.text = hole.ToString();
         forceAppliedThisFrame = false;
-        //scoreCard.SetActive(false);
 
         currentForceAppliedTimer = forceAppliedTimer;
 
-        leftMain = leftSystem.main;
-        rightMain = rightSystem.main;
+        //leftMain = leftSystem.main;
+        //rightMain = rightSystem.main;
 
-        emissionModuleLeft = leftSystem.emission;
-        emissionModuleRight = rightSystem.emission;
+        //emissionModuleLeft = leftSystem.emission;
+        //emissionModuleRight = rightSystem.emission;
 
-        emissionModuleLeft.rateOverDistance = 0f;
-        emissionModuleRight.rateOverDistance = 0f;
+        //emissionModuleLeft.rateOverDistance = 0f;
+        //emissionModuleRight.rateOverDistance = 0f;
 
         canEnableChargeBar = true;
     }
@@ -266,30 +259,16 @@ public class TestFlight : MonoBehaviour
             StartCoroutine(DelayAfterGameUnpause());
         }
 
-
-        //if (isLevel1)
-        //{
-        //    TutorialHandler();
-        //}
-        //else if (!isLevel1)
-        //{
-        //    pauseManager.tutorialChargingObject.SetActive(false);
-        //    pauseManager.tutorialAimObject.SetActive(false);
-        //    pauseManager.tutorialThrowingObject.SetActive(false);
-        //    pauseManager.tutorialFlyingObject.SetActive(false);
-        //}
-
         if (!isThrown)
         {
-            leftSystem.Stop();
-            rightSystem.Stop();
+            //leftSystem.Stop();
+            //rightSystem.Stop();
         }
 
         if (Input.GetKeyDown(KeyCode.Return) && !isThrown)
         {
             if (!planeThrowHandler.GetAimStatus() && planeThrowHandler.GetThrowStatus() && !pauseManager.isPaused)
             {
-                //throwing = false;
                 planeThrowHandler.SetThrowStatus(false);
 
                 isThrown = true;
@@ -301,7 +280,6 @@ public class TestFlight : MonoBehaviour
                 Rigidbody.useGravity = true;
 
                 planeThrowHandler.SetAimStatus(false);
-                //aiming = false;
 
                 scoreAddedThisThrow = false;
 
@@ -312,16 +290,16 @@ public class TestFlight : MonoBehaviour
         }
         else if (isThrown)
         {
-            emissionModuleLeft.rateOverDistance = windEmmissionRate;
-            emissionModuleRight.rateOverDistance = windEmmissionRate;
+            //emissionModuleLeft.rateOverDistance = windEmmissionRate;
+            //emissionModuleRight.rateOverDistance = windEmmissionRate;
 
             RaycastHit rayHit;
             if (!playOnce)
             {
                 LongSoundEffectSource.clip = windSound;
                 LongSoundEffectSource.Play();
-                leftSystem.Play();
-                rightSystem.Play();
+                //leftSystem.Play();
+                //rightSystem.Play();
 
                 playOnce = true;
             }
@@ -364,7 +342,7 @@ public class TestFlight : MonoBehaviour
 
             LongSoundEffectSource.pitch = Mathf.Clamp(velSound, windPitchMin, windPitchMax);
 
-            WindParticleHandler();
+            //WindParticleHandler();
         }
         else if (pauseManager.isPaused)
         {
@@ -401,7 +379,6 @@ public class TestFlight : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //AimLogic();
         MovePlane();
 
         if (isThrown)
@@ -444,26 +421,26 @@ public class TestFlight : MonoBehaviour
     /// <summary>
     /// Alters wind particle appearance in color, size, and lifetime based on plane velocity.
     /// </summary>
-    private void WindParticleHandler()
-    {
-        var particleColorChange = Rigidbody.velocity.magnitude / increaseParticleColorSwitchRate;
-        leftMain.startColor = new Color((Mathf.Clamp(particleColorChange, particleColorMinSpeed.r, particleColorMaxSpeed.r)),
-            (Mathf.Clamp(particleColorChange, particleColorMinSpeed.g, particleColorMaxSpeed.g)),
-            (Mathf.Clamp(particleColorChange, particleColorMinSpeed.b, particleColorMaxSpeed.b)),
-            (Mathf.Clamp(particleColorChange, particleColorMinSpeed.a, particleColorMaxSpeed.a)));
-        rightMain.startColor = new Color((Mathf.Clamp(particleColorChange, particleColorMinSpeed.r, particleColorMaxSpeed.r)),
-            (Mathf.Clamp(particleColorChange, particleColorMinSpeed.g, particleColorMaxSpeed.g)),
-            (Mathf.Clamp(particleColorChange, particleColorMinSpeed.b, particleColorMaxSpeed.b)),
-            (Mathf.Clamp(particleColorChange, particleColorMinSpeed.a, particleColorMaxSpeed.a)));
+    //private void WindParticleHandler()
+    //{
+    //    var particleColorChange = Rigidbody.velocity.magnitude / increaseParticleColorSwitchRate;
+    //    leftMain.startColor = new Color((Mathf.Clamp(particleColorChange, particleColorMinSpeed.r, particleColorMaxSpeed.r)),
+    //        (Mathf.Clamp(particleColorChange, particleColorMinSpeed.g, particleColorMaxSpeed.g)),
+    //        (Mathf.Clamp(particleColorChange, particleColorMinSpeed.b, particleColorMaxSpeed.b)),
+    //        (Mathf.Clamp(particleColorChange, particleColorMinSpeed.a, particleColorMaxSpeed.a)));
+    //    rightMain.startColor = new Color((Mathf.Clamp(particleColorChange, particleColorMinSpeed.r, particleColorMaxSpeed.r)),
+    //        (Mathf.Clamp(particleColorChange, particleColorMinSpeed.g, particleColorMaxSpeed.g)),
+    //        (Mathf.Clamp(particleColorChange, particleColorMinSpeed.b, particleColorMaxSpeed.b)),
+    //        (Mathf.Clamp(particleColorChange, particleColorMinSpeed.a, particleColorMaxSpeed.a)));
 
-        var particleLifetimeChange = Rigidbody.velocity.magnitude / increaseParticleLifeTimeRate;
-        leftMain.startLifetime = Mathf.Clamp(particleLifetimeChange, minLifetime, maxLifetime);
-        rightMain.startLifetime = Mathf.Clamp(particleLifetimeChange, minLifetime, maxLifetime);
+    //    var particleLifetimeChange = Rigidbody.velocity.magnitude / increaseParticleLifeTimeRate;
+    //    leftMain.startLifetime = Mathf.Clamp(particleLifetimeChange, minLifetime, maxLifetime);
+    //    rightMain.startLifetime = Mathf.Clamp(particleLifetimeChange, minLifetime, maxLifetime);
 
-        var particleSizeChange = Rigidbody.velocity.magnitude / increaseParticleSizeRate;
-        leftMain.startSize = Mathf.Clamp(particleSizeChange, minSize, maxSize);
-        rightMain.startSize = Mathf.Clamp(particleSizeChange, minSize, maxSize);
-    }
+    //    var particleSizeChange = Rigidbody.velocity.magnitude / increaseParticleSizeRate;
+    //    leftMain.startSize = Mathf.Clamp(particleSizeChange, minSize, maxSize);
+    //    rightMain.startSize = Mathf.Clamp(particleSizeChange, minSize, maxSize);
+    //}
 
     /// <summary>
     /// Allows the player to move the plane once it is thrown.
@@ -628,61 +605,18 @@ public class TestFlight : MonoBehaviour
             increaseWindPitchRate = hitGroundWindPitchRate;
             inSlideMode = true;
 
-            emissionModuleLeft.rateOverDistance = 0f;
-            emissionModuleRight.rateOverDistance = 0f;
+            //emissionModuleLeft.rateOverDistance = 0f;
+            //emissionModuleRight.rateOverDistance = 0f;
 
-            leftSystem.Pause();
-            rightSystem.Pause();
+            //leftSystem.Pause();
+            //rightSystem.Pause();
+            planeParticleHandler.PauseParticles();
 
             anim.SetBool("Sliding", true);
         }
 
         if (collision.gameObject.tag == "Finish" && !finished)
         {
-            //int scoreStroke = scoreManager.stroke;
-
-            //strokeText.text = scoreManager.stroke.ToString();
-            //LongSoundEffectSource.Stop();
-            //StartCoroutine("WinHandler");
-
-            //scoreCard.SetActive(true);
-
-            //if (scoreStroke == 1)
-            //{
-            //    scoreText.text = "Hole in one! Smooth flying!";
-            //}
-            //else if (scoreStroke == par - 1)
-            //{
-            //    scoreText.text = "You got a birdie! Nice!";
-            //}
-            //else if (scoreStroke == par - 2)
-            //{
-            //    scoreText.text = "You got an eagle! Good job!";
-            //}
-            //else if (scoreStroke == par)
-            //{
-            //    scoreText.text = "You got a par!";
-            //}
-            //else if (scoreStroke == par - 3)
-            //{
-            //    scoreText.text = "You got an albatross! Amazing!";
-            //}
-            //else if (scoreStroke == par + 1)
-            //{
-            //    scoreText.text = "You got a bogey. So close...";
-            //}
-            //else if (scoreStroke == par + 2)
-            //{
-            //    scoreText.text = "Double bogey. Better luck next time.";
-            //}
-            //else if (scoreStroke == par + 3)
-            //{
-            //    scoreText.text = "Triple bogey. Next hole will be better.";
-            //}
-            //else if (scoreStroke > par + 4)
-            //{
-            //    scoreText.text = "Let's not talk about that hole...";
-            //}
             LongSoundEffectSource.Stop();
             uiHandler.FinishScore();
             StartCoroutine("WinHandler");
@@ -700,11 +634,12 @@ public class TestFlight : MonoBehaviour
             increaseWindPitchRate = startWindPitchRate;
             inSlideMode = false;
 
-            emissionModuleLeft.rateOverDistance = windEmmissionRate;
-            emissionModuleRight.rateOverDistance = windEmmissionRate;
+            //emissionModuleLeft.rateOverDistance = windEmmissionRate;
+            //emissionModuleRight.rateOverDistance = windEmmissionRate;
 
-            leftSystem.Play();
-            rightSystem.Play();
+            //leftSystem.Play();
+            //rightSystem.Play();
+            planeParticleHandler.ResumeParticles();
 
             anim.SetBool("Sliding", false);
         }
@@ -796,52 +731,6 @@ public class TestFlight : MonoBehaviour
         }
     }
 
-    //private void TutorialHandler()
-    //{
-    //    if (scoreManager.GetStroke() == 1)
-    //    {
-    //        pauseManager.tutorialChargingObject.SetActive(false);
-    //        pauseManager.tutorialAimObject.SetActive(true);
-    //        pauseManager.tutorialThrowingObject.SetActive(true);
-
-    //        if (planeThrowHandler.GetThrowStatus())
-    //        {
-    //            pauseManager.tutorialChargingObject.SetActive(true);
-
-    //            pauseManager.tutorialAimObject.SetActive(false);
-    //            pauseManager.tutorialThrowingObject.SetActive(false);
-    //        }
-
-    //        if (isThrown)
-    //        {
-    //            pauseManager.tutorialFlyingObject.SetActive(true);
-
-    //            pauseManager.tutorialChargingObject.SetActive(false);
-    //            pauseManager.tutorialAimObject.SetActive(false);
-    //            pauseManager.tutorialThrowingObject.SetActive(false);
-    //        }
-    //        else if (!isThrown)
-    //        {
-    //            pauseManager.tutorialFlyingObject.SetActive(false);
-    //        }
-    //    }
-    //    else if (scoreManager.stroke > 1)
-    //    {
-    //        pauseManager.tutorialChargingObject.SetActive(false);
-    //        pauseManager.tutorialAimObject.SetActive(false);
-    //        pauseManager.tutorialThrowingObject.SetActive(false);
-    //        pauseManager.tutorialFlyingObject.SetActive(false);
-    //    }
-
-    //    if (pauseManager.isPaused)
-    //    {
-    //        pauseManager.tutorialChargingObject.SetActive(false);
-    //        pauseManager.tutorialAimObject.SetActive(false);
-    //        pauseManager.tutorialThrowingObject.SetActive(false);
-    //        pauseManager.tutorialFlyingObject.SetActive(false);
-    //    }
-    //}
-
     /// <summary>
     /// Returns true if level is finished, false if not.
     /// </summary>
@@ -894,6 +783,11 @@ public class TestFlight : MonoBehaviour
         return Rigidbody;
     }
 
+    public float GetPlaneVelocity()
+    {
+        return Rigidbody.velocity.magnitude;
+    }
+
     public void SetAimRotation(Vector3 changesInRotation)
     {
         Quaternion newRotation = Quaternion.Euler(Rigidbody.rotation.eulerAngles + changesInRotation);
@@ -909,8 +803,9 @@ public class TestFlight : MonoBehaviour
 
             moveForward = false;
             Rigidbody.useGravity = false;
-            leftSystem.Play();
-            rightSystem.Play();
+            //leftSystem.Play();
+            //rightSystem.Play();
+            planeParticleHandler.PlayParticles();
 
             ContactPoint contact = collision.GetContact(0);
             newTee = contact.point;
@@ -935,5 +830,15 @@ public class TestFlight : MonoBehaviour
 
             Rigidbody.isKinematic = true;
         }
+    }
+
+    public bool GetIsThrown()
+    {
+        return isThrown;
+    }
+
+    public bool GetEffectPlayOnce()
+    {
+        return playOnce;
     }
 }

@@ -42,12 +42,6 @@ public class PauseManager : MonoBehaviour
     private GameObject selectedButton;
     private bool keepButtonSelected;
 
-    //tutorial things
-    //public GameObject tutorialAimObject;
-    //public GameObject tutorialThrowingObject;
-    //public GameObject tutorialChargingObject;
-    //public GameObject tutorialFlyingObject;
-
     public Color selectedButtonColor;
     public Color unSelectedButtonColor;
 
@@ -89,7 +83,6 @@ public class PauseManager : MonoBehaviour
 
     public void PauseGame()
     {
-        //thisFlight.throwing = false;
         planeThrow.SetThrowStatus(false);
 
         OpenCloseMenuSound();
@@ -127,7 +120,6 @@ public class PauseManager : MonoBehaviour
     public void SelectBackButton(GameObject button)
     {
         selectedButton = button;
-        //eventSystem.SetSelectedGameObject(button);
         SetButton();
     }
 
@@ -164,14 +156,12 @@ public class PauseManager : MonoBehaviour
         Time.timeScale = 1;
         Scene thisScene = SceneManager.GetActiveScene();
         StartCoroutine(LevelLoad(thisScene.name));
-        //SceneManager.LoadScene(thisScene.name);
     }
 
     public void QuitToMainMenu()
     {
         Time.timeScale = 1;
         StartCoroutine(LevelLoad(mainMenuSceneName));
-        //SceneManager.LoadScene(mainMenuSceneName);
     }
 
     public void OpenCloseMenuSound()

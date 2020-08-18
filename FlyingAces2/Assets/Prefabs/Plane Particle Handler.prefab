@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1481560425422788945
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1481560425422788951}
+  - component: {fileID: 1481560425422788944}
+  m_Layer: 0
+  m_Name: Plane Particle Handler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1481560425422788951
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481560425422788945}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 344.36548, y: 897.3605, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1481560425422788944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481560425422788945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e730275e3e293748a8aacc00ddaceb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  windEmmissionRate: 10
+  leftSystem: {fileID: 0}
+  rightSystem: {fileID: 0}
+  increaseParticleColorSwitchRate: 1
+  particleColor: {r: 0.72156864, g: 0.972549, b: 1, a: 0.078431375}
+  particleColorMinSpeed: {r: 0.7254902, g: 0.972549, b: 1, a: 0.003921569}
+  particleColorMaxSpeed: {r: 0.7254902, g: 0.972549, b: 1, a: 0.29411766}
+  increaseParticleLifeTimeRate: 1
+  minLifetime: 0
+  maxLifetime: 0.35
+  increaseParticleSizeRate: 1
+  minSize: 0
+  maxSize: 1
