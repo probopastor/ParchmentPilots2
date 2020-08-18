@@ -684,6 +684,7 @@ public class TestFlight : MonoBehaviour
             //    scoreText.text = "Let's not talk about that hole...";
             //}
             LongSoundEffectSource.Stop();
+            uiHandler.FinishScore();
             StartCoroutine("WinHandler");
 
             finished = true;
