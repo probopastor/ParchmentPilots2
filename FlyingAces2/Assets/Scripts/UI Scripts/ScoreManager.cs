@@ -10,7 +10,7 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    public int stroke = 1;
+    private int stroke = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -22,5 +22,15 @@ public class ScoreManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void IncreaseScore(int increaseValue)
+    {
+        stroke += increaseValue;
+    }
+
+    public int GetStroke()
+    {
+        return stroke;
     }
 }

@@ -31,6 +31,7 @@ public class PauseManager : MonoBehaviour
     public string mainMenuSceneName;
 
     public TestFlight thisFlight;
+    public PlaneThrow_Handler planeThrow;
 
     public bool isPaused;
 
@@ -40,12 +41,6 @@ public class PauseManager : MonoBehaviour
 
     private GameObject selectedButton;
     private bool keepButtonSelected;
-
-    //tutorial things
-    public GameObject tutorialAimObject;
-    public GameObject tutorialThrowingObject;
-    public GameObject tutorialChargingObject;
-    public GameObject tutorialFlyingObject;
 
     public Color selectedButtonColor;
     public Color unSelectedButtonColor;
@@ -60,6 +55,8 @@ public class PauseManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         thisFlight = FindObjectOfType<TestFlight>();
+        planeThrow = FindObjectOfType<PlaneThrow_Handler>();
+
         eventSystem = EventSystem.current;
 
         MusicSource.clip = gameMusic;
@@ -73,7 +70,7 @@ public class PauseManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) && !thisFlight.throwing)
+        if(Input.GetKeyDown(KeyCode.Escape) && !planeThrow.GetThrowStatus())
         {
             PauseGame();
         }
@@ -86,7 +83,8 @@ public class PauseManager : MonoBehaviour
 
     public void PauseGame()
     {
-        thisFlight.throwing = false;
+        planeThrow.SetThrowStatus(false);
+
         OpenCloseMenuSound();
 
         if (!isPaused)
@@ -122,7 +120,6 @@ public class PauseManager : MonoBehaviour
     public void SelectBackButton(GameObject button)
     {
         selectedButton = button;
-        //eventSystem.SetSelectedGameObject(button);
         SetButton();
     }
 
@@ -159,14 +156,12 @@ public class PauseManager : MonoBehaviour
         Time.timeScale = 1;
         Scene thisScene = SceneManager.GetActiveScene();
         StartCoroutine(LevelLoad(thisScene.name));
-        //SceneManager.LoadScene(thisScene.name);
     }
 
     public void QuitToMainMenu()
     {
         Time.timeScale = 1;
         StartCoroutine(LevelLoad(mainMenuSceneName));
-        //SceneManager.LoadScene(mainMenuSceneName);
     }
 
     public void OpenCloseMenuSound()
