@@ -93,7 +93,7 @@ public class PlaneThrow_Handler : MonoBehaviour
                 zMove = 0;
             }
 
-            Debug.Log("xMove: " + xMove + " zMove: " + zMove);
+            //Debug.Log("xMove: " + xMove + " zMove: " + zMove);
             testFlight.gameObject.transform.position = new Vector3(testFlight.gameObject.transform.position.x + xMove, throwHeight, testFlight.gameObject.transform.position.z + zMove);
             RotateTowardsFinish();
         }

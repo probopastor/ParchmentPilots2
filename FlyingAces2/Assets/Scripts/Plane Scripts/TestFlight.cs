@@ -313,7 +313,7 @@ public class TestFlight : MonoBehaviour
                     moveForward = false;
                 }
 
-                Debug.Log(thisAngle);
+                //Debug.Log(thisAngle);
             }
 
             //The smaller the plane's angle towards the ground, the faster the plane will accelerate downwards. First raycast points from nose of plane.
