@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 8809406289966567277}
   m_Layer: 0
   m_Name: Circle
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 1817252491618168366}
   m_Layer: 0
   m_Name: Circle.002
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
