@@ -166,7 +166,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 792386627}
@@ -730,6 +730,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1192,6 +1193,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1522,6 +1524,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2379,6 +2382,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2827,7 +2831,7 @@ Transform:
   m_Children:
   - {fileID: 1186285422}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &99879618
 PrefabInstance:
@@ -2946,7 +2950,7 @@ Transform:
   - {fileID: 348565042}
   - {fileID: 1031676215}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &124186074
 PrefabInstance:
@@ -3446,6 +3450,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3899,6 +3904,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4255,6 +4261,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 180121785}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &183119451
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 23688462290432944, guid: 6470fe6987fee8f47b88259479a85204,
+        type: 3}
+      propertyPath: m_Name
+      value: BobbleheadTiger (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 801632124253301002, guid: 6470fe6987fee8f47b88259479a85204,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -62.245384
+      objectReference: {fileID: 0}
+    - target: {fileID: 801632124253301002, guid: 6470fe6987fee8f47b88259479a85204,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 23.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 801632124253301002, guid: 6470fe6987fee8f47b88259479a85204,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 521.9678
+      objectReference: {fileID: 0}
+    - target: {fileID: 801632124253301002, guid: 6470fe6987fee8f47b88259479a85204,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 801632124253301002, guid: 6470fe6987fee8f47b88259479a85204,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.014398456
+      objectReference: {fileID: 0}
+    - target: {fileID: 801632124253301002, guid: 6470fe6987fee8f47b88259479a85204,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 801632124253301002, guid: 6470fe6987fee8f47b88259479a85204,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99989635
+      objectReference: {fileID: 0}
+    - target: {fileID: 801632124253301002, guid: 6470fe6987fee8f47b88259479a85204,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 801632124253301002, guid: 6470fe6987fee8f47b88259479a85204,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 801632124253301002, guid: 6470fe6987fee8f47b88259479a85204,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 1.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 801632124253301002, guid: 6470fe6987fee8f47b88259479a85204,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6470fe6987fee8f47b88259479a85204, type: 3}
 --- !u!1001 &193523160
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5177,7 +5252,7 @@ MeshCollider:
   m_Material: {fileID: 13400000, guid: 5c894b3724526a548a8bf921b26a920e, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1416949199}
@@ -8845,7 +8920,7 @@ Transform:
   - {fileID: 1867179401}
   - {fileID: 378432835}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &297977992
 PrefabInstance:
@@ -9469,7 +9544,7 @@ RectTransform:
   - {fileID: 1125669797}
   - {fileID: 3087588623661095774}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -10384,7 +10459,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1871725772}
@@ -10694,7 +10769,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 984583810}
@@ -13150,7 +13225,7 @@ MeshCollider:
   m_Material: {fileID: 13400000, guid: 5c894b3724526a548a8bf921b26a920e, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 907212635}
@@ -13718,6 +13793,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -13960,6 +14036,75 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36131ca2603fb7545a988533b98d5c8c, type: 3}
+--- !u!1001 &507315398
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 23688462290432944, guid: 6470fe6987fee8f47b88259479a85204,
+        type: 3}
+      propertyPath: m_Name
+      value: BobbleheadTiger
+      objectReference: {fileID: 0}
+    - target: {fileID: 801632124253301002, guid: 6470fe6987fee8f47b88259479a85204,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -95.700584
+      objectReference: {fileID: 0}
+    - target: {fileID: 801632124253301002, guid: 6470fe6987fee8f47b88259479a85204,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 36.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 801632124253301002, guid: 6470fe6987fee8f47b88259479a85204,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 420.12167
+      objectReference: {fileID: 0}
+    - target: {fileID: 801632124253301002, guid: 6470fe6987fee8f47b88259479a85204,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 801632124253301002, guid: 6470fe6987fee8f47b88259479a85204,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.3976283
+      objectReference: {fileID: 0}
+    - target: {fileID: 801632124253301002, guid: 6470fe6987fee8f47b88259479a85204,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 801632124253301002, guid: 6470fe6987fee8f47b88259479a85204,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.91754663
+      objectReference: {fileID: 0}
+    - target: {fileID: 801632124253301002, guid: 6470fe6987fee8f47b88259479a85204,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 801632124253301002, guid: 6470fe6987fee8f47b88259479a85204,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 801632124253301002, guid: 6470fe6987fee8f47b88259479a85204,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 46.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 801632124253301002, guid: 6470fe6987fee8f47b88259479a85204,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6470fe6987fee8f47b88259479a85204, type: 3}
 --- !u!4 &510386831 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8678033784451704458, guid: 5b07a3397c942404ca4a67bc24f997af,
@@ -14016,7 +14161,7 @@ MeshCollider:
   m_Material: {fileID: 13400000, guid: 5c894b3724526a548a8bf921b26a920e, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 158783701}
@@ -14792,6 +14937,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -15024,7 +15170,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 575164436}
@@ -30755,6 +30901,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -31727,6 +31874,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -31975,7 +32123,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 524301979}
@@ -32684,6 +32832,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -32813,10 +32962,10 @@ Transform:
   - {fileID: 1591276076}
   - {fileID: 317693959}
   - {fileID: 875661838}
-  - {fileID: 1151448731}
   - {fileID: 1189919309}
+  - {fileID: 1151448731}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &642814609
 PrefabInstance:
@@ -33557,7 +33706,7 @@ MeshCollider:
   m_Material: {fileID: 13400000, guid: 5c894b3724526a548a8bf921b26a920e, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1924752998}
@@ -34075,6 +34224,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -34501,7 +34651,7 @@ PrefabInstance:
     - target: {fileID: 8980741506095247362, guid: 8821f09e175200c4faf2e9c6c9e024c8,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -2.7918538e-14
+      value: -2.7918535e-14
       objectReference: {fileID: 0}
     - target: {fileID: 8980741506095247362, guid: 8821f09e175200c4faf2e9c6c9e024c8,
         type: 3}
@@ -35032,6 +35182,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.4198113, g: 1, b: 0.93838274, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -35268,7 +35419,7 @@ Transform:
   - {fileID: 1934451600}
   - {fileID: 846374280}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &729916900 stripped
 Transform:
@@ -37268,7 +37419,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1941909605}
@@ -37601,6 +37752,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.6933962, b: 0.93240136, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -39109,6 +39261,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -39373,7 +39526,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &926742818
 Mesh:
@@ -39821,6 +39974,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -39992,7 +40146,7 @@ MeshCollider:
   m_Material: {fileID: 13400000, guid: 5c894b3724526a548a8bf921b26a920e, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1824113119}
@@ -44137,6 +44291,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.4198113, g: 1, b: 0.93838274, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -45369,7 +45524,7 @@ Transform:
   - {fileID: 1434059892}
   - {fileID: 698996107}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1071746470
 GameObject:
@@ -45415,7 +45570,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 933461110}
@@ -45737,6 +45892,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -48200,6 +48356,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -48428,6 +48585,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -48674,7 +48832,7 @@ Transform:
   - {fileID: 124186075}
   - {fileID: 552172470}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1218733364 stripped
 Transform:
@@ -49937,6 +50095,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 1, b: 0.94610643, a: 0}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -50080,6 +50239,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -51667,7 +51827,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1602879589}
@@ -51985,6 +52145,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -52451,7 +52612,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1570228487}
@@ -68061,6 +68222,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -68356,6 +68518,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 1, b: 0.94610643, a: 0}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -69853,7 +70016,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1887189129}
@@ -70238,7 +70401,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2005874905}
@@ -70786,6 +70949,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -70975,7 +71139,7 @@ Transform:
   m_LocalScale: {x: 9, y: 9, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1602879589
 Mesh:
@@ -71397,7 +71561,7 @@ Transform:
   - {fileID: 1581024885}
   - {fileID: 1071746471}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1621210502
 Mesh:
@@ -73075,6 +73239,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -73254,7 +73419,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1286134791}
@@ -74990,7 +75155,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 82674216}
@@ -75270,6 +75435,75 @@ Transform:
   m_Father: {fileID: 1617786341}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1843186275
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 23688462290432944, guid: 6470fe6987fee8f47b88259479a85204,
+        type: 3}
+      propertyPath: m_Name
+      value: BobbleheadTiger (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 801632124253301002, guid: 6470fe6987fee8f47b88259479a85204,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 185.20981
+      objectReference: {fileID: 0}
+    - target: {fileID: 801632124253301002, guid: 6470fe6987fee8f47b88259479a85204,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 23.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 801632124253301002, guid: 6470fe6987fee8f47b88259479a85204,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 348.39642
+      objectReference: {fileID: 0}
+    - target: {fileID: 801632124253301002, guid: 6470fe6987fee8f47b88259479a85204,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 801632124253301002, guid: 6470fe6987fee8f47b88259479a85204,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 801632124253301002, guid: 6470fe6987fee8f47b88259479a85204,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 801632124253301002, guid: 6470fe6987fee8f47b88259479a85204,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 801632124253301002, guid: 6470fe6987fee8f47b88259479a85204,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 801632124253301002, guid: 6470fe6987fee8f47b88259479a85204,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 801632124253301002, guid: 6470fe6987fee8f47b88259479a85204,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 801632124253301002, guid: 6470fe6987fee8f47b88259479a85204,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6470fe6987fee8f47b88259479a85204, type: 3}
 --- !u!1001 &1843247393
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -75375,7 +75609,7 @@ Transform:
   - {fileID: 953070362}
   - {fileID: 1932323275}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1866270760
 Mesh:
@@ -77128,7 +77362,7 @@ Transform:
   - {fileID: 2019074511}
   - {fileID: 336417989}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1941044920 stripped
 Transform:
@@ -78856,7 +79090,7 @@ RectTransform:
   m_Children:
   - {fileID: 1307507442}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -79215,6 +79449,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -79314,12 +79549,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2060643117}
-  m_LocalRotation: {x: 0.14253852, y: -2.7918538e-14, z: 1.9386661e-13, w: 0.9897893}
+  m_LocalRotation: {x: 0.14253852, y: 0.0000000147482435, z: -0.000000002118673, w: 0.98978925}
   m_LocalPosition: {x: 57, y: 106, z: -123.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2060643121
 MonoBehaviour:
@@ -79999,7 +80234,7 @@ Transform:
   - {fileID: 672711353}
   - {fileID: 455481329}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2121960730
 PrefabInstance:
@@ -80126,7 +80361,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 405460397}
