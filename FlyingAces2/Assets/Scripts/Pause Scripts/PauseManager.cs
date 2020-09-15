@@ -27,6 +27,7 @@ public class PauseManager : MonoBehaviour
 
     public GameObject pausePanel;
     public GameObject howToPlayPanel;
+    public GameObject endOfLevelPanel;
 
     public string mainMenuSceneName;
 
@@ -36,6 +37,7 @@ public class PauseManager : MonoBehaviour
     public bool isPaused;
 
     public GameObject resumeButton;
+    public GameObject nextLevelButton;
 
     private EventSystem eventSystem;
 
@@ -65,6 +67,7 @@ public class PauseManager : MonoBehaviour
         isPaused = false;
         pausePanel.SetActive(false);
         howToPlayPanel.SetActive(false);
+        endOfLevelPanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -182,6 +185,21 @@ public class PauseManager : MonoBehaviour
         SinglePitchSoundEffectSource.Play();
     }
 
+    public void LoadNextLevel(string level)
+    {
+        transitionAnimator.SetTrigger("Start");
+
+        AsyncOperation operation = SceneManager.LoadSceneAsync(level);
+    }
+
+    public void OpenEndOfLevelMenu()
+    {
+        Debug.Log("EndOfLevel");
+        endOfLevelPanel.SetActive(true);
+        eventSystem.SetSelectedGameObject(nextLevelButton);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
 
     IEnumerator LevelLoad(string level)
     {

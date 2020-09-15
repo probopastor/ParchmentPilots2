@@ -692,7 +692,8 @@ public class TestFlight : MonoBehaviour
 
                 yield return new WaitForSeconds(1f);
                 playWinSoundOnce = true;
-                StartCoroutine(LevelLoad(nextSceneName));
+                //StartCoroutine(LevelLoad(nextSceneName));
+                pauseManager.OpenEndOfLevelMenu();
             }
         }
     }
