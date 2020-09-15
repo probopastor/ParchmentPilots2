@@ -222,6 +222,7 @@ public class TestFlight : MonoBehaviour
         scoreAddedThisThrow = false;
 
         //Sets the starting plane position on game start
+        if(planeThrowHandler != null)
         gameObject.transform.position = new Vector3(gameObject.transform.position.x, planeThrowHandler.GetStartThrowHeight(), gameObject.transform.position.z);
 
         anim = GetComponent<Animator>();
