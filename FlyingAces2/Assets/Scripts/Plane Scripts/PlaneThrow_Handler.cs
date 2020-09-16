@@ -17,6 +17,9 @@ public class PlaneThrow_Handler : MonoBehaviour
     [Tooltip("The height at which the plane is thrown at the start of a new throw")]
     public float throwHeight = 15f;
 
+    [Tooltip("The first checkpoint object for the player to rotate towards")]
+    public GameObject firstCheckpoint;
+
     public float xBuffer = 1f;
     public float zBuffer = 1f;
 
@@ -30,14 +33,16 @@ public class PlaneThrow_Handler : MonoBehaviour
     private bool movePlaneToPos;
     private ThrowingChargeBarController chargeBarController;
 
+    private GameObject lookAtObject;
+
     // Start is called before the first frame update
     void Start()
     {
         testFlight = GameObject.FindObjectOfType<TestFlight>();
         chargeBarController = GameObject.FindObjectOfType<ThrowingChargeBarController>();
         chargeBarController.enabled = false;
-
-        RotateTowardsFinish();
+        SetRotateTowardObject(firstCheckpoint);
+        RotateTowardsCheckpoiint();
     }
 
     void FixedUpdate()
@@ -95,7 +100,7 @@ public class PlaneThrow_Handler : MonoBehaviour
 
             //Debug.Log("xMove: " + xMove + " zMove: " + zMove);
             testFlight.gameObject.transform.position = new Vector3(testFlight.gameObject.transform.position.x + xMove, throwHeight, testFlight.gameObject.transform.position.z + zMove);
-            RotateTowardsFinish();
+            RotateTowardsCheckpoiint();
         }
     }
 
@@ -157,9 +162,9 @@ public class PlaneThrow_Handler : MonoBehaviour
     /// <summary>
     /// Rotates the plane towards the Game Object tagged as "Finish".
     /// </summary>
-    private void RotateTowardsFinish()
+    private void RotateTowardsCheckpoiint()
     {
-        GameObject finishObj = GameObject.FindWithTag("Finish");
+        GameObject finishObj = lookAtObject;
 
         Vector3 finishDirection = finishObj.transform.position - testFlight.gameObject.transform.position;
 
@@ -220,6 +225,11 @@ public class PlaneThrow_Handler : MonoBehaviour
     public void ReactivateChargeBar()
     {
         ChargeBar();
+    }
+
+    public void SetRotateTowardObject(GameObject checkpoint)
+    {
+        lookAtObject = checkpoint;
     }
 
     //TEMPORARY UNTIL UI FIXED -- CALLED FROM TESTFLIGHT.CS
