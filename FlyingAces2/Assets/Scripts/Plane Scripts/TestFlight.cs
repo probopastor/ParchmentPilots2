@@ -726,7 +726,7 @@ public class TestFlight : MonoBehaviour
     /// </summary>
     private void OutOfBoundsCheck()
     {
-        if (gameObject.transform.position.y <= -2)
+        if (gameObject.transform.position.y <= -385)
         {
             Scene thisScene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(thisScene.name);
