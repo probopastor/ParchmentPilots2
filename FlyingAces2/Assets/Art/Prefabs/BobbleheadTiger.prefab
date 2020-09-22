@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 801632124253301002}
   - component: {fileID: 3545593895117809440}
+  - component: {fileID: -8418278405873054398}
   m_Layer: 0
   m_Name: BobbleheadTiger
   m_TagString: Untagged
@@ -47,6 +48,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.6552277, y: 6.396492, z: 4.1272583}
   m_Center: {x: 0.04790497, y: 0.056835175, z: -2.9180908}
+--- !u!95 &-8418278405873054398
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23688462290432944}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2f61c3d04f3a42b46ac0209bd64548da, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &511478352609524869
 GameObject:
   m_ObjectHideFlags: 0
