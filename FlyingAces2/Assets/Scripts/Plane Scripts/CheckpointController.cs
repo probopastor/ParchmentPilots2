@@ -14,6 +14,8 @@ public class CheckpointController : MonoBehaviour
     [Tooltip("The next object that the plane will rotate towards when setting up a new throw")]
     public GameObject nextCheckpoint;
 
+    public float nextThrowHieght;
+
     private PlaneThrow_Handler throw_Handler;
     void Start()
     {
@@ -30,6 +32,7 @@ public class CheckpointController : MonoBehaviour
         if(other.tag == "Player")
         {
             throw_Handler.SetRotateTowardObject(nextCheckpoint);
+            throw_Handler.throwHeight = nextThrowHieght;
         }
     }
 }
