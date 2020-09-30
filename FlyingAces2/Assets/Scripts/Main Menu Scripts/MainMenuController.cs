@@ -60,6 +60,11 @@ public class MainMenuController : MonoBehaviour
         {
             SetButton();
         }
+
+        if (Input.GetKeyDown(KeyCode.Equals))
+        {
+            SaveData.UnlockAllLevels();
+        }
     }
 
     public void StartLevel(string level)
@@ -210,5 +215,16 @@ public class MainMenuController : MonoBehaviour
 
         //yield return new WaitForSeconds(1);
         //SceneManager.LoadScene(level);
+    }
+
+    public void ClearSaveData()
+    {
+        PlayerPrefs.SetInt("Level 1-1 high score", 0);
+        PlayerPrefs.SetInt("level2Unlock", 0);
+        PlayerPrefs.SetInt("level 1-2 high score", 0);
+        PlayerPrefs.SetInt("level3Unlock", 0);
+        PlayerPrefs.SetInt("level 1-3 high score", 0);
+        PlayerPrefs.SetInt("level4Unlock", 0);
+        PlayerPrefs.SetInt("level 1-4 high score", 0);
     }
 }

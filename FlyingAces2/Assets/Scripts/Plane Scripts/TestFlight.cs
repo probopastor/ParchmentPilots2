@@ -192,9 +192,6 @@ public class TestFlight : MonoBehaviour
         canEnableChargeBar = true;
 
         currentScene = SceneManager.GetActiveScene();
-
-        Debug.Log(PlayerPrefs.GetInt(currentScene.name + " high score", 0));
-        Debug.Log(currentScene.name + " high score");
     }
 
     // Update is called once per frame
