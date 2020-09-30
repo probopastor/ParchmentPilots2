@@ -116,52 +116,8 @@ public class TestFlight : MonoBehaviour
     private PauseManager pauseManager;
     private EventSystem eventSystem;
 
-    //public float windEmmissionRate = 10f;
-
-    //[Tooltip("The left wing's air particles.")]
-    //public ParticleSystem leftSystem;
-
-    //[Tooltip("The right wing's air particles.")]
-    //public ParticleSystem rightSystem;
-
     [Tooltip("The victory particles")]
     public ParticleSystem winSystem;
-
-    //private ParticleSystem.MainModule leftMain;
-    //private ParticleSystem.MainModule rightMain;
-
-    //ParticleSystem.EmissionModule emissionModuleLeft;
-    //ParticleSystem.EmissionModule emissionModuleRight;
-
-    //[Tooltip("The rate at which the wing particle's color and albedo change with velocity")]
-    //public float increaseParticleColorSwitchRate = 10.0f;
-
-    //[Tooltip("Default wing aircurrent particle color")]
-    //public Color particleColor;
-
-    //[Tooltip("Wing aircurrent particle color at the min velocity")]
-    //public Color particleColorMinSpeed;
-
-    //[Tooltip("Wing aircurrent particle color at the max velocity")]
-    //public Color particleColorMaxSpeed;
-
-    //[Tooltip("The rate at which the wing particle's lifespan change with velocity")]
-    //public float increaseParticleLifeTimeRate = 10.0f;
-
-    //[Tooltip("Wing aircurrent particle lifetime at the min velocity")]
-    //public float minLifetime = 0.1f;
-
-    //[Tooltip("Wing aircurrent particle lifetime at the max velocity")]
-    //public float maxLifetime = 0.5f;
-
-    //[Tooltip("The rate at which the wing particle's size change with velocity")]
-    //public float increaseParticleSizeRate = 10.0f;
-
-    //[Tooltip("Wing aircurrent particle size at the min velocity")]
-    //public float minSize = 0f;
-
-    //[Tooltip("Wing aircurrent particle size at the max velocity")]
-    //public float maxSize = 1f;
 
     private bool scoreAddedThisThrow;
 
@@ -233,16 +189,12 @@ public class TestFlight : MonoBehaviour
 
         currentForceAppliedTimer = forceAppliedTimer;
 
-        //leftMain = leftSystem.main;
-        //rightMain = rightSystem.main;
-
-        //emissionModuleLeft = leftSystem.emission;
-        //emissionModuleRight = rightSystem.emission;
-
-        //emissionModuleLeft.rateOverDistance = 0f;
-        //emissionModuleRight.rateOverDistance = 0f;
-
         canEnableChargeBar = true;
+
+        currentScene = SceneManager.GetActiveScene();
+
+        Debug.Log(PlayerPrefs.GetInt(currentScene.name + " high score", 0));
+        Debug.Log(currentScene.name + " high score");
     }
 
     // Update is called once per frame
@@ -683,6 +635,8 @@ public class TestFlight : MonoBehaviour
 
                 MusicSource.clip = winFanfare;
                 MusicSource.Play();
+                SaveData.SaveHighScore(currentScene.name, scoreManager.GetStroke());
+                SaveData.UnlockNextLevel(currentScene.name);
                 yield return new WaitForSeconds(6f);
                 MusicSource.Stop();
 
@@ -693,6 +647,7 @@ public class TestFlight : MonoBehaviour
                 yield return new WaitForSeconds(1f);
                 playWinSoundOnce = true;
                 //StartCoroutine(LevelLoad(nextSceneName));
+                
                 pauseManager.OpenEndOfLevelMenu();
             }
         }

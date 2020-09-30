@@ -194,7 +194,6 @@ public class PauseManager : MonoBehaviour
 
     public void OpenEndOfLevelMenu()
     {
-        Debug.Log("EndOfLevel");
         endOfLevelPanel.SetActive(true);
         eventSystem.SetSelectedGameObject(nextLevelButton);
         Cursor.visible = true;
