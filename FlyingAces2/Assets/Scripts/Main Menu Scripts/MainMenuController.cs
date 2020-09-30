@@ -226,5 +226,21 @@ public class MainMenuController : MonoBehaviour
         PlayerPrefs.SetInt("level 1-3 high score", 0);
         PlayerPrefs.SetInt("level4Unlock", 0);
         PlayerPrefs.SetInt("level 1-4 high score", 0);
+
+        PlayerPrefs.SetInt("Level 1-1 bobblehead 1", 0);
+        PlayerPrefs.SetInt("Level 1-1 bobblehead 2", 0);
+        PlayerPrefs.SetInt("Level 1-1 bobblehead 3", 0);
+
+        PlayerPrefs.SetInt("level 1-2 bobblehead 1", 0);
+        PlayerPrefs.SetInt("level 1-2 bobblehead 2", 0);
+        PlayerPrefs.SetInt("level 1-2 bobblehead 3", 0);
+
+        PlayerPrefs.SetInt("level 1-3 bobblehead 1", 0);
+        PlayerPrefs.SetInt("level 1-3 bobblehead 2", 0);
+        PlayerPrefs.SetInt("level 1-3 bobblehead 3", 0);
+
+        PlayerPrefs.SetInt("level 1-4 bobblehead 1", 0);
+        PlayerPrefs.SetInt("level 1-4 bobblehead 2", 0);
+        PlayerPrefs.SetInt("level 1-4 bobblehead 3", 0);
     }
 }

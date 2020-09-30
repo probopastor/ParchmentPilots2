@@ -141,6 +141,8 @@ public class TestFlight : MonoBehaviour
     private UIHandler uiHandler;
 
     private PlaneParticleHandler planeParticleHandler;
+
+    private CollectableController collectableController;
     #endregion
 
     void OnEnable()
@@ -157,6 +159,8 @@ public class TestFlight : MonoBehaviour
         planeParticleHandler = GameObject.FindObjectOfType<PlaneParticleHandler>();
 
         uiHandler = GameObject.FindObjectOfType<UIHandler>();
+
+        collectableController = FindObjectOfType<CollectableController>();
 
         moveForward = false;
         pauseManager = GameObject.FindObjectOfType<PauseManager>();
@@ -634,6 +638,7 @@ public class TestFlight : MonoBehaviour
                 MusicSource.Play();
                 SaveData.SaveHighScore(currentScene.name, scoreManager.GetStroke());
                 SaveData.UnlockNextLevel(currentScene.name);
+                collectableController.SaveBobbleheadCollection(currentScene.name);
                 yield return new WaitForSeconds(6f);
                 MusicSource.Stop();
 
