@@ -34516,17 +34516,17 @@ PrefabInstance:
     - target: {fileID: 2913789677714072055, guid: 8821f09e175200c4faf2e9c6c9e024c8,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.14253853
+      value: 0.14253852
       objectReference: {fileID: 0}
     - target: {fileID: 2913789677714072055, guid: 8821f09e175200c4faf2e9c6c9e024c8,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -7.6736794e-13
+      value: 0.0000000147482435
       objectReference: {fileID: 0}
     - target: {fileID: 2913789677714072055, guid: 8821f09e175200c4faf2e9c6c9e024c8,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 5.3166672e-12
+      value: -0.000000002118673
       objectReference: {fileID: 0}
     - target: {fileID: 2913789677714072055, guid: 8821f09e175200c4faf2e9c6c9e024c8,
         type: 3}
@@ -34676,7 +34676,7 @@ PrefabInstance:
     - target: {fileID: 8980741506095247362, guid: 8821f09e175200c4faf2e9c6c9e024c8,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -2.7918538e-14
+      value: -2.7918535e-14
       objectReference: {fileID: 0}
     - target: {fileID: 8980741506095247362, guid: 8821f09e175200c4faf2e9c6c9e024c8,
         type: 3}
@@ -34838,7 +34838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextCheckpoint: {fileID: 829581260}
-  nextThrowHieght: 0
+  nextThrowHieght: 88
 --- !u!65 &701730517
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35152,7 +35152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextCheckpoint: {fileID: 813677627}
-  nextThrowHieght: 0
+  nextThrowHieght: 88
 --- !u!65 &724373760
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35922,7 +35922,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextCheckpoint: {fileID: 724373758}
-  nextThrowHieght: 0
+  nextThrowHieght: 88
 --- !u!1001 &752432512
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38013,7 +38013,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextCheckpoint: {fileID: 813677627}
-  nextThrowHieght: 0
+  nextThrowHieght: 88
 --- !u!65 &829581262
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -48483,15 +48483,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 358643598, guid: 09edb7caffc2e034d8b83c95e2004070, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 820763658, guid: 09edb7caffc2e034d8b83c95e2004070, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1185360366, guid: 09edb7caffc2e034d8b83c95e2004070, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2018063614748270841, guid: 09edb7caffc2e034d8b83c95e2004070,
         type: 3}
@@ -80506,7 +80506,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2060643117}
-  m_LocalRotation: {x: 0.14253853, y: -7.6736794e-13, z: 5.3166672e-12, w: 0.98978925}
+  m_LocalRotation: {x: 0.14253852, y: 0.0000000147482435, z: -0.000000002118673, w: 0.98978925}
   m_LocalPosition: {x: 57, y: 106, z: -123.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
