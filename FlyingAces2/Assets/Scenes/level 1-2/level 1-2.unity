@@ -13711,17 +13711,9 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_IsSelectable: 1
-  m_SelectedFaces: 07000000
-  m_SelectedEdges:
-  - a: 34
-    b: 35
-  - a: 36
-    b: 34
-  - a: 35
-    b: 37
-  - a: 37
-    b: 36
-  m_SelectedVertices: 22000000230000002400000025000000
+  m_SelectedFaces: 
+  m_SelectedEdges: []
+  m_SelectedVertices: 
 --- !u!23 &455481332
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -34688,7 +34680,7 @@ PrefabInstance:
     - target: {fileID: 8980741506095247362, guid: 8821f09e175200c4faf2e9c6c9e024c8,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -2.7918535e-14
+      value: -2.7918538e-14
       objectReference: {fileID: 0}
     - target: {fileID: 8980741506095247362, guid: 8821f09e175200c4faf2e9c6c9e024c8,
         type: 3}
@@ -48500,15 +48492,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 358643598, guid: 09edb7caffc2e034d8b83c95e2004070, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 820763658, guid: 09edb7caffc2e034d8b83c95e2004070, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1185360366, guid: 09edb7caffc2e034d8b83c95e2004070, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2018063614748270841, guid: 09edb7caffc2e034d8b83c95e2004070,
         type: 3}

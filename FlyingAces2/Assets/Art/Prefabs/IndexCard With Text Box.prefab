@@ -159,6 +159,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -313,8 +314,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2565534315720911105, guid: d1f1f048d404c14448405e6dbcc1a6c3, type: 3}
-  - {fileID: 7484841076406064862, guid: d1f1f048d404c14448405e6dbcc1a6c3, type: 3}
+  - {fileID: 2100000, guid: c20cf9a591c0f3943b8ab9ba7557192e, type: 2}
+  - {fileID: 2100000, guid: 17767cf4067c9984e93ab6f1cb119a6d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

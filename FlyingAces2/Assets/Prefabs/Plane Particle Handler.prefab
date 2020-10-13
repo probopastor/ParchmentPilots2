@@ -47,7 +47,7 @@ MonoBehaviour:
   leftSystem: {fileID: 0}
   rightSystem: {fileID: 0}
   increaseParticleColorSwitchRate: 1
-  particleColor: {r: 0.72156864, g: 0.972549, b: 1, a: 0.078431375}
+  particleColor: {r: 0.72156864, g: 0.972549, b: 1, a: 0.15686275}
   particleColorMinSpeed: {r: 0.7254902, g: 0.972549, b: 1, a: 0.003921569}
   particleColorMaxSpeed: {r: 0.7254902, g: 0.972549, b: 1, a: 0.29411766}
   increaseParticleLifeTimeRate: 1
