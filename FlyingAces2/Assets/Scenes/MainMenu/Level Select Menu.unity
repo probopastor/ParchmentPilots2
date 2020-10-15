@@ -3509,11 +3509,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level1HighScore: {fileID: 0}
-  level2Button: {fileID: 1004951899}
+  level2Button: {fileID: 470956501}
   level2HighScore: {fileID: 0}
-  level3Button: {fileID: 2014620375}
+  level3Button: {fileID: 263475274}
   level3HighScore: {fileID: 0}
-  level4Button: {fileID: 634296047}
+  level4Button: {fileID: 1443178783}
   level4HighScore: {fileID: 0}
 --- !u!4 &1220484683
 Transform:
