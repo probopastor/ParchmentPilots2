@@ -4773,13 +4773,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6968fea064e7d345a7724838001bc38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level1HighScore: {fileID: 0}
+  level1HighScore: {fileID: 1925827383}
+  level1Bobbleheads: {fileID: 17915287}
   level2Button: {fileID: 470956501}
-  level2HighScore: {fileID: 0}
+  level2HighScore: {fileID: 699581658}
+  level2Bobbleheads: {fileID: 69936460}
   level3Button: {fileID: 263475274}
-  level3HighScore: {fileID: 0}
+  level3HighScore: {fileID: 1511581713}
+  level3Bobbleheads: {fileID: 20912762}
   level4Button: {fileID: 1443178783}
-  level4HighScore: {fileID: 0}
+  level4HighScore: {fileID: 657406574}
+  level4Bobbleheads: {fileID: 303512183}
 --- !u!4 &1220484683
 Transform:
   m_ObjectHideFlags: 0

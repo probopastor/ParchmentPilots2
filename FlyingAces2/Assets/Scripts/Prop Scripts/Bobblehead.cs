@@ -35,6 +35,7 @@ public class Bobblehead : MonoBehaviour
 
     public void GrayOut()
     {
+        Destroy(this.gameObject);
         //Gray-out bobblehead here
     }
 }
