@@ -247,6 +247,7 @@ GameObject:
   - component: {fileID: 5736889407710854761}
   - component: {fileID: -5858260869699526538}
   - component: {fileID: 8025361352221549201}
+  - component: {fileID: 3433805951374610968}
   m_Layer: 0
   m_Name: BobbleheadDragon2
   m_TagString: ground
@@ -305,6 +306,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bobbleHeadNumber: 0
+--- !u!65 &3433805951374610968
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4960246776993817811}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.2837906, y: 5.575165, z: 5.7458496}
+  m_Center: {x: -0.02210617, y: 0.61538696, z: -2.3729248}
 --- !u!1 &8540695435024109561
 GameObject:
   m_ObjectHideFlags: 0

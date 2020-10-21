@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1849138642020148273}
   - component: {fileID: -439613390709480109}
+  - component: {fileID: 4495498095977193455}
+  - component: {fileID: 7240920833181276512}
   m_Layer: 0
   m_Name: BobbleheadSnake2
   m_TagString: Untagged
@@ -52,6 +54,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4495498095977193455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360831871851658891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88594b2482367e8489536f0be51b812c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bobbleHeadNumber: 0
+--- !u!65 &7240920833181276512
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360831871851658891}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.1599464, y: 5.735512, z: 5.675171}
+  m_Center: {x: 0.94662094, y: -0.4638481, z: -2.3375854}
 --- !u!1 &7419046207112414154
 GameObject:
   m_ObjectHideFlags: 0
