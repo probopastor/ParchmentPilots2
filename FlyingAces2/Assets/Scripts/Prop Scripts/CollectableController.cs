@@ -7,6 +7,7 @@
 
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class CollectableController : MonoBehaviour
 {
@@ -26,23 +27,45 @@ public class CollectableController : MonoBehaviour
 
     public GameObject bobbleheadParticles;
 
+    public Sprite bobbleheadUncollected;
+    public Sprite bobbleheadCollected;
+
+    public Image bobbleheadImage1;
+    public Image bobbleheadImage2;
+    public Image bobbleheadImage3;
+
     void Start()
     {
         currentLevelName = SceneManager.GetActiveScene().name;
         if(PlayerPrefs.GetInt(currentLevelName + " bobblehead 1", 0) != 0)
         {
             bobblehead1Collected = true;
+            bobbleheadImage1.sprite = bobbleheadCollected;
             bobblehead_1.GetComponent<Bobblehead>().GrayOut();
+        }
+        else
+        {
+            bobbleheadImage1.sprite = bobbleheadUncollected;
         }
         if (PlayerPrefs.GetInt(currentLevelName + " bobblehead 2", 0) != 0)
         {
             bobblehead2Collected = true;
+            bobbleheadImage2.sprite = bobbleheadCollected;
             bobblehead_2.GetComponent<Bobblehead>().GrayOut();
+        }
+        else
+        {
+            bobbleheadImage2.sprite = bobbleheadUncollected;
         }
         if (PlayerPrefs.GetInt(currentLevelName + " bobblehead 3", 0) != 0)
         {
             bobblehead3Collected = true;
+            bobbleheadImage3.sprite = bobbleheadCollected;
             bobblehead_3.GetComponent<Bobblehead>().GrayOut();
+        }
+        else
+        {
+            bobbleheadImage3.sprite = bobbleheadUncollected;
         }
     }
 
@@ -57,12 +80,15 @@ public class CollectableController : MonoBehaviour
         {
             case 1:
                 bobblehead1Collected = true;
+                bobbleheadImage1.sprite = bobbleheadCollected;
                 break;
             case 2:
                 bobblehead2Collected = true;
+                bobbleheadImage2.sprite = bobbleheadCollected;
                 break;
             case 3:
                 bobblehead3Collected = true;
+                bobbleheadImage3.sprite = bobbleheadCollected;
                 break;
             default:
                 break;
