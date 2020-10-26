@@ -21,6 +21,11 @@ public class CollectableController : MonoBehaviour
 
     private string currentLevelName;
 
+    public AudioSource sfxSource;
+    public AudioClip bobbleheadClip;
+
+    public GameObject bobbleheadParticles;
+
     void Start()
     {
         currentLevelName = SceneManager.GetActiveScene().name;
@@ -78,5 +83,11 @@ public class CollectableController : MonoBehaviour
         {
             PlayerPrefs.SetInt(currentLevelName + " bobblehead 3", 1);
         }
+    }
+
+    public void PlayBobbleheadSound()
+    {
+        sfxSource.clip = bobbleheadClip;
+        sfxSource.Play();
     }
 }

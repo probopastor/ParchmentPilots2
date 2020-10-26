@@ -29,6 +29,8 @@ public class Bobblehead : MonoBehaviour
         if(other.tag == "Player")
         {
             collectableController.CollectBobblehead(bobbleHeadNumber);
+            collectableController.PlayBobbleheadSound();
+            SpawnBobbleheadParticles();
             GrayOut();
         }
     }
@@ -37,5 +39,10 @@ public class Bobblehead : MonoBehaviour
     {
         Destroy(this.gameObject);
         //Gray-out bobblehead here
+    }
+
+    private void SpawnBobbleheadParticles()
+    {
+        Instantiate(collectableController.bobbleheadParticles, transform.position, Quaternion.identity);
     }
 }

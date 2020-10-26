@@ -46,3 +46,7 @@ MonoBehaviour:
   bobblehead_1: {fileID: 0}
   bobblehead_2: {fileID: 0}
   bobblehead_3: {fileID: 0}
+  sfxSource: {fileID: 0}
+  bobbleheadClip: {fileID: 8300000, guid: 7641301fb06a8ea4099e0d4d0743256d, type: 3}
+  bobbleheadParticles: {fileID: 2620153485353242860, guid: 8eebecc9f5dfec54f97475ff3cfbaec7,
+    type: 3}
