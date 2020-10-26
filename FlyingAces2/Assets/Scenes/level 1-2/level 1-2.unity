@@ -8851,7 +8851,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh43618
+  m_Name: pb_Mesh22032
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -9916,7 +9916,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-43346
+  m_Name: pb_Mesh-10200
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -35051,12 +35051,12 @@ PrefabInstance:
     - target: {fileID: 7882150327789794800, guid: 9e8ba0a76e0e5a143b0bc56948fd33e3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 59.15
+      value: 59.1
       objectReference: {fileID: 0}
     - target: {fileID: 7882150327789794800, guid: 9e8ba0a76e0e5a143b0bc56948fd33e3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -42.525
+      value: -42.8
       objectReference: {fileID: 0}
     - target: {fileID: 7882150327789794800, guid: 9e8ba0a76e0e5a143b0bc56948fd33e3,
         type: 3}
@@ -35281,7 +35281,7 @@ PrefabInstance:
     - target: {fileID: 8980741506095247362, guid: 8821f09e175200c4faf2e9c6c9e024c8,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -2.7918538e-14
+      value: -2.7918535e-14
       objectReference: {fileID: 0}
     - target: {fileID: 8980741506095247362, guid: 8821f09e175200c4faf2e9c6c9e024c8,
         type: 3}
@@ -35958,7 +35958,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-43348
+  m_Name: pb_Mesh-10202
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -37563,6 +37563,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Corkboard (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3573063639842501446, guid: 11cb4d76b6fc01044957a08fb3d6ac0a,
+        type: 3}
+      propertyPath: m_TagString
+      value: ground
       objectReference: {fileID: 0}
     - target: {fileID: 5614167461287413434, guid: 11cb4d76b6fc01044957a08fb3d6ac0a,
         type: 3}
@@ -44157,6 +44162,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrashCan
       objectReference: {fileID: 0}
+    - target: {fileID: 7020642558068837896, guid: 300d385819e1d86419847df6124c48a6,
+        type: 3}
+      propertyPath: m_TagString
+      value: ground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 300d385819e1d86419847df6124c48a6, type: 3}
 --- !u!4 &950541621 stripped
@@ -45707,6 +45717,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Corkboard (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3573063639842501446, guid: 11cb4d76b6fc01044957a08fb3d6ac0a,
+        type: 3}
+      propertyPath: m_TagString
+      value: ground
       objectReference: {fileID: 0}
     - target: {fileID: 5614167461287413434, guid: 11cb4d76b6fc01044957a08fb3d6ac0a,
         type: 3}
@@ -73057,7 +73072,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-43344
+  m_Name: pb_Mesh-10198
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
