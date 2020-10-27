@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Light Yellow
+  m_Name: Brown
   m_Shader: {fileID: -6465566751694194690, guid: 91f4015d5bcf9e4409d0102cc55b178c,
     type: 3}
   m_ShaderKeywords: 
@@ -94,8 +94,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_24AB86B9: {r: 0.4245283, g: 0.322332, b: 0, a: 0}
-    - Color_515137A1: {r: 0.7221712, g: 0.73, b: 0.23287001, a: 0}
+    - Color_24AB86B9: {r: 0.24705882, g: 0.09123804, b: 0.011764705, a: 0}
+    - Color_515137A1: {r: 0.41509432, g: 0.18424718, b: 0.06852971, a: 1}
     - Vector2_4D68E0C4: {r: 0.005, g: 0.1, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
