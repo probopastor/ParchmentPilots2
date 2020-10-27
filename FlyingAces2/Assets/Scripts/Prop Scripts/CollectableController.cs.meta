@@ -3,7 +3,18 @@ guid: c5898355f4d18be4691b80f22bbf8825
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - bobblehead_1: {instanceID: 0}
+  - bobblehead_2: {instanceID: 0}
+  - bobblehead_3: {instanceID: 0}
+  - sfxSource: {instanceID: 0}
+  - bobbleheadClip: {instanceID: 0}
+  - bobbleheadParticles: {instanceID: 0}
+  - bobbleheadUncollected: {instanceID: 0}
+  - bobbleheadCollected: {instanceID: 0}
+  - bobbleheadImage1: {instanceID: 0}
+  - bobbleheadImage2: {instanceID: 0}
+  - bobbleheadImage3: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
