@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9148850310580125504}
   - component: {fileID: 6894096382595639988}
   - component: {fileID: 8217349321798906423}
+  - component: {fileID: 4823496648702218968}
   m_Layer: 8
   m_Name: Cube.001
   m_TagString: ground
@@ -59,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0459824d3ebedb04796aa6a8f655f883, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -93,6 +94,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.019999998, y: 0.020000003, z: 0.019999994}
   m_Center: {x: 0, y: -0.00000011920929, z: -9.313226e-10}
+--- !u!114 &4823496648702218968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173459244020917919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d854694265877084c9a8052fa22d5267, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 808b8a4b0fae93540bce04b99ad55d03, type: 2}
+  instanceMaterial: 1
+  meshCenter: {x: 0, y: 0, z: 0}
+  maxLights: 6
+  raycast: 0
+  raycastMask:
+    serializedVersion: 2
+    m_Bits: 0
+  raycastFadeSpeed: 10
 --- !u!1 &2468887656188272563
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,6 +177,7 @@ GameObject:
   - component: {fileID: 2477865558361391299}
   - component: {fileID: 6417789252093541961}
   - component: {fileID: 2968037323443361379}
+  - component: {fileID: 3966011838654497759}
   m_Layer: 8
   m_Name: Cube.003
   m_TagString: ground
@@ -202,7 +225,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0459824d3ebedb04796aa6a8f655f883, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -236,6 +259,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.019999998, y: 0.020000003, z: 0.019999994}
   m_Center: {x: 0, y: -0.00000011920929, z: -9.313226e-10}
+--- !u!114 &3966011838654497759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2902639315969884031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d854694265877084c9a8052fa22d5267, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 808b8a4b0fae93540bce04b99ad55d03, type: 2}
+  instanceMaterial: 1
+  meshCenter: {x: 0, y: 0, z: 0}
+  maxLights: 6
+  raycast: 0
+  raycastMask:
+    serializedVersion: 2
+    m_Bits: 0
+  raycastFadeSpeed: 10
 --- !u!1 &3948070933344600499
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,6 +292,7 @@ GameObject:
   - component: {fileID: 2193852635593664517}
   - component: {fileID: 1142286329338165958}
   - component: {fileID: 5480173799525137323}
+  - component: {fileID: 4462116007349915947}
   m_Layer: 8
   m_Name: Cube.002
   m_TagString: ground
@@ -295,7 +340,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 11de65270f52175468e1d6b5d6e8e2f5, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -329,6 +374,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.019999998, y: 0.019999998, z: 0.02}
   m_Center: {x: 0, y: 0.000000014901161, z: -0.000000014901161}
+--- !u!114 &4462116007349915947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3948070933344600499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d854694265877084c9a8052fa22d5267, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 808b8a4b0fae93540bce04b99ad55d03, type: 2}
+  instanceMaterial: 1
+  meshCenter: {x: 0, y: 0, z: 0}
+  maxLights: 6
+  raycast: 0
+  raycastMask:
+    serializedVersion: 2
+    m_Bits: 0
+  raycastFadeSpeed: 10
 --- !u!1 &5265596768561186330
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,6 +407,7 @@ GameObject:
   - component: {fileID: 8432079343289606347}
   - component: {fileID: 2112698467422123961}
   - component: {fileID: 4662222463850657151}
+  - component: {fileID: 1626650777434779176}
   m_Layer: 8
   m_Name: Cube.004
   m_TagString: ground
@@ -388,7 +455,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0459824d3ebedb04796aa6a8f655f883, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -422,6 +489,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.019999998, y: 0.020000003, z: 0.019999994}
   m_Center: {x: 0.000000006519258, y: -0.00000011920929, z: -9.313226e-10}
+--- !u!114 &1626650777434779176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5265596768561186330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d854694265877084c9a8052fa22d5267, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 808b8a4b0fae93540bce04b99ad55d03, type: 2}
+  instanceMaterial: 1
+  meshCenter: {x: 0, y: 0, z: 0}
+  maxLights: 6
+  raycast: 0
+  raycastMask:
+    serializedVersion: 2
+    m_Bits: 0
+  raycastFadeSpeed: 10
 --- !u!1 &8684479917909126266
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,6 +522,7 @@ GameObject:
   - component: {fileID: 1919822323181914490}
   - component: {fileID: 4759198453107145358}
   - component: {fileID: 8814079809720226736}
+  - component: {fileID: 3473648144369445410}
   m_Layer: 8
   m_Name: Cube.000
   m_TagString: ground
@@ -481,7 +570,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0459824d3ebedb04796aa6a8f655f883, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -515,3 +604,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.019999998, y: 0.020000003, z: 0.019999994}
   m_Center: {x: 0.000000006519258, y: -0.00000011920929, z: -9.313226e-10}
+--- !u!114 &3473648144369445410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8684479917909126266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d854694265877084c9a8052fa22d5267, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 808b8a4b0fae93540bce04b99ad55d03, type: 2}
+  instanceMaterial: 1
+  meshCenter: {x: 0, y: 0, z: 0}
+  maxLights: 6
+  raycast: 0
+  raycastMask:
+    serializedVersion: 2
+    m_Bits: 0
+  raycastFadeSpeed: 10

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4711603905374171621}
   - component: {fileID: 1376113970227159544}
   - component: {fileID: 4249906142982780249}
+  - component: {fileID: 3232702970375259708}
   m_Layer: 0
   m_Name: Cylinder.001
   m_TagString: Untagged
@@ -59,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 971f5d595c159b44387412084989d87d, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -93,6 +94,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.019999998, y: 0.02, z: 0.020000003}
   m_Center: {x: 0, y: -0.00000023841858, z: 0}
+--- !u!114 &3232702970375259708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143949634947574434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d854694265877084c9a8052fa22d5267, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 88567238d87a18747ba23956053f42be, type: 2}
+  instanceMaterial: 1
+  meshCenter: {x: 0, y: 0, z: 0}
+  maxLights: 6
+  raycast: 0
+  raycastMask:
+    serializedVersion: 2
+    m_Bits: 0
+  raycastFadeSpeed: 10
 --- !u!1 &1899046254648882884
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,6 +127,7 @@ GameObject:
   - component: {fileID: 5449084326646329287}
   - component: {fileID: 5084211816114772601}
   - component: {fileID: 3672611461503206713}
+  - component: {fileID: 4756702155637965129}
   m_Layer: 0
   m_Name: Cube
   m_TagString: ground
@@ -152,7 +175,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d4a7fd116fe0b44469b37319e08f2072, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -183,10 +206,31 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: f66194421eb7d29418b6f258367303bf, type: 3}
+--- !u!114 &4756702155637965129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899046254648882884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d854694265877084c9a8052fa22d5267, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: badffdd5875b6b240bb996d105535848, type: 2}
+  instanceMaterial: 1
+  meshCenter: {x: 0, y: 0, z: 0}
+  maxLights: 6
+  raycast: 0
+  raycastMask:
+    serializedVersion: 2
+    m_Bits: 0
+  raycastFadeSpeed: 10
 --- !u!1 &2347181034927449181
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,6 +243,7 @@ GameObject:
   - component: {fileID: 2055109927386808972}
   - component: {fileID: 8417268368286914046}
   - component: {fileID: 6332187413264289008}
+  - component: {fileID: 3052315131975593812}
   m_Layer: 0
   m_Name: Cube.004
   m_TagString: ground
@@ -246,7 +291,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b3a891f656cdec146802f985294c729a, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -280,6 +325,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.02, y: 0.06748681, z: 0.020000001}
   m_Center: {x: -1.8347181e-10, y: -0.0053217635, z: -1.8347168e-10}
+--- !u!114 &3052315131975593812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2347181034927449181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d854694265877084c9a8052fa22d5267, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 616b27b5a68f3254aa4307759b8e2c3d, type: 2}
+  instanceMaterial: 1
+  meshCenter: {x: 0, y: 0, z: 0}
+  maxLights: 6
+  raycast: 0
+  raycastMask:
+    serializedVersion: 2
+    m_Bits: 0
+  raycastFadeSpeed: 10
 --- !u!1 &2418113738734283169
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,6 +358,7 @@ GameObject:
   - component: {fileID: 91005597259731379}
   - component: {fileID: 3270661415935567465}
   - component: {fileID: 1252363693843300146}
+  - component: {fileID: 6020708183877858442}
   m_Layer: 0
   m_Name: Cylinder.004
   m_TagString: Untagged
@@ -339,7 +406,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 971f5d595c159b44387412084989d87d, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -373,6 +440,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.02, y: 0.02, z: 0.02}
   m_Center: {x: -0.000000007450581, y: 0.000000029802322, z: 0.00000023841858}
+--- !u!114 &6020708183877858442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2418113738734283169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d854694265877084c9a8052fa22d5267, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 88567238d87a18747ba23956053f42be, type: 2}
+  instanceMaterial: 1
+  meshCenter: {x: 0, y: 0, z: 0}
+  maxLights: 6
+  raycast: 0
+  raycastMask:
+    serializedVersion: 2
+    m_Bits: 0
+  raycastFadeSpeed: 10
 --- !u!1 &3640965885195802554
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,6 +473,7 @@ GameObject:
   - component: {fileID: 4305032491481799141}
   - component: {fileID: 204928281331697392}
   - component: {fileID: 4748903354089082088}
+  - component: {fileID: 1445398427344380442}
   m_Layer: 0
   m_Name: Cylinder.003
   m_TagString: Untagged
@@ -432,7 +521,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 971f5d595c159b44387412084989d87d, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -466,6 +555,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.02, y: 0.02, z: 0.02}
   m_Center: {x: 0, y: 0, z: 0.00000023841858}
+--- !u!114 &1445398427344380442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3640965885195802554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d854694265877084c9a8052fa22d5267, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 88567238d87a18747ba23956053f42be, type: 2}
+  instanceMaterial: 1
+  meshCenter: {x: 0, y: 0, z: 0}
+  maxLights: 6
+  raycast: 0
+  raycastMask:
+    serializedVersion: 2
+    m_Bits: 0
+  raycastFadeSpeed: 10
 --- !u!1 &3645385880999155066
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,6 +588,7 @@ GameObject:
   - component: {fileID: 8969033021888126971}
   - component: {fileID: 3412875225824660269}
   - component: {fileID: 8587940067956902640}
+  - component: {fileID: 7559100767122457775}
   m_Layer: 0
   m_Name: Cylinder.002
   m_TagString: Untagged
@@ -525,7 +636,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 971f5d595c159b44387412084989d87d, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -559,6 +670,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.019999998, y: 0.02, z: 0.020000003}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7559100767122457775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3645385880999155066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d854694265877084c9a8052fa22d5267, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 88567238d87a18747ba23956053f42be, type: 2}
+  instanceMaterial: 1
+  meshCenter: {x: 0, y: 0, z: 0}
+  maxLights: 6
+  raycast: 0
+  raycastMask:
+    serializedVersion: 2
+    m_Bits: 0
+  raycastFadeSpeed: 10
 --- !u!1 &4740544382109556024
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,6 +703,7 @@ GameObject:
   - component: {fileID: 5468163190198428292}
   - component: {fileID: 3499690233315744782}
   - component: {fileID: 7115207422831102501}
+  - component: {fileID: 3869417488422235990}
   m_Layer: 0
   m_Name: Cube.003
   m_TagString: ground
@@ -618,7 +751,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b3a891f656cdec146802f985294c729a, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -652,6 +785,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.019999998, y: 0.06748681, z: 0.020000001}
   m_Center: {x: 0, y: -0.0053217933, z: -0.0000000070836372}
+--- !u!114 &3869417488422235990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4740544382109556024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d854694265877084c9a8052fa22d5267, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 616b27b5a68f3254aa4307759b8e2c3d, type: 2}
+  instanceMaterial: 1
+  meshCenter: {x: 0, y: 0, z: 0}
+  maxLights: 6
+  raycast: 0
+  raycastMask:
+    serializedVersion: 2
+    m_Bits: 0
+  raycastFadeSpeed: 10
 --- !u!1 &5459124529065917940
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,6 +859,7 @@ GameObject:
   - component: {fileID: 5277384460347584516}
   - component: {fileID: 3079807240252536087}
   - component: {fileID: 4189613235748084041}
+  - component: {fileID: 5171272365458819260}
   m_Layer: 0
   m_Name: Cube.005
   m_TagString: ground
@@ -752,7 +907,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b3a891f656cdec146802f985294c729a, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -786,6 +941,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.02, y: 0.06748681, z: 0.020000001}
   m_Center: {x: 1.8347181e-10, y: -0.0053217635, z: -1.8347168e-10}
+--- !u!114 &5171272365458819260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5702120247726973861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d854694265877084c9a8052fa22d5267, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 616b27b5a68f3254aa4307759b8e2c3d, type: 2}
+  instanceMaterial: 1
+  meshCenter: {x: 0, y: 0, z: 0}
+  maxLights: 6
+  raycast: 0
+  raycastMask:
+    serializedVersion: 2
+    m_Bits: 0
+  raycastFadeSpeed: 10
 --- !u!1 &6866768369868497908
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,6 +974,7 @@ GameObject:
   - component: {fileID: 8643487073572473410}
   - component: {fileID: 7375704004171847809}
   - component: {fileID: 4351259401806995603}
+  - component: {fileID: 3549582824847066401}
   m_Layer: 0
   m_Name: Cube.002
   m_TagString: ground
@@ -845,7 +1022,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b3a891f656cdec146802f985294c729a, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -879,6 +1056,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.019999998, y: 0.06748679, z: 0.019999994}
   m_Center: {x: 0, y: -0.0053217923, z: -0.000000007450581}
+--- !u!114 &3549582824847066401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6866768369868497908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d854694265877084c9a8052fa22d5267, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 616b27b5a68f3254aa4307759b8e2c3d, type: 2}
+  instanceMaterial: 1
+  meshCenter: {x: 0, y: 0, z: 0}
+  maxLights: 6
+  raycast: 0
+  raycastMask:
+    serializedVersion: 2
+    m_Bits: 0
+  raycastFadeSpeed: 10
 --- !u!1 &8775547672160978136
 GameObject:
   m_ObjectHideFlags: 0
@@ -891,6 +1089,7 @@ GameObject:
   - component: {fileID: 1690760852203052295}
   - component: {fileID: 3903834493399697651}
   - component: {fileID: 2810204571711084271}
+  - component: {fileID: 6860172973981853475}
   m_Layer: 0
   m_Name: Cube.001
   m_TagString: ground
@@ -938,7 +1137,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 971f5d595c159b44387412084989d87d, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -972,6 +1171,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.028269358, y: 0.019999998, z: 0.02}
   m_Center: {x: 0, y: 0.0000000018626451, z: -0.000000029802322}
+--- !u!114 &6860172973981853475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8775547672160978136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d854694265877084c9a8052fa22d5267, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 88567238d87a18747ba23956053f42be, type: 2}
+  instanceMaterial: 1
+  meshCenter: {x: 0, y: 0, z: 0}
+  maxLights: 6
+  raycast: 0
+  raycastMask:
+    serializedVersion: 2
+    m_Bits: 0
+  raycastFadeSpeed: 10
 --- !u!1 &8824322245887405552
 GameObject:
   m_ObjectHideFlags: 0
@@ -984,6 +1204,7 @@ GameObject:
   - component: {fileID: 5578077617386642824}
   - component: {fileID: 37996340718905824}
   - component: {fileID: 227763857907471452}
+  - component: {fileID: 881125216072328953}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -1031,7 +1252,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c3ef47e439fe4be4197a1f2d00ecea0d, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1065,3 +1286,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.019999998, y: 0.02, z: 0.019999996}
   m_Center: {x: 0, y: 0.00000011920929, z: 0.0000000027939677}
+--- !u!114 &881125216072328953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8824322245887405552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d854694265877084c9a8052fa22d5267, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 41d9520cc3fe1cf4ba29b251039f41e3, type: 2}
+  instanceMaterial: 1
+  meshCenter: {x: 0, y: 0, z: 0}
+  maxLights: 6
+  raycast: 0
+  raycastMask:
+    serializedVersion: 2
+    m_Bits: 0
+  raycastFadeSpeed: 10
