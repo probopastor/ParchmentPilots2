@@ -145,7 +145,7 @@ MonoBehaviour:
   gravity: -0.05
   thrownCamPos: {x: 0, y: 0, z: 0}
   angleAcceleration: 5
-  tiltResponsivity: 40
+  tiltResponsivity: 50
   rollResponsivity: -40
   yawResponsivity: 60
   centerOfMassReference: {fileID: 7016437116365211860}
