@@ -150,7 +150,7 @@ MonoBehaviour:
   yawResponsivity: 60
   centerOfMassReference: {fileID: 7016437116365211860}
   forceAtPos: {x: 0, y: -0.06, z: 0}
-  forceAppliedTimer: 6
+  maxVelocity: 65
   MusicSource: {fileID: 0}
   SoundEffectSource: {fileID: 0}
   LongSoundEffectSource: {fileID: 0}

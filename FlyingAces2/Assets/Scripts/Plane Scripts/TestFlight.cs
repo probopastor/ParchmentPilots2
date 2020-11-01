@@ -62,6 +62,9 @@ public class TestFlight : MonoBehaviour
     [Tooltip("The strength of the force applied to the nose of the plane")]
     public Vector3 forceAtPos = new Vector3(0, 1, 0);
 
+    [Tooltip("The max velocity of the plane." )]
+    public float maxVelocity = 25f;
+
     public AudioSource MusicSource;
     public AudioSource SoundEffectSource;
     public AudioSource LongSoundEffectSource;
@@ -318,6 +321,13 @@ public class TestFlight : MonoBehaviour
                 ForceAtCenterOfMass();
             }
         }
+
+        CheckMaxVelocity();
+    }
+
+    private void CheckMaxVelocity()
+    {
+        Rigidbody.velocity = Vector3.ClampMagnitude(Rigidbody.velocity, maxVelocity);
     }
 
     private IEnumerator CheckForPlaneDeceleration()
