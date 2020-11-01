@@ -259,7 +259,7 @@ public class TestFlight : MonoBehaviour
 
                 if (thisAngle > 4 && thisAngle < 5f)
                 {
-                    moveForward = false;
+                    StallPlane();
                 }
             }
 
@@ -488,6 +488,10 @@ public class TestFlight : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Determines the angle between the plane and the ground. 
+    /// </summary>
+    /// <param name="rayHit"></param>
     private void AngleBetweenGround(RaycastHit rayHit)
     {
         RaycastHit downHit;
@@ -562,7 +566,28 @@ public class TestFlight : MonoBehaviour
             windAngle = other.gameObject.transform.parent.transform.position - transform.position;
             windAngle = windAngle.normalized;
             Rigidbody.AddForce(-windAngle * windZoneForce);
+            RotateTowardsWindDirection(windAngle);
         }
+    }
+
+    /// <summary>
+    /// Handles stalling the plane, which rotates the plane towards the ground and 
+    /// prevents normal plane control.
+    /// </summary>
+    private void StallPlane()
+    {
+        moveForward = false;
+        //Rotate the plane towards the ground
+    }
+
+    /// <summary>
+    /// Rotates the plane in the direction of fan wind when it is accelerated by
+    /// a fan.
+    /// </summary>
+    /// <param name="angle"></param>
+    private void RotateTowardsWindDirection(Vector3 angle)
+    {
+        //Rotate the plane in the direction of the wind
     }
 
     private void OnTriggerEnter(Collider other)
