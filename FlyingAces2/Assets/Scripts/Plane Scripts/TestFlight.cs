@@ -62,12 +62,6 @@ public class TestFlight : MonoBehaviour
     [Tooltip("The strength of the force applied to the nose of the plane")]
     public Vector3 forceAtPos = new Vector3(0, 1, 0);
 
-    [Tooltip("The time between each force applied to the nose of the plane. A smaller value makes upward tilt more difficult")]
-    public int forceAppliedTimer = 10;
-
-    private int currentForceAppliedTimer = 0;
-    private bool forceAppliedThisFrame;
-
     public AudioSource MusicSource;
     public AudioSource SoundEffectSource;
     public AudioSource LongSoundEffectSource;
@@ -189,9 +183,6 @@ public class TestFlight : MonoBehaviour
         yForce = gravity;
         isThrown = false;
         camStartPos = planeCam.transform.localPosition;
-        forceAppliedThisFrame = false;
-
-        currentForceAppliedTimer = forceAppliedTimer;
 
         canEnableChargeBar = true;
 
@@ -211,12 +202,6 @@ public class TestFlight : MonoBehaviour
         {
             canEnableChargeBar = false;
             StartCoroutine(DelayAfterGameUnpause());
-        }
-
-        if (!isThrown)
-        {
-            //leftSystem.Stop();
-            //rightSystem.Stop();
         }
 
         if (Input.GetKeyDown(KeyCode.Return) && !isThrown)
@@ -244,16 +229,11 @@ public class TestFlight : MonoBehaviour
         }
         else if (isThrown)
         {
-            //emissionModuleLeft.rateOverDistance = windEmmissionRate;
-            //emissionModuleRight.rateOverDistance = windEmmissionRate;
-
             RaycastHit rayHit;
             if (!playOnce)
             {
                 LongSoundEffectSource.clip = windSound;
                 LongSoundEffectSource.Play();
-                //leftSystem.Play();
-                //rightSystem.Play();
 
                 playOnce = true;
             }
@@ -266,8 +246,6 @@ public class TestFlight : MonoBehaviour
                 {
                     moveForward = false;
                 }
-
-                //Debug.Log(thisAngle);
             }
 
             //The smaller the plane's angle towards the ground, the faster the plane will accelerate downwards. First raycast points from nose of plane.
@@ -295,8 +273,6 @@ public class TestFlight : MonoBehaviour
             SoundEffectSource.volume = Mathf.Clamp(crumbleSoundVelocity, windPitchMin, windPitchMax);
 
             LongSoundEffectSource.pitch = Mathf.Clamp(velSound, windPitchMin, windPitchMax);
-
-            //WindParticleHandler();
         }
         else if (pauseManager.isPaused)
         {
@@ -371,30 +347,6 @@ public class TestFlight : MonoBehaviour
         yield return new WaitForFixedUpdate();
         canEnableChargeBar = true;
     }
-
-    /// <summary>
-    /// Alters wind particle appearance in color, size, and lifetime based on plane velocity.
-    /// </summary>
-    //private void WindParticleHandler()
-    //{
-    //    var particleColorChange = Rigidbody.velocity.magnitude / increaseParticleColorSwitchRate;
-    //    leftMain.startColor = new Color((Mathf.Clamp(particleColorChange, particleColorMinSpeed.r, particleColorMaxSpeed.r)),
-    //        (Mathf.Clamp(particleColorChange, particleColorMinSpeed.g, particleColorMaxSpeed.g)),
-    //        (Mathf.Clamp(particleColorChange, particleColorMinSpeed.b, particleColorMaxSpeed.b)),
-    //        (Mathf.Clamp(particleColorChange, particleColorMinSpeed.a, particleColorMaxSpeed.a)));
-    //    rightMain.startColor = new Color((Mathf.Clamp(particleColorChange, particleColorMinSpeed.r, particleColorMaxSpeed.r)),
-    //        (Mathf.Clamp(particleColorChange, particleColorMinSpeed.g, particleColorMaxSpeed.g)),
-    //        (Mathf.Clamp(particleColorChange, particleColorMinSpeed.b, particleColorMaxSpeed.b)),
-    //        (Mathf.Clamp(particleColorChange, particleColorMinSpeed.a, particleColorMaxSpeed.a)));
-
-    //    var particleLifetimeChange = Rigidbody.velocity.magnitude / increaseParticleLifeTimeRate;
-    //    leftMain.startLifetime = Mathf.Clamp(particleLifetimeChange, minLifetime, maxLifetime);
-    //    rightMain.startLifetime = Mathf.Clamp(particleLifetimeChange, minLifetime, maxLifetime);
-
-    //    var particleSizeChange = Rigidbody.velocity.magnitude / increaseParticleSizeRate;
-    //    leftMain.startSize = Mathf.Clamp(particleSizeChange, minSize, maxSize);
-    //    rightMain.startSize = Mathf.Clamp(particleSizeChange, minSize, maxSize);
-    //}
 
     /// <summary>
     /// Allows the player to move the plane once it is thrown.
@@ -531,20 +483,7 @@ public class TestFlight : MonoBehaviour
     /// </summary>
     private void ForceAtCenterOfMass()
     {
-        forceAppliedThisFrame = true;
         Rigidbody.AddForceAtPosition(forceAtPos, centerOfMassReference.transform.position);
-        currentForceAppliedTimer = forceAppliedTimer;
-
-        if (currentForceAppliedTimer <= 0)
-        {
-            //forceAppliedThisFrame = true;
-            //Rigidbody.AddForceAtPosition(forceAtPos, centerOfMassReference.transform.position);
-            //currentForceAppliedTimer = forceAppliedTimer;
-        }
-        else if (currentForceAppliedTimer > 0)
-        {
-            currentForceAppliedTimer--;
-        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -559,11 +498,6 @@ public class TestFlight : MonoBehaviour
             increaseWindPitchRate = hitGroundWindPitchRate;
             inSlideMode = true;
 
-            //emissionModuleLeft.rateOverDistance = 0f;
-            //emissionModuleRight.rateOverDistance = 0f;
-
-            //leftSystem.Pause();
-            //rightSystem.Pause();
             planeParticleHandler.PauseParticles();
 
             anim.SetBool("Sliding", true);
@@ -588,11 +522,6 @@ public class TestFlight : MonoBehaviour
             increaseWindPitchRate = startWindPitchRate;
             inSlideMode = false;
 
-            //emissionModuleLeft.rateOverDistance = windEmmissionRate;
-            //emissionModuleRight.rateOverDistance = windEmmissionRate;
-
-            //leftSystem.Play();
-            //rightSystem.Play();
             planeParticleHandler.ResumeParticles();
 
             anim.SetBool("Sliding", false);
@@ -648,7 +577,6 @@ public class TestFlight : MonoBehaviour
 
                 yield return new WaitForSeconds(1f);
                 playWinSoundOnce = true;
-                //StartCoroutine(LevelLoad(nextSceneName));
                 
                 pauseManager.OpenEndOfLevelMenu();
             }
@@ -762,8 +690,6 @@ public class TestFlight : MonoBehaviour
 
             moveForward = false;
             Rigidbody.useGravity = false;
-            //leftSystem.Play();
-            //rightSystem.Play();
             planeParticleHandler.PlayParticles();
 
             ContactPoint contact = collision.GetContact(0);
