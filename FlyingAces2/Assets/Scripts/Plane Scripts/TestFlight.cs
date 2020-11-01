@@ -17,6 +17,7 @@ using Cinemachine;
 public class TestFlight : MonoBehaviour
 {
     #region variables
+
     [Tooltip("The camera object in the scene")]
     public Camera planeCam;
 
@@ -64,6 +65,17 @@ public class TestFlight : MonoBehaviour
 
     [Tooltip("The max velocity of the plane." )]
     public float maxVelocity = 25f;
+
+    #region Stall Variables
+    [Tooltip("The X stall velocity. ")]
+    public float xStallVel = 10f;
+
+    [Tooltip("The Y stall velocity. ")]
+    public float yStallVel = 1f;
+
+    [Tooltip("The Z stall velocity. ")]
+    public float zStallVel = 10f;
+    #endregion 
 
     public AudioSource MusicSource;
     public AudioSource SoundEffectSource;
@@ -341,7 +353,9 @@ public class TestFlight : MonoBehaviour
             yield return new WaitForSeconds(2);
         }
 
-        if ((Rigidbody.velocity.x < 10f && Rigidbody.velocity.x > -10f) && (Rigidbody.velocity.z < 10f && Rigidbody.velocity.z > -10f) && Rigidbody.velocity.y < 1f)
+        if ((Rigidbody.velocity.x < xStallVel && Rigidbody.velocity.x > -xStallVel) 
+            && (Rigidbody.velocity.z < zStallVel && Rigidbody.velocity.z > -zStallVel) 
+            && Rigidbody.velocity.y < yStallVel)
         {
             moveForward = false;
         }

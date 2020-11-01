@@ -151,6 +151,9 @@ MonoBehaviour:
   centerOfMassReference: {fileID: 7016437116365211860}
   forceAtPos: {x: 0, y: -0.06, z: 0}
   maxVelocity: 65
+  xStallVel: 15
+  yStallVel: 1.5
+  zStallVel: 15
   MusicSource: {fileID: 0}
   SoundEffectSource: {fileID: 0}
   LongSoundEffectSource: {fileID: 0}
