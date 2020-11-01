@@ -63,7 +63,7 @@ public class TestFlight : MonoBehaviour
     [Tooltip("The strength of the force applied to the nose of the plane")]
     public Vector3 forceAtPos = new Vector3(0, 1, 0);
 
-    [Tooltip("The max velocity of the plane." )]
+    [Tooltip("The max velocity of the plane.")]
     public float maxVelocity = 25f;
 
     #region Stall Variables
@@ -152,6 +152,8 @@ public class TestFlight : MonoBehaviour
     private PlaneParticleHandler planeParticleHandler;
 
     private CollectableController collectableController;
+
+    private bool planeStalled;
     #endregion
 
     void OnEnable()
@@ -172,6 +174,8 @@ public class TestFlight : MonoBehaviour
         collectableController = FindObjectOfType<CollectableController>();
 
         moveForward = false;
+        planeStalled = false;
+
         pauseManager = GameObject.FindObjectOfType<PauseManager>();
 
         scoreManager = GameObject.FindObjectOfType<ScoreManager>();
@@ -191,8 +195,8 @@ public class TestFlight : MonoBehaviour
         scoreAddedThisThrow = false;
 
         //Sets the starting plane position on game start
-        if(planeThrowHandler != null)
-        gameObject.transform.position = new Vector3(gameObject.transform.position.x, planeThrowHandler.GetStartThrowHeight(), gameObject.transform.position.z);
+        if (planeThrowHandler != null)
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x, planeThrowHandler.GetStartThrowHeight(), gameObject.transform.position.z);
 
         anim = GetComponent<Animator>();
         yForce = gravity;
@@ -259,7 +263,10 @@ public class TestFlight : MonoBehaviour
 
                 if (thisAngle > 4 && thisAngle < 5f)
                 {
-                    StallPlane();
+                    if(!planeStalled)
+                    {
+                        StallPlane();
+                    }
                 }
             }
 
@@ -353,8 +360,8 @@ public class TestFlight : MonoBehaviour
             yield return new WaitForSeconds(2);
         }
 
-        if ((Rigidbody.velocity.x < xStallVel && Rigidbody.velocity.x > -xStallVel) 
-            && (Rigidbody.velocity.z < zStallVel && Rigidbody.velocity.z > -zStallVel) 
+        if ((Rigidbody.velocity.x < xStallVel && Rigidbody.velocity.x > -xStallVel)
+            && (Rigidbody.velocity.z < zStallVel && Rigidbody.velocity.z > -zStallVel)
             && Rigidbody.velocity.y < yStallVel)
         {
             moveForward = false;
@@ -577,7 +584,33 @@ public class TestFlight : MonoBehaviour
     private void StallPlane()
     {
         moveForward = false;
-        //Rotate the plane towards the ground
+        planeStalled = true;
+
+        StartCoroutine(RotateTowardsGround());
+
+    }
+
+    private IEnumerator RotateTowardsGround()
+    {
+        //if (planeStalled)
+        //{
+
+        //    Vector3 x = Vector3.Cross(transform.forward, -Vector3.up);
+        //    float theta = Mathf.Asin(x.magnitude);
+        //    Vector3 w = x.normalized * theta / Time.fixedDeltaTime;
+        //    Quaternion q = transform.rotation * Rigidbody.inertiaTensorRotation;
+        //    Vector3 T = q * Vector3.Scale(Rigidbody.inertiaTensor, (Quaternion.Inverse(q) * w));
+
+        //    Rigidbody.AddRelativeTorque(T);
+
+        //    Rigidbody.AddRelativeTorque(Vector3.right * 100f);
+
+
+        //    yield return new WaitForEndOfFrame();
+        //    StartCoroutine(RotateTowardsGround());
+        //}
+
+        yield return new WaitForEndOfFrame();
     }
 
     /// <summary>
@@ -629,7 +662,7 @@ public class TestFlight : MonoBehaviour
 
                 yield return new WaitForSeconds(1f);
                 playWinSoundOnce = true;
-                
+
                 pauseManager.OpenEndOfLevelMenu();
             }
         }
@@ -740,6 +773,7 @@ public class TestFlight : MonoBehaviour
             SetPlaneDecelerationStatus(false);
             SetFirstDecelerationCheck(false);
 
+            planeStalled = false;
             moveForward = false;
             Rigidbody.useGravity = false;
             planeParticleHandler.PlayParticles();
