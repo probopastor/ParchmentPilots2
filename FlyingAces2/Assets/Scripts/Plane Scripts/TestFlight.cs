@@ -325,6 +325,9 @@ public class TestFlight : MonoBehaviour
         CheckMaxVelocity();
     }
 
+    /// <summary>
+    /// Clamps the plane's velocity at the max velocity value. 
+    /// </summary>
     private void CheckMaxVelocity()
     {
         Rigidbody.velocity = Vector3.ClampMagnitude(Rigidbody.velocity, maxVelocity);
