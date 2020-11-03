@@ -223,7 +223,7 @@ public class TestFlight : MonoBehaviour
             StartCoroutine(DelayAfterGameUnpause());
         }
 
-        if (Input.GetKeyDown(KeyCode.Return) && !isThrown)
+        if (Input.GetButtonDown("Launch") && !isThrown)
         {
             if (!planeThrowHandler.GetAimStatus() && planeThrowHandler.GetThrowStatus() && !pauseManager.isPaused)
             {
@@ -314,7 +314,7 @@ public class TestFlight : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.Return) && planeThrowHandler.GetAimStatus() && !planeThrowHandler.GetThrowStatus() && canEnableChargeBar && !pauseManager.isPaused)
+        if (Input.GetButtonDown("Launch") && planeThrowHandler.GetAimStatus() && !planeThrowHandler.GetThrowStatus() && canEnableChargeBar && !pauseManager.isPaused)
         {
             planeThrowHandler.ReactivateChargeBar();
         }
