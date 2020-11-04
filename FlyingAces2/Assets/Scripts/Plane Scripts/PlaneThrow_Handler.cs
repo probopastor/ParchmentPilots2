@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.PlayerLoop;
 
 public class PlaneThrow_Handler : MonoBehaviour
@@ -35,6 +36,37 @@ public class PlaneThrow_Handler : MonoBehaviour
 
     private GameObject lookAtObject;
 
+    public InputMaster controls;
+
+    Vector2 input;
+
+    private void Awake()
+    {
+        controls = new InputMaster();
+        controls.Player.Aim.performed += context => HandleAimInput(context);
+        controls.Player.Aim.canceled += context => ResetAimInput();
+    }
+
+    private void OnEnable()
+    {
+        controls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        controls.Disable();
+    }
+
+    void HandleAimInput(InputAction.CallbackContext context)
+    {
+        input = context.ReadValue<Vector2>();
+    }
+
+    void ResetAimInput()
+    {
+        input = Vector2.zero;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,7 +79,7 @@ public class PlaneThrow_Handler : MonoBehaviour
 
     void FixedUpdate()
     {
-        AimLogic();
+        AimLogic();      
     }
 
     // Update is called once per frame
@@ -98,7 +130,6 @@ public class PlaneThrow_Handler : MonoBehaviour
                 zMove = 0;
             }
 
-            //Debug.Log("xMove: " + xMove + " zMove: " + zMove);
             testFlight.gameObject.transform.position = new Vector3(testFlight.gameObject.transform.position.x + xMove, throwHeight, testFlight.gameObject.transform.position.z + zMove);
             RotateTowardsCheckpoiint();
         }
@@ -113,20 +144,20 @@ public class PlaneThrow_Handler : MonoBehaviour
 
             if (OptionsController.invertedVerticalControls)
             {
-                yRotationValue = -Input.GetAxis("Vertical");
+                yRotationValue = -input.y;
             }
             else
             {
-                yRotationValue = Input.GetAxis("Vertical");
+                yRotationValue = input.y;
             }
 
             if (OptionsController.invertedVerticalControls)
             {
-                xRotationValue = -Input.GetAxis("Horizontal");
+                xRotationValue = -input.x;
             }
             else
             {
-                xRotationValue = Input.GetAxis("Horizontal");
+                xRotationValue = input.x;
             }
 
             if (testFlight.transform.rotation.eulerAngles.x > 85f && testFlight.transform.rotation.eulerAngles.x < 95f && yRotationValue > 0)
@@ -150,7 +181,7 @@ public class PlaneThrow_Handler : MonoBehaviour
 
             testFlight.SetAimRotation(rotationChanges);
         }
-
+        
     }
 
     public void SetUpNewThrow(Collision collision)

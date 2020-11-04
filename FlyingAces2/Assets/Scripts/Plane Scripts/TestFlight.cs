@@ -10,6 +10,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using Cinemachine;
@@ -154,12 +155,42 @@ public class TestFlight : MonoBehaviour
     private CollectableController collectableController;
 
     private bool planeStalled;
+
+    public InputMaster controls;
+
+    private Vector2 input;
     #endregion
 
-    void OnEnable()
+    void Awake()
     {
+        controls = new InputMaster();
+        controls.Player.Throw.performed += cxt => ThrowCheck();
+        controls.Player.Throw.performed += cxt => CheckChargeBar();
+        controls.Player.Cancel.performed += cxt => CancelChargeBar();
+        controls.Player.Aim.performed += context => HandleAimInput(context);
+        controls.Player.Aim.canceled += context => ResetAimInput();
+    }
+
+    private void OnEnable()
+    {
+        controls.Enable();
         pauseManager = GameObject.FindObjectOfType<PauseManager>();
         scoreManager = GameObject.FindObjectOfType<ScoreManager>();
+    }
+
+    private void OnDisable()
+    {
+        controls.Disable();
+    }
+
+    void HandleAimInput(InputAction.CallbackContext context)
+    {
+        input = context.ReadValue<Vector2>();
+    }
+
+    void ResetAimInput()
+    {
+        input = Vector2.zero;
     }
 
     // Start is called before the first frame update
@@ -222,31 +253,8 @@ public class TestFlight : MonoBehaviour
             canEnableChargeBar = false;
             StartCoroutine(DelayAfterGameUnpause());
         }
-
-        if (Input.GetButtonDown("Launch") && !isThrown)
-        {
-            if (!planeThrowHandler.GetAimStatus() && planeThrowHandler.GetThrowStatus() && !pauseManager.isPaused)
-            {
-                planeThrowHandler.SetThrowStatus(false);
-
-                isThrown = true;
-                anim.SetBool("isThrown", isThrown);
-
-                planeThrowHandler.SetChargeBarActivity(false);
-
-                Rigidbody.isKinematic = false;
-                Rigidbody.useGravity = true;
-
-                planeThrowHandler.SetAimStatus(false);
-
-                scoreAddedThisThrow = false;
-
-                Rigidbody.AddRelativeForce(Vector3.forward * thrustForce * planeThrowHandler.GetChargeBarValue());
-
-                moveForward = true;
-            }
-        }
-        else if (isThrown)
+ 
+        if (isThrown)
         {
             RaycastHit rayHit;
             if (!playOnce)
@@ -263,7 +271,7 @@ public class TestFlight : MonoBehaviour
 
                 if (thisAngle > 4 && thisAngle < 5f)
                 {
-                    if(!planeStalled)
+                    if (!planeStalled)
                     {
                         StallPlane();
                     }
@@ -313,20 +321,49 @@ public class TestFlight : MonoBehaviour
             SoundEffectSource.Stop();
         }
 
+        OutOfBoundsCheck();
+    }
 
-        if (Input.GetButtonDown("Launch") && planeThrowHandler.GetAimStatus() && !planeThrowHandler.GetThrowStatus() && canEnableChargeBar && !pauseManager.isPaused)
-        {
-            planeThrowHandler.ReactivateChargeBar();
-        }
-
-        if ((Input.GetKeyUp(KeyCode.Escape) || Input.GetKeyUp(KeyCode.Backspace)) && planeThrowHandler.GetThrowStatus())
+    private void CancelChargeBar()
+    {
+        if (planeThrowHandler.GetThrowStatus())
         {
             planeThrowHandler.SetThrowStatus(false);
             planeThrowHandler.SetAimStatus(true);
             planeThrowHandler.SetChargeBarActivity(false);
         }
+    }
 
-        OutOfBoundsCheck();
+    private void CheckChargeBar()
+    {
+        if (planeThrowHandler.GetAimStatus() && !planeThrowHandler.GetThrowStatus() && canEnableChargeBar && !pauseManager.isPaused)
+        {
+            planeThrowHandler.ReactivateChargeBar();
+        }
+    }
+
+    private void ThrowCheck()
+    {
+        if (!isThrown && !planeThrowHandler.GetAimStatus() && planeThrowHandler.GetThrowStatus() && !pauseManager.isPaused)
+        {
+            planeThrowHandler.SetThrowStatus(false);
+
+            isThrown = true;
+            anim.SetBool("isThrown", isThrown);
+
+            planeThrowHandler.SetChargeBarActivity(false);
+
+            Rigidbody.isKinematic = false;
+            Rigidbody.useGravity = true;
+
+            planeThrowHandler.SetAimStatus(false);
+
+            scoreAddedThisThrow = false;
+
+            Rigidbody.AddRelativeForce(Vector3.forward * thrustForce * planeThrowHandler.GetChargeBarValue());
+
+            moveForward = true;
+        }
     }
 
     private void FixedUpdate()
@@ -389,30 +426,30 @@ public class TestFlight : MonoBehaviour
     {
         if (isThrown)
         {
-            float roll = Input.GetAxis("Horizontal");
-            float tilt = Input.GetAxis("Vertical");
+            float roll = input.x;
+            float tilt = input.y;
 
-            float yaw = Input.GetAxis("Yaw") / 8;
+            float yaw = 0;//Input.GetAxis("Yaw") / 8
 
             float tip = (transform.right + Vector3.up).magnitude - 1.414214f;
             yaw -= tip;
 
             if (OptionsController.invertedVerticalControls)
             {
-                tilt = -Input.GetAxis("Vertical");
+                tilt = -input.y;
             }
             else
             {
-                tilt = Input.GetAxis("Vertical");
+                tilt = input.y;
             }
 
             if (OptionsController.invertedVerticalControls)
             {
-                roll = -Input.GetAxis("Horizontal");
+                roll = -input.x;
             }
             else
             {
-                roll = Input.GetAxis("Horizontal");
+                roll = input.x;
             }
 
             if (transform.rotation.eulerAngles.x > 85f && transform.rotation.eulerAngles.x < 95f && tilt > 0)

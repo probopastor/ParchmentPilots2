@@ -49,6 +49,23 @@ public class PauseManager : MonoBehaviour
 
     public Image[] allButtons;
 
+    public InputMaster controls;
+
+    private void Awake()
+    {
+        controls = new InputMaster();
+        controls.Player.Pause.performed += context => PauseGame();
+    }
+    private void OnEnable()
+    {
+        controls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        controls.Disable();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -73,10 +90,10 @@ public class PauseManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) && !planeThrow.GetThrowStatus())
-        {
-            PauseGame();
-        }
+        //if(Input.GetKeyDown(KeyCode.Escape) && !planeThrow.GetThrowStatus())
+        //{
+        //    PauseGame();
+        //}
 
         if(keepButtonSelected && isPaused)
         {
@@ -86,38 +103,41 @@ public class PauseManager : MonoBehaviour
 
     public void PauseGame()
     {
-        planeThrow.SetThrowStatus(false);
-
-        OpenCloseMenuSound();
-
-        if (!isPaused)
+        if (!planeThrow.GetThrowStatus())
         {
-            isPaused = true;
+            planeThrow.SetThrowStatus(false);
 
-            for(int i = 0; i < allButtons.Length; i++)
+            OpenCloseMenuSound();
+
+            if (!isPaused)
             {
-                allButtons[i].color = unSelectedButtonColor;
-            }
-            allButtons[0].color = selectedButtonColor;
+                isPaused = true;
 
-            pausePanel.SetActive(true);
-            howToPlayPanel.SetActive(false);
-            eventSystem.SetSelectedGameObject(resumeButton);
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-            Time.timeScale = 0;
-        }
-        else if (isPaused)
-        {
-            keepButtonSelected = false;
-            isPaused = false;
-            pausePanel.SetActive(false);
-            howToPlayPanel.SetActive(false);
-            eventSystem.SetSelectedGameObject(null);
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-            Time.timeScale = 1;
-        }
+                for (int i = 0; i < allButtons.Length; i++)
+                {
+                    allButtons[i].color = unSelectedButtonColor;
+                }
+                allButtons[0].color = selectedButtonColor;
+
+                pausePanel.SetActive(true);
+                howToPlayPanel.SetActive(false);
+                eventSystem.SetSelectedGameObject(resumeButton);
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+                Time.timeScale = 0;
+            }
+            else if (isPaused)
+            {
+                keepButtonSelected = false;
+                isPaused = false;
+                pausePanel.SetActive(false);
+                howToPlayPanel.SetActive(false);
+                eventSystem.SetSelectedGameObject(null);
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+                Time.timeScale = 1;
+            }
+        }       
     }
 
     public void SelectBackButton(GameObject button)

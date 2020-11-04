@@ -35,6 +35,22 @@ public class MainMenuController : MonoBehaviour
     public Image[] buttonImages;
     public TextMeshProUGUI backButtonTmp;
 
+    public InputMaster controls;
+    private void Awake()
+    {
+        controls = new InputMaster();
+        controls.Player.Cheat.performed += context => SaveData.UnlockAllLevels();
+    }
+    private void OnEnable()
+    {
+        controls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        controls.Disable();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,11 +75,6 @@ public class MainMenuController : MonoBehaviour
         if(keepButtonSelected)
         {
             SetButton();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Equals))
-        {
-            SaveData.UnlockAllLevels();
         }
     }
 
