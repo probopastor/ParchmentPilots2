@@ -12,6 +12,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class MainMenuController : MonoBehaviour
 {
@@ -40,6 +41,7 @@ public class MainMenuController : MonoBehaviour
     {
         controls = new InputMaster();
         controls.Player.Cheat.performed += context => SaveData.UnlockAllLevels();
+        controls.UI.DeviceCheck.performed += context => HideOrShowMouse();
     }
     private void OnEnable()
     {
@@ -67,6 +69,20 @@ public class MainMenuController : MonoBehaviour
         if(MusicSource == null)
         {
             MusicSource = FindObjectOfType<HowToPlayAudioSource>().GetComponent<AudioSource>();
+        }
+    }
+
+    private void HideOrShowMouse()
+    {
+        if (Keyboard.current.anyKey.isPressed)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else if (!Keyboard.current.anyKey.isPressed)
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 

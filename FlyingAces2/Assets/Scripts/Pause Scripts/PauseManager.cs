@@ -12,6 +12,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class PauseManager : MonoBehaviour
 {
@@ -55,6 +56,7 @@ public class PauseManager : MonoBehaviour
     {
         controls = new InputMaster();
         controls.Player.Pause.performed += context => PauseGame();
+        controls.Player.DeviceCheck.performed += context => HideOrShowMouse();
     }
     private void OnEnable()
     {
@@ -85,6 +87,19 @@ public class PauseManager : MonoBehaviour
         pausePanel.SetActive(false);
         howToPlayPanel.SetActive(false);
         endOfLevelPanel.SetActive(false);
+    }
+    private void HideOrShowMouse()
+    {
+        if (Keyboard.current.anyKey.isPressed && isPaused)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else if (!Keyboard.current.anyKey.isPressed)
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 
     // Update is called once per frame
