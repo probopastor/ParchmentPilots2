@@ -443,7 +443,7 @@ public class TestFlight : MonoBehaviour
                 tilt = input.y;
             }
 
-            if (OptionsController.invertedVerticalControls)
+            if (OptionsController.invertedHorizontalControls)
             {
                 roll = -input.x;
             }

@@ -151,7 +151,7 @@ public class PlaneThrow_Handler : MonoBehaviour
                 yRotationValue = input.y;
             }
 
-            if (OptionsController.invertedVerticalControls)
+            if (OptionsController.invertedHorizontalControls)
             {
                 xRotationValue = -input.x;
             }
