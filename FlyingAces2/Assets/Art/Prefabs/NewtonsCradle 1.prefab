@@ -1222,6 +1222,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3002752613933917861}
   - component: {fileID: 6865885157814111418}
+  - component: {fileID: 6985573539245306965}
   m_Layer: 0
   m_Name: NewtonsCradle 1
   m_TagString: Untagged
@@ -1286,6 +1287,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &6985573539245306965
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2513073717993045023}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.81878054, y: 1.0443786, z: 1.2995605}
+  m_Center: {x: -0.0018493653, y: 0.46228942, z: 0.3235962}
 --- !u!1 &2707472829591545140
 GameObject:
   m_ObjectHideFlags: 0
