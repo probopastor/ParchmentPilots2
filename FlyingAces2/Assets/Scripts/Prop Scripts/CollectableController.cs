@@ -16,6 +16,10 @@ public class CollectableController : MonoBehaviour
     public GameObject bobblehead_2;
     public GameObject bobblehead_3;
 
+    public GameObject grayBobblehead_1;
+    public GameObject grayBobblehead_2;
+    public GameObject grayBobblehead_3;
+
     private bool bobblehead1Collected = false;
     private bool bobblehead2Collected = false;
     private bool bobblehead3Collected = false;
@@ -42,6 +46,7 @@ public class CollectableController : MonoBehaviour
             bobblehead1Collected = true;
             bobbleheadImage1.sprite = bobbleheadCollected;
             bobblehead_1.GetComponent<Bobblehead>().GrayOut();
+            grayBobblehead_1.SetActive(true);
         }
         else
         {
@@ -52,6 +57,7 @@ public class CollectableController : MonoBehaviour
             bobblehead2Collected = true;
             bobbleheadImage2.sprite = bobbleheadCollected;
             bobblehead_2.GetComponent<Bobblehead>().GrayOut();
+            grayBobblehead_2.SetActive(true);
         }
         else
         {
@@ -62,6 +68,7 @@ public class CollectableController : MonoBehaviour
             bobblehead3Collected = true;
             bobbleheadImage3.sprite = bobbleheadCollected;
             bobblehead_3.GetComponent<Bobblehead>().GrayOut();
+            grayBobblehead_3.SetActive(true);
         }
         else
         {
