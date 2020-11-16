@@ -514,8 +514,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5786563114789190691}
-  - component: {fileID: 915826452145345076}
   - component: {fileID: 7839718096468536270}
+  - component: {fileID: 4933506238954534342}
   m_Layer: 0
   m_Name: Toy bird
   m_TagString: Untagged
@@ -548,7 +548,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &915826452145345076
+--- !u!65 &7839718096468536270
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6558878033062880921}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.9578044, y: 2.690288, z: 2.0423584}
+  m_Center: {x: 0.028177898, y: 0.28171572, z: -0.042256676}
+--- !u!95 &4933506238954534342
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -567,19 +580,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!65 &7839718096468536270
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6558878033062880921}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.9578044, y: 2.690288, z: 2.0423584}
-  m_Center: {x: 0.028177898, y: 0.28171572, z: -0.042256676}
 --- !u!1 &6662807199487131570
 GameObject:
   m_ObjectHideFlags: 0
