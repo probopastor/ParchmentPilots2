@@ -9,6 +9,7 @@ TagManager:
   - WindArea
   - MainMenu
   - Toast
+  - Recycle bin
   layers:
   - Default
   - TransparentFX
