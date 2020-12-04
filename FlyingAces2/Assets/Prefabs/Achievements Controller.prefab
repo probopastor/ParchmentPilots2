@@ -46,3 +46,5 @@ MonoBehaviour:
   achievementBanner: {fileID: 0}
   achievementNameText: {fileID: 0}
   achievementNameDescription: {fileID: 0}
+  SoundEffectSource: {fileID: 0}
+  achievementSFX: {fileID: 8300000, guid: 3ad5105841f100247aba72c36a12c230, type: 3}

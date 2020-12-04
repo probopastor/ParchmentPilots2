@@ -13,6 +13,8 @@ public class AchievementsController : MonoBehaviour
     public GameObject achievementBanner;
     public TextMeshProUGUI achievementNameText;
     public TextMeshProUGUI achievementNameDescription;
+    public AudioSource SoundEffectSource;
+    public AudioClip achievementSFX;
 
     void Start()
     {
@@ -110,6 +112,8 @@ public class AchievementsController : MonoBehaviour
                 break;
         }
         achievementBanner.SetActive(true);
+        SoundEffectSource.clip = achievementSFX;
+        SoundEffectSource.Play();
         Invoke("CloseAchievement", 2f);
     }
 
