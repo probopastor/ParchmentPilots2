@@ -36,13 +36,13 @@ EditorBuildSettings:
     path: Assets/Scenes/level 1-4/level 1-4.unity
     guid: 7898beee33b1b0749b16fa7f91568b7a
   - enabled: 1
-    path: Assets/Scenes/MainMenu/Achievements.unity
+    path: Assets/Scenes/MainMenu/Achievements Scenes/Achievements.unity
     guid: 6ce55695a9f20c84d9ccb9d53cb18a7d
   - enabled: 1
-    path: Assets/Scenes/MainMenu/Achievements 1.unity
+    path: Assets/Scenes/MainMenu/Achievements Scenes/Achievements 1.unity
     guid: eb985fc35affdce43a3ac52331e21b41
   - enabled: 1
-    path: Assets/Scenes/MainMenu/Achievements 2.unity
+    path: Assets/Scenes/MainMenu/Achievements Scenes/Achievements 2.unity
     guid: 33fb6c35ed6cfe14c97322f03ec83cd5
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 78f5e65286d64754395b6099d6afc02b,

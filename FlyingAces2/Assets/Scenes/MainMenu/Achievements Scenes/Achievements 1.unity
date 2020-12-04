@@ -3583,7 +3583,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Fan of the fans
+  m_text: Gliding the waves
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 395957afee12d0248948426c511f3ab0, type: 2}
   m_sharedMaterial: {fileID: -388920110854035957, guid: 395957afee12d0248948426c511f3ab0,
@@ -3650,13 +3650,13 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -154.12834, y: 0, z: -1.912075, w: 0}
+  m_margin: {x: -171.40656, y: 0, z: -1.912075, w: 0}
   m_textInfo:
     textComponent: {fileID: 1162034056}
-    characterCount: 15
+    characterCount: 17
     spriteCount: 0
-    spaceCount: 3
-    wordCount: 4
+    spaceCount: 2
+    wordCount: 3
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -5115,7 +5115,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -180, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0044, y: 0.0028}
+  m_AnchoredPosition: {x: 0.0044, y: 0.0025}
   m_SizeDelta: {x: 164.17834, y: 41.044586}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1688895239
@@ -5137,7 +5137,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Fly into all fans on a single level.
+  m_text: Fly into a total of 5 fans.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 395957afee12d0248948426c511f3ab0, type: 2}
   m_sharedMaterial: {fileID: -388920110854035957, guid: 395957afee12d0248948426c511f3ab0,
@@ -5204,13 +5204,13 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -171.52237, y: -11.576419, z: -28.413618, w: -40.6869}
+  m_margin: {x: -171.52237, y: -11.576419, z: -16.15392, w: -40.6869}
   m_textInfo:
     textComponent: {fileID: 1688895239}
-    characterCount: 36
+    characterCount: 27
     spriteCount: 0
-    spaceCount: 7
-    wordCount: 8
+    spaceCount: 6
+    wordCount: 7
     linkCount: 0
     lineCount: 2
     pageCount: 1
