@@ -110,5 +110,11 @@ public class AchievementsController : MonoBehaviour
                 break;
         }
         achievementBanner.SetActive(true);
+        Invoke("CloseAchievement", 2f);
+    }
+
+    void CloseAchievement()
+    {
+        achievementBanner.SetActive(true);
     }
 }
