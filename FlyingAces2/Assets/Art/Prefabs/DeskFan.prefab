@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6747831278926321621}
   - component: {fileID: 3803517535981359043}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Blades
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afe11ce5eaa8c8747aca00eaf5564612, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 175
+  rotateSpeed: 10
 --- !u!1 &1344523439016600487
 GameObject:
   m_ObjectHideFlags: 0
@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 8435064609393807577}
   - component: {fileID: 2491396025355891261}
   - component: {fileID: 6599033265256074741}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Body
   m_TagString: ground
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 1645985572491388652}
   - component: {fileID: 6114743234936197911}
   - component: {fileID: 2524531363143677615}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Blade.003
   m_TagString: ground
   m_Icon: {fileID: 0}
@@ -292,7 +292,7 @@ GameObject:
   - component: {fileID: 6582444574003611177}
   - component: {fileID: 2215166104698297467}
   - component: {fileID: 303427904520545563}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Cube.001
   m_TagString: ground
   m_Icon: {fileID: 0}
@@ -408,7 +408,7 @@ GameObject:
   - component: {fileID: 7922469218044340026}
   - component: {fileID: 5371811263304858955}
   - component: {fileID: 3774032433817841064}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Cylinder
   m_TagString: ground
   m_Icon: {fileID: 0}
@@ -520,7 +520,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1219723098696302909}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: DeskFan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -566,7 +566,7 @@ GameObject:
   - component: {fileID: 6766054837074203348}
   - component: {fileID: 2785580086056856114}
   - component: {fileID: 6662676051437435472}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Cube.003
   m_TagString: ground
   m_Icon: {fileID: 0}
@@ -682,7 +682,7 @@ GameObject:
   - component: {fileID: 806000338535028315}
   - component: {fileID: 520343019443111383}
   - component: {fileID: 830436747176337234}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Cube.002
   m_TagString: ground
   m_Icon: {fileID: 0}
@@ -798,7 +798,7 @@ GameObject:
   - component: {fileID: 8146668802766047586}
   - component: {fileID: 812005772835355911}
   - component: {fileID: 2616957140383787784}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Blade
   m_TagString: ground
   m_Icon: {fileID: 0}
@@ -913,7 +913,7 @@ GameObject:
   - component: {fileID: 7964874259800368304}
   - component: {fileID: 5758381718642150319}
   - component: {fileID: 1791440208562963358}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Blade.002
   m_TagString: ground
   m_Icon: {fileID: 0}
@@ -1028,7 +1028,7 @@ GameObject:
   - component: {fileID: 1600402092000946038}
   - component: {fileID: 2001276352458248890}
   - component: {fileID: 7174066396919929327}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Circle
   m_TagString: ground
   m_Icon: {fileID: 0}
@@ -1144,7 +1144,7 @@ GameObject:
   - component: {fileID: 3168846433297241251}
   - component: {fileID: 6084723342221316982}
   - component: {fileID: 8281206904480994106}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Cube
   m_TagString: ground
   m_Icon: {fileID: 0}
@@ -1304,7 +1304,7 @@ GameObject:
   - component: {fileID: 4097249575363390181}
   - component: {fileID: 2429067130755109269}
   - component: {fileID: 1333143399313014577}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Blade.001
   m_TagString: ground
   m_Icon: {fileID: 0}
