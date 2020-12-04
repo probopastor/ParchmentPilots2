@@ -13,6 +13,8 @@ public class AchievementsController : MonoBehaviour
     public GameObject achievementBanner;
     public TextMeshProUGUI achievementNameText;
     public TextMeshProUGUI achievementNameDescription;
+    public AudioSource SoundEffectSource;
+    public AudioClip achievementSFX;
 
     void Start()
     {
@@ -101,20 +103,33 @@ public class AchievementsController : MonoBehaviour
                 achievementNameDescription.text = "Hit maximum velocity";
                 break;
             case 19:
-                achievementNameText.text = "";
-                achievementNameDescription.text = "";
+                achievementNameText.text = "Party time!";
+                achievementNameDescription.text = "Party with birds and robots";
                 break;
             case 20:
-                achievementNameText.text = "Party time!";
-                achievementNameDescription.text = "";
+                achievementNameText.text = "101%";
+                achievementNameDescription.text = "Collect all other achievements";
                 break;
         }
         achievementBanner.SetActive(true);
+        SoundEffectSource.clip = achievementSFX;
+        SoundEffectSource.Play();
         Invoke("CloseAchievement", 2f);
     }
 
     void CloseAchievement()
     {
-        achievementBanner.SetActive(true);
+        achievementBanner.SetActive(false);
+        if(PlayerPrefs.GetInt("Achievement 1", 0) == 1 && PlayerPrefs.GetInt("Achievement 2", 0) == 1 && PlayerPrefs.GetInt("Achievement 3", 0) == 1 &&
+            PlayerPrefs.GetInt("Achievement 4", 0) == 1 && PlayerPrefs.GetInt("Achievement 5", 0) == 1 && PlayerPrefs.GetInt("Achievement 6", 0) == 1 &&
+            PlayerPrefs.GetInt("Achievement 7", 0) == 1 && PlayerPrefs.GetInt("Achievement 8", 0) == 1 && PlayerPrefs.GetInt("Achievement 9", 0) == 1 &&
+            PlayerPrefs.GetInt("Achievement 10", 0) == 1 && PlayerPrefs.GetInt("Achievement 11", 0) == 1 && PlayerPrefs.GetInt("Achievement 12", 0) == 1 &&
+            PlayerPrefs.GetInt("Achievement 13", 0) == 1 && PlayerPrefs.GetInt("Achievement 14", 0) == 1 && PlayerPrefs.GetInt("Achievement 15", 0) == 1 &&
+            PlayerPrefs.GetInt("Achievement 16", 0) == 1 && PlayerPrefs.GetInt("Achievement 17", 0) == 1 && PlayerPrefs.GetInt("Achievement 18", 0) == 1 &&
+            PlayerPrefs.GetInt("Achievement 19", 0) == 1 && PlayerPrefs.GetInt("Achievement 20", 0) == 0)
+        {
+            PlayerPrefs.SetInt("Achievement 20", 1);
+            AchievementGet(20);
+        }
     }
 }
