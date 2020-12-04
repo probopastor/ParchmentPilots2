@@ -38,8 +38,11 @@ public class CollectableController : MonoBehaviour
     public Image bobbleheadImage2;
     public Image bobbleheadImage3;
 
+    private AchievementsController achievementsController;
+
     void Start()
     {
+        achievementsController = FindObjectOfType<AchievementsController>();
         currentLevelName = SceneManager.GetActiveScene().name;
         if(PlayerPrefs.GetInt(currentLevelName + " bobblehead 1", 0) != 0)
         {
@@ -103,6 +106,7 @@ public class CollectableController : MonoBehaviour
         if(PlayerPrefs.GetInt("Achievement 8", 0) == 0)
         {
             PlayerPrefs.SetInt("Achievement 8", 1);
+            achievementsController.AchievementGet(8);
         }
     }
 
@@ -124,6 +128,7 @@ public class CollectableController : MonoBehaviour
             PlayerPrefs.GetInt(currentLevelName + " bobblehead 3", 0) == 1 && PlayerPrefs.GetInt("Achievement 9", 0) == 0)
         {
             PlayerPrefs.SetInt("Achievement 9", 1);
+            achievementsController.AchievementGet(9);
         }
         if(PlayerPrefs.GetInt("Level 1-1 bobblehead 1", 0) == 0 && PlayerPrefs.GetInt("Level 1-1 bobblehead 2", 0) == 0 && PlayerPrefs.GetInt("Level 1-1 bobblehead 3", 0) == 0 &&
             PlayerPrefs.GetInt("level 1-2 bobblehead 1", 0) == 0 && PlayerPrefs.GetInt("level 1-2 bobblehead 2", 0) == 0 && PlayerPrefs.GetInt("level 1-2 bobblehead 3", 0) == 0 &&
@@ -132,6 +137,7 @@ public class CollectableController : MonoBehaviour
             PlayerPrefs.GetInt("Achievement 10", 0) == 0)
         {
             PlayerPrefs.SetInt("Achievement 10", 1);
+            achievementsController.AchievementGet(10);
         }
     }
 
