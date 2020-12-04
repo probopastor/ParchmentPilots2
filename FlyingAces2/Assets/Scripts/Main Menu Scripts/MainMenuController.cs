@@ -67,6 +67,7 @@ public class MainMenuController : MonoBehaviour
             PlayerPrefs.SetInt("Achievement 17", 1);
             FindObjectOfType<AchievementsController>().AchievementGet(17);
         }
+
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         if (MusicSource != null)

@@ -1511,7 +1511,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &439821246
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1635,7 +1635,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &585855611
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1706,7 +1706,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &636358438
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3825,7 +3825,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1223234177
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5316,6 +5316,95 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!1001 &2079077929
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6105106312549862839, guid: d46f8ab890d61a348a05c22e24c2042d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 52.31716
+      objectReference: {fileID: 0}
+    - target: {fileID: 6105106312549862839, guid: d46f8ab890d61a348a05c22e24c2042d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 202.73254
+      objectReference: {fileID: 0}
+    - target: {fileID: 6105106312549862839, guid: d46f8ab890d61a348a05c22e24c2042d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -71.877045
+      objectReference: {fileID: 0}
+    - target: {fileID: 6105106312549862839, guid: d46f8ab890d61a348a05c22e24c2042d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6105106312549862839, guid: d46f8ab890d61a348a05c22e24c2042d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6105106312549862839, guid: d46f8ab890d61a348a05c22e24c2042d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6105106312549862839, guid: d46f8ab890d61a348a05c22e24c2042d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6105106312549862839, guid: d46f8ab890d61a348a05c22e24c2042d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6105106312549862839, guid: d46f8ab890d61a348a05c22e24c2042d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6105106312549862839, guid: d46f8ab890d61a348a05c22e24c2042d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6105106312549862839, guid: d46f8ab890d61a348a05c22e24c2042d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8054513575147638851, guid: d46f8ab890d61a348a05c22e24c2042d,
+        type: 3}
+      propertyPath: achievementRibbon1
+      value: 
+      objectReference: {fileID: 636358437}
+    - target: {fileID: 8054513575147638851, guid: d46f8ab890d61a348a05c22e24c2042d,
+        type: 3}
+      propertyPath: achievementRibbon2
+      value: 
+      objectReference: {fileID: 1223234176}
+    - target: {fileID: 8054513575147638851, guid: d46f8ab890d61a348a05c22e24c2042d,
+        type: 3}
+      propertyPath: achievementRibbon3
+      value: 
+      objectReference: {fileID: 585855610}
+    - target: {fileID: 8054513575147638851, guid: d46f8ab890d61a348a05c22e24c2042d,
+        type: 3}
+      propertyPath: achievementRibbon4
+      value: 
+      objectReference: {fileID: 439821245}
+    - target: {fileID: 8100166694505852202, guid: d46f8ab890d61a348a05c22e24c2042d,
+        type: 3}
+      propertyPath: m_Name
+      value: Achievement Menu Controller
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d46f8ab890d61a348a05c22e24c2042d, type: 3}
 --- !u!1 &2103394166
 GameObject:
   m_ObjectHideFlags: 0

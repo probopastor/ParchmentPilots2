@@ -340,6 +340,7 @@ public class TestFlight : MonoBehaviour
             SoundEffectSource.Stop();
         }
         AFKTimer();
+        airborneTimer();
         OutOfBoundsCheck();
     }
 
@@ -398,7 +399,7 @@ public class TestFlight : MonoBehaviour
             isThrown = true;
             anim.SetBool("isThrown", isThrown);
 
-            planeThrowHandler.SetChargeBarActivity(false);
+            
 
             Rigidbody.isKinematic = false;
             Rigidbody.useGravity = true;
@@ -419,18 +420,19 @@ public class TestFlight : MonoBehaviour
                 highPowerThrows = false;
             }
 
-            if (planeThrowHandler.GetChargeBarValue() == 100 && PlayerPrefs.GetInt("Achievement 6", 0) == 0)
+            if (planeThrowHandler.GetChargeBarValue() >= 99 && PlayerPrefs.GetInt("Achievement 6", 0) == 0)
             {
                 PlayerPrefs.SetInt("Achievement 6", 1);
                 achievementsController.AchievementGet(6);
             }
-            if (planeThrowHandler.GetChargeBarValue() == 0 && PlayerPrefs.GetInt("Achievement 7", 0) == 0)
+            if (planeThrowHandler.GetChargeBarValue() <= 1 && PlayerPrefs.GetInt("Achievement 7", 0) == 0)
             {
                 PlayerPrefs.SetInt("Achievement 7", 1);
                 achievementsController.AchievementGet(7);
             }
-
+            Debug.Log(planeThrowHandler.GetChargeBarValue());
             moveForward = true;
+            planeThrowHandler.SetChargeBarActivity(false);
         }
     }
 

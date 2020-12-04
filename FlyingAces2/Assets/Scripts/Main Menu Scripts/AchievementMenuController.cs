@@ -20,6 +20,7 @@ public class AchievementMenuController : MonoBehaviour
     void Start()
     {
         currentLevelName = SceneManager.GetActiveScene().name;
+        AcievementCheck();
     }
 
     private void AcievementCheck()
@@ -45,7 +46,7 @@ public class AchievementMenuController : MonoBehaviour
                     achievementRibbon2.SetActive(false);
                 }
 
-                if (PlayerPrefs.GetInt("Achievement 8", 0) == 0)
+                if (PlayerPrefs.GetInt("Achievement 8", 0) == 1)
                 {
                     achievementRibbon3.SetActive(true);
                 }
@@ -54,7 +55,7 @@ public class AchievementMenuController : MonoBehaviour
                     achievementRibbon3.SetActive(false);
                 }
 
-                if (PlayerPrefs.GetInt("Achievement 9", 0) == 0)
+                if (PlayerPrefs.GetInt("Achievement 9", 0) == 1)
                 {
                     achievementRibbon4.SetActive(true);
                 }
@@ -83,7 +84,7 @@ public class AchievementMenuController : MonoBehaviour
                     achievementRibbon2.SetActive(false);
                 }
 
-                if (PlayerPrefs.GetInt("Achievement 6", 0) == 0)
+                if (PlayerPrefs.GetInt("Achievement 6", 0) == 1)
                 {
                     achievementRibbon3.SetActive(true);
                 }
@@ -92,7 +93,7 @@ public class AchievementMenuController : MonoBehaviour
                     achievementRibbon3.SetActive(false);
                 }
 
-                if (PlayerPrefs.GetInt("Achievement 5", 0) == 0)
+                if (PlayerPrefs.GetInt("Achievement 3", 0) == 1)
                 {
                     achievementRibbon4.SetActive(true);
                 }
@@ -102,7 +103,7 @@ public class AchievementMenuController : MonoBehaviour
                 }
                 break;
             case "Achievements 2":
-                if (PlayerPrefs.GetInt("Achievement 1", 0) == 1)
+                if (PlayerPrefs.GetInt("Achievement 16", 0) == 1)
                 {
                     achievementRibbon1.SetActive(true);
                 }
@@ -111,7 +112,7 @@ public class AchievementMenuController : MonoBehaviour
                     achievementRibbon1.SetActive(false);
                 }
 
-                if (PlayerPrefs.GetInt("Achievement 2", 0) == 1)
+                if (PlayerPrefs.GetInt("Achievement 15", 0) == 1)
                 {
                     achievementRibbon2.SetActive(true);
                 }
@@ -120,7 +121,7 @@ public class AchievementMenuController : MonoBehaviour
                     achievementRibbon2.SetActive(false);
                 }
 
-                if (PlayerPrefs.GetInt("Achievement 8", 0) == 0)
+                if (PlayerPrefs.GetInt("Achievement 14", 0) == 1)
                 {
                     achievementRibbon3.SetActive(true);
                 }
@@ -129,7 +130,7 @@ public class AchievementMenuController : MonoBehaviour
                     achievementRibbon3.SetActive(false);
                 }
 
-                if (PlayerPrefs.GetInt("Achievement 9", 0) == 0)
+                if (PlayerPrefs.GetInt("Achievement 13", 0) == 1)
                 {
                     achievementRibbon4.SetActive(true);
                 }
@@ -139,7 +140,7 @@ public class AchievementMenuController : MonoBehaviour
                 }
                 break;
             case "Achievements 3":
-                if (PlayerPrefs.GetInt("Achievement 1", 0) == 1)
+                if (PlayerPrefs.GetInt("Achievement 12", 0) == 1)
                 {
                     achievementRibbon1.SetActive(true);
                 }
@@ -148,7 +149,7 @@ public class AchievementMenuController : MonoBehaviour
                     achievementRibbon1.SetActive(false);
                 }
 
-                if (PlayerPrefs.GetInt("Achievement 2", 0) == 1)
+                if (PlayerPrefs.GetInt("Achievement 11", 0) == 1)
                 {
                     achievementRibbon2.SetActive(true);
                 }
@@ -157,7 +158,7 @@ public class AchievementMenuController : MonoBehaviour
                     achievementRibbon2.SetActive(false);
                 }
 
-                if (PlayerPrefs.GetInt("Achievement 8", 0) == 0)
+                if (PlayerPrefs.GetInt("Achievement 10", 0) == 1)
                 {
                     achievementRibbon3.SetActive(true);
                 }
@@ -166,7 +167,7 @@ public class AchievementMenuController : MonoBehaviour
                     achievementRibbon3.SetActive(false);
                 }
 
-                if (PlayerPrefs.GetInt("Achievement 9", 0) == 0)
+                if (PlayerPrefs.GetInt("Achievement 17", 0) == 1)
                 {
                     achievementRibbon4.SetActive(true);
                 }
@@ -176,7 +177,7 @@ public class AchievementMenuController : MonoBehaviour
                 }
                 break;
             case "Achievements 4":
-                if (PlayerPrefs.GetInt("Achievement 1", 0) == 1)
+                if (PlayerPrefs.GetInt("Achievement 18", 0) == 1)
                 {
                     achievementRibbon1.SetActive(true);
                 }
@@ -185,7 +186,7 @@ public class AchievementMenuController : MonoBehaviour
                     achievementRibbon1.SetActive(false);
                 }
 
-                if (PlayerPrefs.GetInt("Achievement 2", 0) == 1)
+                if (PlayerPrefs.GetInt("Achievement 19", 0) == 1)
                 {
                     achievementRibbon2.SetActive(true);
                 }
@@ -194,7 +195,7 @@ public class AchievementMenuController : MonoBehaviour
                     achievementRibbon2.SetActive(false);
                 }
 
-                if (PlayerPrefs.GetInt("Achievement 8", 0) == 0)
+                if (PlayerPrefs.GetInt("Achievement 5", 0) == 1)
                 {
                     achievementRibbon3.SetActive(true);
                 }
@@ -203,7 +204,7 @@ public class AchievementMenuController : MonoBehaviour
                     achievementRibbon3.SetActive(false);
                 }
 
-                if (PlayerPrefs.GetInt("Achievement 9", 0) == 0)
+                if (PlayerPrefs.GetInt("Achievement 20", 0) == 1)
                 {
                     achievementRibbon4.SetActive(true);
                 }

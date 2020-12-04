@@ -95,7 +95,7 @@ public class AchievementsController : MonoBehaviour
                 achievementNameDescription.text = "Fly into a trash bin";
                 break;
             case 17:
-                achievementNameText.text = "Thanks 4 the Support";
+                achievementNameText.text = "Thanks for the love!";
                 achievementNameDescription.text = "Check out the Credits Menu";
                 break;
             case 18:
@@ -122,7 +122,7 @@ public class AchievementsController : MonoBehaviour
     void CloseAchievement()
     {
         achievementBanner.SetActive(false);
-        if(PlayerPrefs.GetInt("Achievement 1", 0) == 1 && PlayerPrefs.GetInt("Achievement 2", 0) == 1 && PlayerPrefs.GetInt("Achievement 3", 0) == 1 &&
+        if (PlayerPrefs.GetInt("Achievement 1", 0) == 1 && PlayerPrefs.GetInt("Achievement 2", 0) == 1 && PlayerPrefs.GetInt("Achievement 3", 0) == 1 &&
             PlayerPrefs.GetInt("Achievement 4", 0) == 1 && PlayerPrefs.GetInt("Achievement 5", 0) == 1 && PlayerPrefs.GetInt("Achievement 6", 0) == 1 &&
             PlayerPrefs.GetInt("Achievement 7", 0) == 1 && PlayerPrefs.GetInt("Achievement 8", 0) == 1 && PlayerPrefs.GetInt("Achievement 9", 0) == 1 &&
             PlayerPrefs.GetInt("Achievement 10", 0) == 1 && PlayerPrefs.GetInt("Achievement 11", 0) == 1 && PlayerPrefs.GetInt("Achievement 12", 0) == 1 &&

@@ -37,13 +37,19 @@ EditorBuildSettings:
     guid: 7898beee33b1b0749b16fa7f91568b7a
   - enabled: 1
     path: Assets/Scenes/MainMenu/Achievements Scenes/Achievements.unity
-    guid: 6ce55695a9f20c84d9ccb9d53cb18a7d
+    guid: 1afc25df5174b1c4f9c0f0db190a28fa
   - enabled: 1
     path: Assets/Scenes/MainMenu/Achievements Scenes/Achievements 1.unity
-    guid: eb985fc35affdce43a3ac52331e21b41
+    guid: cb2172c507fe27142911d94dca808dad
   - enabled: 1
     path: Assets/Scenes/MainMenu/Achievements Scenes/Achievements 2.unity
-    guid: 33fb6c35ed6cfe14c97322f03ec83cd5
+    guid: e5a7324e20daaa7489d66dec2be7a280
+  - enabled: 1
+    path: Assets/Scenes/MainMenu/Achievements Scenes/Achievements 3.unity
+    guid: 26109a3a663d99b4bafb980dfebae3be
+  - enabled: 1
+    path: Assets/Scenes/MainMenu/Achievements Scenes/Achievements 4.unity
+    guid: 906bd2bfc20ccdf469a52b45257a78f7
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 78f5e65286d64754395b6099d6afc02b,
       type: 2}
