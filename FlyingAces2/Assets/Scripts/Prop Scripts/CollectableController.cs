@@ -100,6 +100,10 @@ public class CollectableController : MonoBehaviour
             default:
                 break;
         }
+        if(PlayerPrefs.GetInt("Achievement 8", 0) == 0)
+        {
+            PlayerPrefs.SetInt("Achievement 8", 1);
+        }
     }
 
     public void SaveBobbleheadCollection(string level)
@@ -115,6 +119,19 @@ public class CollectableController : MonoBehaviour
         if (bobblehead3Collected)
         {
             PlayerPrefs.SetInt(currentLevelName + " bobblehead 3", 1);
+        }
+        if(PlayerPrefs.GetInt(currentLevelName + " bobblehead 1", 0) == 1 && PlayerPrefs.GetInt(currentLevelName + " bobblehead 2", 0) == 1 &&
+            PlayerPrefs.GetInt(currentLevelName + " bobblehead 3", 0) == 1 && PlayerPrefs.GetInt("Achievement 9", 0) == 0)
+        {
+            PlayerPrefs.SetInt("Achievement 9", 1);
+        }
+        if(PlayerPrefs.GetInt("Level 1-1 bobblehead 1", 0) == 0 && PlayerPrefs.GetInt("Level 1-1 bobblehead 2", 0) == 0 && PlayerPrefs.GetInt("Level 1-1 bobblehead 3", 0) == 0 &&
+            PlayerPrefs.GetInt("level 1-2 bobblehead 1", 0) == 0 && PlayerPrefs.GetInt("level 1-2 bobblehead 2", 0) == 0 && PlayerPrefs.GetInt("level 1-2 bobblehead 3", 0) == 0 &&
+            PlayerPrefs.GetInt("level 1-3 bobblehead 1", 0) == 0 && PlayerPrefs.GetInt("level 1-3 bobblehead 2", 0) == 0 && PlayerPrefs.GetInt("level 1-3 bobblehead 3", 0) == 0 &&
+            PlayerPrefs.GetInt("level 1-4 bobblehead 1", 0) == 0 && PlayerPrefs.GetInt("level 1-4 bobblehead 2", 0) == 0 && PlayerPrefs.GetInt("level 1-4 bobblehead 3", 0) == 0 &&
+            PlayerPrefs.GetInt("Achievement 10", 0) == 0)
+        {
+            PlayerPrefs.SetInt("Achievement 10", 1);
         }
     }
 

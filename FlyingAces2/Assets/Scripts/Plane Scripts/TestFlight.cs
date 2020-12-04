@@ -159,6 +159,12 @@ public class TestFlight : MonoBehaviour
     public InputMaster controls;
 
     private Vector2 input;
+
+    private bool lowPowerThrows = true;
+    private bool highPowerThrows = true;
+
+    private GameObject[] fans;
+    private int fansHitThisLevel = 0;
     #endregion
 
     void Awake()
@@ -204,6 +210,8 @@ public class TestFlight : MonoBehaviour
 
         collectableController = FindObjectOfType<CollectableController>();
 
+        fans = GameObject.FindGameObjectsWithTag("WindArea");
+
         moveForward = false;
         planeStalled = false;
 
@@ -227,7 +235,11 @@ public class TestFlight : MonoBehaviour
 
         //Sets the starting plane position on game start
         if (planeThrowHandler != null)
-            gameObject.transform.position = new Vector3(gameObject.transform.position.x, planeThrowHandler.GetStartThrowHeight(), gameObject.transform.position.z);
+        {
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x, planeThrowHandler.GetStartThrowHeight(), 
+                gameObject.transform.position.z);
+        }
+            
 
         anim = GetComponent<Animator>();
         yForce = gravity;
@@ -361,6 +373,25 @@ public class TestFlight : MonoBehaviour
             scoreAddedThisThrow = false;
 
             Rigidbody.AddRelativeForce(Vector3.forward * thrustForce * planeThrowHandler.GetChargeBarValue());
+            
+            if(planeThrowHandler.GetChargeBarValue() > 50 && lowPowerThrows == true)
+            {
+                lowPowerThrows = false;
+            }
+
+            if (planeThrowHandler.GetChargeBarValue() < 50 && highPowerThrows == true)
+            {
+                highPowerThrows = false;
+            }
+
+            if (planeThrowHandler.GetChargeBarValue() == 100 && PlayerPrefs.GetInt("Achievement 6", 0) == 0)
+            {
+                PlayerPrefs.SetInt("Achievement 6", 1);
+            }
+            if (planeThrowHandler.GetChargeBarValue() == 0 && PlayerPrefs.GetInt("Achievement 7", 0) == 0)
+            {
+                PlayerPrefs.SetInt("Achievement 7", 1);
+            }
 
             moveForward = true;
         }
@@ -665,6 +696,22 @@ public class TestFlight : MonoBehaviour
         if (other.tag == "WindArea")
         {
             moveForward = false;
+            if(PlayerPrefs.GetInt("Fans hit", 0) <= 10)
+            {
+                PlayerPrefs.SetInt("Fans hit", PlayerPrefs.GetInt("Fans hit") + 1);
+                if(PlayerPrefs.GetInt("Fans hit") >= 5 && PlayerPrefs.GetInt("Achievements 3", 0) == 0)
+                {
+                    PlayerPrefs.SetInt("Achievements 3", 1);
+                }
+                if (PlayerPrefs.GetInt("Fans hit") >= 10 && PlayerPrefs.GetInt("Achievements 4", 0) == 0)
+                {
+                    PlayerPrefs.SetInt("Achievements 4", 1);
+                }
+            }
+            if(++fansHitThisLevel == fans.Length && PlayerPrefs.GetInt("Achievements 5", 0) == 0)
+            {
+                PlayerPrefs.SetInt("Achievements 5", 1);
+            }
         }
     }
 
@@ -690,6 +737,7 @@ public class TestFlight : MonoBehaviour
                 SaveData.SaveHighScore(currentScene.name, scoreManager.GetStroke());
                 SaveData.UnlockNextLevel(currentScene.name);
                 collectableController.SaveBobbleheadCollection(currentScene.name);
+                AchievementCheck();
                 yield return new WaitForSeconds(6f);
                 MusicSource.Stop();
 
@@ -848,5 +896,30 @@ public class TestFlight : MonoBehaviour
     public bool GetEffectPlayOnce()
     {
         return playOnce;
+    }
+
+    private void AchievementCheck()
+    {
+        if(scoreManager.GetStroke() == 1 && PlayerPrefs.GetInt("Achievement 1", 0) == 0)
+        {
+            PlayerPrefs.SetInt("Achievement 1", 1);
+        }
+
+        if(PlayerPrefs.GetInt("Level 1-1 high score", 0) == 1 && PlayerPrefs.GetInt("level 1-2 high score", 0) == 1 &&
+            PlayerPrefs.GetInt("level 1-3 high score", 0) == 1 && PlayerPrefs.GetInt("level 1-4 high score", 0) == 1 && 
+            PlayerPrefs.GetInt("Achievement 2", 0) == 0)
+        {
+            PlayerPrefs.SetInt("Achievement 2", 1);
+        }
+
+        if(PlayerPrefs.GetInt("Achievement 11", 0) == 0 && lowPowerThrows == true)
+        {
+            PlayerPrefs.SetInt("Achievement 11", 1);
+        }
+
+        if (PlayerPrefs.GetInt("Achievement 12", 0) == 0 && highPowerThrows == true)
+        {
+            PlayerPrefs.SetInt("Achievement 12", 1);
+        }
     }
 }
