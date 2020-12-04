@@ -64,7 +64,7 @@ public class HowToPlayController : MonoBehaviour
 
         AsyncOperation operation = SceneManager.LoadSceneAsync(level);
 
-        while (!operation.isDone)
+        while(!operation.isDone)
         {
             float progress = Mathf.Clamp01(operation.progress / .9f);
             yield return null;

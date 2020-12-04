@@ -89,7 +89,7 @@ public class UIHandler : MonoBehaviour
         {
             scoreText.text = "Triple bogey. Next hole will be better.";
         }
-        else if (scoreStroke > par + 4)
+        else if (scoreStroke >= par + 4)
         {
             scoreText.text = "Let's not talk about that hole...";
         }

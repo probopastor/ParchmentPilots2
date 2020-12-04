@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class TutorialHandler : MonoBehaviour
 {
@@ -13,6 +15,46 @@ public class TutorialHandler : MonoBehaviour
     public GameObject tutorialThrowingObject;
     public GameObject tutorialChargingObject;
     public GameObject tutorialFlyingObject;
+
+    public TextMeshProUGUI tutorialAimText;
+    public TextMeshProUGUI tutorialThrowingText;
+    public TextMeshProUGUI tutorialChargingText;
+    public TextMeshProUGUI tutorialFlyingText;
+
+    public InputMaster controls;
+
+    private void Awake()
+    {
+        controls = new InputMaster();
+        controls.Player.DeviceCheck.performed += context => ChangeTutorialText();
+    }
+    private void OnEnable()
+    {
+        controls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        controls.Disable();
+    }
+
+    private void ChangeTutorialText()
+    {
+        if (Keyboard.current.anyKey.isPressed)
+        {
+            tutorialAimText.text = "Use the arrow keys or WASD to aim.";
+            tutorialThrowingText.text = "Press " + "\"" + "Enter" + "\"" + "to charge your throw.";
+            tutorialChargingText.text = "Press " + "\"" + "Enter" + "\"" + " to throw. " + "\"" + "Esc" + "\"" + " to aim.";
+            tutorialFlyingText.text = "Use the arrow keys or WASD to control your flight.";
+        }
+        else if (!Keyboard.current.anyKey.isPressed)
+        {
+            tutorialAimText.text = "Use the Left Stick to aim.";
+            tutorialThrowingText.text = "Press " + "\"" + "A" + "\"" + "to charge your throw.";
+            tutorialChargingText.text = "Press " + "\"" + "A" + "\"" + " to throw. " + "\"" + "B" + "\"" + " to aim.";
+            tutorialFlyingText.text = "Use the Left Stick to control your flight.";
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
