@@ -110,6 +110,8 @@ public class AchievementsController : MonoBehaviour
                 achievementNameText.text = "101%";
                 achievementNameDescription.text = "Collect all other achievements";
                 break;
+            default:
+                break;
         }
         achievementBanner.SetActive(true);
         SoundEffectSource.clip = achievementSFX;
