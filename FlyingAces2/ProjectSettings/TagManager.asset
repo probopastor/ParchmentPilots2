@@ -10,6 +10,7 @@ TagManager:
   - MainMenu
   - Toast
   - Recycle bin
+  - Party
   layers:
   - Default
   - TransparentFX
