@@ -8,6 +8,7 @@ TagManager:
   - Speed Boost
   - WindArea
   - MainMenu
+  - Toast
   layers:
   - Default
   - TransparentFX
