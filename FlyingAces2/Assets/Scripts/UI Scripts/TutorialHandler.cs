@@ -42,17 +42,17 @@ public class TutorialHandler : MonoBehaviour
     {
         if (Keyboard.current.anyKey.isPressed)
         {
-            tutorialAimText.text = "Use the arrow keys or WASD to aim.";
+            tutorialAimText.text = "Use arrow keys/WASD to aim.";
             tutorialThrowingText.text = "Press " + "\"" + "Enter" + "\"" + "to charge your throw.";
             tutorialChargingText.text = "Press " + "\"" + "Enter" + "\"" + " to throw. " + "\"" + "Esc" + "\"" + " to aim.";
-            tutorialFlyingText.text = "Use the arrow keys or WASD to control your flight.";
+            tutorialFlyingText.text = "Use arrow keys/WASD to control your flight.";
         }
         else if (!Keyboard.current.anyKey.isPressed)
         {
-            tutorialAimText.text = "Use the Left Stick to aim.";
+            tutorialAimText.text = "Use Left Stick to aim.";
             tutorialThrowingText.text = "Press " + "\"" + "A" + "\"" + "to charge your throw.";
             tutorialChargingText.text = "Press " + "\"" + "A" + "\"" + " to throw. " + "\"" + "B" + "\"" + " to aim.";
-            tutorialFlyingText.text = "Use the Left Stick to control your flight.";
+            tutorialFlyingText.text = "Use Left Stick to control your flight.";
         }
     }
 
