@@ -167,6 +167,9 @@ public class TestFlight : MonoBehaviour
 
     private GameObject[] fans;
     private int fansHitThisLevel = 0;
+
+    private float idleTimer = 0;
+    private float flightTimer = 0;
     #endregion
 
     void Awake()
@@ -336,8 +339,36 @@ public class TestFlight : MonoBehaviour
             SoundEffectSource.loop = false;
             SoundEffectSource.Stop();
         }
-
+        AFKTimer();
         OutOfBoundsCheck();
+    }
+
+    private void AFKTimer()
+    {
+        idleTimer += 1 * Time.deltaTime;
+        if(idleTimer >= 180 && PlayerPrefs.GetInt("Achievement 13", 0) == 0)
+        {
+            PlayerPrefs.SetInt("Achievement 13", 1);
+            achievementsController.AchievementGet(13);
+        }
+    }
+
+    private void airborneTimer()
+    {
+        if(!planeThrowHandler.GetAimStatus() && !planeThrowHandler.GetThrowStatus())
+        {
+            flightTimer += 1 * Time.deltaTime;
+            if (flightTimer >= 30 && PlayerPrefs.GetInt("Achievement 14", 0) == 0)
+            {
+                PlayerPrefs.SetInt("Achievement 14", 1);
+                achievementsController.AchievementGet(14);
+            }
+        }
+        else
+        {
+            flightTimer = 0;
+        }
+
     }
 
     private void CancelChargeBar()
@@ -737,6 +768,13 @@ public class TestFlight : MonoBehaviour
         if(other.tag == "Recyle bin" && PlayerPrefs.GetInt("Achievement 16", 0) == 0)
         {
             PlayerPrefs.SetInt("Achievement 16", 1);
+            achievementsController.AchievementGet(16);
+        }
+
+        if (other.tag == "Party" && PlayerPrefs.GetInt("Achievement 19", 0) == 0)
+        {
+            PlayerPrefs.SetInt("Achievement 19", 1);
+            achievementsController.AchievementGet(19);
         }
     }
 

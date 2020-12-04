@@ -37,6 +37,9 @@ public class MainMenuController : MonoBehaviour
     public TextMeshProUGUI backButtonTmp;
 
     public InputMaster controls;
+
+    private string currentLevelName;
+
     private void Awake()
     {
         controls = new InputMaster();
@@ -58,6 +61,12 @@ public class MainMenuController : MonoBehaviour
     {
         keepButtonSelected = false;
         eventSystem = EventSystem.current;
+        currentLevelName = SceneManager.GetActiveScene().name;
+        if(currentLevelName == "Credits Menu" && PlayerPrefs.GetInt("Achievement 17", 0) == 0)
+        {
+            PlayerPrefs.SetInt("Achievement 17", 1);
+            FindObjectOfType<AchievementsController>().AchievementGet(17);
+        }
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         if (MusicSource != null)
@@ -83,6 +92,11 @@ public class MainMenuController : MonoBehaviour
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
+        }
+        if(eventSystem.currentSelectedGameObject == null)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 
