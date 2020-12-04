@@ -424,6 +424,11 @@ public class TestFlight : MonoBehaviour
     private void CheckMaxVelocity()
     {
         Rigidbody.velocity = Vector3.ClampMagnitude(Rigidbody.velocity, maxVelocity);
+        if(Rigidbody.velocity.magnitude == maxVelocity && PlayerPrefs.GetInt("Achievement 18", 0) == 0)
+        {
+            PlayerPrefs.SetInt("Achievement 18", 1);
+            achievementsController.AchievementGet(18);
+        }
     }
 
     private IEnumerator CheckForPlaneDeceleration()
@@ -623,6 +628,12 @@ public class TestFlight : MonoBehaviour
 
             finished = true;
         }
+
+        if(collision.gameObject.tag == "Toast" && PlayerPrefs.GetInt("Achievement 15", 0) == 0)
+        {
+            PlayerPrefs.SetInt("Achievement 15", 1);
+            achievementsController.AchievementGet(18);
+        }
     }
 
     private void OnCollisionExit(Collision collision)
@@ -705,22 +716,27 @@ public class TestFlight : MonoBehaviour
             if(PlayerPrefs.GetInt("Fans hit", 0) <= 10)
             {
                 PlayerPrefs.SetInt("Fans hit", PlayerPrefs.GetInt("Fans hit") + 1);
-                if(PlayerPrefs.GetInt("Fans hit") >= 5 && PlayerPrefs.GetInt("Achievements 3", 0) == 0)
+                if(PlayerPrefs.GetInt("Fans hit") >= 5 && PlayerPrefs.GetInt("Achievement 3", 0) == 0)
                 {
-                    PlayerPrefs.SetInt("Achievements 3", 1);
+                    PlayerPrefs.SetInt("Achievement 3", 1);
                     achievementsController.AchievementGet(3);
                 }
-                if (PlayerPrefs.GetInt("Fans hit") >= 10 && PlayerPrefs.GetInt("Achievements 4", 0) == 0)
+                if (PlayerPrefs.GetInt("Fans hit") >= 10 && PlayerPrefs.GetInt("Achievement 4", 0) == 0)
                 {
-                    PlayerPrefs.SetInt("Achievements 4", 1);
+                    PlayerPrefs.SetInt("Achievement 4", 1);
                     achievementsController.AchievementGet(4);
                 }
             }
-            if(++fansHitThisLevel == fans.Length && PlayerPrefs.GetInt("Achievements 5", 0) == 0)
+            if(++fansHitThisLevel == fans.Length && PlayerPrefs.GetInt("Achievement 5", 0) == 0)
             {
-                PlayerPrefs.SetInt("Achievements 5", 1);
+                PlayerPrefs.SetInt("Achievement 5", 1);
                 achievementsController.AchievementGet(5);
             }
+        }
+
+        if(other.tag == "Recyle bin" && PlayerPrefs.GetInt("Achievement 16", 0) == 0)
+        {
+            PlayerPrefs.SetInt("Achievement 16", 1);
         }
     }
 
