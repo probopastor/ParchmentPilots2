@@ -784,7 +784,7 @@ public class TestFlight : MonoBehaviour
             }
         }
 
-        if(other.tag == "Recyle bin" && PlayerPrefs.GetInt("Achievement 16", 0) == 0)
+        if(other.tag == "Recycle bin" && PlayerPrefs.GetInt("Achievement 16", 0) == 0)
         {
             PlayerPrefs.SetInt("Achievement 16", 1);
             achievementsController.AchievementGet(16);
