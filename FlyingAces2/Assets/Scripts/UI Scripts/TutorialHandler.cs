@@ -42,10 +42,10 @@ public class TutorialHandler : MonoBehaviour
     {
         if (Keyboard.current.anyKey.isPressed)
         {
-            tutorialAimText.text = "Use arrow keys/WASD to aim.";
+            tutorialAimText.text = "Use arrow keys/ WASD to aim.";
             tutorialThrowingText.text = "Press " + "\"" + "Enter" + "\"" + "to charge your throw.";
             tutorialChargingText.text = "Press " + "\"" + "Enter" + "\"" + " to throw. " + "\"" + "Esc" + "\"" + " to aim.";
-            tutorialFlyingText.text = "Use arrow keys/WASD to control your flight.";
+            tutorialFlyingText.text = "Use arrow keys/ WASD to control your flight.";
         }
         else if (!Keyboard.current.anyKey.isPressed)
         {
