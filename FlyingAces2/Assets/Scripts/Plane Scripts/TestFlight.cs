@@ -187,6 +187,7 @@ public class TestFlight : MonoBehaviour
         controls.Player.Cancel.performed += cxt => CancelChargeBar();
         controls.Player.Aim.performed += context => HandleAimInput(context);
         controls.Player.Aim.canceled += context => ResetAimInput();
+        controls.Player.DeviceCheck.performed += context => ResetAFKTimer();
     }
 
     private void OnEnable()
@@ -209,6 +210,11 @@ public class TestFlight : MonoBehaviour
     void ResetAimInput()
     {
         input = Vector2.zero;
+    }
+
+    void ResetAFKTimer()
+    {
+        idleTimer = 0;
     }
 
     // Start is called before the first frame update
