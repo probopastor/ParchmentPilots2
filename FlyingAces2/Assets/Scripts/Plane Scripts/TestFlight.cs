@@ -14,6 +14,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using Cinemachine;
+using AwesomeToon;
 
 public class TestFlight : MonoBehaviour
 {
@@ -144,6 +145,10 @@ public class TestFlight : MonoBehaviour
 
     public Animator transitionAnimator;
 
+    private MeshRenderer meshRenderer;
+
+    private AwesomeToonHelper toonHelper;
+
     private PlaneThrow_Handler planeThrowHandler;
 
     private ScoreManager scoreManager;
@@ -157,6 +162,8 @@ public class TestFlight : MonoBehaviour
     private AchievementsController achievementsController;
 
     private bool planeStalled;
+
+    public Material specialMaterial;
 
     public InputMaster controls;
 
@@ -230,6 +237,10 @@ public class TestFlight : MonoBehaviour
 
         eventSystem = EventSystem.current;
 
+        meshRenderer = GetComponent<MeshRenderer>();
+
+        toonHelper = GetComponent<AwesomeToonHelper>();
+
         increaseWindPitchRate = startWindPitchRate;
         soundEffectSourceVolume = SoundEffectSource.volume;
 
@@ -256,6 +267,12 @@ public class TestFlight : MonoBehaviour
         canEnableChargeBar = true;
 
         currentScene = SceneManager.GetActiveScene();
+
+        if (PlayerPrefs.GetInt(currentScene.name + " bobblehead 1", 0) == 1 && PlayerPrefs.GetInt(currentScene.name + " bobblehead 2", 0) == 1 &&
+            PlayerPrefs.GetInt(currentScene.name + " bobblehead 3", 0) == 1)
+        {
+            toonHelper.material = specialMaterial;
+        }
     }
 
     // Update is called once per frame

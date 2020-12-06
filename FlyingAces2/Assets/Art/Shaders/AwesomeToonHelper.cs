@@ -30,7 +30,7 @@ namespace AwesomeToon
     {
 
         // Params
-        [SerializeField] Material material = null;
+        public Material material = null;
         [SerializeField] bool instanceMaterial = true;
         [SerializeField] Vector3 meshCenter = Vector3.zero;
         [SerializeField] int maxLights = 6;

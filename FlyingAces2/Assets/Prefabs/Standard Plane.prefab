@@ -172,6 +172,7 @@ MonoBehaviour:
   hitGroundWindPitchRate: 100
   winSystem: {fileID: 0}
   transitionAnimator: {fileID: 0}
+  specialMaterial: {fileID: 0}
 --- !u!95 &7016437115235219394
 Animator:
   serializedVersion: 3
