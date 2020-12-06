@@ -453,7 +453,6 @@ public class TestFlight : MonoBehaviour
                 PlayerPrefs.SetInt("Achievement 7", 1);
                 achievementsController.AchievementGet(7);
             }
-            Debug.Log(planeThrowHandler.GetChargeBarValue());
             moveForward = true;
             planeThrowHandler.SetChargeBarActivity(false);
         }
