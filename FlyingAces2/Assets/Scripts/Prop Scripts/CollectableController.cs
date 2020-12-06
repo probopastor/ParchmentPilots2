@@ -130,10 +130,10 @@ public class CollectableController : MonoBehaviour
             PlayerPrefs.SetInt("Achievement 9", 1);
             achievementsController.AchievementGet(9);
         }
-        if(PlayerPrefs.GetInt("Level 1-1 bobblehead 1", 0) == 0 && PlayerPrefs.GetInt("Level 1-1 bobblehead 2", 0) == 0 && PlayerPrefs.GetInt("Level 1-1 bobblehead 3", 0) == 0 &&
-            PlayerPrefs.GetInt("level 1-2 bobblehead 1", 0) == 0 && PlayerPrefs.GetInt("level 1-2 bobblehead 2", 0) == 0 && PlayerPrefs.GetInt("level 1-2 bobblehead 3", 0) == 0 &&
-            PlayerPrefs.GetInt("level 1-3 bobblehead 1", 0) == 0 && PlayerPrefs.GetInt("level 1-3 bobblehead 2", 0) == 0 && PlayerPrefs.GetInt("level 1-3 bobblehead 3", 0) == 0 &&
-            PlayerPrefs.GetInt("level 1-4 bobblehead 1", 0) == 0 && PlayerPrefs.GetInt("level 1-4 bobblehead 2", 0) == 0 && PlayerPrefs.GetInt("level 1-4 bobblehead 3", 0) == 0 &&
+        if(PlayerPrefs.GetInt("Level 1-1 bobblehead 1", 0) == 1 && PlayerPrefs.GetInt("Level 1-1 bobblehead 2", 0) == 1 && PlayerPrefs.GetInt("Level 1-1 bobblehead 3", 0) == 1 &&
+            PlayerPrefs.GetInt("level 1-2 bobblehead 1", 0) == 1 && PlayerPrefs.GetInt("level 1-2 bobblehead 2", 0) == 1 && PlayerPrefs.GetInt("level 1-2 bobblehead 3", 0) == 1 &&
+            PlayerPrefs.GetInt("level 1-3 bobblehead 1", 0) == 1 && PlayerPrefs.GetInt("level 1-3 bobblehead 2", 0) == 1 && PlayerPrefs.GetInt("level 1-3 bobblehead 3", 0) == 1 &&
+            PlayerPrefs.GetInt("level 1-4 bobblehead 1", 0) == 1 && PlayerPrefs.GetInt("level 1-4 bobblehead 2", 0) == 1 && PlayerPrefs.GetInt("level 1-4 bobblehead 3", 0) == 1 &&
             PlayerPrefs.GetInt("Achievement 10", 0) == 0)
         {
             PlayerPrefs.SetInt("Achievement 10", 1);
