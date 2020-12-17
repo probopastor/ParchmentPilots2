@@ -670,6 +670,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Achievement Get
       objectReference: {fileID: 0}
+    - target: {fileID: 8067654873838443644, guid: fd1853573b783f643a087c1ab0fc9a0e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8067654873838443645, guid: fd1853573b783f643a087c1ab0fc9a0e,
         type: 3}
       propertyPath: m_LocalPosition.x
